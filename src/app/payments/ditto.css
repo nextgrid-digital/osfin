@@ -1,0 +1,63 @@
+[data-ditto-id="payments-style-div"]{background-image:repeating-linear-gradient(to right, rgb(204, 197, 163), rgb(204, 197, 163) 40px, rgb(15, 14, 11) 40px, rgb(15, 14, 11) 80px)}
+@media (max-width: 571px) {
+[data-ditto-id="payments-style-div"]{background-image:repeating-linear-gradient(to right, rgb(204, 197, 163), rgb(204, 197, 163) 11.7188px, rgb(15, 14, 11) 11.7188px, rgb(15, 14, 11) 23.4375px)}
+}
+@media (min-width: 572px) and (max-width: 1024px) {
+[data-ditto-id="payments-style-div"]{background-image:repeating-linear-gradient(to right, rgb(204, 197, 163), rgb(204, 197, 163) 24px, rgb(15, 14, 11) 24px, rgb(15, 14, 11) 48px)}
+}
+@media (min-width: 1601px) {
+[data-ditto-id="payments-style-div"]{background-image:repeating-linear-gradient(to right, rgb(204, 197, 163), rgb(204, 197, 163) 60px, rgb(15, 14, 11) 60px, rgb(15, 14, 11) 120px)}
+}
+[data-ditto-id="payments-style-div-2"]{background-image:repeating-linear-gradient(to right, rgb(15, 14, 11), rgb(15, 14, 11) 40px, rgb(204, 197, 163) 40px, rgb(204, 197, 163) 80px)}
+@media (max-width: 571px) {
+[data-ditto-id="payments-style-div-2"]{background-image:repeating-linear-gradient(to right, rgb(15, 14, 11), rgb(15, 14, 11) 11.7188px, rgb(204, 197, 163) 11.7188px, rgb(204, 197, 163) 23.4375px)}
+}
+@media (min-width: 572px) and (max-width: 1024px) {
+[data-ditto-id="payments-style-div-2"]{background-image:repeating-linear-gradient(to right, rgb(15, 14, 11), rgb(15, 14, 11) 24px, rgb(204, 197, 163) 24px, rgb(204, 197, 163) 48px)}
+}
+@media (min-width: 1601px) {
+[data-ditto-id="payments-style-div-2"]{background-image:repeating-linear-gradient(to right, rgb(15, 14, 11), rgb(15, 14, 11) 60px, rgb(204, 197, 163) 60px, rgb(204, 197, 163) 120px)}
+}
+[data-ditto-id="payments-style-div-3"]{background-image:repeating-linear-gradient(to right, rgb(204, 197, 163), rgb(204, 197, 163) 40px, rgb(15, 14, 11) 40px, rgb(15, 14, 11) 80px)}
+@media (max-width: 571px) {
+[data-ditto-id="payments-style-div-3"]{background-image:repeating-linear-gradient(to right, rgb(204, 197, 163), rgb(204, 197, 163) 11.7188px, rgb(15, 14, 11) 11.7188px, rgb(15, 14, 11) 23.4375px)}
+}
+@media (min-width: 572px) and (max-width: 1024px) {
+[data-ditto-id="payments-style-div-3"]{background-image:repeating-linear-gradient(to right, rgb(204, 197, 163), rgb(204, 197, 163) 24px, rgb(15, 14, 11) 24px, rgb(15, 14, 11) 48px)}
+}
+@media (min-width: 1601px) {
+[data-ditto-id="payments-style-div-3"]{background-image:repeating-linear-gradient(to right, rgb(204, 197, 163), rgb(204, 197, 163) 60px, rgb(15, 14, 11) 60px, rgb(15, 14, 11) 120px)}
+}
+[data-ditto-id="payments-style-div-4"]{background-image:repeating-linear-gradient(to right, rgb(204, 197, 163), rgb(204, 197, 163) 10px, rgb(15, 14, 11) 10px, rgb(15, 14, 11) 20px)}
+@media (max-width: 571px) {
+[data-ditto-id="payments-style-div-4"]{background-image:repeating-linear-gradient(to right, rgb(204, 197, 163), rgb(204, 197, 163) 23.4375px, rgb(15, 14, 11) 23.4375px, rgb(15, 14, 11) 46.875px)}
+}
+@media (min-width: 572px) and (max-width: 1024px) {
+[data-ditto-id="payments-style-div-4"]{background-image:repeating-linear-gradient(to right, rgb(204, 197, 163), rgb(204, 197, 163) 48px, rgb(15, 14, 11) 48px, rgb(15, 14, 11) 96px)}
+}
+[data-ditto-id="payments-style-div-5"]{background-image:repeating-linear-gradient(to right, rgb(15, 14, 11), rgb(15, 14, 11) 10px, rgb(204, 197, 163) 10px, rgb(204, 197, 163) 20px)}
+@media (max-width: 571px) {
+[data-ditto-id="payments-style-div-5"]{background-image:repeating-linear-gradient(to right, rgb(15, 14, 11), rgb(15, 14, 11) 23.4375px, rgb(204, 197, 163) 23.4375px, rgb(204, 197, 163) 46.875px)}
+}
+@media (min-width: 572px) and (max-width: 1024px) {
+[data-ditto-id="payments-style-div-5"]{background-image:repeating-linear-gradient(to right, rgb(15, 14, 11), rgb(15, 14, 11) 48px, rgb(204, 197, 163) 48px, rgb(204, 197, 163) 96px)}
+}
+[data-ditto-id="payments-style-div-6"]{background-image:repeating-linear-gradient(to right, rgb(15, 14, 11), rgb(15, 14, 11) 10px, rgb(204, 197, 163) 10px, rgb(204, 197, 163) 20px)}
+@media (max-width: 571px) {
+[data-ditto-id="payments-style-div-6"]{background-image:repeating-linear-gradient(to right, rgb(15, 14, 11), rgb(15, 14, 11) 23.4375px, rgb(204, 197, 163) 23.4375px, rgb(204, 197, 163) 46.875px)}
+}
+@media (min-width: 572px) and (max-width: 1024px) {
+[data-ditto-id="payments-style-div-6"]{background-image:repeating-linear-gradient(to right, rgb(15, 14, 11), rgb(15, 14, 11) 48px, rgb(204, 197, 163) 48px, rgb(204, 197, 163) 96px)}
+}
+[data-ditto-id="payments-style-div-7"]{background-image:repeating-linear-gradient(to right, rgb(204, 197, 163), rgb(204, 197, 163) 40px, rgb(15, 14, 11) 40px, rgb(15, 14, 11) 80px)}
+@media (min-width: 1601px) {
+[data-ditto-id="payments-style-div-7"]{background-image:repeating-linear-gradient(to right, rgb(204, 197, 163), rgb(204, 197, 163) 55px, rgb(15, 14, 11) 55px, rgb(15, 14, 11) 110px)}
+}
+[data-ditto-id="payments-style-div-8"]{background-image:repeating-linear-gradient(to right, rgb(15, 14, 11), rgb(15, 14, 11) 40px, rgb(204, 197, 163) 40px, rgb(204, 197, 163) 80px)}
+@media (min-width: 1601px) {
+[data-ditto-id="payments-style-div-8"]{background-image:repeating-linear-gradient(to right, rgb(15, 14, 11), rgb(15, 14, 11) 55px, rgb(204, 197, 163) 55px, rgb(204, 197, 163) 110px)}
+}
+[data-ditto-id="payments-style-div-9"]{background-image:repeating-linear-gradient(to right, rgb(15, 14, 11), rgb(15, 14, 11) 40px, rgb(204, 197, 163) 40px, rgb(204, 197, 163) 80px)}
+@media (min-width: 1601px) {
+[data-ditto-id="payments-style-div-9"]{background-image:repeating-linear-gradient(to right, rgb(15, 14, 11), rgb(15, 14, 11) 55px, rgb(204, 197, 163) 55px, rgb(204, 197, 163) 110px)}
+}

@@ -1,0 +1,90 @@
+:root {
+  --demo-fg: #0f0e0b;
+  --demo-bg: #d5fad3;
+  --demo-panel: #0f0e0b;
+  --demo-muted: #3d3a32;
+}
+
+.demo-root {
+  --demo-fg: #0f0e0b;
+  --demo-bg: #d5fad3;
+  --demo-panel: #0f0e0b;
+  --demo-muted: #3d3a32;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--demo-bg);
+  color: var(--demo-fg);
+  font-family: "Season Serif", "Season_Serif-4de1940e3ab1f834", Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.demo-wrapper,
+.demo-container,
+.demo-root .page_content {
+  min-height: 100vh;
+}
+
+.demo-container {
+  background: var(--demo-bg);
+  transform-origin: 50% 50%;
+}
+
+.demo-page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  padding: 7.5rem 8vw 4rem;
+  background: var(--demo-bg, #d5fad3);
+  color: var(--demo-fg, #0f0e0b);
+}
+
+.demo-page h1 {
+  margin: 0;
+  max-width: 16ch;
+  font-size: clamp(3rem, 8vw, 5.625rem);
+  font-weight: 335;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.demo-page p {
+  margin: 1.75rem 0 0;
+  max-width: 36rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 358;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  color: var(--demo-muted);
+}
+
+.demo-cta {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 2.8125rem;
+  height: 2.8125rem;
+  padding: 0 1.25rem;
+  border-radius: 999px;
+  background: var(--demo-panel);
+  color: #f7f4ea;
+  font-family: ui-monospace, "Akkurat Mono", monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.33px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.demo-page--about {
+  background: var(--demo-panel);
+  color: #f7f4ea;
+}
+
+.demo-page--about p {
+  color: rgba(247, 244, 234, 0.72);
+}
+
+.demo-page--about .demo-cta {
+  background: #d5fad3;
+  color: var(--demo-fg);
+}
