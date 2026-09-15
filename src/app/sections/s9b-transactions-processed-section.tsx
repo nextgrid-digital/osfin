@@ -2,14 +2,14 @@ import Illustration2 from "../svgs/svg-illustration2";
 /** S9b Transactions Processed section. */
 export default function S9bTransactionsProcessedSection() {
   return (
-    <section className="flex relative justify-center overflow-clip bg-background">
-      <div className="grid max-w-320 grid-cols-32 w-full max-md:max-w-[23.4375rem] max-lg:grid-cols-16 md:max-lg:max-w-192 2xl:max-w-440">
+    <section className="flex min-h-screen relative justify-center overflow-clip bg-foreground text-background">
+      <div className="grid min-h-screen w-full grid-cols-32 max-lg:grid-cols-16">
         <div className="w-160 h-160 block absolute top-[clamp(367.4px,_50%,_calc(100%_-_367.4px))] left-[clamp(187.5px,_50%,_calc(100%_-_187.5px))] opacity-50 min-w-0 [translate:-50%_-50%] animate-spin [animation-duration:24s] max-md:w-75 max-md:h-75 max-md:mt-[0.9375rem] md:max-lg:w-96 md:max-lg:h-96 2xl:w-[48.4375rem] 2xl:h-[48.4375rem]">
           <Illustration2 />
           {" "}
         </div>
         {" "}
-        <div className="grid relative py-45 content-center col-start-1 [grid-column-end:-4] grid-cols-subgrid max-lg:py-22.5 max-lg:col-end-[-1]">
+        <div className="grid relative min-h-screen py-45 content-center col-start-1 col-end-[-1] grid-cols-subgrid max-lg:py-22.5">
           <span className="block col-start-2 col-end-16 text-6xl [font-weight:335] leading-[3.5625rem] tracking-[-1.8px] text-balance [font-feature-settings:'calt'] md:text-[5rem] md:leading-19 md:tracking-[-2.4px] xl:text-[7.5rem] xl:leading-28.5 xl:tracking-[-3.6px]" data-component="heading">
             {" "}
             <span className="h-full flex flex-col items-start gap-2.5">
@@ -56,7 +56,7 @@ export default function S9bTransactionsProcessedSection() {
             {" "}
           </span>
           {" "}
-          <span className="block mt-10 col-start-2 col-end-9 text-color-004 [font-family:'Akkurat_Mono-dea851e1d19028b9',_'Akkurat_Mono-dea851e1d19028b9_fallback:_Courier_New',_monospace] text-[0.6875rem] leading-[0.875rem] tracking-[0.33px] uppercase h-[3.125rem] max-md:[grid-column-end:-2]">
+          <span className="block mt-10 col-start-2 col-end-19 text-background/70 [font-family:'Akkurat_Mono-dea851e1d19028b9',_'Akkurat_Mono-dea851e1d19028b9_fallback:_Courier_New',_monospace] text-[0.6875rem] leading-[0.875rem] tracking-[0.33px] uppercase max-md:[grid-column-end:-2]">
             {" "}
             <span className="block">
               {" "}
@@ -64,7 +64,7 @@ export default function S9bTransactionsProcessedSection() {
                 {" "}
                 <span className="inline-block relative">
                   {" "}
-                  <span className="block">
+                  <span className="block whitespace-nowrap">
                     {" Fetch · Match · Trace · Resolve · Guard · Close "}
                   </span>
                   {" "}
@@ -89,7 +89,7 @@ export default function S9bTransactionsProcessedSection() {
           {" "}
         </div>
         {" "}
-        <div className="w-30 block overflow-hidden text-color-001 text-[0.5625rem] leading-[0.75rem] tracking-[0.18px] uppercase max-lg:hidden lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:min-w-0 2xl:w-50" aria-hidden="true" role="presentation">
+        <div className="w-30 block overflow-hidden text-background/50 text-[0.5625rem] leading-[0.75rem] tracking-[0.18px] uppercase max-lg:hidden lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:min-w-0 2xl:w-50" aria-hidden="true" role="presentation">
           <div className="h-[1486.3px] block absolute top-1/2 -right-15 left-15 [translate:0px_-50%] 2xl:-right-25 2xl:left-25">
             <div className="block">
               <pre className="block [font-family:'Akkurat_Mono-dea851e1d19028b9',_'Akkurat_Mono-dea851e1d19028b9_fallback:_Courier_New',_monospace] whitespace-pre [text-wrap:nowrap_pretty]">

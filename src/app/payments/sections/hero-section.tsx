@@ -2,7 +2,7 @@ import HeroRailVideo from "../../components/hero-rail-video";
 /** Hero section — the page's lead block. */
 export default function HeroSection() {
   return (
-    <section className="min-h-screen flex relative justify-center overflow-clip bg-primary max-lg:min-h-0">
+    <section className="min-h-screen flex relative justify-center overflow-clip bg-black text-background max-lg:min-h-0">
       <div className="grid max-w-320 grid-cols-32 w-full min-h-screen max-md:max-w-[23.4375rem] max-lg:min-h-0 max-lg:grid-cols-16 md:max-lg:max-w-192 2xl:max-w-440">
         <div className="relative z-20 flex min-w-0 flex-col col-start-2 col-end-21 max-md:pt-22.5 max-lg:[grid-column-end:-2] lg:pr-8">
           <div className="flex flex-1 flex-col justify-center">
@@ -50,7 +50,7 @@ export default function HeroSection() {
               {" "}
             </h1>
             {" "}
-            <a className="flex relative z-0 px-5 rounded-full items-center gap-2.5 overflow-clip text-background [font-family:'Akkurat_Mono-dea851e1d19028b9',_'Akkurat_Mono-dea851e1d19028b9_fallback:_Courier_New',_monospace] text-[0.6875rem] leading-[0.875rem] tracking-[0.33px] uppercase whitespace-nowrap text-nowrap bg-foreground cursor-pointer h-[2.8125rem]" data-component="link" aria-disabled="false" href="#workflow">
+            <a className="flex relative z-0 px-5 rounded-full items-center gap-2.5 overflow-clip text-foreground [font-family:'Akkurat_Mono-dea851e1d19028b9',_'Akkurat_Mono-dea851e1d19028b9_fallback:_Courier_New',_monospace] text-[0.6875rem] leading-[0.875rem] tracking-[0.33px] uppercase whitespace-nowrap text-nowrap bg-background cursor-pointer h-[2.8125rem]" data-component="link" aria-disabled="false" href="#workflow">
               <span className="w-[118.7px] h-full block absolute top-0 right-0 -z-1 min-w-0 rounded-full bg-color-006 [scale:0_1]" />
               {" "}
               <span className="block">
@@ -67,7 +67,7 @@ export default function HeroSection() {
           {" "}
         </div>
         {" "}
-        <div className="relative flex justify-center items-center overflow-hidden col-start-21 col-end-[-1] text-background bg-foreground max-md:w-full max-md:h-auto max-md:aspect-square max-lg:col-start-1 md:max-lg:w-full md:max-lg:h-auto md:max-lg:aspect-[4/3] lg:absolute lg:inset-y-0 lg:left-[calc(50%+10rem)] lg:right-0 lg:w-auto lg:h-auto lg:min-w-0 2xl:left-[calc(50%+13.75rem)]">
+        <div className="relative flex justify-center items-center overflow-hidden col-start-21 col-end-[-1] text-background bg-black max-md:w-full max-md:h-auto max-md:aspect-square max-lg:col-start-1 md:max-lg:w-full md:max-lg:h-auto md:max-lg:aspect-[4/3] lg:absolute lg:inset-y-0 lg:left-[calc(50%+10rem)] lg:right-0 lg:w-auto lg:h-auto lg:min-w-0 2xl:left-[calc(50%+13.75rem)]">
           <HeroRailVideo />
         </div>
         {" "}
