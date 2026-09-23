@@ -64,9 +64,9 @@ export default function HumanHome() {
           <SiteContainer className="relative z-10 w-full">
             <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
               <div className="flex flex-col items-start text-left">
-                <h1 className="max-w-[18ch] text-[rgba(0,0,0,0.875)]">
+                <h1 className="max-w-[26ch] text-[rgba(0,0,0,0.875)]">
                   <KineticTextReveal
-                    text={"Architecting agentic\npayment operations"}
+                    text={"Architecting\nagentic transactional\nintelligence"}
                     splitBy="lines"
                     startOnView
                     className="w-full max-w-full justify-start"
@@ -139,7 +139,11 @@ export default function HumanHome() {
           <SiteContainer>
             <div className="rounded-2xl bg-white px-6 py-20 text-center md:py-28">
               <div className="mx-auto max-w-[1000px]">
-                <h2>Architecting agentic payment operations</h2>
+                <h2>
+                  Architecting agentic
+                  <br />
+                  payment operations
+                </h2>
                 <div className="not-typeset mt-10 flex justify-center" data-not-typeset>
                   <BtnPrimary href="#signup">Talk to Sales</BtnPrimary>
                 </div>
