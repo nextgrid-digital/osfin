@@ -453,7 +453,7 @@ const DEF_CAMERA: CameraProps = { tilt: 35, sideTilt: 0 }
 
 const DEF_BASE_LINEAR: V3 = [0.68, 0.71, 0.75]
 
-function __OriginkitBase_MetalLapJoint(props: Partial<Props>) {
+function OriginkitBaseMetalLapJoint(props: Partial<Props>) {
   const {
     background = "#000000",
     baseColor = "#B2B2B2",
@@ -687,5 +687,5 @@ const __originkitPresetProps = {
 };
 
 export default function MetalLapJoint(props: Record<string, unknown>) {
-  return <__OriginkitBase_MetalLapJoint {...(__originkitPresetProps as Record<string, unknown>)} {...props} />;
+  return <OriginkitBaseMetalLapJoint {...(__originkitPresetProps as Record<string, unknown>)} {...props} />;
 }

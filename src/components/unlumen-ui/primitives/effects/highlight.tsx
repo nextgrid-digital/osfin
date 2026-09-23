@@ -480,8 +480,8 @@ function HighlightItem({
       };
 
   if (asChild) {
-    const { ref: _childRef, ...childProps } =
-      element.props as ExtendedChildProps;
+    const childProps = { ...(element.props as ExtendedChildProps) };
+    delete childProps.ref;
 
     if (mode === "children") {
       return React.createElement(

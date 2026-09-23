@@ -79,7 +79,7 @@ function parseColor(input: string | undefined, fallback: RGBA): RGBA {
     const q = li < 0.5 ? li * (1 + sat) : li + sat - li * sat
     const p = 2 * li - q
     const chan = (t: number) => {
-        let u = fract(t)
+        const u = fract(t)
         if (u < 1 / 6) return p + (q - p) * 6 * u
         if (u < 1 / 2) return q
         if (u < 2 / 3) return p + (q - p) * (2 / 3 - u) * 6
@@ -235,7 +235,7 @@ function buildAtlas(
                 ;(ctx as unknown as { letterSpacing: string }).letterSpacing =
                     f.letterSpacing
             }
-        } catch (e) {
+        } catch {
         }
     }
 
@@ -310,7 +310,7 @@ export interface VectorWordmarkProps {
     style?: React.CSSProperties
 }
 
-function __OriginkitBase_VectorWordmark(props: VectorWordmarkProps) {
+function OriginkitBaseVectorWordmark(props: VectorWordmarkProps) {
     const {
         text = "VECTOR",
         font = {
@@ -491,7 +491,7 @@ function __OriginkitBase_VectorWordmark(props: VectorWordmarkProps) {
                         }
                         document.fonts.load(probe, L.text).then(again, again)
                     }
-                } catch (e) {
+                } catch {
                 }
             }
             gl!.bindTexture(gl!.TEXTURE_2D, tex)
@@ -792,5 +792,5 @@ const __originkitPresetProps = {
 };
 
 export default function VectorWordmark(props: Record<string, unknown>) {
-  return <__OriginkitBase_VectorWordmark {...(__originkitPresetProps as Record<string, unknown>)} {...props} />;
+  return <OriginkitBaseVectorWordmark {...(__originkitPresetProps as Record<string, unknown>)} {...props} />;
 }

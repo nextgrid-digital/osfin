@@ -1,3 +1,4 @@
+import Link from "next/link";
 import SiteContainer from "./SiteContainer";
 import SiteLogo from "./SiteLogo";
 
@@ -10,13 +11,13 @@ export default function SiteFooter() {
             Ask about Osfin on
           </p>
           {["ChatGPT", "Claude", "Perplexity", "Gemini", "Grok"].map((name) => (
-            <a
+            <Link
               key={name}
               href={`/#ask-${name.toLowerCase()}`}
               className="rounded-full border border-black/10 px-3 py-1.5 text-[12px] text-black/60 hover:bg-black/[0.04] hover:text-black"
             >
               {name}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -34,9 +35,9 @@ export default function SiteFooter() {
                 "Retail",
               ].map((l) => (
                 <li key={l}>
-                  <a href="/#roles" className="hover:text-black">
+                  <Link href="/#roles" className="hover:text-black">
                     {l}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -46,9 +47,9 @@ export default function SiteFooter() {
             <ul className="space-y-2.5">
               {["Request a demo", "Changelog", "Documentation", "Download"].map((l) => (
                 <li key={l}>
-                  <a href="/#product" className="hover:text-black">
+                  <Link href="/#product" className="hover:text-black">
                     {l}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -58,9 +59,9 @@ export default function SiteFooter() {
             <ul className="space-y-2.5">
               {["Careers", "Compliance", "Security"].map((l) => (
                 <li key={l}>
-                  <a href="/#company" className="hover:text-black">
+                  <Link href="/#company" className="hover:text-black">
                     {l}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -77,9 +78,9 @@ export default function SiteFooter() {
                 "Data Processing Agreement",
               ].map((l) => (
                 <li key={l}>
-                  <a href="/#legal" className="hover:text-black">
+                  <Link href="/#legal" className="hover:text-black">
                     {l}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -89,9 +90,9 @@ export default function SiteFooter() {
             <ul className="space-y-2.5">
               {["X", "LinkedIn", "Discord"].map((l) => (
                 <li key={l}>
-                  <a href="/#social" className="hover:text-black">
+                  <Link href="/#social" className="hover:text-black">
                     {l}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
