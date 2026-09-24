@@ -73,8 +73,10 @@ export default function HumanHome() {
                   />
                 </h1>
                 <p className="mt-8 max-w-[36rem] text-black/60 md:mt-10">
-                  Osfin partners with ambitious financial institutions and payment companies to operationalize
-                  agentic payment operations, with forward-deployed teams who own the outcome.
+                  Osfin partners with the most ambitious enterprises to design
+                  and operationalize agentic transactional intelligence. We do this by forward-deploying our
+                  teams of engineers who own the outcome, and deploying purpose-built products customized to how
+                  they move money.
                 </p>
                 <div
                   className="not-typeset mt-10 flex flex-wrap items-center justify-start gap-3 md:mt-12"

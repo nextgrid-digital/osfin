@@ -14,8 +14,10 @@ export default function ProductTemplate({ product }: { product: Product }) {
     >
       <main className="pt-14 md:pt-16">
         <SiteContainer className="pt-20 pb-28 md:pt-28 md:pb-36">
-          <h1 className="mx-auto max-w-[18ch] text-center">
-            Architecting the banking intelligence
+          <h1 className="mx-auto max-w-[22ch] text-center">
+            The autonomous layer
+            <br />
+            behind every transaction.
           </h1>
 
           <ProductTabs currentSlug={product.slug} />
