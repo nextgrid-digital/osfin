@@ -62,14 +62,15 @@ export default function HumanHome() {
         {/* Hero: copy left, image right — vertically centered in viewport below header */}
         <section className="hero-section relative flex min-h-[calc(100svh-3.5rem)] items-center bg-[#f4f4f4] md:min-h-[calc(100svh-4rem)]">
           <SiteContainer className="relative z-10 w-full">
-            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-              <div className="flex flex-col items-start text-left">
-                <h1 className="max-w-[26ch] text-[rgba(0,0,0,0.875)]">
+            <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-16">
+              <div className="flex w-full flex-col items-start text-left lg:w-max lg:shrink-0">
+                <h1 className="text-[rgba(0,0,0,0.875)]">
                   <KineticTextReveal
-                    text={"Architecting\nagentic transactional\nintelligence"}
+                    text={"Architecting agentic\ntransactional intelligence"}
                     splitBy="lines"
                     startOnView
-                    className="w-full max-w-full justify-start"
+                    maskClassName="w-max shrink-0 whitespace-nowrap"
+                    className="max-w-none justify-start"
                   />
                 </h1>
                 <p className="mt-8 max-w-[36rem] text-black/60 md:mt-10">
@@ -86,7 +87,7 @@ export default function HumanHome() {
                   <BtnSecondary href="#contact">Talk to Sales</BtnSecondary>
                 </div>
               </div>
-              <div className="aspect-[4/3] w-full overflow-hidden">
+              <div className="aspect-[4/3] w-full min-w-0 overflow-hidden lg:flex-1">
                 <MetalLapJoint
                   background="transparent"
                   distance={11}
