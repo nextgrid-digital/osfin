@@ -33,7 +33,8 @@ export default function SectionHeading({
         text={title}
         startOnView
         splitBy={title.includes("\n") ? "lines" : "words"}
-        className="w-full max-w-full"
+        maskClassName={title.includes("\n") ? "whitespace-nowrap" : undefined}
+        className={title.includes("\n") ? "w-max max-w-none" : "w-full max-w-full"}
       />
     ) : (
       title
@@ -46,21 +47,23 @@ export default function SectionHeading({
       ) : null}
 
       <div
-        className={`flex items-end justify-between gap-10 ${
-          label ? "mt-5 md:mt-6" : ""
-        }`}
+        className={`flex justify-between gap-10 ${
+          aside ? "items-start" : "items-end"
+        } ${label ? "mt-5 md:mt-6" : ""}`}
       >
         <TitleTag
-          className={`max-w-[40rem] text-left ${
-            isDark ? "text-white" : "text-[rgba(0,0,0,0.875)]"
-          }`}
+          className={`${
+            typeof title === "string" && title.includes("\n")
+              ? "w-max max-w-none shrink-0"
+              : "max-w-[40rem]"
+          } text-left ${isDark ? "text-white" : "text-[rgba(0,0,0,0.875)]"}`}
         >
           {titleContent}
         </TitleTag>
 
         {aside ? (
           <div
-            className={`max-w-[28rem] shrink-0 text-left line-clamp-2 ${
+            className={`max-w-[28rem] shrink-0 text-left ${
               isDark ? "text-white/60" : "text-black/55"
             }`}
           >
@@ -71,7 +74,7 @@ export default function SectionHeading({
         {resolvedCta ? (
           <a
             href={resolvedCta.href}
-            className={`not-typeset inline-flex h-10 shrink-0 items-center justify-center rounded-full px-5 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] uppercase transition hover:opacity-90 ${
+            className={`not-typeset inline-flex h-10 shrink-0 items-center justify-center rounded-none px-5 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] uppercase transition hover:opacity-90 ${
               isDark ? "bg-white text-black" : "bg-black text-white"
             }`}
             data-not-typeset

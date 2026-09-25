@@ -54,10 +54,10 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --header-bg: #f4f4f4;
+  --header-bg: #E4E4E4;
   --header-height: 64px;
   --max: 1440px;
-  --background: #f4f4f4;
+  --background: #E4E4E4;
   --foreground: rgba(0, 0, 0, 0.875);
   --surface: #f7f2e8;
   --card: #f7f2e8;
@@ -173,6 +173,10 @@ body {
   color: rgba(0, 0, 0, 0.875);
 }
 
+.site-header.header-menu-open {
+  background: #fff;
+}
+
 .btn-primary,
 .btn-secondary,
 button {
@@ -244,7 +248,7 @@ button {
 
 .site-header .site-nav-viewport,
 .site-header [data-slot="navigation-menu-viewport"] {
-  background: #f4f4f4;
+  background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 0;
   color: rgba(0, 0, 0, 0.875);
@@ -254,7 +258,7 @@ button {
 
 .site-header .site-nav-viewport--mega,
 .site-header [data-layout="mega"] [data-slot="navigation-menu-viewport"] {
-  background: #f4f4f4;
+  background: #fff;
   border: 0;
   border-radius: 0;
   box-shadow: none;
@@ -281,7 +285,7 @@ button {
 
 html.theme-dark .site-header .site-nav-viewport,
 html.theme-dark .site-header [data-slot="navigation-menu-viewport"] {
-  background: #f4f4f4;
+  background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 0;
   color: rgba(0, 0, 0, 0.875);
@@ -305,16 +309,16 @@ html.theme-dark .site-header [data-slot="navigation-menu-content"] [data-slot="n
 }
 
 html.theme-dark {
-  --background: #f4f4f4;
+  --background: #E4E4E4;
   --foreground: rgba(0, 0, 0, 0.875);
   --muted: rgba(0, 0, 0, 0.55);
   --border: rgba(0, 0, 0, 0.1);
-  --header-bg: #f4f4f4;
+  --header-bg: #E4E4E4;
   color-scheme: light;
 }
 
 html.theme-dark .site-shell {
-  background: #f4f4f4;
+  background: #E4E4E4;
   color: rgba(0, 0, 0, 0.875);
 }
 
@@ -330,14 +334,14 @@ html.theme-dark .btn-primary {
 }
 
 .bg-muted-section {
-  background: #f5f5f5;
+  background: #E4E4E4;
   transition:
     background-color 0.55s ease,
     color 0.55s ease;
 }
 
 html.theme-dark .bg-muted-section {
-  background: #f4f4f4;
+  background: #E4E4E4;
   color: rgba(0, 0, 0, 0.875);
 }
 

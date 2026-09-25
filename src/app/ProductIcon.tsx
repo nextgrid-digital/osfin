@@ -9,7 +9,7 @@ export default function ProductIcon({
 }) {
   const common = {
     fill: "none",
-    stroke: "white",
+    stroke: "currentColor",
     strokeWidth: 1.25,
     strokeLinecap: "round" as const,
     strokeLinejoin: "round" as const,

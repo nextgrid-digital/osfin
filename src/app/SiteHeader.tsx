@@ -17,7 +17,7 @@ export default function SiteHeader() {
         <SiteLogo />
         <div className="flex items-center gap-4 md:gap-6">
           <SiteNav />
-          <button type="button" className="rounded-md p-2 lg:hidden" aria-label="Open navigation">
+          <button type="button" className="rounded-none p-2 lg:hidden" aria-label="Open navigation">
             <span className="block h-px w-5 bg-current" />
             <span className="mt-1.5 block h-px w-5 bg-current" />
           </button>

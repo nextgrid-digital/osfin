@@ -1,6 +1,6 @@
 "use client";
 
-import { Children, useState, type MouseEvent, type ReactNode } from "react";
+import { Children, useEffect, useState, type MouseEvent, type ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import {
   MotionNavigationMenu,
@@ -13,12 +13,12 @@ import {
 import { PRODUCTS } from "../content/products";
 import { usePageTransition } from "./PageTransitionProvider";
 
-const listHighlightClassName = "rounded-none bg-black/[0.06]";
+const listHighlightClassName = "rounded-none bg-white";
 
 const navItemClassName =
-  "h-auto min-h-0 gap-1.5 rounded-none bg-black/[0.06] px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase inline-flex items-center hover:bg-black/[0.06] hover:text-[rgba(0,0,0,0.875)] focus:text-[rgba(0,0,0,0.875)] data-[state=open]:bg-black/[0.06] data-[state=open]:text-[rgba(0,0,0,0.875)]";
+  "h-auto min-h-0 gap-1.5 rounded-none bg-white px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase inline-flex items-center hover:bg-white hover:text-[rgba(0,0,0,0.875)] focus:text-[rgba(0,0,0,0.875)] data-[state=open]:bg-white data-[state=open]:text-[rgba(0,0,0,0.875)]";
 const navLinkClassName =
-  "h-auto min-h-0 gap-0 rounded-none bg-black/[0.06] px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase inline-flex items-center no-underline hover:bg-black/[0.06] hover:text-[rgba(0,0,0,0.875)] hover:no-underline";
+  "h-auto min-h-0 gap-0 rounded-none bg-white px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase inline-flex items-center no-underline hover:bg-white hover:text-[rgba(0,0,0,0.875)] hover:no-underline";
 
 const megaCardClassName =
   "group/card relative flex min-h-[12.5rem] w-full flex-col rounded-none border border-black/10 bg-white p-4 text-left no-underline normal-case tracking-normal transition-colors hover:border-black/15 hover:bg-black/[0.06] hover:no-underline";
@@ -171,6 +171,13 @@ export default function SiteNav() {
   };
 
   const menuOpen = Boolean(menuValue);
+
+  useEffect(() => {
+    const header = document.querySelector(".site-header");
+    if (!header) return;
+    header.classList.toggle("header-menu-open", menuOpen);
+    return () => header.classList.remove("header-menu-open");
+  }, [menuOpen]);
 
   return (
     <>

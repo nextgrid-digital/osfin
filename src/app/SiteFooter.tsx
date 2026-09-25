@@ -4,7 +4,7 @@ import SiteLogo from "./SiteLogo";
 
 export default function SiteFooter() {
   return (
-    <footer className="not-typeset border-t border-black/10 bg-[#f4f4f4] px-0 py-20 text-[13px] text-black/50 md:py-24" data-not-typeset>
+    <footer className="not-typeset border-t border-black/10 bg-[#E4E4E4] px-0 py-20 text-[13px] text-black/50 md:py-24" data-not-typeset>
       <SiteContainer>
         <div className="mb-16 flex flex-wrap gap-3">
           <p className="mr-2 w-full text-[12px] text-black/40 sm:mr-4 sm:w-auto sm:self-center">
@@ -14,7 +14,7 @@ export default function SiteFooter() {
             <Link
               key={name}
               href={`/#ask-${name.toLowerCase()}`}
-              className="rounded-full border border-black/10 px-3 py-1.5 text-[12px] text-black/60 hover:bg-black/[0.04] hover:text-black"
+              className="rounded-none border border-black/10 px-3 py-1.5 text-[12px] text-black/60 hover:bg-black/[0.04] hover:text-black"
             >
               {name}
             </Link>

@@ -1,5 +1,6 @@
 import { KineticTextReveal } from "@/components/ui/kinetic-text-reveal";
 import MetalLapJoint from "@/components/MetalLapJoint";
+import HomeProductRows from "./HomeProductRows";
 import SectionHeading from "./SectionHeading";
 import SiteContainer from "./SiteContainer";
 import SiteFooter from "./SiteFooter";
@@ -35,7 +36,7 @@ function BtnPrimary({ href, children }: { href: string; children: React.ReactNod
   return (
     <a
       href={href}
-      className="btn-primary not-typeset inline-flex h-10 items-center rounded-full bg-black px-5 text-[13px] font-medium text-white transition hover:opacity-90"
+      className="btn-primary not-typeset inline-flex h-10 items-center rounded-none bg-black px-5 text-[13px] font-medium text-white transition hover:opacity-90"
       data-not-typeset
     >
       {children}
@@ -47,7 +48,7 @@ function BtnSecondary({ href, children }: { href: string; children: React.ReactN
   return (
     <a
       href={href}
-      className="btn-secondary not-typeset inline-flex h-10 items-center rounded-full border border-black/15 bg-transparent px-5 text-[13px] font-medium text-[rgba(0,0,0,0.875)] transition hover:bg-black/5"
+      className="btn-secondary not-typeset inline-flex h-10 items-center rounded-none border border-black/15 bg-transparent px-5 text-[13px] font-medium text-[rgba(0,0,0,0.875)] transition hover:bg-black/5"
       data-not-typeset
     >
       {children}
@@ -57,10 +58,10 @@ function BtnSecondary({ href, children }: { href: string; children: React.ReactN
 
 export default function HumanHome() {
   return (
-    <div className="site-shell typeset typeset-docs min-h-screen bg-[#f4f4f4] text-[rgba(0,0,0,0.875)]">
+    <div className="site-shell typeset typeset-docs min-h-screen bg-[#E4E4E4] text-[rgba(0,0,0,0.875)]">
       <main className="pt-14 md:pt-16">
         {/* Hero: copy left, image right — vertically centered in viewport below header */}
-        <section className="hero-section relative flex min-h-[calc(100svh-3.5rem)] items-center bg-[#f4f4f4] md:min-h-[calc(100svh-4rem)]">
+        <section className="hero-section relative flex min-h-[calc(100svh-3.5rem)] items-center bg-[#E4E4E4] md:min-h-[calc(100svh-4rem)]">
           <SiteContainer className="relative z-10 w-full">
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-16">
               <div className="flex w-full flex-col items-start text-left lg:w-max lg:shrink-0">
@@ -98,6 +99,8 @@ export default function HumanHome() {
           </SiteContainer>
         </section>
 
+        <HomeProductRows />
+
         {/* Changelog */}
         <section id="changelog" className="flex min-h-svh items-center py-28 md:py-40">
           <SiteContainer>
@@ -110,7 +113,7 @@ export default function HumanHome() {
                   className="not-typeset group flex flex-col no-underline hover:no-underline"
                   data-not-typeset
                 >
-                  <div className="aspect-square overflow-hidden rounded-xl bg-black/[0.03]">
+                  <div className="aspect-square overflow-hidden rounded-none bg-black/[0.03]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={item.cover}
@@ -128,7 +131,7 @@ export default function HumanHome() {
             <div className="mt-14 flex justify-center md:mt-16">
               <a
                 href="#changelog"
-                className="not-typeset inline-flex h-10 items-center rounded-full border border-black/15 bg-white px-5 font-sans text-[15px] font-normal normal-case tracking-normal text-[rgba(0,0,0,0.875)] transition hover:bg-black/[0.03]"
+                className="not-typeset inline-flex h-10 items-center rounded-none border border-black/15 bg-white px-5 font-sans text-[15px] font-normal normal-case tracking-normal text-[rgba(0,0,0,0.875)] transition hover:bg-black/[0.03]"
                 data-not-typeset
               >
                 Read more
@@ -140,7 +143,7 @@ export default function HumanHome() {
         {/* Bottom CTA */}
         <section className="pb-20 md:pb-28">
           <SiteContainer>
-            <div className="rounded-2xl bg-white px-6 py-20 text-center md:py-28">
+            <div className="rounded-none bg-white px-6 py-20 text-center md:py-28">
               <div className="mx-auto max-w-[1000px]">
                 <h2>
                   Architecting agentic

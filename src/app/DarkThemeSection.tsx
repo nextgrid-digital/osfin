@@ -20,7 +20,7 @@ export default function DarkThemeSection({
     <section
       id={id}
       ref={ref}
-      className={`${paint ? "bg-[#f4f4f4] text-[rgba(0,0,0,0.875)]" : ""} ${className}`.trim()}
+      className={`${paint ? "bg-[#E4E4E4] text-[rgba(0,0,0,0.875)]" : ""} ${className}`.trim()}
     >
       {children}
     </section>

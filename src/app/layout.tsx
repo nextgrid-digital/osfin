@@ -38,7 +38,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={cn(
-        "bg-[#f4f4f4]",
+        "bg-[#E4E4E4]",
         "font-sans",
         inter.variable,
         seasonMix.variable,

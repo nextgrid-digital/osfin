@@ -75,7 +75,7 @@ export default function ApproachSection() {
   }, [active, reducedMotion]);
 
   return (
-    <section className="approach-section relative flex min-h-svh items-center overflow-hidden bg-[#f4f4f4] py-28 text-[rgba(0,0,0,0.875)] md:py-40">
+    <section className="approach-section relative flex min-h-svh items-center overflow-hidden bg-[#E4E4E4] py-28 text-[rgba(0,0,0,0.875)] md:py-40">
       <SiteContainer className="grid grid-cols-1 items-stretch gap-20 lg:h-[min(40rem,72vh)] lg:grid-cols-[minmax(0,32rem)_minmax(0,1fr)] lg:gap-20">
         <div className="flex min-w-0 flex-col lg:h-full">
           <h2 className="max-w-[16em]">
@@ -132,11 +132,11 @@ export default function ApproachSection() {
                       </p>
                       {!reducedMotion ? (
                         <div
-                          className="mt-4 w-full max-w-md overflow-hidden rounded-full"
+                          className="mt-4 w-full max-w-md overflow-hidden rounded-none"
                           style={{ height: 2, backgroundColor: "rgba(0,0,0,0.12)" }}
                         >
                           <div
-                            className="h-full rounded-full"
+                            className="h-full rounded-none"
                             style={{
                               width: `${isCurrent ? progress * 100 : 0}%`,
                               backgroundColor: ACCENT,

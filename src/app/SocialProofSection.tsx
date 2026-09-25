@@ -52,7 +52,7 @@ function Avatar({ initials, size = "md" }: { initials: string; size?: "sm" | "md
   const dim = size === "sm" ? "size-6 text-[9px]" : "size-10 text-[11px]";
   return (
     <span
-      className={`not-typeset inline-flex shrink-0 items-center justify-center rounded-full bg-black/[0.08] font-medium text-black/70 ${dim}`}
+      className={`not-typeset inline-flex shrink-0 items-center justify-center rounded-none bg-black/[0.08] font-medium text-black/70 ${dim}`}
       aria-hidden
       data-not-typeset
     >
@@ -90,7 +90,7 @@ function SubtleQuote({ quote, handle, initials }: (typeof SUBTLE)[number]) {
     <div className="flex h-full flex-col justify-between p-6 sm:p-8 md:p-10">
       <p className="max-w-[28rem] text-black/55">&ldquo;{quote}&rdquo;</p>
       <div className="not-typeset mt-8" data-not-typeset>
-        <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/[0.03] py-1.5 pr-3.5 pl-1.5 text-[12px] text-black/70">
+        <span className="inline-flex items-center gap-2 rounded-none border border-black/10 bg-black/[0.03] py-1.5 pr-3.5 pl-1.5 text-[12px] text-black/70">
           <Avatar initials={initials} size="sm" />
           <span className="font-medium">{handle}</span>
           <svg viewBox="0 0 24 24" className="ml-0.5 size-3.5 fill-current opacity-50" aria-hidden>
