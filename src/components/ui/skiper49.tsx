@@ -87,7 +87,7 @@ const Carousel_003 = ({
     slides ??
     images?.map((image) => (
       // eslint-disable-next-line @next/next/no-img-element
-      <img className="h-full w-full object-cover" src={image.src} alt={image.alt} />
+      <img key={image.src} className="h-full w-full object-cover" src={image.src} alt={image.alt} />
     )) ??
     [];
 
