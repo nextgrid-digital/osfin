@@ -26,25 +26,27 @@ export default function SectionHeading({
       : (cta ?? { href: "#product", label: "See how it works" });
   const TitleTag = titleAs;
 
-  const titleContent =
-    typeof title === "string" &&
-    (titleAs === "h1" || title.includes("\n")) ? (
-      <KineticTextReveal
-        text={title}
-        startOnView
-        splitBy={title.includes("\n") ? "lines" : "words"}
-        maskClassName={title.includes("\n") ? "whitespace-nowrap" : undefined}
-        className={
-          title.includes("\n")
-            ? aside
-              ? "w-max max-w-none items-center text-center"
-              : "w-max max-w-none"
+  const revealTitle = typeof title === "string" && (titleAs === "h1" || title.includes("\n") || Boolean(aside));
+  const titleContent = revealTitle ? (
+    <KineticTextReveal
+      key={title}
+      text={title}
+      startOnView
+      splitBy={title.includes("\n") ? "lines" : "words"}
+      maskClassName={title.includes("\n") ? "whitespace-nowrap" : undefined}
+      className={
+        title.includes("\n")
+          ? aside
+            ? "w-max max-w-none items-center text-center"
+            : "w-max max-w-none"
+          : aside
+            ? "w-full max-w-full justify-center"
             : "w-full max-w-full"
-        }
-      />
-    ) : (
-      title
-    );
+      }
+    />
+  ) : (
+    title
+  );
 
   return (
     <div className={`relative ${className}`}>

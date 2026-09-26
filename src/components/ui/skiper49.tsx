@@ -30,7 +30,7 @@ export { Skiper49 };
 
 function CircleArrow({ direction }: { direction: "left" | "right" }) {
   return (
-    <svg viewBox="0 0 44 44" className="h-5 w-5" aria-hidden>
+    <svg viewBox="0 0 44 44" className="h-2.5 w-2.5" aria-hidden>
       <path
         d={direction === "right" ? "M8 22h28M24 10l12 12-12 12" : "M36 22H8M20 10L8 22l12 12"}
         fill="none"
@@ -123,6 +123,25 @@ const Carousel_003 = ({
     swiper.slideTo(copyOrigin + initialIndex, 0, false);
   }, [copyOrigin, initialIndex, sourceCount]);
 
+  const settle = (swiper: SwiperInstance) => {
+    if (swiper.destroyed || !swiper.slides || !userMove.current) return;
+    userMove.current = false;
+    const logical = ((swiper.realIndex % sourceCount) + sourceCount) % sourceCount;
+    // Let slideTo finish before the page swaps the product. Updating
+    // during the call destroys this instance and Swiper then reads a
+    // missing slide.
+    window.setTimeout(() => {
+      const current = swiperRef.current;
+      if (current && !current.destroyed && loopCopies > 1) {
+        const middle = copyOrigin + logical;
+        if (current.activeIndex !== middle) {
+          current.slideTo(middle, 0, false);
+        }
+      }
+      onSettleRef.current?.(logical);
+    }, 0);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 1, translateY: 0 }}
@@ -195,22 +214,15 @@ const Carousel_003 = ({
             userMove.current = true;
           }}
           onSlideChange={(swiper) => {
-            if (swiper.destroyed || !swiper.slides) return;
-            if (!userMove.current || swiper.touchEventsData?.isTouched) return;
-            userMove.current = false;
-            const logical = ((swiper.realIndex % sourceCount) + sourceCount) % sourceCount;
-            // Let slideTo finish before the page swaps the product. Updating
-            // during the call destroys this instance and Swiper then reads a
-            // missing slide.
+            // A drag updates the active slide while the pointer is still down.
+            // Settling then would swap the page mid-gesture. Wait until release.
+            if (swiper.touchEventsData?.isTouched) return;
+            settle(swiper);
+          }}
+          onTouchEnd={(swiper) => {
             window.setTimeout(() => {
-              const current = swiperRef.current;
-              if (current && !current.destroyed && loopCopies > 1) {
-                const middle = copyOrigin + logical;
-                if (current.activeIndex !== middle) {
-                  current.slideTo(middle, 0, false);
-                }
-              }
-              onSettleRef.current?.(logical);
+              if (swiper.destroyed || swiper.touchEventsData?.isTouched) return;
+              settle(swiper);
             }, 0);
           }}
         >
@@ -220,7 +232,7 @@ const Carousel_003 = ({
           {showNavigation && (
             <div>
               <div
-                className="swiper-button-next after:hidden !flex !h-11 !w-11 items-center justify-center rounded-full !border-0 !bg-white/40 text-black shadow-[0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-md transition hover:!bg-white/55"
+                className="swiper-button-next after:hidden !flex !h-6 !w-6 items-center justify-center rounded-full !border-0 !bg-white/40 text-black shadow-[0_4px_12px_rgba(0,0,0,0.08)] backdrop-blur-md transition [--swiper-navigation-size:24px] hover:!bg-white/55"
                 onPointerDown={() => {
                   userMove.current = true;
                 }}
@@ -228,7 +240,7 @@ const Carousel_003 = ({
                 <CircleArrow direction="right" />
               </div>
               <div
-                className="swiper-button-prev after:hidden !flex !h-11 !w-11 items-center justify-center rounded-full !border-0 !bg-white/40 text-black shadow-[0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-md transition hover:!bg-white/55"
+                className="swiper-button-prev after:hidden !flex !h-6 !w-6 items-center justify-center rounded-full !border-0 !bg-white/40 text-black shadow-[0_4px_12px_rgba(0,0,0,0.08)] backdrop-blur-md transition [--swiper-navigation-size:24px] hover:!bg-white/55"
                 onPointerDown={() => {
                   userMove.current = true;
                 }}

@@ -33,7 +33,7 @@ export default function ProductTabs({ currentSlug }: { currentSlug: string }) {
               <motion.span
                 layoutId="product-tab-highlight"
                 className="absolute inset-0 z-0 rounded-none bg-white"
-                transition={{ duration: 0 }}
+                transition={{ type: "spring", stiffness: 350, damping: 32 }}
               />
             ) : null}
             <span className="relative z-10">{product.name}</span>
