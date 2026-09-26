@@ -1,6 +1,7 @@
 import type { Product } from "../content/products";
-import ProductHeroCarousel, { ReconDiagram } from "./ProductHeroCarousel";
-import ProductIcon from "./ProductIcon";
+import PlatformSplit from "./PlatformSplit";
+import ProductHeroCarousel from "./ProductHeroCarousel";
+import ProductSheet, { schemeForIcon } from "./ProductSheet";
 import ProductTabs from "./ProductTabs";
 import SectionHeading from "./SectionHeading";
 import SiteContainer from "./SiteContainer";
@@ -15,28 +16,15 @@ export default function ProductTemplate({ product }: { product: Product }) {
     >
       <main className="pt-14 md:pt-16">
         <SiteContainer className="pt-20 pb-28 md:pt-28 md:pb-36">
-          {product.pageHero ? (
-            <>
-              <h1 className="mx-auto w-max max-w-none text-center">
-                {product.pageHero.title.split("\n").map((line) => (
-                  <span key={line} className="block whitespace-nowrap">
-                    {line}
-                  </span>
-                ))}
-              </h1>
-            </>
-          ) : (
-            <h1 className="mx-auto max-w-[22ch] text-center">
-              The autonomous layer
-              <br />
-              behind every transaction.
-            </h1>
-          )}
+          <h1 className="mx-auto w-max max-w-none text-center">
+            <span className="block whitespace-nowrap">Architecting the</span>
+            <span className="block whitespace-nowrap">Transaction-Intelligent Enterprise</span>
+          </h1>
 
           <ProductTabs currentSlug={product.slug} />
 
           <SectionHeading
-            className="mt-16 md:mt-20"
+            className="mt-8 md:mt-10"
             title={product.headline}
             aside={product.cardBody}
             cta={null}
@@ -54,31 +42,29 @@ export default function ProductTemplate({ product }: { product: Product }) {
 
           {product.platform ? (
             <section className="mt-24 md:mt-32">
-              <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-16">
-                <div className="w-full lg:w-max lg:shrink-0">
-                  <h2 className="!mb-0 !mt-0 text-[rgba(0,0,0,0.875)]">
-                    {product.platform.heading.split("\n").map((line) => (
-                      <span key={line} className="block whitespace-nowrap">
-                        {line}
-                      </span>
+              <PlatformSplit
+                copy={
+                  <>
+                    <h2 className="!mb-0 !mt-0 max-w-full text-[rgba(0,0,0,0.875)]">
+                      {product.platform.heading.split("\n").map((line) => (
+                        <span key={line} className="block">
+                          {line}
+                        </span>
+                      ))}
+                    </h2>
+                    {product.platform.body.map((paragraph) => (
+                      <p key={paragraph} className="!mb-0 !mt-8 max-w-xl text-black/60">
+                        {paragraph}
+                      </p>
                     ))}
-                  </h2>
-                  {product.platform.body.map((paragraph) => (
-                    <p key={paragraph} className="!mb-0 !mt-8 max-w-xl text-black/60">
-                      {paragraph}
-                    </p>
-                  ))}
-                  <p className="!mb-0 !mt-8 text-[rgba(0,0,0,0.875)]">{product.platform.kicker}</p>
-                  <p className="!mb-0 !mt-8 max-w-xl text-black/60">{product.platform.close}</p>
-                </div>
-                <div className="flex aspect-[1200/520] w-full items-center justify-center text-black/40 lg:w-[min(46%,36rem)] lg:shrink-0">
-                  {product.slug === "settlement-mesh" ? (
-                    <ReconDiagram />
-                  ) : (
-                    <ProductIcon kind={product.icon} className="h-[62%] w-auto" />
-                  )}
-                </div>
-              </div>
+                    <p className="!mb-0 !mt-8 text-[rgba(0,0,0,0.875)]">{product.platform.kicker}</p>
+                    <p className="!mb-0 !mt-8 max-w-xl text-black/60">{product.platform.close}</p>
+                  </>
+                }
+                visual={
+                  <ProductSheet name={product.name} scheme={schemeForIcon(product.icon)} />
+                }
+              />
             </section>
           ) : null}
 

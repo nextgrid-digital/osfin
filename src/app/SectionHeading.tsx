@@ -34,7 +34,13 @@ export default function SectionHeading({
         startOnView
         splitBy={title.includes("\n") ? "lines" : "words"}
         maskClassName={title.includes("\n") ? "whitespace-nowrap" : undefined}
-        className={title.includes("\n") ? "w-max max-w-none" : "w-full max-w-full"}
+        className={
+          title.includes("\n")
+            ? aside
+              ? "w-max max-w-none items-center text-center"
+              : "w-max max-w-none"
+            : "w-full max-w-full"
+        }
       />
     ) : (
       title
@@ -47,27 +53,31 @@ export default function SectionHeading({
       ) : null}
 
       <div
-        className={`flex justify-between gap-10 ${
-          aside ? "items-start" : "items-end"
+        className={`flex ${
+          aside
+            ? "flex-col items-center gap-6 text-center"
+            : "items-end justify-between gap-10"
         } ${label ? "mt-5 md:mt-6" : ""}`}
       >
         <TitleTag
-          className={`${
-            typeof title === "string" && title.includes("\n")
-              ? "w-max max-w-none shrink-0"
-              : "max-w-[40rem]"
-          } text-left ${isDark ? "text-white" : "text-[rgba(0,0,0,0.875)]"}`}
+          className={`!mt-0 ${
+            aside
+              ? "max-w-[40rem]"
+              : typeof title === "string" && title.includes("\n")
+                ? "w-max max-w-none shrink-0"
+                : "max-w-[40rem]"
+          } ${aside ? "text-center" : "text-left"} ${isDark ? "text-white" : "text-[rgba(0,0,0,0.875)]"}`}
         >
           {titleContent}
         </TitleTag>
 
         {aside ? (
           <div
-            className={`max-w-[28rem] shrink-0 text-left ${
+            className={`!mt-0 max-w-[36rem] text-center ${
               isDark ? "text-white/60" : "text-black/55"
             }`}
           >
-            <p>{aside}</p>
+            <p className="!mt-0 line-clamp-3">{aside}</p>
           </div>
         ) : null}
 

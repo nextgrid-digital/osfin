@@ -1,10 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "motion/react";
 import { PRODUCTS } from "../content/products";
+import { useProductSelect } from "./product-select";
 
 export default function ProductTabs({ currentSlug }: { currentSlug: string }) {
+  const select = useProductSelect();
+
   return (
     <nav
       aria-label="Products"
@@ -14,11 +16,16 @@ export default function ProductTabs({ currentSlug }: { currentSlug: string }) {
       {PRODUCTS.map((product) => {
         const active = product.slug === currentSlug;
         return (
-          <Link
+          <a
             key={product.slug}
             href={`/products/${product.slug}`}
-            scroll={false}
-            className={`relative px-2.5 py-1.5 font-[family-name:var(--font-mono)] text-[14px] font-medium tracking-[-0.02em] uppercase transition-colors ${
+            onClick={(event) => {
+              if (!select) return;
+              if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+              event.preventDefault();
+              select(product.slug);
+            }}
+            className={`relative px-2.5 py-1.5 font-[family-name:var(--font-mono)] text-[14px] font-medium tracking-[-0.02em] uppercase ${
               active ? "text-[rgba(0,0,0,0.875)]" : "text-black/45 hover:text-black/70"
             }`}
           >
@@ -26,11 +33,11 @@ export default function ProductTabs({ currentSlug }: { currentSlug: string }) {
               <motion.span
                 layoutId="product-tab-highlight"
                 className="absolute inset-0 z-0 rounded-none bg-white"
-                transition={{ type: "spring", stiffness: 350, damping: 32 }}
+                transition={{ duration: 0 }}
               />
             ) : null}
             <span className="relative z-10">{product.name}</span>
-          </Link>
+          </a>
         );
       })}
     </nav>

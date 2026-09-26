@@ -12,7 +12,6 @@ export type Product = {
   cardLabel: string;
   cardBody: string;
   cardBg: string;
-  pageHero?: { title: string };
   platform?: {
     heading: string;
     body: string[];
@@ -32,16 +31,13 @@ export const PRODUCTS: Product[] = [
     icon: "mesh",
     headline: "The cognitive layer for\nmoney in motion.",
     lede: "Match IQ is the reconciliation foundation for enterprises where millions of transactions cross countless systems each day, and every one must be matched, resolved, and accounted for.",
-    pageHero: {
-      title: "Architecting the\nTransaction-Intelligent Enterprise",
-    },
     problem: [
       "Reconciliation breaks because payment data is scattered, unsynchronized, and unexplained. Every bank, gateway, and processor keeps its own record, on its own clock, with its own identifiers. When two numbers disagree, no one can say why until someone rebuilds the trail by hand.",
       "Add a new payment rail, then a new market, and the gaps multiply. No single view. No shared truth.",
       "Match IQ closes that gap.",
     ],
     platform: {
-      heading: "Match IQ\nTransaction Intelligence Platform",
+      heading: "Match IQ Transaction\nIntelligence Platform",
       body: [
         "Teams can't keep pace with money in motion; systems can. Those systems run on Match, built from your transaction data, your matching logic, and the judgment of your finance teams. Every rule you write and every exception you resolve carries forward with its audit trail intact, so each new source, rail, or market starts ahead of the last. Over time, reconciliation stops being the work that holds up the close and becomes the financial intelligence that sets the pace of your growth.",
       ],
@@ -84,7 +80,7 @@ export const PRODUCTS: Product[] = [
       "Exception Resolution connects the evidence, identifies the cause, and coordinates the next action.",
     ],
     platform: {
-      heading: "Exception Resolution\nDecision Intelligence for Payment Operations",
+      heading: "Exception Resolution\nDecision intelligence",
       body: [
         "Every exception contains a sequence of events, records, policies, and decisions. Exception Resolution brings those elements together so teams can understand what happened, determine what should happen next, and preserve the reasoning behind the outcome.",
         "The system learns from how your teams investigate and resolve breaks. Each decision becomes part of the operating memory for the next exception.",
@@ -117,18 +113,18 @@ export const PRODUCTS: Product[] = [
     name: "Control Views",
     cardLabel: "Reporting and Compliance",
     cardBody:
-      "Control Views turns payment activity into accountable reporting, compliance evidence, and operational clarity across the enterprise.",
+      "Control Views turns payment activity into accountable reporting, compliance evidence, and operational clarity, so every team works from one record that can be traced to its source.",
     cardBg: "#ebe2d8",
     icon: "hex",
     headline: "The operating record for financial control.",
-    lede: "Control Views turns payment activity into accountable reporting, compliance evidence, and operational clarity across the enterprise.",
+    lede: "Control Views turns payment activity into accountable reporting, compliance evidence, and operational clarity, so every team works from one record that can be traced to its source.",
     problem: [
       "Financial reporting becomes difficult when every team sees a different version of operational reality. Finance works from the ledger, operations works from processor files, risk works from cases, and compliance works from periodic extracts.",
       "By the time those views are assembled, the underlying activity has changed. Teams cannot easily trace a number back to its source, explain a movement, or prove how a decision was made.",
       "Control Views creates one governed record that every team can use.",
     ],
     platform: {
-      heading: "Control Views\nGoverned Intelligence for Financial Operations",
+      heading: "Control Views\nA governed financial view",
       body: [
         "Control Views connects operational events to the financial record beneath them. It gives each team the view it needs while preserving one consistent source of truth underneath.",
         "Every number can be traced to the source record, the rule applied, the exception raised, and the decision made. Reporting becomes a continuous operating layer rather than a task performed at the end of the period.",
@@ -172,7 +168,7 @@ export const PRODUCTS: Product[] = [
       "Risk Signals connects weak signals into a living view of risk.",
     ],
     platform: {
-      heading: "Risk Signals\nPattern Intelligence for Payment Risk",
+      heading: "Risk Signals\nPattern intelligence for risk",
       body: [
         "Risk Signals understands that risk is contextual. It connects transaction behavior, account history, operational events, policy thresholds, and prior decisions to show how a signal is forming.",
         "The system helps teams distinguish a meaningful pattern from noise, coordinate investigations, and carry the reasoning from one review into the next.",
@@ -216,7 +212,7 @@ export const PRODUCTS: Product[] = [
       "Close Orchestration turns the close into a continuous operating process.",
     ],
     platform: {
-      heading: "Close Orchestration\nIntelligence for the Financial Close",
+      heading: "Close Orchestration\nIntelligence for the close",
       body: [
         "The close should confirm what the business already knows, not reveal what it failed to connect. Close Orchestration brings together reconciled records, open exceptions, control checks, approvals, and sign-offs in one operating sequence.",
         "Each close creates a stronger starting point for the next one. Decisions remain attached to the records they govern, and unresolved work moves forward with its context intact.",

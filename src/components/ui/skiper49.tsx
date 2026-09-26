@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import React from "react";
 import {
   Autoplay,
@@ -9,6 +8,7 @@ import {
   Navigation,
   Pagination,
 } from "swiper/modules";
+import type { Swiper as SwiperInstance } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -27,6 +27,21 @@ const Skiper49 = () => {
 };
 
 export { Skiper49 };
+
+function CircleArrow({ direction }: { direction: "left" | "right" }) {
+  return (
+    <svg viewBox="0 0 44 44" className="h-5 w-5" aria-hidden>
+      <path
+        d={direction === "right" ? "M8 22h28M24 10l12 12-12 12" : "M36 22H8M20 10L8 22l12 12"}
+        fill="none"
+        stroke="#141414"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 const Carousel_003 = ({
   images,
@@ -83,6 +98,7 @@ const Carousel_003 = ({
   }
 `;
 
+  const swiperRef = React.useRef<SwiperInstance | null>(null);
   const frames =
     slides ??
     images?.map((image) => (
@@ -90,6 +106,22 @@ const Carousel_003 = ({
       <img key={image.src} className="h-full w-full object-cover" src={image.src} alt={image.alt} />
     )) ??
     [];
+  const sourceCount = frames.length;
+  // Swiper's own loop breaks with slidesPerView: "auto" and throws once the
+  // page swaps underneath an in-flight slide. Repeat the set instead so both
+  // sides of the centered card stay filled, and keep Swiper's loop off.
+  const loopCopies = loop && sourceCount > 1 ? Math.max(3, Math.ceil(12 / sourceCount)) : 1;
+  const loopedFrames = Array.from({ length: loopCopies }, () => frames).flat();
+  const copyOrigin = loopCopies > 1 ? sourceCount * Math.floor((loopCopies - 1) / 2) : 0;
+  const startIndex = copyOrigin + initialIndex;
+
+  React.useEffect(() => {
+    const swiper = swiperRef.current;
+    if (!swiper || swiper.destroyed || sourceCount === 0) return;
+    const logical = ((swiper.realIndex % sourceCount) + sourceCount) % sourceCount;
+    if (logical === initialIndex) return;
+    swiper.slideTo(copyOrigin + initialIndex, 0, false);
+  }, [copyOrigin, initialIndex, sourceCount]);
 
   return (
     <motion.div
@@ -111,7 +143,11 @@ const Carousel_003 = ({
       >
         <Swiper
           spaceBetween={spaceBetween}
-          initialSlide={initialIndex}
+          speed={0}
+          initialSlide={startIndex}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
           autoplay={
             autoplay
               ? {
@@ -124,7 +160,7 @@ const Carousel_003 = ({
           grabCursor={true}
           slidesPerView="auto"
           centeredSlides={true}
-          loop={loop}
+          loop={false}
           coverflowEffect={{
             rotate: 40,
             stretch: 0,
@@ -158,22 +194,46 @@ const Carousel_003 = ({
           onNavigationPrev={() => {
             userMove.current = true;
           }}
-          onSlideChangeTransitionEnd={(swiper) => {
-            if (!userMove.current) return;
+          onSlideChange={(swiper) => {
+            if (swiper.destroyed || !swiper.slides) return;
+            if (!userMove.current || swiper.touchEventsData?.isTouched) return;
             userMove.current = false;
-            onSettleRef.current?.(swiper.realIndex);
+            const logical = ((swiper.realIndex % sourceCount) + sourceCount) % sourceCount;
+            // Let slideTo finish before the page swaps the product. Updating
+            // during the call destroys this instance and Swiper then reads a
+            // missing slide.
+            window.setTimeout(() => {
+              const current = swiperRef.current;
+              if (current && !current.destroyed && loopCopies > 1) {
+                const middle = copyOrigin + logical;
+                if (current.activeIndex !== middle) {
+                  current.slideTo(middle, 0, false);
+                }
+              }
+              onSettleRef.current?.(logical);
+            }, 0);
           }}
         >
-          {frames.map((frame, index) => (
+          {loopedFrames.map((frame, index) => (
             <SwiperSlide key={index}>{frame}</SwiperSlide>
           ))}
           {showNavigation && (
             <div>
-              <div className="swiper-button-next after:hidden">
-                <ChevronRightIcon className="h-6 w-6 text-black/70" />
+              <div
+                className="swiper-button-next after:hidden !flex !h-11 !w-11 items-center justify-center rounded-full !border-0 !bg-white/40 text-black shadow-[0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-md transition hover:!bg-white/55"
+                onPointerDown={() => {
+                  userMove.current = true;
+                }}
+              >
+                <CircleArrow direction="right" />
               </div>
-              <div className="swiper-button-prev after:hidden">
-                <ChevronLeftIcon className="h-6 w-6 text-black/70" />
+              <div
+                className="swiper-button-prev after:hidden !flex !h-11 !w-11 items-center justify-center rounded-full !border-0 !bg-white/40 text-black shadow-[0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-md transition hover:!bg-white/55"
+                onPointerDown={() => {
+                  userMove.current = true;
+                }}
+              >
+                <CircleArrow direction="left" />
               </div>
             </div>
           )}

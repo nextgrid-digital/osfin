@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getProduct, productSlugs } from "../../../content/products";
-import ProductTemplate from "../../ProductTemplate";
+import ProductSwitcher from "../../ProductSwitcher";
 
 export function generateStaticParams() {
   return productSlugs().map((slug) => ({ slug }));
@@ -14,5 +14,5 @@ export default async function ProductPage({
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) notFound();
-  return <ProductTemplate product={product} />;
+  return <ProductSwitcher initialSlug={product.slug} />;
 }
