@@ -48,10 +48,12 @@ const MotionNavigationMenuItemContext =
   React.createContext<MotionNavigationMenuItemContextValue | null>(null);
 
 const contentVariants = {
-  initial: (direction: number) => ({ x: `${100 * direction}%`, opacity: 0 }),
-  active: { x: "0%", opacity: 1 },
-  exit: (direction: number) => ({ x: `${-100 * direction}%`, opacity: 0 }),
+  initial: { opacity: 0 },
+  active: { opacity: 1 },
+  exit: { opacity: 0 },
 };
+
+const contentTransition = { duration: 0.22, ease: "easeOut" as const };
 
 type MotionNavigationMenuProps = Omit<
   React.ComponentPropsWithRef<"nav">,
@@ -599,12 +601,11 @@ function MotionNavigationMenuContent({
         <motion.div
           data-slot="navigation-menu-content"
           key={value}
-          custom={context.direction}
           variants={contentVariants}
           initial="initial"
           animate="active"
           exit="exit"
-          transition={context.spring}
+          transition={contentTransition}
           className={cn(
             "bg-background/90 text-popover-foreground absolute top-full left-0 z-50 mt-1.5 rounded-none border p-2 pr-2.5 shadow",
             className,
@@ -748,12 +749,11 @@ function MotionNavigationMenuViewport({
               <motion.div
                 data-slot="navigation-menu-content"
                 key={context.activeValue}
-                custom={context.direction}
                 variants={contentVariants}
                 initial="initial"
                 animate="active"
                 exit="exit"
-                transition={context.spring}
+                transition={contentTransition}
                 className={cn(activeContent.className)}
               >
                 <MotionNavigationMenuContentInner
@@ -819,12 +819,11 @@ function MotionNavigationMenuViewport({
             <motion.div
               data-slot="navigation-menu-content"
               key={context.activeValue}
-              custom={context.direction}
               variants={contentVariants}
               initial="initial"
               animate="active"
               exit="exit"
-              transition={context.spring}
+              transition={contentTransition}
               className={cn("p-2 pr-2.5", activeContent.className)}
             >
               <MotionNavigationMenuContentInner

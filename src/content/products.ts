@@ -12,6 +12,9 @@ export type Product = {
   cardLabel: string;
   cardBody: string;
   cardBg: string;
+  homeLabel: string;
+  homeTitle: string;
+  homeBody: string;
   platform?: {
     heading: string;
     body: string[];
@@ -28,6 +31,10 @@ export const PRODUCTS: Product[] = [
     cardBody:
       "Match IQ is the reconciliation foundation for enterprises where millions of transactions cross countless systems each day, and every one must be matched, resolved, and accounted for.",
     cardBg: "#d9e5d8",
+    homeLabel: "Reconciliation",
+    homeTitle: "Start with the records\nthat do not agree.",
+    homeBody:
+      "Match IQ compares every source as it arrives, so a break is named before someone rebuilds the trail by hand. Bank files, processor reports, and the ledger land in one structure, and every match stays traceable to the records that produced it.",
     icon: "mesh",
     headline: "The cognitive layer for\nmoney in motion.",
     lede: "Match IQ is the reconciliation foundation for enterprises where millions of transactions cross countless systems each day, and every one must be matched, resolved, and accounted for.",
@@ -71,6 +78,10 @@ export const PRODUCTS: Product[] = [
     cardBody:
       "Exception Resolution turns payment breaks, disputes, and chargebacks into structured decisions that move to the right outcome.",
     cardBg: "#e2deec",
+    homeLabel: "Exceptions",
+    homeTitle: "Give every break\na cause and an owner.",
+    homeBody:
+      "Exception Resolution gathers the evidence across systems and moves the case to the team that can close it. A missing settlement, a dispute, or a failed refund arrives with its cause, its owner, and the next action already attached.",
     icon: "venn",
     headline: "The intelligence layer for every unresolved payment.",
     lede: "Exception Resolution turns payment breaks, disputes, and chargebacks into structured decisions that move to the right outcome.",
@@ -115,6 +126,10 @@ export const PRODUCTS: Product[] = [
     cardBody:
       "Control Views turns payment activity into accountable reporting, compliance evidence, and operational clarity, so every team works from one record that can be traced to its source.",
     cardBg: "#ebe2d8",
+    homeLabel: "Control",
+    homeTitle: "See the number and\nthe record behind it.",
+    homeBody:
+      "Control Views gives finance, operations, risk, and audit one governed record, each with the view they need. A reported number can be followed back to the source, the rule, and the decision, without waiting for the period to end.",
     icon: "hex",
     headline: "The operating record for financial control.",
     lede: "Control Views turns payment activity into accountable reporting, compliance evidence, and operational clarity, so every team works from one record that can be traced to its source.",
@@ -159,6 +174,10 @@ export const PRODUCTS: Product[] = [
     cardBody:
       "Risk Signals helps payment teams identify behavioral patterns, investigate suspicious activity, and coordinate action before risk becomes loss.",
     cardBg: "#d8e2ea",
+    homeLabel: "Risk",
+    homeTitle: "See the pattern before\nit becomes the loss.",
+    homeBody:
+      "Risk Signals connects velocity, counterparties, and prior decisions so an investigation starts with its context attached. Patterns across accounts, merchants, and instruments surface before they become a loss the team has to reconstruct.",
     icon: "octagon",
     headline: "The intelligence layer for emerging payment risk.",
     lede: "Risk Signals helps payment teams identify behavioral patterns, investigate suspicious activity, and coordinate action before risk becomes loss.",
@@ -203,6 +222,10 @@ export const PRODUCTS: Product[] = [
     cardBody:
       "Close Orchestration coordinates the records, controls, approvals, and decisions required to move from operational activity to a confident financial close.",
     cardBg: "#e6e6e6",
+    homeLabel: "Close",
+    homeTitle: "Carry the close\nforward.",
+    homeBody:
+      "Close Orchestration lines up reconciled records, open exceptions, approvals, and evidence so the period confirms what the business already knows. Unresolved work carries its context into the next period, so the close starts from the last one instead of a blank sheet.",
     icon: "squares",
     headline: "The intelligence layer that carries the close forward.",
     lede: "Close Orchestration coordinates the records, controls, approvals, and decisions required to move from operational activity to a confident financial close.",

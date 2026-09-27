@@ -176,11 +176,17 @@ function titleLines(name: string): { lines: string[]; size: number } {
   return { lines: [name], size: 64 };
 }
 
-function SchemeArt({ scheme }: { scheme: ProductSheetScheme }) {
-  const pair = STRIPES[scheme];
-  const bars = BLOCKS[scheme].flatMap((block) =>
-    blockStripes(block.seed, block.x, block.y, block.size, pair),
-  );
+function blocksFor(scheme: ProductSheetScheme | ProductIconKind | undefined) {
+  if (!scheme) return [];
+  const key = scheme in BLOCKS ? (scheme as ProductSheetScheme) : SCHEME_BY_ICON[scheme as ProductIconKind];
+  const blocks = key ? BLOCKS[key] : undefined;
+  const pair = key ? STRIPES[key] : undefined;
+  if (!blocks || !pair) return [];
+  return blocks.flatMap((block) => blockStripes(block.seed, block.x, block.y, block.size, pair));
+}
+
+export function SchemeArt({ scheme }: { scheme: ProductSheetScheme | ProductIconKind }) {
+  const bars = blocksFor(scheme);
   return (
     <>
       {bars.map((bar, index) => (
@@ -198,6 +204,23 @@ const LABELS: Record<ProductSheetScheme, Label[]> = {
   bars: BAR_LABELS,
 };
 
+export function SheetGridLines() {
+  const lines = [];
+  for (let x = 0; x <= W; x += CELL) {
+    lines.push(<line key={`v${x}`} x1={x} y1={0} x2={x} y2={H} />);
+  }
+  for (let y = 0; y <= H; y += CELL) {
+    lines.push(<line key={`h${y}`} x1={0} y1={y} x2={W} y2={y} />);
+  }
+  return (
+    <g stroke="rgba(0,0,0,0.14)" strokeWidth="1">
+      {lines}
+    </g>
+  );
+}
+
+export const SHEET_VIEWBOX = `0 0 ${W} ${H}`;
+
 export default function ProductSheet({
   name,
   scheme,
@@ -213,29 +236,19 @@ export default function ProductSheet({
   indexes?: boolean;
   className?: string;
 }) {
-  const lines = [];
-  for (let x = 0; x <= W; x += CELL) {
-    lines.push(<line key={`v${x}`} x1={x} y1={0} x2={x} y2={H} />);
-  }
-  for (let y = 0; y <= H; y += CELL) {
-    lines.push(<line key={`h${y}`} x1={0} y1={y} x2={W} y2={y} />);
-  }
-
   const title = titleLines(name);
   const kickerY = title.lines.length > 1 ? 268 : 286;
   const firstLineY = title.lines.length > 1 ? 322 : 348;
 
   return (
     <svg
-      viewBox={`0 0 ${W} ${H}`}
+      viewBox={SHEET_VIEWBOX}
       preserveAspectRatio="xMidYMid slice"
       className={className}
       role="img"
       aria-label={name}
     >
-      <g stroke="rgba(0,0,0,0.14)" strokeWidth="1">
-        {lines}
-      </g>
+      <SheetGridLines />
       {art ? <SchemeArt scheme={scheme} /> : null}
       {indexes ? (
         <g

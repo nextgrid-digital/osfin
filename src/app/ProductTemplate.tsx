@@ -16,9 +16,9 @@ export default function ProductTemplate({ product }: { product: Product }) {
     >
       <main className="pt-14 md:pt-16">
         <SiteContainer className="pt-20 pb-28 md:pt-28 md:pb-36">
-          <h1 className="mx-auto w-max max-w-none text-center">
-            <span className="block whitespace-nowrap">Architecting the</span>
-            <span className="block whitespace-nowrap">Transaction-Intelligent Enterprise</span>
+          <h1 className="mx-auto max-w-full text-center">
+            <span className="block">Architecting the</span>
+            <span className="block">Transaction-Intelligent Enterprise</span>
           </h1>
 
           <ProductTabs currentSlug={product.slug} />
@@ -32,11 +32,16 @@ export default function ProductTemplate({ product }: { product: Product }) {
 
           <ProductHeroCarousel currentSlug={product.slug} />
 
-          <section className="mt-24 grid gap-8 md:mt-32 md:grid-cols-[minmax(7rem,0.28fr)_minmax(0,1fr)] md:gap-16">
-            <div className="max-w-xl space-y-6 text-black/65 md:col-start-2">
-              {product.problem.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
+          <section className="mt-24 md:mt-32">
+            <div className="mx-auto flex w-max max-w-full flex-col items-start gap-4 text-left md:flex-row md:items-baseline md:gap-16">
+              <h6 className="not-typeset shrink-0 !font-[family-name:var(--font-mono)] text-[14px] !font-medium !tracking-[-0.02em] text-black/45 uppercase">
+                Problem
+              </h6>
+              <div className="!mt-0 w-full max-w-xl text-[rgba(0,0,0,0.875)] [&>p]:!mt-4 [&>p:first-child]:!mt-0">
+                {product.problem.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
             </div>
           </section>
 
@@ -69,7 +74,9 @@ export default function ProductTemplate({ product }: { product: Product }) {
           ) : null}
 
           <section className="mt-24 md:mt-32">
-            <h6 className="text-black/45">Capabilities</h6>
+            <h6 className="not-typeset text-center !font-[family-name:var(--font-mono)] text-[14px] !font-medium !tracking-[-0.02em] text-black/45 uppercase">
+              Capabilities
+            </h6>
             <div className="mt-8 border-t border-black/10">
               {product.capabilities.map((cap, i) => (
                 <div
