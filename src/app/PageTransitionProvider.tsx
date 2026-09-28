@@ -75,10 +75,14 @@ export default function PageTransitionProvider({ children }: { children: ReactNo
       const target = resolvePath(href);
       const fromPath = window.location.pathname;
 
-      if (target.pathname === fromPath && target.search === window.location.search) {
-        if (target.hash) {
-          window.location.hash = target.hash;
+      if (target.pathname === fromPath) {
+        if (target.search === window.location.search) {
+          if (target.hash) {
+            window.location.hash = target.hash;
+          }
+          return;
         }
+        router.push(target.href);
         return;
       }
 

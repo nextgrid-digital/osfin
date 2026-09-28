@@ -1,3 +1,4 @@
+import { TextReveal } from "@/components/ui/cascade-text";
 import { KineticTextReveal } from "@/components/ui/kinetic-text-reveal";
 
 type SectionHeadingProps = {
@@ -84,15 +85,14 @@ export default function SectionHeading({
         ) : null}
 
         {resolvedCta ? (
-          <a
+          <TextReveal
             href={resolvedCta.href}
+            text={resolvedCta.label}
             className={`not-typeset inline-flex h-10 shrink-0 items-center justify-center rounded-none px-5 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] uppercase transition hover:opacity-90 ${
               isDark ? "bg-white text-black" : "bg-black text-white"
             }`}
-            data-not-typeset
-          >
-            {resolvedCta.label}
-          </a>
+            data-not-typeset=""
+          />
         ) : null}
       </div>
     </div>

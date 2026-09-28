@@ -22,9 +22,9 @@ export default function ProductHeroCarousel({ currentSlug }: { currentSlug: stri
       >
         {item.name === "Match IQ" ? (
           <img
-            src="/products/match-iq.png"
+            src="/products/match-iq.svg"
             alt="Match IQ"
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[120%] w-[120%] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain"
+            className="pointer-events-none absolute inset-0 size-full object-contain"
           />
         ) : (
           <ProductSheet

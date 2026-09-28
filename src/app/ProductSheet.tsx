@@ -196,6 +196,64 @@ export function SchemeArt({ scheme }: { scheme: ProductSheetScheme | ProductIcon
   );
 }
 
+const COLOR_GRID_COLS = 18;
+const COLOR_GRID_ROWS = 3;
+const COLOR_GRID_W = COLOR_GRID_COLS * CELL;
+const COLOR_GRID_H = COLOR_GRID_ROWS * CELL;
+const STRIPE_PAIRS = Object.values(STRIPES);
+
+function colorGridBars() {
+  const rand = mulberry32(2026);
+  const cells: { col: number; row: number }[] = [];
+  for (let row = 0; row < COLOR_GRID_ROWS; row++) {
+    for (let col = 0; col < COLOR_GRID_COLS; col++) {
+      cells.push({ col, row });
+    }
+  }
+  for (let i = cells.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    const current = cells[i];
+    cells[i] = cells[j];
+    cells[j] = current;
+  }
+  const count = Math.round(cells.length / 3);
+  return cells.slice(0, count).flatMap((cell, index) => {
+    const pair =
+      index < STRIPE_PAIRS.length
+        ? STRIPE_PAIRS[index]
+        : STRIPE_PAIRS[Math.floor(rand() * STRIPE_PAIRS.length)];
+    return blockStripes(9000 + cell.col * 8 + cell.row, cell.col * CELL, cell.row * CELL, CELL, pair);
+  });
+}
+
+const COLOR_GRID_BARS = colorGridBars();
+
+export function ColorGridField() {
+  const lines = [];
+  for (let x = 0; x <= COLOR_GRID_W; x += CELL) {
+    lines.push(<line key={`v${x}`} x1={x} y1={0} x2={x} y2={COLOR_GRID_H} />);
+  }
+  for (let y = 0; y <= COLOR_GRID_H; y += CELL) {
+    lines.push(<line key={`h${y}`} x1={0} y1={y} x2={COLOR_GRID_W} y2={y} />);
+  }
+  return (
+    <div className="not-typeset w-full" data-not-typeset aria-hidden>
+      <svg
+        viewBox={`0 0 ${COLOR_GRID_W} ${COLOR_GRID_H}`}
+        preserveAspectRatio="xMidYMid slice"
+        className="block h-auto w-full"
+      >
+        <g stroke="rgba(0,0,0,0.14)" strokeWidth="1">
+          {lines}
+        </g>
+        {COLOR_GRID_BARS.map((bar, index) => (
+          <rect key={index} x={bar.x} y={bar.y} width={bar.w} height={bar.h} fill={bar.fill} />
+        ))}
+      </svg>
+    </div>
+  );
+}
+
 const LABELS: Record<ProductSheetScheme, Label[]> = {
   mesh: MESH_LABELS,
   rings: RING_LABELS,

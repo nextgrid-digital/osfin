@@ -1,7 +1,6 @@
 "use client";
 
-import { Children, useEffect, useState, type MouseEvent, type ReactNode } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { useEffect, useState, type MouseEvent, type ReactNode } from "react";
 import {
   MotionNavigationMenu,
   MotionNavigationMenuContent,
@@ -10,6 +9,7 @@ import {
   MotionNavigationMenuList,
   MotionNavigationMenuTrigger,
 } from "@/components/unlumen-ui/motion-navigation-menu";
+import { TextReveal } from "@/components/ui/cascade-text";
 import { PRODUCTS } from "../content/products";
 import { usePageTransition } from "./PageTransitionProvider";
 
@@ -18,10 +18,13 @@ const listHighlightClassName = "rounded-none bg-white";
 const navItemClassName =
   "h-auto min-h-0 gap-1.5 rounded-none bg-white px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase inline-flex items-center hover:bg-white hover:text-[rgba(0,0,0,0.875)] focus:text-[rgba(0,0,0,0.875)] data-[state=open]:bg-white data-[state=open]:text-[rgba(0,0,0,0.875)]";
 const navLinkClassName =
-  "h-auto min-h-0 gap-0 rounded-none bg-white px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase inline-flex items-center no-underline hover:bg-white hover:text-[rgba(0,0,0,0.875)] hover:no-underline";
+  "group/cascade h-auto min-h-0 gap-0 rounded-none bg-white px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase inline-flex items-center no-underline hover:bg-white hover:text-[rgba(0,0,0,0.875)] hover:no-underline";
 
-const megaCardClassName =
-  "group/card relative flex min-h-[12.5rem] w-full flex-col rounded-none border border-black/10 bg-white p-4 text-left no-underline normal-case tracking-normal transition-colors hover:border-black/15 hover:bg-black/[0.06] hover:no-underline";
+const largeLinkClassName =
+  "site-nav-link-lg group/cascade block w-fit p-0 text-left text-[28px] leading-[1.15] font-normal normal-case tracking-normal text-[rgba(0,0,0,0.875)] no-underline hover:text-black hover:no-underline";
+
+const smallLinkClassName =
+  "group/cascade block w-fit p-0 text-left text-[15px] leading-6 font-normal normal-case tracking-normal text-[rgba(0,0,0,0.875)] no-underline hover:text-black hover:no-underline";
 
 const PRODUCT_NAV = [
   {
@@ -84,6 +87,11 @@ const SOLUTIONS = [
 
 const COMPANY = [
   {
+    label: "About",
+    description: "An applied technology company that owns the outcome.",
+    href: "/about",
+  },
+  {
     label: "Careers",
     description: "Join the team building agentic payment operations.",
     href: "/#company",
@@ -100,52 +108,12 @@ const COMPANY = [
   },
 ] as const;
 
-function MegaColumn({
-  title,
-  children,
-}: {
-  title: string;
-  children: ReactNode;
-}) {
-  const items = Children.toArray(children);
-
-  return (
-    <div className="w-full">
-      <p className="mb-5 text-[12px] font-medium tracking-[-0.02em] text-black/40 uppercase">
-        {title}
-      </p>
-      <div
-        className="grid gap-3"
-        style={{ gridTemplateColumns: `repeat(${items.length}, minmax(0, 1fr))` }}
-      >
-        {items}
-      </div>
-    </div>
-  );
+function MenuLabel({ children }: { children: ReactNode }) {
+  return <p className="mb-5 text-[13px] text-black/45">{children}</p>;
 }
 
-function MegaCard({
-  title,
-  subtitle,
-}: {
-  title: string;
-  subtitle: ReactNode;
-}) {
-  return (
-    <>
-      <span className="pr-8 text-[15px] font-medium leading-[1.375] text-[rgba(0,0,0,0.875)]">
-        {title}
-      </span>
-      <ArrowUpRight
-        className="absolute top-4 right-4 size-4 shrink-0 text-black/40 transition-colors group-hover/card:text-black/70"
-        strokeWidth={1.75}
-        aria-hidden
-      />
-      <span className="mt-auto pt-0 text-[13px] leading-[1.3] font-normal text-black/50">
-        {subtitle}
-      </span>
-    </>
-  );
+function MenuColumns({ children }: { children: ReactNode }) {
+  return <div className="flex flex-col items-start gap-12 md:flex-row md:gap-24">{children}</div>;
 }
 
 function shouldHandleClick(e: MouseEvent<HTMLAnchorElement>) {
@@ -212,31 +180,46 @@ export default function SiteNav() {
               className="w-screen"
             >
               <div className="mx-auto w-full max-w-[1440px] px-5 py-10 sm:px-8 md:py-12">
-                <MegaColumn title="Products">
-                  {PRODUCT_NAV.map(({ slug, keyword, blurb }) => {
-                    const product = PRODUCTS.find((p) => p.slug === slug);
-                    if (!product) return null;
-                    return (
-                      <MotionNavigationMenuLink
-                        key={slug}
-                        href={`/products/${slug}`}
-                        onClick={onProductClick(`/products/${slug}`)}
-                        className={megaCardClassName}
-                      >
-                        <MegaCard
-                          title={product.name}
-                          subtitle={
-                            <>
-                              <strong className="font-semibold text-black">{keyword}</strong>
-                              {" "}
-                              {blurb}
-                            </>
-                          }
-                        />
-                      </MotionNavigationMenuLink>
-                    );
-                  })}
-                </MegaColumn>
+                <MenuColumns>
+                  <div>
+                    <MenuLabel>Products</MenuLabel>
+                    <div className="flex flex-col gap-2">
+                      {PRODUCT_NAV.map(({ slug }) => {
+                        const product = PRODUCTS.find((p) => p.slug === slug);
+                        if (!product) return null;
+                        return (
+                          <MotionNavigationMenuLink
+                            key={slug}
+                            href={`/products/${slug}`}
+                            onClick={onProductClick(`/products/${slug}`)}
+                            className={largeLinkClassName}
+                          >
+                            <TextReveal as="span" text={product.name} />
+                          </MotionNavigationMenuLink>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div>
+                    <MenuLabel>What they do</MenuLabel>
+                    <div className="flex flex-col gap-1">
+                      {PRODUCT_NAV.map(({ slug, keyword }) => {
+                        const product = PRODUCTS.find((p) => p.slug === slug);
+                        if (!product) return null;
+                        return (
+                          <MotionNavigationMenuLink
+                            key={slug}
+                            href={`/products/${slug}`}
+                            onClick={onProductClick(`/products/${slug}`)}
+                            className={smallLinkClassName}
+                          >
+                            <TextReveal as="span" text={keyword} />
+                          </MotionNavigationMenuLink>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </MenuColumns>
               </div>
             </MotionNavigationMenuContent>
           </MotionNavigationMenuItem>
@@ -250,25 +233,26 @@ export default function SiteNav() {
               className="w-screen"
             >
               <div className="mx-auto w-full max-w-[1440px] px-5 py-10 sm:px-8 md:py-12">
-                <MegaColumn title="Industries">
-                  {SOLUTIONS.map(({ label, description }) => (
+                <MenuLabel>Industries</MenuLabel>
+                <div className="flex flex-col gap-2">
+                  {SOLUTIONS.map(({ label }) => (
                     <MotionNavigationMenuLink
                       key={label}
                       href="/#roles"
                       onClick={closeMenu}
-                      className={megaCardClassName}
+                      className={largeLinkClassName}
                     >
-                      <MegaCard title={label} subtitle={description} />
+                      <TextReveal as="span" text={label} />
                     </MotionNavigationMenuLink>
                   ))}
-                </MegaColumn>
+                </div>
               </div>
             </MotionNavigationMenuContent>
           </MotionNavigationMenuItem>
 
           <MotionNavigationMenuItem>
-            <MotionNavigationMenuLink href="/#blog" className={navLinkClassName}>
-              Blog
+            <MotionNavigationMenuLink href="/blog" className={navLinkClassName}>
+              <TextReveal as="span" text="Blog" />
             </MotionNavigationMenuLink>
           </MotionNavigationMenuItem>
 
@@ -281,25 +265,26 @@ export default function SiteNav() {
               className="w-screen"
             >
               <div className="mx-auto w-full max-w-[1440px] px-5 py-10 sm:px-8 md:py-12">
-                <MegaColumn title="Company">
-                  {COMPANY.map(({ label, description, href }) => (
+                <MenuLabel>Company</MenuLabel>
+                <div className="flex flex-col gap-2">
+                  {COMPANY.map(({ label, href }) => (
                     <MotionNavigationMenuLink
                       key={label}
                       href={href}
-                      onClick={closeMenu}
-                      className={megaCardClassName}
+                      onClick={href.startsWith("/#") ? closeMenu : onProductClick(href)}
+                      className={largeLinkClassName}
                     >
-                      <MegaCard title={label} subtitle={description} />
+                      <TextReveal as="span" text={label} />
                     </MotionNavigationMenuLink>
                   ))}
-                </MegaColumn>
+                </div>
               </div>
             </MotionNavigationMenuContent>
           </MotionNavigationMenuItem>
 
           <MotionNavigationMenuItem>
             <MotionNavigationMenuLink href="/#contact" className={navLinkClassName}>
-              Contact
+              <TextReveal as="span" text="Contact" />
             </MotionNavigationMenuLink>
           </MotionNavigationMenuItem>
         </MotionNavigationMenuList>

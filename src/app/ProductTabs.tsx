@@ -1,5 +1,6 @@
 "use client";
 
+import { TextReveal } from "@/components/ui/cascade-text";
 import { motion } from "motion/react";
 import { PRODUCTS } from "../content/products";
 import { useProductSelect } from "./product-select";
@@ -25,7 +26,7 @@ export default function ProductTabs({ currentSlug }: { currentSlug: string }) {
               event.preventDefault();
               select(product.slug);
             }}
-            className={`relative px-2.5 py-1.5 font-[family-name:var(--font-mono)] text-[14px] font-medium tracking-[-0.02em] uppercase ${
+            className={`group/cascade relative px-2.5 py-1.5 font-[family-name:var(--font-mono)] text-[14px] font-medium tracking-[-0.02em] uppercase ${
               active ? "text-[rgba(0,0,0,0.875)]" : "text-black/45 hover:text-black/70"
             }`}
           >
@@ -36,7 +37,7 @@ export default function ProductTabs({ currentSlug }: { currentSlug: string }) {
                 transition={{ type: "spring", stiffness: 350, damping: 32 }}
               />
             ) : null}
-            <span className="relative z-10">{product.name}</span>
+            <TextReveal as="span" text={product.name} className="relative z-10" />
           </a>
         );
       })}

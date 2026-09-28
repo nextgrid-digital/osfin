@@ -5,7 +5,7 @@ import SiteNav from "./SiteNav";
 export const SITE_NAV = [
   { label: "Product", href: "/#product" },
   { label: "Solutions", href: "/#solutions" },
-  { label: "Blog", href: "/#blog" },
+  { label: "Blog", href: "/blog" },
   { label: "Company", href: "/#company" },
   { label: "Contact", href: "/#contact" },
 ];

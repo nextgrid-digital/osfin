@@ -1,3 +1,4 @@
+import { TextReveal } from "@/components/ui/cascade-text";
 import Link from "next/link";
 import SiteContainer from "./SiteContainer";
 import SiteLogo from "./SiteLogo";
@@ -11,13 +12,13 @@ export default function SiteFooter() {
             Ask about Osfin on
           </p>
           {["ChatGPT", "Claude", "Perplexity", "Gemini", "Grok"].map((name) => (
-            <Link
+            <TextReveal
               key={name}
+              as={Link}
               href={`/#ask-${name.toLowerCase()}`}
+              text={name}
               className="rounded-none border border-black/10 px-3 py-1.5 text-[12px] text-black/60 hover:bg-black/[0.04] hover:text-black"
-            >
-              {name}
-            </Link>
+            />
           ))}
         </div>
 
@@ -35,9 +36,7 @@ export default function SiteFooter() {
                 "Retail",
               ].map((l) => (
                 <li key={l}>
-                  <Link href="/#roles" className="hover:text-black">
-                    {l}
-                  </Link>
+                  <TextReveal as={Link} href="/#roles" text={l} className="hover:text-black" />
                 </li>
               ))}
             </ul>
@@ -47,9 +46,7 @@ export default function SiteFooter() {
             <ul className="space-y-2.5">
               {["Request a demo", "Changelog", "Documentation", "Download"].map((l) => (
                 <li key={l}>
-                  <Link href="/#product" className="hover:text-black">
-                    {l}
-                  </Link>
+                  <TextReveal as={Link} href="/#product" text={l} className="hover:text-black" />
                 </li>
               ))}
             </ul>
@@ -57,11 +54,14 @@ export default function SiteFooter() {
           <div>
             <p className="mb-4 font-medium text-black/80">Company</p>
             <ul className="space-y-2.5">
-              {["Careers", "Compliance", "Security"].map((l) => (
+              {["About", "Careers", "Compliance", "Security"].map((l) => (
                 <li key={l}>
-                  <Link href="/#company" className="hover:text-black">
-                    {l}
-                  </Link>
+                  <TextReveal
+                    as={Link}
+                    href={l === "About" ? "/about" : "/#company"}
+                    text={l}
+                    className="hover:text-black"
+                  />
                 </li>
               ))}
             </ul>
@@ -78,9 +78,7 @@ export default function SiteFooter() {
                 "Data Processing Agreement",
               ].map((l) => (
                 <li key={l}>
-                  <Link href="/#legal" className="hover:text-black">
-                    {l}
-                  </Link>
+                  <TextReveal as={Link} href="/#legal" text={l} className="hover:text-black" />
                 </li>
               ))}
             </ul>
@@ -90,9 +88,7 @@ export default function SiteFooter() {
             <ul className="space-y-2.5">
               {["X", "LinkedIn", "Discord"].map((l) => (
                 <li key={l}>
-                  <Link href="/#social" className="hover:text-black">
-                    {l}
-                  </Link>
+                  <TextReveal as={Link} href="/#social" text={l} className="hover:text-black" />
                 </li>
               ))}
             </ul>

@@ -1,58 +1,32 @@
+import { TextReveal } from "@/components/ui/cascade-text";
 import { KineticTextReveal } from "@/components/ui/kinetic-text-reveal";
 import MetalLapJoint from "@/components/MetalLapJoint";
+import { POSTS } from "../content/posts";
 import HomeProductRows from "./HomeProductRows";
 import SectionHeading from "./SectionHeading";
 import SiteContainer from "./SiteContainer";
 import SiteFooter from "./SiteFooter";
+import TransitionLink from "./TransitionLink";
 
-const CHANGELOG = [
-  {
-    date: "SEP 21, 2026",
-    title: "Users View",
-    cover: "/changelog/cover.png",
-    category: "Product",
-  },
-  {
-    date: "MAR 12, 2026",
-    title: "Introducing Consent Management",
-    cover: "/changelog/cover-2.png",
-    category: "Product",
-  },
-  {
-    date: "FEB 11, 2026",
-    title: "Timeline Improvements",
-    cover: "/changelog/cover-3.jpg",
-    category: "Research",
-  },
-  {
-    date: "JAN 8, 2026",
-    title: "Exception routing",
-    cover: "/changelog/cover-4.jpg",
-    category: "Research",
-  },
-];
-
-function BtnPrimary({ href, children }: { href: string; children: React.ReactNode }) {
+function BtnPrimary({ href, children }: { href: string; children: string }) {
   return (
-    <a
+    <TextReveal
       href={href}
+      text={children}
       className="btn-primary not-typeset inline-flex h-10 items-center rounded-none bg-black px-5 text-[13px] font-medium text-white transition hover:opacity-90"
-      data-not-typeset
-    >
-      {children}
-    </a>
+      data-not-typeset=""
+    />
   );
 }
 
-function BtnSecondary({ href, children }: { href: string; children: React.ReactNode }) {
+function BtnSecondary({ href, children }: { href: string; children: string }) {
   return (
-    <a
+    <TextReveal
       href={href}
+      text={children}
       className="btn-secondary not-typeset inline-flex h-10 items-center rounded-none border border-black/15 bg-transparent px-5 text-[13px] font-medium text-[rgba(0,0,0,0.875)] transition hover:bg-black/5"
-      data-not-typeset
-    >
-      {children}
-    </a>
+      data-not-typeset=""
+    />
   );
 }
 
@@ -106,36 +80,40 @@ export default function HumanHome() {
           <SiteContainer>
             <SectionHeading title="From the frontier" cta={null} />
             <div className="mt-10 grid grid-cols-1 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 md:mt-14">
-              {CHANGELOG.map((item) => (
-                <a
-                  key={item.title}
-                  href="#changelog"
-                  className="not-typeset group flex flex-col no-underline hover:no-underline"
+              {POSTS.map((post) => (
+                <TransitionLink
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="not-typeset group/cascade flex flex-col no-underline hover:no-underline"
                   data-not-typeset
                 >
                   <div className="aspect-square overflow-hidden rounded-none bg-black/[0.03]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={item.cover}
+                      src={post.cover}
                       alt=""
                       className="size-full object-cover"
                     />
                   </div>
                   <h3 className="mt-4 !font-sans !text-[17px] !font-medium !leading-snug !tracking-normal text-[rgba(0,0,0,0.875)] normal-case">
-                    {item.title}
+                    {post.title.split("\n").map((line) => (
+                      <span key={line} className="block">
+                        <TextReveal as="span" text={line} />
+                      </span>
+                    ))}
                   </h3>
-                  <p className="mt-1 font-sans text-[13px] leading-5 text-black/45">{item.category}</p>
-                </a>
+                  <p className="mt-1 font-sans text-[13px] leading-5 text-black/45">{post.category}</p>
+                </TransitionLink>
               ))}
             </div>
             <div className="mt-14 flex justify-center md:mt-16">
-              <a
-                href="#changelog"
-                className="not-typeset inline-flex h-10 items-center rounded-none border border-black/15 bg-white px-5 font-sans text-[15px] font-normal normal-case tracking-normal text-[rgba(0,0,0,0.875)] transition hover:bg-black/[0.03]"
+              <TransitionLink
+                href="/blog"
+                className="not-typeset inline-flex h-10 items-center rounded-none border border-black/15 bg-white px-5 font-sans text-[15px] font-normal normal-case tracking-normal text-[rgba(0,0,0,0.875)] no-underline transition hover:bg-black/[0.03] hover:no-underline"
                 data-not-typeset
               >
                 Read more
-              </a>
+              </TransitionLink>
             </div>
           </SiteContainer>
         </section>

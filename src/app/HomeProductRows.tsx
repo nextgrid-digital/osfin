@@ -1,3 +1,4 @@
+import { TextReveal } from "@/components/ui/cascade-text";
 import { PRODUCTS } from "../content/products";
 import HomeProductPanel from "./HomeProductPanels";
 import { schemeForIcon } from "./ProductSheet";
@@ -51,12 +52,12 @@ export default function HomeProductRows() {
                     >
                       Explore
                     </TransitionLink>
-                    <a
+                    <TextReveal
                       href="#contact"
-                      className="btn-secondary not-typeset inline-flex h-10 items-center rounded-none border border-black/15 bg-transparent px-5 text-[13px] font-medium text-[rgba(0,0,0,0.875)] no-underline transition hover:bg-black/5 hover:no-underline"
-                    >
-                      Talk to Sales
-                    </a>
+                      text="Talk to Sales"
+                      className="btn-secondary not-typeset inline-flex h-10 items-center rounded-none border border-black/15 bg-transparent px-5 text-[13px] font-medium text-[rgba(0,0,0,0.875)] transition hover:bg-black/5"
+                      data-not-typeset=""
+                    />
                   </div>
                 </div>
               </div>
