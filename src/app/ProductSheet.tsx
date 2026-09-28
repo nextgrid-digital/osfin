@@ -196,44 +196,52 @@ export function SchemeArt({ scheme }: { scheme: ProductSheetScheme | ProductIcon
   );
 }
 
-const COLOR_GRID_COLS = 18;
-const COLOR_GRID_ROWS = 3;
-const COLOR_GRID_W = COLOR_GRID_COLS * CELL;
-const COLOR_GRID_H = COLOR_GRID_ROWS * CELL;
-const STRIPE_PAIRS = Object.values(STRIPES);
+const COLOR_GRID_CELL = 20;
+const COLOR_GRID_COLS = 72;
+const COLOR_GRID_ROWS = 12;
+const COLOR_GRID_W = COLOR_GRID_COLS * COLOR_GRID_CELL;
+const COLOR_GRID_H = COLOR_GRID_ROWS * COLOR_GRID_CELL;
+const COLOR_GRID_COLUMNS = 4;
+const COLOR_GRID_COL_SPAN = COLOR_GRID_COLS / COLOR_GRID_COLUMNS;
+const FIELD_BLUES = ["#1A4ED8", "#3B78F2", "#6BA6FF", "#A8CCFF", "#D6E7FF"] as const;
 
-function colorGridBars() {
+function colorGridBars(): Bar[] {
   const rand = mulberry32(2026);
-  const cells: { col: number; row: number }[] = [];
-  for (let row = 0; row < COLOR_GRID_ROWS; row++) {
-    for (let col = 0; col < COLOR_GRID_COLS; col++) {
-      cells.push({ col, row });
+  const barH = 8;
+  const bars: Bar[] = [];
+  for (let column = 0; column < COLOR_GRID_COLUMNS; column++) {
+    const origin = column * COLOR_GRID_COL_SPAN;
+    const used = new Set<number>();
+    const count = 2 + (rand() > 0.5 ? 1 : 0);
+    for (let n = 0; n < count; n++) {
+      let row = Math.floor(rand() * COLOR_GRID_ROWS);
+      for (let attempt = 0; attempt < 24; attempt++) {
+        if (!used.has(row) && !used.has(row - 1) && !used.has(row + 1)) break;
+        row = Math.floor(rand() * COLOR_GRID_ROWS);
+      }
+      used.add(row);
+      const span = COLOR_GRID_COL_SPAN - 2 - Math.floor(rand() * 3);
+      const inset = Math.floor(rand() * (COLOR_GRID_COL_SPAN - span + 1));
+      bars.push({
+        x: (origin + inset) * COLOR_GRID_CELL,
+        y: row * COLOR_GRID_CELL + (COLOR_GRID_CELL - barH) / 2,
+        w: span * COLOR_GRID_CELL,
+        h: barH,
+        fill: FIELD_BLUES[Math.floor(rand() * FIELD_BLUES.length)],
+      });
     }
   }
-  for (let i = cells.length - 1; i > 0; i--) {
-    const j = Math.floor(rand() * (i + 1));
-    const current = cells[i];
-    cells[i] = cells[j];
-    cells[j] = current;
-  }
-  const count = Math.round(cells.length / 3);
-  return cells.slice(0, count).flatMap((cell, index) => {
-    const pair =
-      index < STRIPE_PAIRS.length
-        ? STRIPE_PAIRS[index]
-        : STRIPE_PAIRS[Math.floor(rand() * STRIPE_PAIRS.length)];
-    return blockStripes(9000 + cell.col * 8 + cell.row, cell.col * CELL, cell.row * CELL, CELL, pair);
-  });
+  return bars;
 }
 
 const COLOR_GRID_BARS = colorGridBars();
 
 export function ColorGridField() {
   const lines = [];
-  for (let x = 0; x <= COLOR_GRID_W; x += CELL) {
+  for (let x = 0; x <= COLOR_GRID_W; x += COLOR_GRID_CELL) {
     lines.push(<line key={`v${x}`} x1={x} y1={0} x2={x} y2={COLOR_GRID_H} />);
   }
-  for (let y = 0; y <= COLOR_GRID_H; y += CELL) {
+  for (let y = 0; y <= COLOR_GRID_H; y += COLOR_GRID_CELL) {
     lines.push(<line key={`h${y}`} x1={0} y1={y} x2={COLOR_GRID_W} y2={y} />);
   }
   return (

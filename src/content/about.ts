@@ -1,7 +1,6 @@
 export const ABOUT = {
-  label: "About",
   manifesto:
-    "The books were never the problem. Every institution has a close it means to make. Most have tried, and hit the same wall. Spreadsheets, point tools, programs that run for years, and a break list that still owns the month. Osfin was founded because we kept watching this happen, and we knew exactly why.",
+    "The books were never the problem. Institutions have tried, and hit the same wall: spreadsheets, point tools, and a break list.",
   essays: [
     {
       label: "AI-native is a mindset",

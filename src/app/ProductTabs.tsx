@@ -20,6 +20,7 @@ export default function ProductTabs({ currentSlug }: { currentSlug: string }) {
           <a
             key={product.slug}
             href={`/products/${product.slug}`}
+            aria-label={product.name}
             onClick={(event) => {
               if (!select) return;
               if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
@@ -37,7 +38,14 @@ export default function ProductTabs({ currentSlug }: { currentSlug: string }) {
                 transition={{ type: "spring", stiffness: 350, damping: 32 }}
               />
             ) : null}
-            <TextReveal as="span" text={product.name} className="relative z-10" />
+            <TextReveal
+              as="span"
+              text={product.name}
+              className="relative z-10"
+              staggerDelay={14}
+              duration={280}
+              easing="cubic-bezier(0.22, 1, 0.36, 1)"
+            />
           </a>
         );
       })}

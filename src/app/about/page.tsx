@@ -9,8 +9,9 @@ export const metadata: Metadata = {
   description: ABOUT.manifesto,
 };
 
-const labelClassName =
-  "not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] leading-none font-medium tracking-[-0.02em] text-black/45 uppercase";
+const essayLabelClassName =
+  "not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] leading-none font-medium tracking-[-0.02em] text-black/45";
+const labelClassName = `${essayLabelClassName} uppercase`;
 
 export default function AboutPage() {
   return (
@@ -22,11 +23,8 @@ export default function AboutPage() {
       <main className="pt-14 md:pt-16">
         <section className="pt-16 pb-12 md:pt-28 md:pb-20">
           <SiteContainer>
-            <p className={labelClassName} data-not-typeset>
-              {ABOUT.label}
-            </p>
             <p
-              className="not-typeset !m-0 mt-8 max-w-[18em] font-[family-name:var(--font-season)] text-[clamp(2rem,4.4vw,56px)] leading-[1.12] font-normal tracking-[-0.02em] text-[rgba(0,0,0,0.875)] md:mt-10"
+              className="not-typeset !m-0 max-w-[18em] font-[family-name:var(--font-season)] text-[clamp(2rem,4.4vw,56px)] leading-[1.12] font-normal tracking-[-0.02em] text-[rgba(0,0,0,0.875)]"
               data-not-typeset
             >
               {ABOUT.manifesto}
@@ -40,7 +38,7 @@ export default function AboutPage() {
           <SiteContainer className="flex flex-col gap-20 md:gap-32">
             {ABOUT.essays.map((essay) => (
               <div key={essay.label} className="grid gap-5 md:grid-cols-12 md:gap-8">
-                <h2 className={`${labelClassName} md:col-span-4`} data-not-typeset>
+                <h2 className={`${essayLabelClassName} md:col-span-4`} data-not-typeset>
                   {essay.label}
                 </h2>
                 <div className="max-w-[38rem] md:col-span-7 md:col-start-6">

@@ -56,12 +56,10 @@ const TextReveal = React.memo(function TextReveal({
 
   const sign = direction === "up" ? 1 : -1;
   const paintsColor = color !== "inherit" || hoverColor !== "inherit";
-  const nested = Component === "span";
 
   const rootProps: Record<string, unknown> = {
     className: cn(
-      "relative inline-flex cursor-pointer select-none no-underline",
-      !nested && "group/cascade",
+      "group/cascade relative inline-flex cursor-pointer select-none no-underline",
       className,
     ),
     style: {
@@ -95,26 +93,28 @@ const TextReveal = React.memo(function TextReveal({
 
   return (
     <Component {...rootProps}>
-      <span className="relative inline-flex overflow-hidden" style={{ height: "1em" }} aria-hidden="true">
-        {chars.map((char, i) => (
-          <span
-            key={i}
-            className={cn(
-              "cascade-char relative inline-block will-change-transform",
-              sign === 1
-                ? "group-hover/cascade:-translate-y-[1em]"
-                : "group-hover/cascade:translate-y-[1em]",
-            )}
-            style={{
-              textShadow: `0 ${sign}em currentColor`,
-              transition: `transform ${duration}ms ${easing}`,
-              transitionDelay: `${i * staggerDelay}ms`,
-              transform: hovered ? `translateY(${-sign}em)` : undefined,
-            }}
-          >
-            {char === " " ? "\u00A0" : char}
-          </span>
-        ))}
+      <span className="relative inline-flex leading-none" aria-hidden="true">
+        {chars.map((char, i) => {
+          const glyph = char === " " ? "\u00A0" : char;
+          return (
+            <span key={i} className="inline-block h-[1em] overflow-hidden leading-none">
+              <span
+                className={cn(
+                  "block",
+                  sign === 1
+                    ? "group-hover/cascade:-translate-y-[50%]"
+                    : "-translate-y-1/2 group-hover/cascade:translate-y-0",
+                )}
+                style={{
+                  transition: `transform ${duration}ms ${easing} ${i * staggerDelay}ms, translate ${duration}ms ${easing} ${i * staggerDelay}ms`,
+                }}
+              >
+                <span className="block h-[1em] leading-none">{glyph}</span>
+                <span className="block h-[1em] leading-none" aria-hidden="true">{glyph}</span>
+              </span>
+            </span>
+          );
+        })}
       </span>
     </Component>
   );

@@ -74,7 +74,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
           ) : null}
 
           <section className="mt-24 md:mt-32">
-            <h6 className="not-typeset text-center !font-[family-name:var(--font-mono)] text-[14px] !font-medium !tracking-[-0.02em] text-black/45 uppercase">
+            <h6 className="not-typeset text-left !font-[family-name:var(--font-mono)] text-[14px] !font-medium !tracking-[-0.02em] text-black/45 uppercase">
               Capabilities
             </h6>
             <div className="mt-8 border-t border-black/10">

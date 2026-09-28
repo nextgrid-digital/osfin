@@ -5,6 +5,13 @@ import { PRODUCTS } from "../content/products";
 import ProductSheet, { schemeForIcon } from "./ProductSheet";
 import { useProductSelect } from "./product-select";
 
+const SLIDE_ART: Record<string, string> = {
+  "Match IQ": "/products/match-iq.svg",
+  "Exception Resolution": "/products/exception-resolution.svg",
+  "Risk Signals": "/products/risk-signals.svg",
+  "Close Orchestration": "/products/close-orchestration.svg",
+};
+
 export default function ProductHeroCarousel({ currentSlug }: { currentSlug: string }) {
   const select = useProductSelect();
   const product = PRODUCTS.find((item) => item.slug === currentSlug);
@@ -14,22 +21,22 @@ export default function ProductHeroCarousel({ currentSlug }: { currentSlug: stri
   );
 
   const slides = PRODUCTS.map((item) => {
-    const scheme = schemeForIcon(item.icon);
+    const art = SLIDE_ART[item.name];
     return (
       <div
         key={item.slug}
-        className={`relative h-full w-full bg-transparent text-black/40${item.name === "Match IQ" ? " overflow-hidden" : ""}`}
+        className={`relative h-full w-full bg-transparent text-black/40${art ? " overflow-hidden" : ""}`}
       >
-        {item.name === "Match IQ" ? (
+        {art ? (
           <img
-            src="/products/match-iq.svg"
-            alt="Match IQ"
+            src={art}
+            alt={item.name}
             className="pointer-events-none absolute inset-0 size-full object-contain"
           />
         ) : (
           <ProductSheet
             name={item.name}
-            scheme={scheme}
+            scheme={schemeForIcon(item.icon)}
             wordmark={false}
             indexes={false}
           />

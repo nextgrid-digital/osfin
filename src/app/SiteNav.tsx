@@ -16,42 +16,31 @@ import { usePageTransition } from "./PageTransitionProvider";
 const listHighlightClassName = "rounded-none bg-white";
 
 const navItemClassName =
-  "h-auto min-h-0 gap-1.5 rounded-none bg-white px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase inline-flex items-center hover:bg-white hover:text-[rgba(0,0,0,0.875)] focus:text-[rgba(0,0,0,0.875)] data-[state=open]:bg-white data-[state=open]:text-[rgba(0,0,0,0.875)]";
+  "group/cascade h-auto min-h-0 gap-1.5 rounded-none bg-white px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase inline-flex items-center hover:bg-white hover:text-[rgba(0,0,0,0.875)] focus:text-[rgba(0,0,0,0.875)] data-[state=open]:bg-white data-[state=open]:text-[rgba(0,0,0,0.875)]";
 const navLinkClassName =
   "group/cascade h-auto min-h-0 gap-0 rounded-none bg-white px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase inline-flex items-center no-underline hover:bg-white hover:text-[rgba(0,0,0,0.875)] hover:no-underline";
 
 const largeLinkClassName =
   "site-nav-link-lg group/cascade block w-fit p-0 text-left text-[28px] leading-[1.15] font-normal normal-case tracking-normal text-[rgba(0,0,0,0.875)] no-underline hover:text-black hover:no-underline";
 
-const smallLinkClassName =
-  "group/cascade block w-fit p-0 text-left text-[15px] leading-6 font-normal normal-case tracking-normal text-[rgba(0,0,0,0.875)] no-underline hover:text-black hover:no-underline";
+function NavLabel({ text }: { text: string }) {
+  return (
+    <TextReveal
+      as="span"
+      text={text}
+      staggerDelay={14}
+      duration={280}
+      easing="cubic-bezier(0.22, 1, 0.36, 1)"
+    />
+  );
+}
 
 const PRODUCT_NAV = [
-  {
-    slug: "settlement-mesh",
-    keyword: "Reconciliation",
-    blurb: "across banks, gateways, processors, and ledgers.",
-  },
-  {
-    slug: "exception-resolution",
-    keyword: "Dispute & chargeback management",
-    blurb: "from evidence to action.",
-  },
-  {
-    slug: "control-views",
-    keyword: "Reporting & compliance",
-    blurb: "views from live operational data.",
-  },
-  {
-    slug: "risk-signals",
-    keyword: "AML reporting & fraud prevention",
-    blurb: "across payment activity.",
-  },
-  {
-    slug: "close-orchestration",
-    keyword: "Financial close orchestration",
-    blurb: "for checks, approvals, and sign-off.",
-  },
+  "settlement-mesh",
+  "exception-resolution",
+  "control-views",
+  "risk-signals",
+  "close-orchestration",
 ] as const;
 
 const SOLUTIONS = [
@@ -172,8 +161,8 @@ export default function SiteNav() {
           className="items-center gap-0.5 rounded-none border-0 bg-transparent px-0 py-0"
         >
           <MotionNavigationMenuItem value="products">
-            <MotionNavigationMenuTrigger className={navItemClassName}>
-              Product
+            <MotionNavigationMenuTrigger className={navItemClassName} aria-label="Product">
+              <NavLabel text="Product" />
             </MotionNavigationMenuTrigger>
             <MotionNavigationMenuContent
               highlightClassName="hidden"
@@ -184,7 +173,7 @@ export default function SiteNav() {
                   <div>
                     <MenuLabel>Products</MenuLabel>
                     <div className="flex flex-col gap-2">
-                      {PRODUCT_NAV.map(({ slug }) => {
+                      {PRODUCT_NAV.map((slug) => {
                         const product = PRODUCTS.find((p) => p.slug === slug);
                         if (!product) return null;
                         return (
@@ -200,33 +189,14 @@ export default function SiteNav() {
                       })}
                     </div>
                   </div>
-                  <div>
-                    <MenuLabel>What they do</MenuLabel>
-                    <div className="flex flex-col gap-1">
-                      {PRODUCT_NAV.map(({ slug, keyword }) => {
-                        const product = PRODUCTS.find((p) => p.slug === slug);
-                        if (!product) return null;
-                        return (
-                          <MotionNavigationMenuLink
-                            key={slug}
-                            href={`/products/${slug}`}
-                            onClick={onProductClick(`/products/${slug}`)}
-                            className={smallLinkClassName}
-                          >
-                            <TextReveal as="span" text={keyword} />
-                          </MotionNavigationMenuLink>
-                        );
-                      })}
-                    </div>
-                  </div>
                 </MenuColumns>
               </div>
             </MotionNavigationMenuContent>
           </MotionNavigationMenuItem>
 
           <MotionNavigationMenuItem value="solutions">
-            <MotionNavigationMenuTrigger className={navItemClassName}>
-              Solutions
+            <MotionNavigationMenuTrigger className={navItemClassName} aria-label="Solutions">
+              <NavLabel text="Solutions" />
             </MotionNavigationMenuTrigger>
             <MotionNavigationMenuContent
               highlightClassName="hidden"
@@ -252,13 +222,13 @@ export default function SiteNav() {
 
           <MotionNavigationMenuItem>
             <MotionNavigationMenuLink href="/blog" className={navLinkClassName}>
-              <TextReveal as="span" text="Blog" />
+              <NavLabel text="Blog" />
             </MotionNavigationMenuLink>
           </MotionNavigationMenuItem>
 
           <MotionNavigationMenuItem value="company">
-            <MotionNavigationMenuTrigger className={navItemClassName}>
-              Company
+            <MotionNavigationMenuTrigger className={navItemClassName} aria-label="Company">
+              <NavLabel text="Company" />
             </MotionNavigationMenuTrigger>
             <MotionNavigationMenuContent
               highlightClassName="hidden"
@@ -284,7 +254,7 @@ export default function SiteNav() {
 
           <MotionNavigationMenuItem>
             <MotionNavigationMenuLink href="/#contact" className={navLinkClassName}>
-              <TextReveal as="span" text="Contact" />
+              <NavLabel text="Contact" />
             </MotionNavigationMenuLink>
           </MotionNavigationMenuItem>
         </MotionNavigationMenuList>

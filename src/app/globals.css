@@ -155,9 +155,23 @@ body {
 }
 
 .site-shell {
+  margin-bottom: var(--site-footer-h, 0px);
   transition:
     background-color 0.55s ease,
     color 0.55s ease;
+}
+
+.site-shell > main {
+  position: relative;
+  z-index: 1;
+  background-color: #E4E4E4;
+}
+
+.site-footer.is-fixed {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 0;
 }
 
 .site-header {
