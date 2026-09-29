@@ -6,7 +6,7 @@ import ProductSheet, { schemeForIcon } from "./ProductSheet";
 import { useProductSelect } from "./product-select";
 
 const SLIDE_ART: Record<string, string> = {
-  "Match IQ": "/products/match-iq.svg",
+  "Match IQ": "/products/match-iq.png",
   "Exception Resolution": "/products/exception-resolution.svg",
   "Risk Signals": "/products/risk-signals.svg",
   "Close Orchestration": "/products/close-orchestration.svg",

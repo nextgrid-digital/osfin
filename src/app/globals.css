@@ -200,11 +200,13 @@ button {
   letter-spacing: -0.02em;
 }
 
-.site-header a[aria-label="Osfin"] {
+.site-header a[aria-label="Osfin"],
+.site-footer a[aria-label="Osfin"] {
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: -0.02em;
+  font-size: 18px;
 }
 
 .site-header nav a,
@@ -286,6 +288,11 @@ button {
   padding: 0;
 }
 
+.site-nav-panel {
+  padding-left: var(--site-nav-start, 2rem);
+  padding-right: 2rem;
+}
+
 .site-header [data-layout="mega"] [data-slot="navigation-menu-content"] a,
 .site-header [data-layout="mega"] [data-slot="navigation-menu-content"] [data-slot="navigation-menu-link"] {
   font-family: var(--font-inter), var(--font-sans), system-ui, sans-serif;
@@ -294,7 +301,7 @@ button {
 }
 
 .site-header [data-layout="mega"] [data-slot="navigation-menu-content"] a.site-nav-link-lg {
-  font-family: var(--font-season), Georgia, serif;
+  font-family: var(--font-inter), var(--font-sans), system-ui, sans-serif;
   font-size: 28px;
   font-weight: 400;
   line-height: 1.15;

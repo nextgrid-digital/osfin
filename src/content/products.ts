@@ -91,31 +91,31 @@ export const PRODUCTS: Product[] = [
       "Exception Resolution connects the evidence, identifies the cause, and coordinates the next action.",
     ],
     platform: {
-      heading: "Exception Resolution\nDecision intelligence",
+      heading: "The case arrives\nwith its cause attached.",
       body: [
         "Every exception contains a sequence of events, records, policies, and decisions. Exception Resolution brings those elements together so teams can understand what happened, determine what should happen next, and preserve the reasoning behind the outcome.",
         "The system learns from how your teams investigate and resolve breaks. Each decision becomes part of the operating memory for the next exception.",
       ],
       kicker: "Every exception should arrive with its context.",
       close:
-        "Exception Resolution gathers the relevant records, reconstructs the event chain, applies the right policy, and routes the case with the evidence required for action.",
+        "Exception Resolution gathers the records across processor, merchant, bank, and ledger, then reconstructs the event that produced the break. The case reaches the team that can close it with the cause, the evidence, and the next action already attached.",
     },
     capabilities: [
       {
-        title: "Find the cause behind the break.",
-        body: "Investigation IQ traces exceptions across payment, settlement, ledger, and support systems to identify the originating event.",
+        title: "The originating event, named.",
+        body: "Investigation IQ traces the exception across payment, settlement, ledger, and support systems until the event that started it is named. A missing settlement, a duplicate, or a disputed charge arrives with the records that explain it, so the work does not begin from an empty ticket.",
       },
       {
-        title: "Turn evidence into a decision.",
-        body: "Decision IQ assembles transaction history, policy rules, correspondence, and supporting documents into one resolution view.",
+        title: "One view for the decision.",
+        body: "Decision IQ gathers the transaction history, the policy that applies, the correspondence, and the supporting documents into a single resolution view. The team sees what happened and what the policy allows before anyone writes the outcome by hand.",
       },
       {
-        title: "Route work with context attached.",
-        body: "Workflow IQ sends each case to the right team with the cause, priority, evidence, and next action already defined.",
+        title: "The right team, with the file attached.",
+        body: "Workflow IQ sends each case to the team that can close it, with the cause, the priority, the evidence, and the next action already on it. The trail stays intact between the processor, the merchant, the bank, and support.",
       },
       {
-        title: "Make every resolution reusable.",
-        body: "Resolution Memory IQ carries decisions, patterns, and outcomes forward so recurring exceptions become faster to resolve.",
+        title: "The last resolution, still in the room.",
+        body: "Resolution Memory IQ keeps the decision, the pattern, and the outcome with the case. The next break of the same kind starts from that reasoning, so the investigation is not rebuilt from the first record.",
       },
     ],
   },
@@ -139,31 +139,31 @@ export const PRODUCTS: Product[] = [
       "Control Views creates one governed record that every team can use.",
     ],
     platform: {
-      heading: "Control Views\nA governed financial view",
+      heading: "Follow the number\nback to the record.",
       body: [
         "Control Views connects operational events to the financial record beneath them. It gives each team the view it needs while preserving one consistent source of truth underneath.",
         "Every number can be traced to the source record, the rule applied, the exception raised, and the decision made. Reporting becomes a continuous operating layer rather than a task performed at the end of the period.",
       ],
       kicker: "One record. Every operational view.",
       close:
-        "Control Views transforms transaction activity into controlled, traceable views for finance, operations, risk, audit, and compliance.",
+        "Control Views turns transaction activity into one record that finance, operations, risk, audit, and compliance can each read in the view they need. A reported figure can be followed to the source, the rule, and the decision without waiting for the period to end.",
     },
     capabilities: [
       {
-        title: "See the record behind every number.",
-        body: "Source IQ connects dashboards and reports to the transaction, settlement, case, or ledger record that produced the result.",
+        title: "The record behind the figure.",
+        body: "Source IQ ties every dashboard and report to the transaction, settlement, case, or ledger entry that produced it. A number can be opened back to the record, so the explanation does not wait on a fresh extract.",
       },
       {
-        title: "Make policy visible in the workflow.",
-        body: "Policy IQ applies control requirements as activity moves through the system, making ownership and exceptions visible before reporting begins.",
+        title: "Policy, visible while the work moves.",
+        body: "Policy IQ applies control requirements as activity passes through the system, and makes ownership and exceptions visible before a report is assembled. The rule is part of the workflow, not a check performed after the number is already published.",
       },
       {
-        title: "Monitor movement as it happens.",
-        body: "Control IQ surfaces changes, breaks, and unusual activity across operational and financial views without waiting for a reporting cycle.",
+        title: "Movement, seen as it happens.",
+        body: "Control IQ surfaces changes, breaks, and unusual activity across operational and financial views without waiting for a reporting cycle. The team sees the movement while it can still be explained, not after the period has closed around it.",
       },
       {
-        title: "Produce evidence that stands on its own.",
-        body: "Audit IQ preserves the source, rule, action, and approval behind every reported outcome.",
+        title: "Evidence that stands without a reconstruction.",
+        body: "Audit IQ keeps the source, the rule, the action, and the approval behind every reported outcome. The evidence is already attached to the figure, so an audit does not have to rebuild the path by hand.",
       },
     ],
   },
@@ -187,31 +187,31 @@ export const PRODUCTS: Product[] = [
       "Risk Signals connects weak signals into a living view of risk.",
     ],
     platform: {
-      heading: "Risk Signals\nPattern intelligence for risk",
+      heading: "Name the pattern\nbefore it is a loss.",
       body: [
         "Risk Signals understands that risk is contextual. It connects transaction behavior, account history, operational events, policy thresholds, and prior decisions to show how a signal is forming.",
         "The system helps teams distinguish a meaningful pattern from noise, coordinate investigations, and carry the reasoning from one review into the next.",
       ],
       kicker: "See the pattern before it becomes the event.",
       close:
-        "Risk Signals continuously evaluates payment activity, detects meaningful changes, and gives risk teams the context required to investigate and act.",
+        "Risk Signals watches payment activity as it moves and names the change that matters. The investigation starts with the behavior, the related accounts, and the policy already attached, before the exposure has to be reconstructed.",
     },
     capabilities: [
       {
-        title: "Detect behavior that does not fit.",
-        body: "Signal IQ identifies changes across transaction velocity, amounts, counterparties, geography, and account behavior.",
+        title: "Behavior that does not fit the history.",
+        body: "Signal IQ watches velocity, amounts, counterparties, geography, and account behavior for a change that does not fit what came before. The signal arrives with the history it broke from, so the review does not start as a bare alert.",
       },
       {
-        title: "Connect signals across the payment network.",
-        body: "Pattern IQ links related activity across merchants, accounts, instruments, and operational events to reveal broader exposure.",
+        title: "One exposure, across the network.",
+        body: "Pattern IQ links related activity across merchants, accounts, instruments, and operational events. What looked like separate alerts becomes one exposure the team can see before it spreads.",
       },
       {
-        title: "Move from alert to investigation.",
-        body: "Investigation IQ assembles the evidence, history, and policy context required to review a signal.",
+        title: "From the alert to the file.",
+        body: "Investigation IQ assembles the evidence, the history, and the policy context a review needs. The analyst opens a case that already holds the records, instead of collecting them from each system in turn.",
       },
       {
-        title: "Keep risk decisions accountable.",
-        body: "Decision IQ records actions, approvals, escalations, and outcomes so every risk decision can be explained later.",
+        title: "A decision that can be explained later.",
+        body: "Decision IQ records the action, the approval, the escalation, and the outcome of every review. The reasoning stays with the signal, so a later question does not depend on who happened to work the case.",
       },
     ],
   },
@@ -235,31 +235,31 @@ export const PRODUCTS: Product[] = [
       "Close Orchestration turns the close into a continuous operating process.",
     ],
     platform: {
-      heading: "Close Orchestration\nIntelligence for the close",
+      heading: "The close confirms\nwhat the books already hold.",
       body: [
         "The close should confirm what the business already knows, not reveal what it failed to connect. Close Orchestration brings together reconciled records, open exceptions, control checks, approvals, and sign-offs in one operating sequence.",
         "Each close creates a stronger starting point for the next one. Decisions remain attached to the records they govern, and unresolved work moves forward with its context intact.",
       ],
       kicker: "From operational activity to a close you can explain.",
       close:
-        "Close Orchestration coordinates every required control, identifies what still needs attention, and preserves the evidence behind the final financial position.",
+        "Close Orchestration lines up the reconciled records, the open exceptions, the control checks, and the approvals the period still needs. What remains unresolved carries its context forward, so the next close starts from the last one.",
     },
     capabilities: [
       {
-        title: "Start with a complete operating record.",
-        body: "Close IQ brings together reconciled transactions, settlement positions, adjustments, and ledger activity before the close begins.",
+        title: "The operating record, before the close begins.",
+        body: "Close IQ brings together reconciled transactions, settlement positions, adjustments, and ledger activity before the period is assembled by hand. The close opens on a record that already exists, not on a stack of files still being chased.",
       },
       {
-        title: "Verify what requires attention.",
-        body: "Control IQ checks completeness, policy requirements, open exceptions, and unresolved movements across the close process.",
+        title: "What still needs a decision.",
+        body: "Control IQ checks completeness, policy requirements, open exceptions, and unresolved movements across the close. The team sees what is ready and what is not, instead of discovering the gap at sign-off.",
       },
       {
-        title: "Coordinate approvals and sign-offs.",
-        body: "Approval IQ routes decisions to the right owners with the evidence, rationale, and deadline already attached.",
+        title: "Approvals, with the evidence attached.",
+        body: "Approval IQ routes each decision to the owner who can make it, with the evidence, the rationale, and the deadline already on the request. Sign-off does not wait on a thread that has lost the record.",
       },
       {
-        title: "Carry the close forward.",
-        body: "Close Memory IQ preserves prior decisions, recurring issues, and control outcomes so every period begins with more context than the last.",
+        title: "The last period, still attached.",
+        body: "Close Memory IQ keeps prior decisions, recurring issues, and control outcomes with the work they governed. The next period begins from that context, so the same questions are not asked of a blank sheet.",
       },
     ],
   },

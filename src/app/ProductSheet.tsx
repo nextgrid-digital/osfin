@@ -201,34 +201,37 @@ const COLOR_GRID_COLS = 72;
 const COLOR_GRID_ROWS = 12;
 const COLOR_GRID_W = COLOR_GRID_COLS * COLOR_GRID_CELL;
 const COLOR_GRID_H = COLOR_GRID_ROWS * COLOR_GRID_CELL;
-const COLOR_GRID_COLUMNS = 4;
-const COLOR_GRID_COL_SPAN = COLOR_GRID_COLS / COLOR_GRID_COLUMNS;
-const FIELD_BLUES = ["#1A4ED8", "#3B78F2", "#6BA6FF", "#A8CCFF", "#D6E7FF"] as const;
 
 function colorGridBars(): Bar[] {
   const rand = mulberry32(2026);
-  const barH = 8;
+  const rows = 6;
+  const barH = 28;
+  const rowGap = 10;
+  const gutter = 6;
+  const blockH = rows * barH + (rows - 1) * rowGap;
+  const top = (COLOR_GRID_H - blockH) / 2;
   const bars: Bar[] = [];
-  for (let column = 0; column < COLOR_GRID_COLUMNS; column++) {
-    const origin = column * COLOR_GRID_COL_SPAN;
-    const used = new Set<number>();
-    const count = 2 + (rand() > 0.5 ? 1 : 0);
-    for (let n = 0; n < count; n++) {
-      let row = Math.floor(rand() * COLOR_GRID_ROWS);
-      for (let attempt = 0; attempt < 24; attempt++) {
-        if (!used.has(row) && !used.has(row - 1) && !used.has(row + 1)) break;
-        row = Math.floor(rand() * COLOR_GRID_ROWS);
+
+  for (let row = 0; row < rows; row++) {
+    const y = top + row * (barH + rowGap);
+    let x = 0;
+    let w = 4 + rand() * 3;
+    const step = 1.4 + rand() * 2.4;
+    while (x < COLOR_GRID_W - 4) {
+      const room = COLOR_GRID_W - x;
+      const width = Math.round(w);
+      if (room <= width) {
+        const previous = bars[bars.length - 1];
+        if (previous && room < previous.w) {
+          previous.w += gutter + room;
+        } else {
+          bars.push({ x, y, w: room, h: barH, fill: "#fff" });
+        }
+        break;
       }
-      used.add(row);
-      const span = COLOR_GRID_COL_SPAN - 2 - Math.floor(rand() * 3);
-      const inset = Math.floor(rand() * (COLOR_GRID_COL_SPAN - span + 1));
-      bars.push({
-        x: (origin + inset) * COLOR_GRID_CELL,
-        y: row * COLOR_GRID_CELL + (COLOR_GRID_CELL - barH) / 2,
-        w: span * COLOR_GRID_CELL,
-        h: barH,
-        fill: FIELD_BLUES[Math.floor(rand() * FIELD_BLUES.length)],
-      });
+      bars.push({ x, y, w: width, h: barH, fill: "#fff" });
+      x += width + gutter;
+      w += step + rand() * 3;
     }
   }
   return bars;
@@ -237,13 +240,6 @@ function colorGridBars(): Bar[] {
 const COLOR_GRID_BARS = colorGridBars();
 
 export function ColorGridField() {
-  const lines = [];
-  for (let x = 0; x <= COLOR_GRID_W; x += COLOR_GRID_CELL) {
-    lines.push(<line key={`v${x}`} x1={x} y1={0} x2={x} y2={COLOR_GRID_H} />);
-  }
-  for (let y = 0; y <= COLOR_GRID_H; y += COLOR_GRID_CELL) {
-    lines.push(<line key={`h${y}`} x1={0} y1={y} x2={COLOR_GRID_W} y2={y} />);
-  }
   return (
     <div className="not-typeset w-full" data-not-typeset aria-hidden>
       <svg
@@ -251,9 +247,6 @@ export function ColorGridField() {
         preserveAspectRatio="xMidYMid slice"
         className="block h-auto w-full"
       >
-        <g stroke="rgba(0,0,0,0.14)" strokeWidth="1">
-          {lines}
-        </g>
         {COLOR_GRID_BARS.map((bar, index) => (
           <rect key={index} x={bar.x} y={bar.y} width={bar.w} height={bar.h} fill={bar.fill} />
         ))}

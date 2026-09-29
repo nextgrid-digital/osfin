@@ -34,9 +34,9 @@ export default function ProductTemplate({ product }: { product: Product }) {
 
           <section className="mt-24 md:mt-32">
             <div className="mx-auto flex w-max max-w-full flex-col items-start gap-4 text-left md:flex-row md:items-baseline md:gap-16">
-              <h6 className="not-typeset shrink-0 !font-[family-name:var(--font-mono)] text-[14px] !font-medium !tracking-[-0.02em] text-black/45 uppercase">
+              <p className="not-typeset shrink-0 !m-0 !font-[family-name:var(--font-mono)] !text-[14px] !font-medium !leading-[1.4] !tracking-[-0.02em] !text-black/45 uppercase" data-not-typeset>
                 Problem
-              </h6>
+              </p>
               <div className="!mt-0 w-full max-w-xl text-[rgba(0,0,0,0.875)] [&>p]:!mt-4 [&>p:first-child]:!mt-0">
                 {product.problem.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
@@ -74,19 +74,19 @@ export default function ProductTemplate({ product }: { product: Product }) {
           ) : null}
 
           <section className="mt-24 md:mt-32">
-            <h6 className="not-typeset text-left !font-[family-name:var(--font-mono)] text-[14px] !font-medium !tracking-[-0.02em] text-black/45 uppercase">
+            <p className="not-typeset !m-0 text-left !font-[family-name:var(--font-mono)] !text-[14px] !font-medium !leading-[1.4] !tracking-[-0.02em] !text-black/45 uppercase" data-not-typeset>
               Capabilities
-            </h6>
+            </p>
             <div className="mt-8 border-t border-black/10">
               {product.capabilities.map((cap, i) => (
                 <div
                   key={cap.title}
                   className="grid grid-cols-1 items-start gap-4 border-b border-black/10 py-10 md:grid-cols-[2.75rem_minmax(0,0.9fr)_minmax(0,1.2fr)] md:gap-x-10"
                 >
-                  <h6 className="pt-1.5 text-black/40">
+                  <span className="not-typeset pt-1.5 !font-[family-name:var(--font-mono)] !text-[14px] !font-medium !leading-[1.4] !tracking-[-0.02em] !text-black/45 uppercase" data-not-typeset>
                     {String(i + 1).padStart(2, "0")}
-                  </h6>
-                  <h2 className="text-[rgba(0,0,0,0.875)]">{cap.title}</h2>
+                  </span>
+                  <h3 className="!mb-0 !mt-0 text-[rgba(0,0,0,0.875)]">{cap.title}</h3>
                   <div className="md:pt-1">
                     {cap.lead ? <p className="text-[rgba(0,0,0,0.875)]">{cap.lead}</p> : null}
                     <p className="text-black/60">{cap.body}</p>

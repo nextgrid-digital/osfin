@@ -59,25 +59,24 @@ export default function AboutPage() {
             </p>
             <h2 className="!mt-6 max-w-[14em] md:!mt-8">{ABOUT.who.title}</h2>
 
-            <div className="mt-16 grid gap-16 md:mt-24 md:grid-cols-2 md:gap-20">
+            <div className="mt-16 flex flex-col gap-16 md:mt-24 md:flex-row md:items-start md:gap-16 lg:gap-24">
               {ABOUT.who.columns.map((column) => (
-                <div key={column.index}>
-                  <p className={labelClassName} data-not-typeset>
-                    {column.index}
-                  </p>
-                  <h3
-                    className="not-typeset !m-0 mt-4 font-[family-name:var(--font-season)] text-[28px] leading-[1.25] font-normal md:text-[32px]"
-                    data-not-typeset
-                  >
+                <div key={column.index} className="flex min-w-0 flex-1 flex-col items-start">
+                  <div className="not-typeset flex items-center gap-3" data-not-typeset>
+                    <span className="inline-flex h-6 min-w-7 items-center justify-center border border-black/15 px-1.5 font-[family-name:var(--font-mono)] text-[11px] tracking-[-0.02em] text-black/55">
+                      {column.index}
+                    </span>
+                  </div>
+                  <h3 className="!mb-0 !mt-6 !font-[family-name:var(--font-season)] !text-[clamp(1.75rem,6.2vw,48px)] !leading-[1.15] !font-normal text-[rgba(0,0,0,0.875)]">
                     {column.title}
                   </h3>
-                  <p className="!mt-5 max-w-[34rem] text-black/65">{column.body}</p>
+                  <p className="!mb-0 !mt-10 text-[15px] leading-6 text-black/55">{column.body}</p>
                   {column.index === "01" ? (
-                    <p className="!mt-6 text-[15px] leading-7 text-black/80">
+                    <p className="!mb-0 !mt-6 text-[15px] leading-6 text-black/55">
                       {column.points.join(" → ")}
                     </p>
                   ) : (
-                    <ul className="not-typeset mt-6 space-y-2.5 text-[15px] leading-6 text-black/75" data-not-typeset>
+                    <ul className="not-typeset mt-6 space-y-2.5 text-[15px] leading-6 text-black/55" data-not-typeset>
                       {column.points.map((point) => (
                         <li key={point} className="flex gap-3">
                           <span className="mt-[0.55em] size-1 shrink-0 rounded-full bg-black/50" aria-hidden />

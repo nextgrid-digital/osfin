@@ -7,10 +7,10 @@ import SiteLogo from "./SiteLogo";
 export default function SiteFooter() {
   return (
     <FooterReveal>
-    <footer className="site-footer not-typeset border-t border-black/10 bg-[#E4E4E4] px-0 py-20 text-[13px] text-black/50 md:py-24" data-not-typeset>
+    <footer className="site-footer not-typeset border-t border-white/10 bg-[#001D20] px-0 py-20 text-[13px] text-white/60 md:py-24" data-not-typeset>
       <SiteContainer>
         <div className="mb-16 flex flex-wrap gap-3">
-          <p className="mr-2 w-full text-[12px] text-black/40 sm:mr-4 sm:w-auto sm:self-center">
+          <p className="mr-2 w-full text-[12px] text-white/50 sm:mr-4 sm:w-auto sm:self-center">
             Ask about Osfin on
           </p>
           {["ChatGPT", "Claude", "Perplexity", "Gemini", "Grok"].map((name) => (
@@ -19,14 +19,14 @@ export default function SiteFooter() {
               as={Link}
               href={`/#ask-${name.toLowerCase()}`}
               text={name}
-              className="rounded-none border border-black/10 px-3 py-1.5 text-[12px] text-black/60 hover:bg-black/[0.04] hover:text-black"
+              className="rounded-none border border-white/15 px-3 py-1.5 text-[12px] text-white/70 hover:bg-white/10 hover:text-white"
             />
           ))}
         </div>
 
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-5 lg:gap-10">
           <div>
-            <p className="mb-4 font-medium text-black/80">Osfin for</p>
+            <p className="mb-4 font-medium text-white/90">Osfin for</p>
             <ul className="space-y-2.5">
               {[
                 "Banking",
@@ -38,23 +38,23 @@ export default function SiteFooter() {
                 "Retail",
               ].map((l) => (
                 <li key={l}>
-                  <TextReveal as={Link} href="/#roles" text={l} className="hover:text-black" />
+                  <TextReveal as={Link} href="/#roles" text={l} className="hover:text-white" />
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <p className="mb-4 font-medium text-black/80">Product</p>
+            <p className="mb-4 font-medium text-white/90">Product</p>
             <ul className="space-y-2.5">
               {["Request a demo", "Changelog", "Documentation", "Download"].map((l) => (
                 <li key={l}>
-                  <TextReveal as={Link} href="/#product" text={l} className="hover:text-black" />
+                  <TextReveal as={Link} href="/#product" text={l} className="hover:text-white" />
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <p className="mb-4 font-medium text-black/80">Company</p>
+            <p className="mb-4 font-medium text-white/90">Company</p>
             <ul className="space-y-2.5">
               {["About", "Careers", "Compliance", "Security"].map((l) => (
                 <li key={l}>
@@ -62,14 +62,14 @@ export default function SiteFooter() {
                     as={Link}
                     href={l === "About" ? "/about" : "/#company"}
                     text={l}
-                    className="hover:text-black"
+                    className="hover:text-white"
                   />
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <p className="mb-4 font-medium text-black/80">Legal</p>
+            <p className="mb-4 font-medium text-white/90">Legal</p>
             <ul className="space-y-2.5">
               {[
                 "Terms of Service",
@@ -80,26 +80,26 @@ export default function SiteFooter() {
                 "Data Processing Agreement",
               ].map((l) => (
                 <li key={l}>
-                  <TextReveal as={Link} href="/#legal" text={l} className="hover:text-black" />
+                  <TextReveal as={Link} href="/#legal" text={l} className="hover:text-white" />
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <p className="mb-4 font-medium text-black/80">Social</p>
+            <p className="mb-4 font-medium text-white/90">Social</p>
             <ul className="space-y-2.5">
               {["X", "LinkedIn", "Discord"].map((l) => (
                 <li key={l}>
-                  <TextReveal as={Link} href="/#social" text={l} className="hover:text-black" />
+                  <TextReveal as={Link} href="/#social" text={l} className="hover:text-white" />
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        <div className="mt-20 flex flex-col gap-4 border-t border-black/10 pt-10 text-[rgba(0,0,0,0.875)] sm:flex-row sm:items-center sm:justify-between">
-          <SiteLogo className="text-base" />
-          <div className="max-w-xl text-[12px] leading-5 text-black/40">
+        <div className="mt-20 flex flex-col gap-4 border-t border-white/10 pt-10 text-white sm:flex-row sm:items-center sm:justify-between">
+          <SiteLogo />
+          <div className="max-w-xl text-[12px] leading-5 text-white/50">
             <p>Copyright © 2026 Osfin, Inc. All rights reserved.</p>
           </div>
         </div>

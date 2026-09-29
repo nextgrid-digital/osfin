@@ -131,9 +131,24 @@ export default function SiteNav() {
 
   useEffect(() => {
     const header = document.querySelector(".site-header");
+    const nav = document.querySelector<HTMLElement>(".site-nav");
     if (!header) return;
+
+    const syncNavStart = () => {
+      if (!nav) return;
+      document.documentElement.style.setProperty(
+        "--site-nav-start",
+        `${nav.getBoundingClientRect().left}px`,
+      );
+    };
+
     header.classList.toggle("header-menu-open", menuOpen);
-    return () => header.classList.remove("header-menu-open");
+    syncNavStart();
+    window.addEventListener("resize", syncNavStart);
+    return () => {
+      header.classList.remove("header-menu-open");
+      window.removeEventListener("resize", syncNavStart);
+    };
   }, [menuOpen]);
 
   return (
@@ -168,7 +183,7 @@ export default function SiteNav() {
               highlightClassName="hidden"
               className="w-screen"
             >
-              <div className="mx-auto w-full max-w-[1440px] px-5 py-10 sm:px-8 md:py-12">
+              <div className="site-nav-panel py-10 md:py-12">
                 <MenuColumns>
                   <div>
                     <MenuLabel>Products</MenuLabel>
@@ -202,7 +217,7 @@ export default function SiteNav() {
               highlightClassName="hidden"
               className="w-screen"
             >
-              <div className="mx-auto w-full max-w-[1440px] px-5 py-10 sm:px-8 md:py-12">
+              <div className="site-nav-panel py-10 md:py-12">
                 <MenuLabel>Industries</MenuLabel>
                 <div className="flex flex-col gap-2">
                   {SOLUTIONS.map(({ label }) => (
@@ -234,7 +249,7 @@ export default function SiteNav() {
               highlightClassName="hidden"
               className="w-screen"
             >
-              <div className="mx-auto w-full max-w-[1440px] px-5 py-10 sm:px-8 md:py-12">
+              <div className="site-nav-panel py-10 md:py-12">
                 <MenuLabel>Company</MenuLabel>
                 <div className="flex flex-col gap-2">
                   {COMPANY.map(({ label, href }) => (

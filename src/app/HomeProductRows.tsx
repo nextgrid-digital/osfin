@@ -26,7 +26,7 @@ export default function HomeProductRows() {
                     <span className="inline-flex h-6 min-w-7 items-center justify-center border border-black/15 px-1.5 font-[family-name:var(--font-mono)] text-[11px] tracking-[-0.02em] text-black/55">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className="font-[family-name:var(--font-mono)] text-[13px] tracking-[-0.02em] text-black/55">
+                    <span className="font-[family-name:var(--font-mono)] text-[13px] tracking-[-0.02em] text-black/55 uppercase">
                       {product.homeLabel}
                     </span>
                   </div>

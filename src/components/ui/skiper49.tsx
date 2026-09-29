@@ -81,7 +81,7 @@ const Carousel_003 = ({
 
   .Carousal_003 .swiper-slide {
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: transparent;
     background-position: center;
     background-size: cover;
     width: clamp(220px, 28vw, 420px);
