@@ -3,7 +3,6 @@ import { KineticTextReveal } from "@/components/ui/kinetic-text-reveal";
 import MetalLapJoint from "@/components/MetalLapJoint";
 import { POSTS } from "../content/posts";
 import HomeProductRows from "./HomeProductRows";
-import SectionHeading from "./SectionHeading";
 import SiteContainer from "./SiteContainer";
 import SiteFooter from "./SiteFooter";
 import TransitionLink from "./TransitionLink";
@@ -76,44 +75,68 @@ export default function HumanHome() {
         <HomeProductRows />
 
         {/* Changelog */}
-        <section id="changelog" className="flex min-h-svh items-center py-28 md:py-40">
+        <section id="changelog" className="py-28 md:py-40">
           <SiteContainer>
-            <SectionHeading title="From the frontier" cta={null} />
-            <div className="mt-10 grid grid-cols-1 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 md:mt-14">
-              {POSTS.map((post) => (
+            <div className="flex items-end justify-between gap-6 border-b border-black/15 pb-5">
+              <h2 className="!mb-0 !mt-0 text-[rgba(0,0,0,0.875)]">From the frontier</h2>
+              <TransitionLink
+                href="/blog"
+                className="not-typeset mb-1 inline-flex shrink-0 items-center gap-2 font-[family-name:var(--font-mono)] text-[15px] tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase no-underline hover:no-underline"
+                data-not-typeset
+              >
+                <span className="underline underline-offset-4">View all</span>
+                <svg viewBox="0 0 16 16" className="size-4" aria-hidden>
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.25"
+                  />
+                </svg>
+              </TransitionLink>
+            </div>
+            <div className="grid grid-cols-1 border-x border-b border-black/15 md:grid-cols-3">
+              {POSTS.slice(0, 3).map((post, index) => (
                 <TransitionLink
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="not-typeset group/cascade flex flex-col no-underline hover:no-underline"
+                  className={`not-typeset flex flex-col border-black/15 px-8 py-8 no-underline hover:no-underline md:py-10 ${
+                    index > 0
+                      ? "border-t md:border-t-0 md:border-l"
+                      : "md:border-l md:border-l-transparent"
+                  }`}
                   data-not-typeset
                 >
-                  <div className="aspect-square overflow-hidden rounded-none bg-black/[0.03]">
+                  <div className="aspect-[16/10] w-full overflow-hidden border border-black/15 bg-black/[0.03]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={post.cover}
-                      alt=""
-                      className="size-full object-cover"
-                    />
+                    <img src={post.cover} alt="" className="size-full object-cover" />
                   </div>
-                  <h3 className="mt-4 !font-sans !text-[17px] !font-medium !leading-snug !tracking-normal text-[rgba(0,0,0,0.875)] normal-case">
+                  <h3 className="!mb-0 !mt-8 !text-[22px] !font-normal !leading-[1.25] !tracking-normal text-[rgba(0,0,0,0.875)] normal-case md:!text-[24px]">
                     {post.title.split("\n").map((line) => (
                       <span key={line} className="block">
-                        <TextReveal as="span" text={line} />
+                        {line}
                       </span>
                     ))}
                   </h3>
-                  <p className="mt-1 font-sans text-[13px] leading-5 text-black/45">{post.category}</p>
+                  <div className="mt-auto flex items-center justify-between gap-4 pt-12">
+                    <p className="!m-0 flex items-center gap-2 font-[family-name:var(--font-mono)] text-[14px] leading-5 tracking-[-0.02em] text-black/55 uppercase">
+                      <span>{post.category}</span>
+                      <span className="inline-block size-1 bg-current" aria-hidden />
+                      <span>{post.date}</span>
+                    </p>
+                    <span className="inline-flex size-8 shrink-0 items-center justify-center border border-black/15 text-black/55">
+                      <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden>
+                        <path
+                          d="M4 12 12 4M6 4h6v6"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.25"
+                        />
+                      </svg>
+                    </span>
+                  </div>
                 </TransitionLink>
               ))}
-            </div>
-            <div className="mt-14 flex justify-center md:mt-16">
-              <TransitionLink
-                href="/blog"
-                className="not-typeset inline-flex h-10 items-center rounded-none border border-black/15 bg-white px-5 font-sans text-[15px] font-normal normal-case tracking-normal text-[rgba(0,0,0,0.875)] no-underline transition hover:bg-black/[0.03] hover:no-underline"
-                data-not-typeset
-              >
-                Read more
-              </TransitionLink>
             </div>
           </SiteContainer>
         </section>

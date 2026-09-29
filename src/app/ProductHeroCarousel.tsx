@@ -7,9 +7,10 @@ import { useProductSelect } from "./product-select";
 
 const SLIDE_ART: Record<string, string> = {
   "Match IQ": "/products/match-iq.png",
-  "Exception Resolution": "/products/exception-resolution.svg",
-  "Risk Signals": "/products/risk-signals.svg",
-  "Close Orchestration": "/products/close-orchestration.svg",
+  "Exception Resolution": "/products/exception-resolution.png",
+  "Control Views": "/products/control-views.png",
+  "Risk Signals": "/products/risk-signals.png",
+  "Close Orchestration": "/products/close-orchestration.png",
 };
 
 export default function ProductHeroCarousel({ currentSlug }: { currentSlug: string }) {

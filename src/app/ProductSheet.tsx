@@ -21,12 +21,14 @@ export function schemeForIcon(kind: ProductIconKind): ProductSheetScheme {
 type Bar = { x: number; y: number; w: number; h: number; fill: string };
 type Label = { n: string; x: number; y: number };
 
+const STRIPE_PAIR = ["#1A1A1A", "#CFCFCF"] as const;
+
 const STRIPES: Record<ProductSheetScheme, readonly [string, string]> = {
-  mesh: ["#3DDC3A", "#D6F04A"],
-  rings: ["#149B9B", "#B7E6E4"],
-  frames: ["#2E7FBE", "#C5DDF5"],
-  signals: ["#E25A24", "#F6C48A"],
-  bars: ["#7B4FD4", "#D8C4F6"],
+  mesh: STRIPE_PAIR,
+  rings: STRIPE_PAIR,
+  frames: STRIPE_PAIR,
+  signals: STRIPE_PAIR,
+  bars: STRIPE_PAIR,
 };
 
 function mulberry32(seed: number) {
@@ -196,60 +198,94 @@ export function SchemeArt({ scheme }: { scheme: ProductSheetScheme | ProductIcon
   );
 }
 
-const COLOR_GRID_CELL = 20;
-const COLOR_GRID_COLS = 72;
-const COLOR_GRID_ROWS = 12;
-const COLOR_GRID_W = COLOR_GRID_COLS * COLOR_GRID_CELL;
-const COLOR_GRID_H = COLOR_GRID_ROWS * COLOR_GRID_CELL;
+const COLOR_GRID_W = 3106;
+const COLOR_GRID_H = 2036;
+const COLOR_GRID_ROW_H = 500;
 
-function colorGridBars(): Bar[] {
-  const rand = mulberry32(2026);
-  const rows = 6;
-  const barH = 28;
-  const rowGap = 10;
-  const gutter = 6;
-  const blockH = rows * barH + (rows - 1) * rowGap;
-  const top = (COLOR_GRID_H - blockH) / 2;
-  const bars: Bar[] = [];
+const LIGHT = "#F5F5F5";
+const TINT = "#E6E8FF";
+const WASH = "#CCD2FF";
 
-  for (let row = 0; row < rows; row++) {
-    const y = top + row * (barH + rowGap);
-    let x = 0;
-    let w = 4 + rand() * 3;
-    const step = 1.4 + rand() * 2.4;
-    while (x < COLOR_GRID_W - 4) {
-      const room = COLOR_GRID_W - x;
-      const width = Math.round(w);
-      if (room <= width) {
-        const previous = bars[bars.length - 1];
-        if (previous && room < previous.w) {
-          previous.w += gutter + room;
-        } else {
-          bars.push({ x, y, w: room, h: barH, fill: "#fff" });
-        }
-        break;
-      }
-      bars.push({ x, y, w: width, h: barH, fill: "#fff" });
-      x += width + gutter;
-      w += step + rand() * 3;
-    }
-  }
-  return bars;
+function band(start: number, count: number, width: number, fill: string) {
+  const step = width + 12;
+  return Array.from({ length: count }, (_, index) => ({
+    x: start + index * step,
+    w: width,
+    fill,
+  }));
 }
 
-const COLOR_GRID_BARS = colorGridBars();
+const COLOR_GRID_ROWS: { y: number; bars: { x: number; w: number; fill: string }[] }[] = [
+  {
+    y: 0,
+    bars: [
+      ...band(0, 6, 100, LIGHT),
+      ...band(672, 9, 50, TINT),
+      ...band(1230, 3, 100, WASH),
+      ...band(1566, 5, 50, TINT),
+      ...band(1876, 2, 100, WASH),
+      ...band(2100, 11, 50, TINT),
+    ],
+  },
+  {
+    y: 512,
+    bars: [
+      ...band(0, 3, 100, LIGHT),
+      ...band(336, 9, 50, TINT),
+      ...band(894, 5, 100, WASH),
+      ...band(1454, 16, 50, TINT),
+    ],
+  },
+  {
+    y: 1024,
+    bars: [
+      ...band(0, 6, 100, LIGHT),
+      ...band(672, 9, 50, TINT),
+      ...band(1230, 5, 100, WASH),
+      ...band(1790, 7, 50, TINT),
+      ...band(2224, 1, 100, WASH),
+      ...band(2336, 1, 50, TINT),
+      ...band(2398, 1, 100, WASH),
+      ...band(2510, 1, 50, TINT),
+      ...band(2572, 1, 100, WASH),
+      ...band(2684, 7, 50, TINT),
+    ],
+  },
+  {
+    y: 1536,
+    bars: [
+      ...band(0, 1, 100, LIGHT),
+      ...band(112, 3, 50, TINT),
+      ...band(298, 2, 100, WASH),
+      ...band(522, 6, 50, TINT),
+      ...band(894, 1, 100, WASH),
+      ...band(1006, 8, 50, TINT),
+      ...band(1502, 2, 100, WASH),
+      ...band(1726, 8, 50, TINT),
+    ],
+  },
+];
 
 export function ColorGridField() {
   return (
     <div className="not-typeset w-full" data-not-typeset aria-hidden>
       <svg
         viewBox={`0 0 ${COLOR_GRID_W} ${COLOR_GRID_H}`}
-        preserveAspectRatio="xMidYMid slice"
+        preserveAspectRatio="xMidYMid meet"
         className="block h-auto w-full"
       >
-        {COLOR_GRID_BARS.map((bar, index) => (
-          <rect key={index} x={bar.x} y={bar.y} width={bar.w} height={bar.h} fill={bar.fill} />
-        ))}
+        {COLOR_GRID_ROWS.flatMap((row) =>
+          row.bars.map((bar) => (
+            <rect
+              key={`${row.y}-${bar.x}`}
+              x={bar.x}
+              y={row.y}
+              width={bar.w}
+              height={COLOR_GRID_ROW_H}
+              fill={bar.fill}
+            />
+          )),
+        )}
       </svg>
     </div>
   );

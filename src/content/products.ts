@@ -54,19 +54,19 @@ export const PRODUCTS: Product[] = [
     },
     capabilities: [
       {
-        title: "From raw data to ready, automatically.",
+        title: "From raw data\nto ready, automatically.",
         body: "ETL IQ is the foundation beneath every match. It detects new data the moment it arrives, in any format, from any bank, processor, gateway, or ledger, and resolves it into a single governed structure. Nothing waits for an upload. Every source you add strengthens the whole.",
       },
       {
-        title: "Matching at the speed money moves.",
+        title: "Matching at the speed\nmoney moves.",
         body: "Recon IQ reconciles every transaction as it lands, against rules that encode how your business actually operates. Every match is exact, and every match is provable. The volume that once defined the close now clears in seconds.",
       },
       {
-        title: "Every exception, explained and owned.",
+        title: "Every exception,\nexplained and owned.",
         body: "Exceptions IQ traces each break to its root cause across every connected system. What can be resolved autonomously is. What requires judgment reaches the right team as a ticket, with the cause, the evidence, and the deadline already attached. Every resolution makes the next one faster.",
       },
       {
-        title: "A live record of financial truth.",
+        title: "A live record\nof financial truth.",
         body: "Reporting IQ captures every match, exception, and resolution as it happens, traceable to the source. Views adapt to every team while the record beneath them stays constant, so the close no longer produces the record; it simply confirms what already exists.",
       },
     ],
@@ -102,19 +102,19 @@ export const PRODUCTS: Product[] = [
     },
     capabilities: [
       {
-        title: "The originating event, named.",
+        title: "The originating\nevent, named.",
         body: "Investigation IQ traces the exception across payment, settlement, ledger, and support systems until the event that started it is named. A missing settlement, a duplicate, or a disputed charge arrives with the records that explain it, so the work does not begin from an empty ticket.",
       },
       {
-        title: "One view for the decision.",
+        title: "One view\nfor the decision.",
         body: "Decision IQ gathers the transaction history, the policy that applies, the correspondence, and the supporting documents into a single resolution view. The team sees what happened and what the policy allows before anyone writes the outcome by hand.",
       },
       {
-        title: "The right team, with the file attached.",
+        title: "The right team,\nwith the file attached.",
         body: "Workflow IQ sends each case to the team that can close it, with the cause, the priority, the evidence, and the next action already on it. The trail stays intact between the processor, the merchant, the bank, and support.",
       },
       {
-        title: "The last resolution, still in the room.",
+        title: "The last resolution,\nstill in the room.",
         body: "Resolution Memory IQ keeps the decision, the pattern, and the outcome with the case. The next break of the same kind starts from that reasoning, so the investigation is not rebuilt from the first record.",
       },
     ],
@@ -150,19 +150,19 @@ export const PRODUCTS: Product[] = [
     },
     capabilities: [
       {
-        title: "The record behind the figure.",
+        title: "The record\nbehind the figure.",
         body: "Source IQ ties every dashboard and report to the transaction, settlement, case, or ledger entry that produced it. A number can be opened back to the record, so the explanation does not wait on a fresh extract.",
       },
       {
-        title: "Policy, visible while the work moves.",
+        title: "Policy, visible\nwhile the work moves.",
         body: "Policy IQ applies control requirements as activity passes through the system, and makes ownership and exceptions visible before a report is assembled. The rule is part of the workflow, not a check performed after the number is already published.",
       },
       {
-        title: "Movement, seen as it happens.",
+        title: "Movement, seen\nas it happens.",
         body: "Control IQ surfaces changes, breaks, and unusual activity across operational and financial views without waiting for a reporting cycle. The team sees the movement while it can still be explained, not after the period has closed around it.",
       },
       {
-        title: "Evidence that stands without a reconstruction.",
+        title: "Evidence that stands\nwithout a reconstruction.",
         body: "Audit IQ keeps the source, the rule, the action, and the approval behind every reported outcome. The evidence is already attached to the figure, so an audit does not have to rebuild the path by hand.",
       },
     ],
@@ -198,19 +198,19 @@ export const PRODUCTS: Product[] = [
     },
     capabilities: [
       {
-        title: "Behavior that does not fit the history.",
+        title: "Behavior that does not\nfit the history.",
         body: "Signal IQ watches velocity, amounts, counterparties, geography, and account behavior for a change that does not fit what came before. The signal arrives with the history it broke from, so the review does not start as a bare alert.",
       },
       {
-        title: "One exposure, across the network.",
+        title: "One exposure,\nacross the network.",
         body: "Pattern IQ links related activity across merchants, accounts, instruments, and operational events. What looked like separate alerts becomes one exposure the team can see before it spreads.",
       },
       {
-        title: "From the alert to the file.",
+        title: "From the alert\nto the file.",
         body: "Investigation IQ assembles the evidence, the history, and the policy context a review needs. The analyst opens a case that already holds the records, instead of collecting them from each system in turn.",
       },
       {
-        title: "A decision that can be explained later.",
+        title: "A decision that can\nbe explained later.",
         body: "Decision IQ records the action, the approval, the escalation, and the outcome of every review. The reasoning stays with the signal, so a later question does not depend on who happened to work the case.",
       },
     ],
@@ -246,19 +246,19 @@ export const PRODUCTS: Product[] = [
     },
     capabilities: [
       {
-        title: "The operating record, before the close begins.",
+        title: "The operating record,\nbefore the close begins.",
         body: "Close IQ brings together reconciled transactions, settlement positions, adjustments, and ledger activity before the period is assembled by hand. The close opens on a record that already exists, not on a stack of files still being chased.",
       },
       {
-        title: "What still needs a decision.",
+        title: "What still needs\na decision.",
         body: "Control IQ checks completeness, policy requirements, open exceptions, and unresolved movements across the close. The team sees what is ready and what is not, instead of discovering the gap at sign-off.",
       },
       {
-        title: "Approvals, with the evidence attached.",
+        title: "Approvals, with\nthe evidence attached.",
         body: "Approval IQ routes each decision to the owner who can make it, with the evidence, the rationale, and the deadline already on the request. Sign-off does not wait on a thread that has lost the record.",
       },
       {
-        title: "The last period, still attached.",
+        title: "The last period,\nstill attached.",
         body: "Close Memory IQ keeps prior decisions, recurring issues, and control outcomes with the work they governed. The next period begins from that context, so the same questions are not asked of a blank sheet.",
       },
     ],

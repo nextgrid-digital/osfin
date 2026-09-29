@@ -3,7 +3,7 @@ import { SchemeArt, SHEET_VIEWBOX, SheetGridLines, type ProductSheetScheme } fro
 export default function HomeProductPanel({ scheme }: { scheme: ProductSheetScheme }) {
   return (
     <div
-      className="not-typeset relative h-full min-h-[28rem] w-full overflow-hidden bg-white lg:min-h-[32rem]"
+      className="not-typeset relative h-full min-h-[28rem] w-full overflow-hidden bg-transparent lg:min-h-[32rem]"
       data-not-typeset
       aria-hidden
     >

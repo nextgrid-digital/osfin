@@ -86,8 +86,14 @@ export default function ProductTemplate({ product }: { product: Product }) {
                   <span className="not-typeset pt-1.5 !font-[family-name:var(--font-mono)] !text-[14px] !font-medium !leading-[1.4] !tracking-[-0.02em] !text-black/45 uppercase" data-not-typeset>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="!mb-0 !mt-0 text-[rgba(0,0,0,0.875)]">{cap.title}</h3>
-                  <div className="md:pt-1">
+                  <h3 className="!mb-0 !mt-0 text-[rgba(0,0,0,0.875)]">
+                    {cap.title.split("\n").map((line) => (
+                      <span key={line} className="block">
+                        {line}
+                      </span>
+                    ))}
+                  </h3>
+                  <div className="!mt-0 [&>:first-child]:!mt-0">
                     {cap.lead ? <p className="text-[rgba(0,0,0,0.875)]">{cap.lead}</p> : null}
                     <p className="text-black/60">{cap.body}</p>
                   </div>
