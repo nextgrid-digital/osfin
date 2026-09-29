@@ -24,7 +24,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
           <ProductTabs currentSlug={product.slug} />
 
           <SectionHeading
-            className="mt-8 md:mt-10"
+            className="mt-8 py-8 md:mt-10 md:py-12 [&_h2]:py-2"
             title={product.headline}
             aside={product.cardBody}
             cta={null}

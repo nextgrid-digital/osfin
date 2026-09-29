@@ -97,7 +97,7 @@ const TextReveal = React.memo(function TextReveal({
         {chars.map((char, i) => {
           const glyph = char === " " ? "\u00A0" : char;
           return (
-            <span key={i} className="inline-block h-[1em] overflow-hidden leading-none">
+            <span key={i} className="inline-block h-[1.4em] overflow-hidden leading-none">
               <span
                 className={cn(
                   "block",
@@ -109,8 +109,8 @@ const TextReveal = React.memo(function TextReveal({
                   transition: `transform ${duration}ms ${easing} ${i * staggerDelay}ms, translate ${duration}ms ${easing} ${i * staggerDelay}ms`,
                 }}
               >
-                <span className="block h-[1em] leading-none">{glyph}</span>
-                <span className="block h-[1em] leading-none" aria-hidden="true">{glyph}</span>
+                <span className="block h-[1.4em] overflow-hidden leading-[1.4]">{glyph}</span>
+                <span className="block h-[1.4em] overflow-hidden leading-[1.4]" aria-hidden="true">{glyph}</span>
               </span>
             </span>
           );

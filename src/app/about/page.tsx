@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import { GlyphMatrix } from "@/components/ui/glyph-matrix";
 import { ABOUT } from "../../content/about";
-import { ColorGridField } from "../ProductSheet";
 import SiteContainer from "../SiteContainer";
 import SiteFooter from "../SiteFooter";
 
@@ -32,7 +32,16 @@ export default function AboutPage() {
           </SiteContainer>
         </section>
 
-        <ColorGridField />
+        <div className="relative h-[400px] w-full overflow-hidden">
+          <GlyphMatrix
+            glyphs="01.+*/<>="
+            cellSize={14}
+            mutationRate={0.04}
+            interval={90}
+            fadeBottom={0.6}
+            color="#000000"
+          />
+        </div>
 
         <section className="py-24 md:py-36">
           <SiteContainer className="flex flex-col gap-20 md:gap-32">
