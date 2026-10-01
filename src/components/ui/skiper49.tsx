@@ -14,7 +14,6 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css";
-import "swiper/css/effect-cards";
 
 import { cn } from "@/lib/utils";
 
@@ -81,7 +80,7 @@ const Carousel_003 = ({
 
   .Carousal_003 .swiper-slide {
     box-sizing: border-box;
-    background-color: transparent;
+    background-color: #E4E4E4;
     background-position: center;
     background-size: cover;
     width: clamp(220px, 28vw, 420px);
@@ -181,7 +180,7 @@ const Carousel_003 = ({
           centeredSlides={true}
           loop={false}
           coverflowEffect={{
-            rotate: 40,
+            rotate: 0,
             stretch: 0,
             depth: 100,
             modifier: 1,

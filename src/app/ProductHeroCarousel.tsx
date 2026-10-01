@@ -13,15 +13,16 @@ export default function ProductHeroCarousel({ currentSlug }: { currentSlug: stri
   );
 
   const slideArt: Record<string, string> = {
-    "settlement-mesh": "/products/match-iq.png?v=2",
-    "exception-resolution": "/products/exception-resolution.png",
-    "control-views": "/products/control-views.png",
-    "close-orchestration": "/products/close-orchestration.png",
+    "settlement-mesh": "/products/match-iq.png?v=3",
+    "exception-resolution": "/products/exception-resolution.png?v=4",
+    "control-views": "/products/control-views.png?v=3",
+    "risk-signals": "/products/risk-signals.png?v=3",
+    "close-orchestration": "/products/close-orchestration.png?v=5",
   };
 
   const slides = PRODUCTS.map((item) =>
     slideArt[item.slug] ? (
-      <div key={item.slug} className="relative h-full w-full bg-transparent">
+      <div key={item.slug} className="relative h-full w-full bg-[#E4E4E4]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={slideArt[item.slug]}
@@ -30,7 +31,7 @@ export default function ProductHeroCarousel({ currentSlug }: { currentSlug: stri
         />
       </div>
     ) : (
-      <div key={item.slug} className="h-full w-full bg-white" />
+      <div key={item.slug} className="h-full w-full bg-[#E4E4E4]" />
     ),
   );
 

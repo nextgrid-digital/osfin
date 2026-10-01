@@ -83,7 +83,7 @@ export const PRODUCTS: Product[] = [
     homeBody:
       "Exception Resolution gathers the evidence across systems and moves the case to the team that can close it. A missing settlement, a dispute, or a failed refund arrives with its cause, its owner, and the next action already attached.",
     icon: "venn",
-    headline: "The intelligence layer for every unresolved payment.",
+    headline: "Every unresolved payment arrives with its cause and its owner.",
     lede: "Exception Resolution turns payment breaks, disputes, and chargebacks into structured decisions that move to the right outcome.",
     problem: [
       "Payment exceptions rarely belong to one system. A missing settlement, duplicate transaction, failed refund, or disputed charge can involve a processor, merchant, bank, ledger, and customer support team at the same time.",
@@ -179,7 +179,7 @@ export const PRODUCTS: Product[] = [
     homeBody:
       "Risk Signals connects velocity, counterparties, and prior decisions so an investigation starts with its context attached. Patterns across accounts, merchants, and instruments surface before they become a loss the team has to reconstruct.",
     icon: "octagon",
-    headline: "The intelligence layer for emerging payment risk.",
+    headline: "Name the pattern before it becomes the loss.",
     lede: "Risk Signals helps payment teams identify behavioral patterns, investigate suspicious activity, and coordinate action before risk becomes loss.",
     problem: [
       "Payment risk does not arrive as a single event. It emerges through patterns across transactions, accounts, merchants, devices, geographies, and operational behavior.",
@@ -227,7 +227,7 @@ export const PRODUCTS: Product[] = [
     homeBody:
       "Close Orchestration lines up reconciled records, open exceptions, approvals, and evidence so the period confirms what the business already knows. Unresolved work carries its context into the next period, so the close starts from the last one instead of a blank sheet.",
     icon: "squares",
-    headline: "The intelligence layer that carries the close forward.",
+    headline: "The close confirms what the books already hold.",
     lede: "Close Orchestration coordinates the records, controls, approvals, and decisions required to move from operational activity to a confident financial close.",
     problem: [
       "The close becomes difficult when financial truth is assembled manually from systems that were never designed to work together. Teams chase missing records, validate exceptions, request approvals, and reconcile changes across spreadsheets and email.",
