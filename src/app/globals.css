@@ -58,6 +58,13 @@
   --header-height: 64px;
   --max: 1440px;
   --background: #E4E4E4;
+  --background-subtle: oklch(0.985 0.002 247.839);
+  --background-muted: oklch(0.967 0.003 264.542);
+  --border-muted: oklch(0.967 0.003 264.542);
+  --border-strong: oklch(0.872 0.01 258.338);
+  --border-inverse: oklch(0.278 0.033 256.848);
+  --foreground-intense: oklch(0.21 0.034 264.665);
+  --focus-ring-light: oklch(1 0 0 / 25%);
   --foreground: rgba(0, 0, 0, 0.875);
   --surface: #f7f2e8;
   --card: #f7f2e8;
@@ -129,6 +136,13 @@
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
   --color-surface: var(--surface);
+  --color-background-subtle: var(--background-subtle);
+  --color-background-muted: var(--background-muted);
+  --color-border-muted: var(--border-muted);
+  --color-border-strong: var(--border-strong);
+  --color-border-inverse: var(--border-inverse);
+  --color-foreground-intense: var(--foreground-intense);
+  --color-ring-light: var(--focus-ring-light);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);

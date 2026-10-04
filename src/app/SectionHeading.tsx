@@ -8,7 +8,7 @@ type SectionHeadingProps = {
   aside?: React.ReactNode;
   tone?: "light" | "dark";
   className?: string;
-  titleAs?: "h1" | "h2";
+  titleAs?: "h1" | "h2" | "h3";
 };
 
 export default function SectionHeading({
@@ -65,7 +65,7 @@ export default function SectionHeading({
         <TitleTag
           className={`!mt-0 ${
             aside
-              ? "max-w-[40rem]"
+              ? "max-w-[44rem]"
               : typeof title === "string" && title.includes("\n")
                 ? "w-max max-w-none shrink-0"
                 : "max-w-[40rem]"
@@ -80,7 +80,7 @@ export default function SectionHeading({
               isDark ? "text-white/60" : "text-black/55"
             }`}
           >
-            <p className="!mt-0 line-clamp-3">{aside}</p>
+            <p className="!mt-0 line-clamp-3 !text-[14px] !leading-[1.5]">{aside}</p>
           </div>
         ) : null}
 

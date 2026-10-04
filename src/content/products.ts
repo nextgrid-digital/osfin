@@ -29,15 +29,15 @@ export const PRODUCTS: Product[] = [
     name: "Match IQ",
     cardLabel: "Reconciliation",
     cardBody:
-      "Match IQ is the reconciliation foundation for enterprises where millions of transactions cross countless systems each day, and every one must be matched, resolved, and accounted for.",
+      "Match IQ is the reconciliation foundation for enterprises where millions of transactions must be matched, resolved, and accounted for.",
     cardBg: "#d9e5d8",
     homeLabel: "Reconciliation",
     homeTitle: "Start with the records\nthat do not agree.",
     homeBody:
       "Match IQ compares every source as it arrives, so a break is named before someone rebuilds the trail by hand. Bank files, processor reports, and the ledger land in one structure, and every match stays traceable to the records that produced it.",
     icon: "mesh",
-    headline: "The cognitive layer for\nmoney in motion.",
-    lede: "Match IQ is the reconciliation foundation for enterprises where millions of transactions cross countless systems each day, and every one must be matched, resolved, and accounted for.",
+    headline: "The cognitive layer for money in motion.",
+    lede: "Match IQ is the reconciliation foundation for enterprises where millions of transactions must be matched, resolved, and accounted for.",
     problem: [
       "Reconciliation breaks because payment data is scattered, unsynchronized, and unexplained. Every bank, gateway, and processor keeps its own record, on its own clock, with its own identifiers. When two numbers disagree, no one can say why until someone rebuilds the trail by hand.",
       "Add a new payment rail, then a new market, and the gaps multiply. No single view. No shared truth.",
@@ -76,15 +76,15 @@ export const PRODUCTS: Product[] = [
     name: "Exception Resolution",
     cardLabel: "Dispute and Chargeback management",
     cardBody:
-      "Exception Resolution turns payment breaks, disputes, and chargebacks into structured decisions that move to the right outcome.",
+      "Exception Resolution turns payment breaks, disputes, and chargebacks into structured decisions, so every case arrives with its cause, its owner, and a clear next outcome.",
     cardBg: "#e2deec",
     homeLabel: "Exceptions",
     homeTitle: "Give every break\na cause and an owner.",
     homeBody:
       "Exception Resolution gathers the evidence across systems and moves the case to the team that can close it. A missing settlement, a dispute, or a failed refund arrives with its cause, its owner, and the next action already attached.",
     icon: "venn",
-    headline: "Every unresolved payment arrives with its cause and its owner.",
-    lede: "Exception Resolution turns payment breaks, disputes, and chargebacks into structured decisions that move to the right outcome.",
+    headline: "Every break arrives with its cause and owner.",
+    lede: "Exception Resolution turns payment breaks, disputes, and chargebacks into structured decisions, so every case arrives with its cause, its owner, and a clear next outcome.",
     problem: [
       "Payment exceptions rarely belong to one system. A missing settlement, duplicate transaction, failed refund, or disputed charge can involve a processor, merchant, bank, ledger, and customer support team at the same time.",
       "Most teams manage these breaks through shared inboxes, spreadsheets, and disconnected tickets. Context gets lost between handoffs. Analysts repeat the same investigation, and decisions are difficult to explain after the fact.",
@@ -124,7 +124,7 @@ export const PRODUCTS: Product[] = [
     name: "Control Views",
     cardLabel: "Reporting and Compliance",
     cardBody:
-      "Control Views turns payment activity into accountable reporting, compliance evidence, and operational clarity, so every team works from one record that can be traced to its source.",
+      "Control Views turns payment activity into accountable reporting, compliance evidence, and operational clarity from one record that can be traced to its source.",
     cardBg: "#ebe2d8",
     homeLabel: "Control",
     homeTitle: "See the number and\nthe record behind it.",
@@ -132,7 +132,7 @@ export const PRODUCTS: Product[] = [
       "Control Views gives finance, operations, risk, and audit one governed record, each with the view they need. A reported number can be followed back to the source, the rule, and the decision, without waiting for the period to end.",
     icon: "hex",
     headline: "The operating record for financial control.",
-    lede: "Control Views turns payment activity into accountable reporting, compliance evidence, and operational clarity, so every team works from one record that can be traced to its source.",
+    lede: "Control Views turns payment activity into accountable reporting, compliance evidence, and operational clarity from one record that can be traced to its source.",
     problem: [
       "Financial reporting becomes difficult when every team sees a different version of operational reality. Finance works from the ledger, operations works from processor files, risk works from cases, and compliance works from periodic extracts.",
       "By the time those views are assembled, the underlying activity has changed. Teams cannot easily trace a number back to its source, explain a movement, or prove how a decision was made.",
@@ -227,7 +227,7 @@ export const PRODUCTS: Product[] = [
     homeBody:
       "Close Orchestration lines up reconciled records, open exceptions, approvals, and evidence so the period confirms what the business already knows. Unresolved work carries its context into the next period, so the close starts from the last one instead of a blank sheet.",
     icon: "squares",
-    headline: "The close confirms what the books already hold.",
+    headline: "Close confirms what the books already hold.",
     lede: "Close Orchestration coordinates the records, controls, approvals, and decisions required to move from operational activity to a confident financial close.",
     problem: [
       "The close becomes difficult when financial truth is assembled manually from systems that were never designed to work together. Teams chase missing records, validate exceptions, request approvals, and reconcile changes across spreadsheets and email.",

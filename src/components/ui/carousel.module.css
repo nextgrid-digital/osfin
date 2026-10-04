@@ -1,0 +1,243 @@
+/* Tokens local to this carousel so Arc defaults do not restyle the site. */
+.root {
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-4: 1rem;
+  --radius-panel: 0;
+  --radius-pill: 9999px;
+  --control-height-sm: 2.25rem;
+  --duration-fast: 160ms;
+  --duration-spring: 580ms;
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --surface: #e4e4e4;
+  --surface-muted: rgba(0, 0, 0, 0.06);
+  --border: rgba(0, 0, 0, 0.15);
+  --border-strong: rgba(0, 0, 0, 0.28);
+  --foreground: rgba(0, 0, 0, 0.875);
+  --text-muted: rgba(0, 0, 0, 0.55);
+  --focus-ring: rgba(0, 0, 0, 0.55);
+  --carousel-gap: var(--space-4);
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+  gap: var(--space-4);
+  container-type: inline-size;
+}
+
+.stage {
+  position: relative;
+  min-width: 0;
+}
+
+.viewport {
+  position: relative;
+  min-width: 0;
+  overflow-x: clip;
+  overflow-y: visible;
+  border-radius: var(--radius-panel);
+  cursor: grab;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.viewport[data-dragging] {
+  cursor: grabbing;
+}
+
+.viewport:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+
+.track {
+  display: flex;
+  gap: var(--carousel-gap);
+  padding-inline: calc((100cqw - var(--carousel-slide)) / 2);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.track:not([data-measured]) {
+  translate: calc(var(--carousel-start) * -1 * (var(--carousel-slide) + var(--carousel-gap))) 0;
+}
+
+.slide {
+  flex: 0 0 var(--carousel-slide);
+  min-width: 0;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+}
+
+.slide img {
+  -webkit-user-drag: none;
+}
+
+.controls {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding-inline: calc((100cqw - var(--carousel-slide)) / 2);
+}
+
+.tabs {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+}
+
+.tab {
+  display: grid;
+  height: var(--control-height-sm);
+  flex: none;
+  place-items: center;
+  border: 0;
+  border-radius: var(--radius-pill);
+  padding: 0 5px;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dot {
+  position: relative;
+  display: block;
+  width: 6px;
+  height: 6px;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--border-strong);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.dotFill,
+.dotDrain {
+  position: absolute;
+  inset: 0;
+}
+
+.dotFill {
+  background: var(--foreground);
+}
+
+.dotDrain {
+  background: var(--border-strong);
+  transform-origin: 100% 50%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tab:hover .dot {
+    background: var(--text-muted);
+  }
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: -4px;
+}
+
+.arrows {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 12px;
+  pointer-events: none;
+}
+
+.arrows .control {
+  pointer-events: auto;
+}
+
+.control {
+  display: grid;
+  width: var(--control-height-sm);
+  height: var(--control-height-sm);
+  flex: none;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 0;
+  background: var(--surface);
+  color: var(--foreground);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    opacity var(--duration-fast) var(--ease-standard),
+    transform var(--duration-spring) var(--ease-spring);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .control:hover:not([aria-disabled="true"]) {
+    background: var(--surface-muted);
+  }
+}
+
+.control:active:not([aria-disabled="true"]) {
+  transform: scale(0.97);
+  transition: transform 100ms var(--ease-standard);
+}
+
+.control[aria-disabled="true"] {
+  color: var(--text-muted);
+  cursor: default;
+  opacity: 0.5;
+}
+
+.control:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.iconSlot {
+  display: grid;
+  width: 16px;
+  height: 16px;
+  place-items: center;
+}
+
+.icon {
+  grid-area: 1 / 1;
+  display: grid;
+  place-items: center;
+}
+
+@container (max-width: 340px) {
+  .controls {
+    gap: var(--space-1);
+    padding-inline: max(0px, calc((100cqw - var(--carousel-slide)) / 2 - var(--space-2)));
+  }
+
+  .arrows {
+    padding-inline: 8px;
+  }
+
+  .tab {
+    padding: 0 4px;
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot,
+  .control,
+  .control:active:not([aria-disabled="true"]) {
+    transition: none;
+    transform: none;
+  }
+}

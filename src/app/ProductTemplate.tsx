@@ -15,7 +15,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
       className="site-shell typeset typeset-docs min-h-screen bg-[#E4E4E4] text-[rgba(0,0,0,0.875)]"
     >
       <main className="pt-14 md:pt-16">
-        <SiteContainer className="pt-20 pb-28 md:pt-28 md:pb-36">
+        <SiteContainer className="pt-8 pb-28 md:pt-10 md:pb-36">
           <h1 className="mx-auto max-w-full text-center">
             <span className="block">Architecting the</span>
             <span className="block">Transaction-Intelligent Enterprise</span>
@@ -24,8 +24,9 @@ export default function ProductTemplate({ product }: { product: Product }) {
           <ProductTabs currentSlug={product.slug} />
 
           <SectionHeading
-            className="mt-8 py-8 md:mt-10 md:py-12 [&_h2]:py-2"
+            className="mt-4 pt-4 pb-0 md:mt-6 md:pt-6 md:pb-0 [&_h3]:py-1"
             title={product.headline}
+            titleAs="h3"
             aside={product.cardBody}
             cta={null}
           />
