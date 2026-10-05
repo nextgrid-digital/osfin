@@ -5,7 +5,7 @@ import { PRODUCTS } from "../content/products";
 import { useProductSelect } from "./product-select";
 
 const slideArt: Record<string, string> = {
-  "settlement-mesh": "/products/match-iq.png?v=3",
+  "settlement-mesh": "/products/match-iq.png?v=7",
   "exception-resolution": "/products/exception-resolution.png?v=4",
   "control-views": "/products/control-views.png?v=3",
   "risk-signals": "/products/risk-signals.png?v=3",
