@@ -223,12 +223,89 @@ export function SheetGridLines() {
 
 export const SHEET_VIEWBOX = `0 0 ${W} ${H}`;
 
+const SIGNAL_VIEWBOX = "74.4 78 486.2 500";
+
+// Dark vertical strokes traced from the reference. Faint full-height guides are omitted.
+const SIGNAL_LINES: { x: number; w: number; segs: readonly (readonly [number, number])[] }[] = [
+  { x: 75.7, w: 1.3, segs: [] },
+  { x: 86.2, w: 1.2, segs: [] },
+  { x: 96.7, w: 1.3, segs: [] },
+  { x: 106.8, w: 1.3, segs: [] },
+  { x: 116.8, w: 1.3, segs: [] },
+  { x: 126.9, w: 1.3, segs: [] },
+  { x: 137.9, w: 1.3, segs: [] },
+  { x: 148, w: 1.3, segs: [] },
+  { x: 158, w: 1.3, segs: [] },
+  { x: 168.1, w: 1.3, segs: [] },
+  { x: 179.1, w: 1.3, segs: [] },
+  { x: 189.1, w: 1.3, segs: [] },
+  { x: 199.2, w: 1.3, segs: [] },
+  { x: 209.3, w: 1.3, segs: [] },
+  { x: 220.3, w: 1.3, segs: [] },
+  { x: 230.3, w: 1.3, segs: [] },
+  { x: 240.4, w: 1.3, segs: [[533, 45]] },
+  { x: 250.9, w: 2, segs: [[124, 181], [351, 227]] },
+  { x: 261, w: 2, segs: [[79, 227], [351, 227]] },
+  { x: 271.5, w: 2.6, segs: [[80, 226], [351, 227]] },
+  { x: 281.6, w: 2.6, segs: [[124, 182], [351, 227]] },
+  { x: 292.1, w: 2, segs: [[79, 227], [351, 227]] },
+  { x: 302.2, w: 2, segs: [[79, 227], [351, 227]] },
+  { x: 312.7, w: 2.6, segs: [[79, 227], [351, 227]] },
+  { x: 322.7, w: 2.6, segs: [[79, 227], [351, 227]] },
+  { x: 333.3, w: 2, segs: [[79, 227], [351, 227]] },
+  { x: 343.3, w: 2, segs: [[79, 227], [351, 227]] },
+  { x: 353.4, w: 2, segs: [[79, 227], [351, 227]] },
+  { x: 363.9, w: 2.6, segs: [[124, 182], [351, 227]] },
+  { x: 374.5, w: 2, segs: [[124, 182], [351, 227]] },
+  { x: 384.5, w: 2, segs: [[124, 182], [351, 227]] },
+  { x: 394.6, w: 2, segs: [[169, 47], [260, 46], [352, 136], [532, 46]] },
+  { x: 405.1, w: 1.3, segs: [[125, 45], [533, 45]] },
+  { x: 415.2, w: 1.3, segs: [] },
+  { x: 425.7, w: 2, segs: [[124, 91]] },
+  { x: 436.2, w: 1.3, segs: [[85, 35]] },
+  { x: 446.3, w: 1.3, segs: [] },
+  { x: 456.8, w: 2, segs: [[79, 46]] },
+  { x: 466.9, w: 2, segs: [[79, 46], [170, 45]] },
+  { x: 476.9, w: 2, segs: [[79, 46], [170, 45]] },
+  { x: 487.5, w: 2.6, segs: [[79, 45], [170, 45], [261, 45]] },
+  { x: 498, w: 2, segs: [[79, 46], [170, 45], [260, 46]] },
+  { x: 508.1, w: 2, segs: [[79, 46], [170, 136], [397, 45]] },
+  { x: 518.1, w: 2, segs: [[215, 91], [397, 45], [488, 44]] },
+  { x: 528.6, w: 2.6, segs: [[215, 91], [397, 45]] },
+  { x: 539.2, w: 2, segs: [[215, 91], [397, 45]] },
+  { x: 549.2, w: 2, segs: [[215, 136], [488, 44]] },
+  { x: 559.3, w: 2, segs: [[215, 46], [306, 45], [488, 44]] },
+];
+
+function SignalCluster() {
+  return (
+    <g>
+      {SIGNAL_LINES.filter((line) => line.segs.length > 0).map((line) => (
+        <g key={line.x}>
+          {line.segs.map(([y, height]) => (
+            <line
+              key={`${line.x}-${y}`}
+              x1={line.x}
+              x2={line.x}
+              y1={y}
+              y2={y + height}
+              stroke="#001D20"
+              strokeWidth={Math.max(1.6, line.w)}
+            />
+          ))}
+        </g>
+      ))}
+    </g>
+  );
+}
+
 export default function ProductSheet({
   name,
   scheme,
   wordmark = true,
   art = true,
   indexes = true,
+  cluster = false,
   className = "absolute inset-0 h-full w-full",
 }: {
   name: string;
@@ -236,6 +313,7 @@ export default function ProductSheet({
   wordmark?: boolean;
   art?: boolean;
   indexes?: boolean;
+  cluster?: boolean;
   className?: string;
 }) {
   const title = titleLines(name);
@@ -244,14 +322,20 @@ export default function ProductSheet({
 
   return (
     <svg
-      viewBox={SHEET_VIEWBOX}
-      preserveAspectRatio="xMidYMid slice"
+      viewBox={cluster ? SIGNAL_VIEWBOX : SHEET_VIEWBOX}
+      preserveAspectRatio={cluster ? "none" : "xMidYMid slice"}
       className={className}
       role="img"
       aria-label={name}
     >
-      <SheetGridLines />
-      {art ? <SchemeArt scheme={scheme} /> : null}
+      {cluster ? (
+        <SignalCluster />
+      ) : (
+        <>
+          <SheetGridLines />
+          {art ? <SchemeArt scheme={scheme} /> : null}
+        </>
+      )}
       {indexes ? (
         <g
           fill="rgba(0,0,0,0.45)"
@@ -266,10 +350,14 @@ export default function ProductSheet({
           ))}
         </g>
       ) : null}
-      <CropMark x={168} y={248} dx={-1} dy={-1} />
-      <CropMark x={472} y={248} dx={1} dy={-1} />
-      <CropMark x={168} y={420} dx={-1} dy={1} />
-      <CropMark x={472} y={420} dx={1} dy={1} />
+      {cluster ? null : (
+        <>
+          <CropMark x={168} y={248} dx={-1} dy={-1} />
+          <CropMark x={472} y={248} dx={1} dy={-1} />
+          <CropMark x={168} y={420} dx={-1} dy={1} />
+          <CropMark x={472} y={420} dx={1} dy={1} />
+        </>
+      )}
       {wordmark ? (
         <>
           <text

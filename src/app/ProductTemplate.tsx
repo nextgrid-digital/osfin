@@ -68,7 +68,13 @@ export default function ProductTemplate({ product }: { product: Product }) {
                   </>
                 }
                 visual={
-                  <ProductSheet name={product.name} scheme={schemeForIcon(product.icon)} />
+                  <ProductSheet
+                    name={product.name}
+                    scheme={schemeForIcon(product.icon)}
+                    wordmark={false}
+                    indexes={false}
+                    cluster
+                  />
                 }
               />
             </section>
