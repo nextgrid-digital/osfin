@@ -3,8 +3,6 @@ import { KineticTextReveal } from "@/components/ui/kinetic-text-reveal";
 import MetalLapJoint from "@/components/MetalLapJoint";
 import { POSTS } from "../content/posts";
 import HomePlatformMotion from "./HomePlatformMotion";
-import PlatformGlyphField from "./PlatformGlyphField";
-import PlatformSplit from "./PlatformSplit";
 import ProductionHairline from "./ProductionHairlines";
 import SiteContainer from "./SiteContainer";
 import SiteFooter from "./SiteFooter";
@@ -36,28 +34,21 @@ function HomePlatform() {
   return (
     <HomePlatformMotion>
       <SiteContainer>
-        <PlatformSplit
-          flank
-          copy={
-            <h3 className="mx-auto !mb-0 !mt-0 max-w-xl text-center !font-normal !leading-[1.2] text-[rgba(0,0,0,0.875)]">
-              <span className="block" data-platform-line="">
-                Every payment creates context:
-              </span>
-              <span className="block" data-platform-line="">
-                records, policies, exceptions, and decisions that generic AI cannot reliably connect.
-              </span>
-              <span className="mt-8 block" data-platform-line="">
-                Osfin enables agentic financial operations intelligence that understands this context,
-                coordinates agentic workflows, and turns every exception into
-              </span>
-              <span className="block" data-platform-line="">
-                a clearer next action.
-              </span>
-            </h3>
-          }
-          flankStart={<PlatformGlyphField seed={2} />}
-          visual={<PlatformGlyphField seed={11} />}
-        />
+        <h3 className="mx-auto !mb-0 !mt-0 max-w-xl text-center !font-normal !leading-[1.2] text-[rgba(0,0,0,0.875)]">
+          <span className="block" data-platform-line="">
+            Every payment creates context:
+          </span>
+          <span className="block" data-platform-line="">
+            records, policies, exceptions, and decisions that generic AI cannot reliably connect.
+          </span>
+          <span className="mt-8 block" data-platform-line="">
+            Osfin enables agentic financial operations intelligence that understands this context,
+            coordinates agentic workflows, and turns every exception into
+          </span>
+          <span className="block" data-platform-line="">
+            a clearer next action.
+          </span>
+        </h3>
       </SiteContainer>
     </HomePlatformMotion>
   );
@@ -138,8 +129,8 @@ export default function HumanHome() {
                     title: "Reconciled with context",
                     figure: "slow" as const,
                     body: [
-                      "Connect ledger, payment, and settlement records",
-                      "to distinguish timing differences from genuine breaks.",
+                      "Connect ledger, payment & settlement records to",
+                      "distinguish timing differences from genuine breaks.",
                     ],
                   },
                   {
