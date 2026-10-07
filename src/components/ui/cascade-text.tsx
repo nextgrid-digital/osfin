@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useMemo, useState, type CSSProperties, type ElementType, type MouseEvent } from "react";
+import React, { useState, type CSSProperties, type ElementType, type MouseEvent } from "react";
 import { cn } from "@/lib/utils";
+import TextRoll from "@/components/ui/text-roll";
 
 export interface TextRevealProps {
   text: string;
@@ -32,12 +33,8 @@ const TextReveal = React.memo(function TextReveal({
   className = "",
   style,
   fontSize = "inherit",
-  staggerDelay = 25,
-  duration = 250,
-  easing = "ease-in-out",
   color = "inherit",
   hoverColor = "inherit",
-  direction = "up",
   onClick,
   onMouseEnter,
   onMouseLeave,
@@ -45,16 +42,6 @@ const TextReveal = React.memo(function TextReveal({
   "aria-label": ariaLabel,
 }: TextRevealProps) {
   const [hovered, setHovered] = useState(false);
-
-  const chars = useMemo(() => {
-    if (typeof Intl !== "undefined" && Intl.Segmenter) {
-      const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
-      return Array.from(segmenter.segment(text), (s) => s.segment);
-    }
-    return [...text];
-  }, [text]);
-
-  const sign = direction === "up" ? 1 : -1;
   const paintsColor = color !== "inherit" || hoverColor !== "inherit";
 
   const rootProps: Record<string, unknown> = {
@@ -93,28 +80,8 @@ const TextReveal = React.memo(function TextReveal({
 
   return (
     <Component {...rootProps}>
-      <span className="relative inline-flex leading-none" aria-hidden="true">
-        {chars.map((char, i) => {
-          const glyph = char === " " ? "\u00A0" : char;
-          return (
-            <span key={i} className="inline-block h-[1.4em] overflow-hidden leading-none">
-              <span
-                className={cn(
-                  "block",
-                  sign === 1
-                    ? "group-hover/cascade:-translate-y-[50%]"
-                    : "-translate-y-1/2 group-hover/cascade:translate-y-0",
-                )}
-                style={{
-                  transition: `transform ${duration}ms ${easing} ${i * staggerDelay}ms, translate ${duration}ms ${easing} ${i * staggerDelay}ms`,
-                }}
-              >
-                <span className="block h-[1.4em] overflow-hidden leading-[1.4]">{glyph}</span>
-                <span className="block h-[1.4em] overflow-hidden leading-[1.4]" aria-hidden="true">{glyph}</span>
-              </span>
-            </span>
-          );
-        })}
+      <span aria-hidden="true">
+        <TextRoll hovered={hovered}>{text}</TextRoll>
       </span>
     </Component>
   );
