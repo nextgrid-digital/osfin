@@ -5,6 +5,7 @@ export type Product = {
   name: string;
   headline: string;
   lede: string;
+  seoDescription?: string;
   problem: string[];
   capabilities: { title: string; lead?: string; body: string }[];
   icon: ProductIconKind;
@@ -15,6 +16,8 @@ export type Product = {
   homeLabel: string;
   homeTitle: string;
   homeBody: string;
+  /** Built-in ServicesStack scene id */
+  sceneId: "growth" | "technology" | "ai" | "legal";
   platform?: {
     heading: string;
     body: string[];
@@ -32,19 +35,22 @@ export const PRODUCTS: Product[] = [
       "Match IQ is the reconciliation foundation for enterprises where millions of transactions must be matched, resolved, and accounted for.",
     cardBg: "#d9e5d8",
     homeLabel: "Reconciliation",
-    homeTitle: "Start with the records\nthat do not agree.",
+    homeTitle: "One platform. Every transaction.",
     homeBody:
-      "Match IQ compares every source as it arrives, so a break is named before someone rebuilds the trail by hand. Bank files, processor reports, and the ledger land in one structure, and every match stays traceable to the records that produced it.",
+      "Teams can't keep pace with money in motion; systems can. Those systems run on Match, built from your transaction data, your matching logic, and the judgment of your finance teams.",
+    sceneId: "technology",
     icon: "mesh",
     headline: "The cognitive layer for money in motion.",
     lede: "Match IQ is the reconciliation foundation for enterprises where millions of transactions must be matched, resolved, and accounted for.",
+    seoDescription:
+      "Match IQ by Osfin is the reconciliation foundation for enterprises where millions of transactions must be matched, resolved, and accounted for.",
     problem: [
       "Reconciliation breaks because payment data is scattered, unsynchronized, and unexplained. Every bank, gateway, and processor keeps its own record, on its own clock, with its own identifiers. When two numbers disagree, no one can say why until someone rebuilds the trail by hand.",
       "Add a new payment rail, then a new market, and the gaps multiply. No single view. No shared truth.",
       "Match IQ closes that gap.",
     ],
     platform: {
-      heading: "Match IQ Transaction\nIntelligence Platform",
+      heading: "Match IQ Transaction Intelligence Platform",
       body: [
         "Teams can't keep pace with money in motion; systems can. Those systems run on Match, built from your transaction data, your matching logic, and the judgment of your finance teams. Every rule you write and every exception you resolve carries forward with its audit trail intact, so each new source, rail, or market starts ahead of the last. Over time, reconciliation stops being the work that holds up the close and becomes the financial intelligence that sets the pace of your growth.",
       ],
@@ -54,116 +60,120 @@ export const PRODUCTS: Product[] = [
     },
     capabilities: [
       {
-        title: "From raw data\nto ready, automatically.",
+        title: "From raw data to ready, automatically.",
         body: "ETL IQ is the foundation beneath every match. It detects new data the moment it arrives, in any format, from any bank, processor, gateway, or ledger, and resolves it into a single governed structure. Nothing waits for an upload. Every source you add strengthens the whole.",
       },
       {
-        title: "Matching at the speed\nmoney moves.",
+        title: "Matching at the speed money moves.",
         body: "Recon IQ reconciles every transaction as it lands, against rules that encode how your business actually operates. Every match is exact, and every match is provable. The volume that once defined the close now clears in seconds.",
       },
       {
-        title: "Every exception,\nexplained and owned.",
+        title: "Every exception, explained and owned.",
         body: "Exceptions IQ traces each break to its root cause across every connected system. What can be resolved autonomously is. What requires judgment reaches the right team as a ticket, with the cause, the evidence, and the deadline already attached. Every resolution makes the next one faster.",
       },
       {
-        title: "A live record\nof financial truth.",
+        title: "A live record of financial truth.",
         body: "Reporting IQ captures every match, exception, and resolution as it happens, traceable to the source. Views adapt to every team while the record beneath them stays constant, so the close no longer produces the record; it simply confirms what already exists.",
       },
     ],
   },
   {
     slug: "exception-resolution",
-    name: "Exception Resolution",
-    cardLabel: "Dispute and Chargeback management",
+    name: "Exception Desk",
+    cardLabel: "Exception management",
     cardBody:
-      "Exception Resolution turns payment breaks, disputes, and chargebacks into structured decisions, so every case arrives with its cause, its owner, and a clear next outcome.",
+      "Exception Desk finds the reason behind every break, fixes what it can on its own, and sends the rest to the right person with the answer already attached.",
     cardBg: "#e2deec",
     homeLabel: "Exceptions",
-    homeTitle: "Give every break\na cause and an owner.",
+    homeTitle: "One desk. Every break.",
     homeBody:
-      "Exception Resolution gathers the evidence across systems and moves the case to the team that can close it. A missing settlement, a dispute, or a failed refund arrives with its cause, its owner, and the next action already attached.",
+      "Exception Desk picks up where matching stops. It finds the reason behind every break, fixes what it can on its own, and sends the rest to the right person with the answer already attached.",
+    sceneId: "ai",
     icon: "venn",
-    headline: "Every break arrives with its cause and owner.",
-    lede: "Exception Resolution turns payment breaks, disputes, and chargebacks into structured decisions, so every case arrives with its cause, its owner, and a clear next outcome.",
+    headline: "Where every break finds its reason.",
+    lede: "",
+    seoDescription:
+      "Exception Desk by Osfin gives every payment break a reason code, resolves known fixes on its own, routes the rest to the right stakeholder, and learns from every resolution.",
     problem: [
-      "Payment exceptions rarely belong to one system. A missing settlement, duplicate transaction, failed refund, or disputed charge can involve a processor, merchant, bank, ledger, and customer support team at the same time.",
-      "Most teams manage these breaks through shared inboxes, spreadsheets, and disconnected tickets. Context gets lost between handoffs. Analysts repeat the same investigation, and decisions are difficult to explain after the fact.",
-      "Exception Resolution connects the evidence, identifies the cause, and coordinates the next action.",
+      "A break without a reason can't be closed with confidence. It can be written off or left to age, but not explained to an auditor, a card scheme, or a customer waiting on a refund. The reason sits upstream, somewhere between the processor, the bank, the merchant, and the ledger, and someone has to rebuild it by hand.",
+      "Add volume, then a new rail, and the hunt repeats for every break. No clear owner. No next step.",
+      "Exception Desk finds the reason first.",
     ],
     platform: {
-      heading: "The case arrives\nwith its cause attached.",
+      heading: "Exception Desk — Autonomous Payment Exception Resolution",
       body: [
-        "Every exception contains a sequence of events, records, policies, and decisions. Exception Resolution brings those elements together so teams can understand what happened, determine what should happen next, and preserve the reasoning behind the outcome.",
-        "The system learns from how your teams investigate and resolve breaks. Each decision becomes part of the operating memory for the next exception.",
+        "Exception Desk picks up where matching stops. It finds the reason behind every break, fixes what it can on its own, and sends the rest to the right person with the answer already attached. Every fix teaches it the next one. The queue gets shorter.",
       ],
-      kicker: "Every exception should arrive with its context.",
+      kicker: "One desk. Every break.",
       close:
-        "Exception Resolution gathers the records across processor, merchant, bank, and ledger, then reconstructs the event that produced the break. The case reaches the team that can close it with the cause, the evidence, and the next action already attached.",
+        "Built for teams that clear breaks every day. Four capabilities take each break from reason to resolution. Every step is recorded and auditable.",
     },
     capabilities: [
       {
-        title: "The originating\nevent, named.",
-        body: "Investigation IQ traces the exception across payment, settlement, ledger, and support systems until the event that started it is named. A missing settlement, a duplicate, or a disputed charge arrives with the records that explain it, so the work does not begin from an empty ticket.",
+        title: "Every break gets a reason code.",
+        body: "Exception Desk traces each break across the processor, the bank, the merchant, and the ledger, then tags it with a clear reason code: fee mismatch, timing difference, duplicate, failed reversal. Every break is named the same way, every time, so teams see what is breaking, not just how much.",
       },
       {
-        title: "One view\nfor the decision.",
-        body: "Decision IQ gathers the transaction history, the policy that applies, the correspondence, and the supporting documents into a single resolution view. The team sees what happened and what the policy allows before anyone writes the outcome by hand.",
+        title: "Resolved on its own, when the fix is known.",
+        body: "When a reason code has a standard fix, Exception Desk applies it: a write-off within tolerance, a reversal, or a retry, with the reason recorded. Those breaks never reach a person. Your team sees only the ones that need judgment.",
       },
       {
-        title: "The right team,\nwith the file attached.",
-        body: "Workflow IQ sends each case to the team that can close it, with the cause, the priority, the evidence, and the next action already on it. The trail stays intact between the processor, the merchant, the bank, and support.",
+        title: "Assigned to the right stakeholder.",
+        body: "Each reason code maps to an owner: operations, disputes, treasury, the merchant, or the partner bank. Exception Desk sends every case to the stakeholder who can close it, with the reason, the proof, and the deadline attached. Nothing waits in the wrong inbox.",
       },
       {
-        title: "The last resolution,\nstill in the room.",
-        body: "Resolution Memory IQ keeps the decision, the pattern, and the outcome with the case. The next break of the same kind starts from that reasoning, so the investigation is not rebuilt from the first record.",
+        title: "Self-learning, with every break.",
+        body: "Exception Desk learns from every resolution your team makes. New patterns become new reason codes, and repeated decisions become rules it applies on its own. The more breaks it sees, the fewer need a person. Every break makes the next one easier.",
       },
     ],
   },
   {
     slug: "control-views",
-    name: "Control Views",
+    name: "Regulatory Reporting",
     cardLabel: "Reporting and Compliance",
     cardBody:
-      "Control Views turns payment activity into accountable reporting, compliance evidence, and operational clarity from one record that can be traced to its source.",
+      "Regulatory Reporting builds each report from data Osfin has already matched, checks it against the regulator's rules, and tracks every deadline.",
     cardBg: "#ebe2d8",
-    homeLabel: "Control",
-    homeTitle: "See the number and\nthe record behind it.",
+    homeLabel: "Reporting",
+    homeTitle: "One record. Every regulator.",
     homeBody:
-      "Control Views gives finance, operations, risk, and audit one governed record, each with the view they need. A reported number can be followed back to the source, the rule, and the decision, without waiting for the period to end.",
+      "Regulatory Reporting does the work every day, so the deadline is just a click. It builds each report from data Osfin has already matched, checks it against the regulator's rules, and tracks every deadline.",
+    sceneId: "legal",
     icon: "hex",
-    headline: "The operating record for financial control.",
-    lede: "Control Views turns payment activity into accountable reporting, compliance evidence, and operational clarity from one record that can be traced to its source.",
+    headline: "Where every regulatory report is ready before it's due.",
+    lede: "",
+    seoDescription:
+      "Regulatory Reporting by Osfin builds regulatory reports from matched data, catches errors before regulators do, tracks every deadline on one calendar, and proves every number in one click.",
     problem: [
-      "Financial reporting becomes difficult when every team sees a different version of operational reality. Finance works from the ledger, operations works from processor files, risk works from cases, and compliance works from periodic extracts.",
-      "By the time those views are assembled, the underlying activity has changed. Teams cannot easily trace a number back to its source, explain a movement, or prove how a decision was made.",
-      "Control Views creates one governed record that every team can use.",
+      "Every regulatory report is a promise that the numbers are right: customer funds held, transactions processed, activity flagged as suspicious. But those numbers live in processors, banks, and ledgers that rarely agree, so teams reconcile them by hand and paste them into templates the night before the deadline.",
+      "Regulators keep asking for more: more reports, more often, in more detail. The work grows every year. The team doesn't.",
+      "Regulatory Reporting keeps the promise for you.",
     ],
     platform: {
-      heading: "Follow the number\nback to the record.",
+      heading: "Regulatory Reporting — Automated Reporting for Payments",
       body: [
-        "Control Views connects operational events to the financial record beneath them. It gives each team the view it needs while preserving one consistent source of truth underneath.",
-        "Every number can be traced to the source record, the rule applied, the exception raised, and the decision made. Reporting becomes a continuous operating layer rather than a task performed at the end of the period.",
+        "Regulatory Reporting does the work every day, so the deadline is just a click. It builds each report from data Osfin has already matched, checks it against the regulator's rules, and tracks every deadline. When a regulator asks where a number came from, the answer is already there.",
       ],
-      kicker: "One record. Every operational view.",
+      kicker: "One record. Every regulator.",
       close:
-        "Control Views turns transaction activity into one record that finance, operations, risk, audit, and compliance can each read in the view they need. A reported figure can be followed to the source, the rule, and the decision without waiting for the period to end.",
+        "Built for compliance and finance teams at banks, payment companies, and fintechs. Four capabilities take each report from raw data to submission.",
     },
     capabilities: [
       {
-        title: "The record\nbehind the figure.",
-        body: "Source IQ ties every dashboard and report to the transaction, settlement, case, or ledger entry that produced it. A number can be opened back to the record, so the explanation does not wait on a fresh extract.",
+        title: "Reports that write themselves.",
+        body: "Regulators ask for the same numbers in different formats: customer funds held, transaction volumes, suspicious activity. Regulatory Reporting pulls them from your matched data and fills in each regulator's template. Copy-paste is retired.",
       },
       {
-        title: "Policy, visible\nwhile the work moves.",
-        body: "Policy IQ applies control requirements as activity passes through the system, and makes ownership and exceptions visible before a report is assembled. The rule is part of the workflow, not a check performed after the number is already published.",
+        title: "Caught by you, not the regulator.",
+        body: "Every report runs through the regulator's own checks before it leaves, is compared with last period, and is tied back to the bank and the ledger. A missing field or a number that doesn't add up gets flagged while there's time to fix it. Resubmissions become rare.",
       },
       {
-        title: "Movement, seen\nas it happens.",
-        body: "Control IQ surfaces changes, breaks, and unusual activity across operational and financial views without waiting for a reporting cycle. The team sees the movement while it can still be explained, not after the period has closed around it.",
+        title: "Every deadline, one calendar.",
+        body: "Each regulator comes with its own rhythm of monthly, quarterly, and annual reports. Regulatory Reporting keeps them on one calendar, assigns who prepares and who approves, and moves each report toward submission. Late reports stop being a risk.",
       },
       {
-        title: "Evidence that stands\nwithout a reconstruction.",
-        body: "Audit IQ keeps the source, the rule, the action, and the approval behind every reported outcome. The evidence is already attached to the figure, so an audit does not have to rebuild the path by hand.",
+        title: "Proof for every number.",
+        body: "When a regulator or auditor asks how a figure was reached, one click shows the transactions, reconciliations, and approvals behind it. Every issue and its fix is on record. Hard questions get easy answers.",
       },
     ],
   },
@@ -172,94 +182,98 @@ export const PRODUCTS: Product[] = [
     name: "Risk Signals",
     cardLabel: "AML Reporting And Fraud Prevention",
     cardBody:
-      "Risk Signals helps payment teams identify behavioral patterns, investigate suspicious activity, and coordinate action before risk becomes loss.",
+      "Risk Signals watches every payment as it moves, scores risk in real time, links related accounts and merchants, and opens a case with the evidence already gathered.",
     cardBg: "#d8e2ea",
     homeLabel: "Risk",
-    homeTitle: "See the pattern before\nit becomes the loss.",
+    homeTitle: "One view. Every rail.",
     homeBody:
-      "Risk Signals connects velocity, counterparties, and prior decisions so an investigation starts with its context attached. Patterns across accounts, merchants, and instruments surface before they become a loss the team has to reconstruct.",
+      "Risk Signals watches every payment as it moves and connects it to everything around it. It scores risk in real time, links related accounts and merchants, and opens a case with the evidence already gathered.",
+    sceneId: "growth",
     icon: "octagon",
-    headline: "Name the pattern before it becomes the loss.",
-    lede: "Risk Signals helps payment teams identify behavioral patterns, investigate suspicious activity, and coordinate action before risk becomes loss.",
+    headline: "Where risk is seen before it becomes loss.",
+    lede: "",
+    seoDescription:
+      "Risk Signals by Osfin links accounts to the people behind them, catches fraud rings whole, follows stolen money to where it lands, and investigates every alert in one place.",
     problem: [
-      "Payment risk does not arrive as a single event. It emerges through patterns across transactions, accounts, merchants, devices, geographies, and operational behavior.",
-      "Traditional monitoring systems evaluate isolated signals and create alerts without enough context. Analysts then spend time assembling the pattern themselves, often after the exposure has already grown.",
-      "Risk Signals connects weak signals into a living view of risk.",
+      "Most fraud doesn't look like fraud. One card test, one refund, one new account looks normal on its own. The risk only shows up in the pattern, across merchants, accounts, and devices that separate systems never connect. So alerts fire one at a time, analysts clear the noise by hand, and the real loss is found after the money has gone.",
+      "Add volume, then a new rail, and the noise grows. More alerts. Less signal.",
+      "Risk Signals sees the pattern first.",
     ],
     platform: {
-      heading: "Name the pattern\nbefore it is a loss.",
+      heading: "Risk Signals — Real-Time Payment Risk Intelligence",
       body: [
-        "Risk Signals understands that risk is contextual. It connects transaction behavior, account history, operational events, policy thresholds, and prior decisions to show how a signal is forming.",
-        "The system helps teams distinguish a meaningful pattern from noise, coordinate investigations, and carry the reasoning from one review into the next.",
+        "Risk Signals watches every payment as it moves and connects it to everything around it. It scores risk in real time, links related accounts and merchants, and opens a case with the evidence already gathered. Every analyst decision makes the next alert sharper. The noise gets quieter.",
       ],
-      kicker: "See the pattern before it becomes the event.",
+      kicker: "One view. Every rail.",
       close:
-        "Risk Signals watches payment activity as it moves and names the change that matters. The investigation starts with the behavior, the related accounts, and the policy already attached, before the exposure has to be reconstructed.",
+        "Built for risk and compliance teams at acquirers, issuers, payment platforms, and wallets. Four capabilities take each signal from alert to decision. Every action is logged for regulators and partner banks.",
     },
     capabilities: [
       {
-        title: "Behavior that does not\nfit the history.",
-        body: "Signal IQ watches velocity, amounts, counterparties, geography, and account behavior for a change that does not fit what came before. The signal arrives with the history it broke from, so the review does not start as a bare alert.",
+        title: "Every account, linked to who's behind it.",
+        body: "Fraudsters open many accounts under different names, but reuse the same phone, device, or address. Risk Signals connects those details, so five strangers resolve into one person. Disguises stop working.",
       },
       {
-        title: "One exposure,\nacross the network.",
-        body: "Pattern IQ links related activity across merchants, accounts, instruments, and operational events. What looked like separate alerts becomes one exposure the team can see before it spreads.",
+        title: "The whole ring, not one account.",
+        body: "Fraud is organised: one account collecting from many, or money passing through a chain and circling back. Risk Signals recognises these patterns across your network. Flag one account, and every account working with it surfaces too.",
       },
       {
-        title: "From the alert\nto the file.",
-        body: "Investigation IQ assembles the evidence, the history, and the policy context a review needs. The analyst opens a case that already holds the records, instead of collecting them from each system in turn.",
+        title: "The money, followed to where it lands.",
+        body: "Stolen funds move fast through layers of accounts to hide where they end up. Risk Signals follows every transfer to the account that finally receives it. Your team acts on the one that matters, not the first in line.",
       },
       {
-        title: "A decision that can\nbe explained later.",
-        body: "Decision IQ records the action, the approval, the escalation, and the outcome of every review. The reasoning stays with the signal, so a later question does not depend on who happened to work the case.",
+        title: "Every alert, investigated in one place.",
+        body: "Each alert opens as a case with the linked accounts, the money trail, and past decisions attached. Analysts decide and report to regulators without switching tools. Every decision teaches the system, so false alarms keep falling.",
       },
     ],
   },
   {
     slug: "close-orchestration",
     name: "Close Orchestration",
-    cardLabel: "Financial close-orchestration",
+    cardLabel: "Financial close",
     cardBody:
-      "Close Orchestration coordinates the records, controls, approvals, and decisions required to move from operational activity to a confident financial close.",
+      "Close Orchestration pulls matched transactions and resolved breaks into the books as they happen, flags what's missing the day it goes missing, and sends every sign-off with its proof attached.",
     cardBg: "#e6e6e6",
     homeLabel: "Close",
-    homeTitle: "Carry the close\nforward.",
+    homeTitle: "One close. Every entity.",
     homeBody:
-      "Close Orchestration lines up reconciled records, open exceptions, approvals, and evidence so the period confirms what the business already knows. Unresolved work carries its context into the next period, so the close starts from the last one instead of a blank sheet.",
+      "Close Orchestration does the finding every day, so the close doesn't have to. It pulls matched transactions and resolved breaks into the books as they happen, flags what's missing the day it goes missing, and sends every sign-off with its proof attached.",
+    sceneId: "technology",
     icon: "squares",
-    headline: "Close confirms what the books already hold.",
-    lede: "Close Orchestration coordinates the records, controls, approvals, and decisions required to move from operational activity to a confident financial close.",
+    headline: "Where the close stops being a search.",
+    lede: "",
+    seoDescription:
+      "Close Orchestration by Osfin runs the financial close in one place: task management, self-certifying reconciliations, journal entries posted to your ERP, and variance analysis with live close status.",
     problem: [
-      "The close becomes difficult when financial truth is assembled manually from systems that were never designed to work together. Teams chase missing records, validate exceptions, request approvals, and reconcile changes across spreadsheets and email.",
-      "The final close may be accurate, but the path to it is slow, repetitive, and difficult to audit. Every period begins with the same questions because the reasoning from the last close was not preserved.",
-      "Close Orchestration turns the close into a continuous operating process.",
+      "Most of the close isn't closing. It's finding. The missing settlement file, the unbooked fee, the approval stuck in someone's inbox. The books take days not because the numbers are hard, but because the answers are scattered across ledgers, processor files, and spreadsheets.",
+      "Add an entity, then a new currency, and there's more to find. Same hunt. Same late nights.",
+      "Close Orchestration finds it before the close begins.",
     ],
     platform: {
-      heading: "The close confirms\nwhat the books already hold.",
+      heading: "Close Orchestration — Continuous Financial Close",
       body: [
-        "The close should confirm what the business already knows, not reveal what it failed to connect. Close Orchestration brings together reconciled records, open exceptions, control checks, approvals, and sign-offs in one operating sequence.",
-        "Each close creates a stronger starting point for the next one. Decisions remain attached to the records they govern, and unresolved work moves forward with its context intact.",
+        "Close Orchestration does the finding every day, so the close doesn't have to. It pulls matched transactions and resolved breaks into the books as they happen, flags what's missing the day it goes missing, and sends every sign-off with its proof attached. Every close teaches it the next one. The close gets shorter.",
       ],
-      kicker: "From operational activity to a close you can explain.",
+      kicker: "One close. Every entity.",
       close:
-        "Close Orchestration lines up the reconciled records, the open exceptions, the control checks, and the approvals the period still needs. What remains unresolved carries its context forward, so the next close starts from the last one.",
+        "Built for finance teams closing high-volume payment businesses. Four capabilities take each period from open to signed off. Nothing is left to find at the end.",
     },
     capabilities: [
       {
-        title: "The operating record,\nbefore the close begins.",
-        body: "Close IQ brings together reconciled transactions, settlement positions, adjustments, and ledger activity before the period is assembled by hand. The close opens on a record that already exists, not on a stack of files still being chased.",
+        title: "Task management for the entire close.",
+        body: "Every close task sits in one checklist with a preparer, a reviewer, a due date, and the tasks it depends on. Recurring tasks roll forward each period on their own. When anything slips or gets blocked, the owner knows right away.",
       },
       {
-        title: "What still needs\na decision.",
-        body: "Control IQ checks completeness, policy requirements, open exceptions, and unresolved movements across the close. The team sees what is ready and what is not, instead of discovering the gap at sign-off.",
+        title: "Reconciliations that certify themselves.",
+        body: "Each balance sheet account is tied to its sub-ledger and supporting data. Accounts that agree within your thresholds are certified automatically. The rest reach a preparer with the difference, the detail, and the backup already attached.",
       },
       {
-        title: "Approvals, with\nthe evidence attached.",
-        body: "Approval IQ routes each decision to the owner who can make it, with the evidence, the rationale, and the deadline already on the request. Sign-off does not wait on a thread that has lost the record.",
+        title: "Journal entries, straight to your ERP.",
+        body: "Accruals, fee adjustments, and corrections are drafted from matched data, reviewed, approved, and posted to your ERP in one flow. Each entry keeps its support and approval history. Nothing is re-keyed from a spreadsheet.",
       },
       {
-        title: "The last period,\nstill attached.",
-        body: "Close Memory IQ keeps prior decisions, recurring issues, and control outcomes with the work they governed. The next period begins from that context, so the same questions are not asked of a blank sheet.",
+        title: "Variance analysis with live close status.",
+        body: "Balances are compared period over period, and significant moves are explained before sign-off. One dashboard shows the whole close: what's done, what's open, and which entity is behind. Audit evidence builds as the work happens.",
       },
     ],
   },

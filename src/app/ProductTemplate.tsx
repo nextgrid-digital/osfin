@@ -27,7 +27,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
             className="mt-4 pt-4 pb-0 md:mt-6 md:pt-6 md:pb-0 [&_h3]:py-1"
             title={product.headline}
             titleAs="h3"
-            aside={product.cardBody}
+            aside={product.lede || product.platform?.kicker || product.cardBody}
             cta={null}
           />
 

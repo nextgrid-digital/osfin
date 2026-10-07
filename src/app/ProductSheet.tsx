@@ -171,9 +171,9 @@ function CropMark({ x, y, dx, dy }: { x: number; y: number; dx: number; dy: numb
 }
 
 function titleLines(name: string): { lines: string[]; size: number } {
-  if (name === "Exception Resolution") return { lines: ["Exception", "Resolution"], size: 40 };
+  if (name === "Exception Desk") return { lines: ["Exception", "Desk"], size: 44 };
   if (name === "Close Orchestration") return { lines: ["Close", "Orchestration"], size: 40 };
-  if (name === "Control Views") return { lines: [name], size: 46 };
+  if (name === "Regulatory Reporting") return { lines: ["Regulatory", "Reporting"], size: 40 };
   if (name === "Risk Signals") return { lines: [name], size: 48 };
   return { lines: [name], size: 64 };
 }
@@ -277,14 +277,40 @@ const SIGNAL_LINES: { x: number; w: number; segs: readonly (readonly [number, nu
   { x: 559.3, w: 2, segs: [[215, 46], [306, 45], [488, 44]] },
 ];
 
-function SignalCluster() {
+/** Vertical strokes in the same register as the traced cluster, arranged from a seed. */
+function signalLines(seed: number) {
+  const rand = mulberry32(seed);
+  const lines: { x: number; w: number; segs: [number, number][] }[] = [];
+  let cursor = 110 + rand() * 220;
+  for (let i = 0; i < 48; i++) {
+    const x = Math.round((76 + i * 10.05) * 10) / 10;
+    const segs: [number, number][] = [];
+    if (rand() > 0.16) {
+      const count = rand() < 0.5 ? 2 : rand() < 0.82 ? 1 : 3;
+      let y = cursor + (rand() - 0.5) * 90;
+      for (let k = 0; k < count; k++) {
+        const top = Math.max(82, Math.min(490, y));
+        const height = Math.min(24 + rand() * (rand() < 0.3 ? 200 : 90), 568 - top);
+        if (height > 16) segs.push([Math.round(top), Math.round(height)]);
+        y = top + height + 18 + rand() * 46;
+      }
+      if (segs.length > 0) cursor = segs[0][0] + (rand() - 0.45) * 36;
+    }
+    const roll = rand();
+    lines.push({ x, w: roll < 0.5 ? 1.3 : roll < 0.78 ? 2 : 2.6, segs });
+  }
+  return lines;
+}
+
+function SignalCluster({ seed }: { seed?: number }) {
+  const lines = seed == null ? SIGNAL_LINES : signalLines(seed);
   return (
     <g>
-      {SIGNAL_LINES.filter((line) => line.segs.length > 0).map((line) => (
+      {lines.filter((line) => line.segs.length > 0).map((line) => (
         <g key={line.x}>
-          {line.segs.map(([y, height]) => (
+          {line.segs.map(([y, height], seg) => (
             <line
-              key={`${line.x}-${y}`}
+              key={`${line.x}-${seg}`}
               x1={line.x}
               x2={line.x}
               y1={y}
@@ -306,6 +332,7 @@ export default function ProductSheet({
   art = true,
   indexes = true,
   cluster = false,
+  seed,
   className = "absolute inset-0 h-full w-full",
 }: {
   name: string;
@@ -314,6 +341,8 @@ export default function ProductSheet({
   art?: boolean;
   indexes?: boolean;
   cluster?: boolean;
+  /** When set, the cluster is generated instead of the traced drawing. */
+  seed?: number;
   className?: string;
 }) {
   const title = titleLines(name);
@@ -329,7 +358,7 @@ export default function ProductSheet({
       aria-label={name}
     >
       {cluster ? (
-        <SignalCluster />
+        <SignalCluster seed={seed} />
       ) : (
         <>
           <SheetGridLines />
