@@ -46,7 +46,7 @@ const TextReveal = React.memo(function TextReveal({
 
   const rootProps: Record<string, unknown> = {
     className: cn(
-      "group/cascade relative inline-flex cursor-pointer select-none no-underline",
+      "group/cascade relative inline-flex items-center cursor-pointer select-none no-underline leading-none",
       className,
     ),
     style: {
@@ -57,7 +57,6 @@ const TextReveal = React.memo(function TextReveal({
             transition: "color 0.35s ease",
           }
         : {}),
-      lineHeight: 1,
       ...style,
     },
     onMouseEnter: (event: MouseEvent) => {

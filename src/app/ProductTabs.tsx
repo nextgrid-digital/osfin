@@ -27,7 +27,7 @@ export default function ProductTabs({ currentSlug }: { currentSlug: string }) {
               event.preventDefault();
               select(product.slug);
             }}
-            className={`group/cascade relative px-2.5 py-1.5 font-[family-name:var(--font-mono)] text-[14px] font-medium tracking-[-0.02em] uppercase ${
+            className={`group/cascade relative inline-flex items-center justify-center px-2.5 py-1.5 font-[family-name:var(--font-mono)] text-[14px] font-medium leading-none tracking-[-0.02em] uppercase ${
               active ? "text-[rgba(0,0,0,0.875)]" : "text-black/45 hover:text-black/70"
             }`}
           >
@@ -41,7 +41,7 @@ export default function ProductTabs({ currentSlug }: { currentSlug: string }) {
             <TextReveal
               as="span"
               text={product.name}
-              className="relative z-10"
+              className="relative z-10 leading-none"
               staggerDelay={14}
               duration={280}
               easing="cubic-bezier(0.22, 1, 0.36, 1)"
