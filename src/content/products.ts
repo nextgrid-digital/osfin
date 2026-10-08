@@ -91,7 +91,7 @@ export const PRODUCTS: Product[] = [
     sceneId: "ai",
     icon: "venn",
     headline: "Where every break finds its reason.",
-    lede: "",
+    lede: "Exception Desk finds the reason behind every break, fixes what it can on its own, and sends the rest to the right person with the answer already attached.",
     seoDescription:
       "Exception Desk by Osfin gives every payment break a reason code, resolves known fixes on its own, routes the rest to the right stakeholder, and learns from every resolution.",
     problem: [
@@ -141,7 +141,7 @@ export const PRODUCTS: Product[] = [
     sceneId: "legal",
     icon: "hex",
     headline: "Where every regulatory report is ready before it's due.",
-    lede: "",
+    lede: "Regulatory Reporting builds each report from data Osfin has already matched, checks it against the regulator's rules, and tracks every deadline.",
     seoDescription:
       "Regulatory Reporting by Osfin builds regulatory reports from matched data, catches errors before regulators do, tracks every deadline on one calendar, and proves every number in one click.",
     problem: [
@@ -191,7 +191,7 @@ export const PRODUCTS: Product[] = [
     sceneId: "growth",
     icon: "octagon",
     headline: "Where risk is seen before it becomes loss.",
-    lede: "",
+    lede: "Risk Signals watches every payment as it moves, scores risk in real time, links related accounts and merchants, and opens a case with the evidence already gathered.",
     seoDescription:
       "Risk Signals by Osfin links accounts to the people behind them, catches fraud rings whole, follows stolen money to where it lands, and investigates every alert in one place.",
     problem: [
@@ -232,7 +232,7 @@ export const PRODUCTS: Product[] = [
     name: "Close Orchestration",
     cardLabel: "Financial close",
     cardBody:
-      "Close Orchestration pulls matched transactions and resolved breaks into the books as they happen, flags what's missing the day it goes missing, and sends every sign-off with its proof attached.",
+      "Close Orchestration is the financial close foundation for enterprises where every entity must be reconciled, certified, and signed off.",
     cardBg: "#e6e6e6",
     homeLabel: "Close",
     homeTitle: "One close. Every entity.",
@@ -241,7 +241,7 @@ export const PRODUCTS: Product[] = [
     sceneId: "technology",
     icon: "squares",
     headline: "Where the close stops being a search.",
-    lede: "",
+    lede: "Close Orchestration is the financial close foundation for enterprises where every entity must be reconciled, certified, and signed off.",
     seoDescription:
       "Close Orchestration by Osfin runs the financial close in one place: task management, self-certifying reconciliations, journal entries posted to your ERP, and variance analysis with live close status.",
     problem: [

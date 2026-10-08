@@ -28,21 +28,23 @@ export default function SectionHeading({
   const TitleTag = titleAs;
 
   const revealTitle = typeof title === "string" && (titleAs === "h1" || title.includes("\n") || Boolean(aside));
+  const multilineTitle = typeof title === "string" && title.includes("\n");
+  const singleLineAside = Boolean(aside) && !multilineTitle;
   const titleContent = revealTitle ? (
     <KineticTextReveal
       key={title}
       text={title}
       startOnView
-      splitBy={title.includes("\n") ? "lines" : "words"}
-      maskClassName={title.includes("\n") ? "whitespace-nowrap" : undefined}
+      splitBy={multilineTitle ? "lines" : "words"}
+      maskClassName={
+        multilineTitle || singleLineAside ? "whitespace-nowrap" : undefined
+      }
       className={
-        title.includes("\n")
+        multilineTitle || singleLineAside
           ? aside
-            ? "w-max max-w-none items-center text-center"
+            ? "w-max max-w-none items-center justify-center text-center"
             : "w-max max-w-none"
-          : aside
-            ? "w-full max-w-full justify-center"
-            : "w-full max-w-full"
+          : "w-full max-w-full"
       }
     />
   ) : (
@@ -64,11 +66,13 @@ export default function SectionHeading({
       >
         <TitleTag
           className={`!mt-0 ${
-            aside
-              ? "max-w-[44rem]"
-              : typeof title === "string" && title.includes("\n")
-                ? "w-max max-w-none shrink-0"
-                : "max-w-[40rem]"
+            singleLineAside
+              ? "w-max max-w-none whitespace-nowrap"
+              : aside
+                ? "max-w-[44rem]"
+                : multilineTitle
+                  ? "w-max max-w-none shrink-0"
+                  : "max-w-[40rem]"
           } ${aside ? "text-center" : "text-left"} ${isDark ? "text-white" : "text-[rgba(0,0,0,0.875)]"}`}
         >
           {titleContent}
