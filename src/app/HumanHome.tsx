@@ -2,7 +2,6 @@ import { TextReveal } from "@/components/ui/cascade-text";
 import { KineticTextReveal } from "@/components/ui/kinetic-text-reveal";
 import MetalLapJoint from "@/components/MetalLapJoint";
 import { POSTS } from "../content/posts";
-import HomePlatformMotion from "./HomePlatformMotion";
 import HomeSecurity from "./HomeSecurity";
 import ProductionHairline from "./ProductionHairlines";
 import SiteContainer from "./SiteContainer";
@@ -28,30 +27,6 @@ function BtnSecondary({ href, children }: { href: string; children: string }) {
       className="btn-secondary not-typeset inline-flex h-10 items-center rounded-none border border-black/15 bg-transparent px-5 text-[13px] font-medium text-[rgba(0,0,0,0.875)] transition hover:bg-black/5"
       data-not-typeset=""
     />
-  );
-}
-
-function HomePlatform() {
-  return (
-    <HomePlatformMotion>
-      <SiteContainer>
-        <h3 className="mx-auto !mb-0 !mt-0 max-w-xl text-center !font-normal !leading-[1.2] text-[rgba(0,0,0,0.875)]">
-          <span className="block" data-platform-line="">
-            Every payment creates context:
-          </span>
-          <span className="block" data-platform-line="">
-            records, policies, exceptions, and decisions that generic AI cannot reliably connect.
-          </span>
-          <span className="mt-8 block" data-platform-line="">
-            Osfin enables agentic financial operations intelligence that understands this context,
-            coordinates agentic workflows, and turns every exception into
-          </span>
-          <span className="block" data-platform-line="">
-            a clearer next action.
-          </span>
-        </h3>
-      </SiteContainer>
-    </HomePlatformMotion>
   );
 }
 
@@ -97,8 +72,6 @@ export default function HumanHome() {
             </div>
           </SiteContainer>
         </section>
-
-        <HomePlatform />
 
         <section className="py-28 md:py-40">
           <SiteContainer>
