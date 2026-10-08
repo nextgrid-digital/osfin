@@ -37,13 +37,13 @@ export default function SectionHeading({
       startOnView
       splitBy={multilineTitle ? "lines" : "words"}
       maskClassName={
-        multilineTitle || singleLineAside ? "whitespace-nowrap" : undefined
+        multilineTitle || singleLineAside ? "block max-w-full whitespace-normal md:whitespace-nowrap" : undefined
       }
       className={
         multilineTitle || singleLineAside
           ? aside
-            ? "w-max max-w-none items-center justify-center text-center"
-            : "w-max max-w-none"
+            ? "w-full max-w-full items-center justify-center text-center md:w-max"
+            : "w-full max-w-full md:w-max"
           : "w-full max-w-full"
       }
     />
@@ -61,18 +61,18 @@ export default function SectionHeading({
         className={`flex ${
           aside
             ? "flex-col items-center gap-6 text-center"
-            : "items-end justify-between gap-10"
+            : "flex-col items-start gap-6 sm:flex-row sm:items-end sm:justify-between sm:gap-10"
         } ${label ? "mt-5 md:mt-6" : ""}`}
       >
         <TitleTag
           className={`!mt-0 ${
             singleLineAside
-              ? "w-max max-w-none whitespace-nowrap"
+              ? "max-w-full md:w-max md:whitespace-nowrap"
               : aside
                 ? "max-w-[44rem]"
                 : multilineTitle
-                  ? "w-max max-w-none shrink-0"
-                  : "max-w-[40rem]"
+                  ? "max-w-full md:w-max md:shrink-0"
+                  : "max-w-full sm:max-w-[40rem]"
           } ${aside ? "text-center" : "text-left"} ${isDark ? "text-white" : "text-[rgba(0,0,0,0.875)]"}`}
         >
           {titleContent}

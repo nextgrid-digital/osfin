@@ -159,7 +159,7 @@ export default function HomeSecurity() {
   return (
     <section id="security" className="bg-[#0A0A0A] py-28 text-white md:py-40">
       <SiteContainer>
-        <h2 className="!mb-0 !mt-0 max-w-2xl !text-[36px] !font-normal !leading-[1.15] tracking-[-0.02em] text-white md:!text-[42px]">
+        <h2 className="!mb-0 !mt-0 max-w-2xl !text-[clamp(1.85rem,7vw,36px)] !font-normal !leading-[1.15] tracking-[-0.02em] text-white md:!text-[42px]">
           Compliance and security guardrails built in.
         </h2>
 
@@ -167,7 +167,7 @@ export default function HomeSecurity() {
           {ITEMS.map((item) => (
             <div
               key={item.title}
-              className="flex min-h-[420px] min-w-0 flex-col justify-between border border-white/15 bg-[#141414] px-8 py-8 md:py-10"
+              className="flex min-h-0 min-w-0 flex-col justify-between gap-16 border border-white/15 bg-[#141414] px-6 py-8 md:min-h-[420px] md:px-8 md:py-10"
             >
               <CertIcon kind={item.icon} />
               <div>

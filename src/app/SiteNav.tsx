@@ -112,11 +112,101 @@ function shouldHandleClick(e: MouseEvent<HTMLAnchorElement>) {
   return true;
 }
 
+function MobileMenu({
+  open,
+  onClose,
+  onNavigate,
+}: {
+  open: boolean;
+  onClose: () => void;
+  onNavigate: (href: string) => (e: MouseEvent<HTMLAnchorElement>) => void;
+}) {
+  const [section, setSection] = useState<string | null>("product");
+
+  if (!open) return null;
+
+  const groups = [
+    {
+      id: "product",
+      label: "Product",
+      links: PRODUCT_NAV.flatMap((slug) => {
+        const product = PRODUCTS.find((item) => item.slug === slug);
+        return product ? [{ label: product.name, href: `/products/${slug}` }] : [];
+      }),
+    },
+    {
+      id: "solutions",
+      label: "Solutions",
+      links: SOLUTIONS.map(({ label }) => ({ label, href: "/#roles" })),
+    },
+    {
+      id: "company",
+      label: "Company",
+      links: COMPANY.map(({ label, href }) => ({ label, href })),
+    },
+  ];
+
+  return (
+    <div className="fixed inset-x-0 top-14 z-40 max-h-[calc(100svh-3.5rem)] overflow-y-auto bg-[#E4E4E4] px-5 pt-4 pb-16 md:top-16 md:max-h-[calc(100svh-4rem)] lg:hidden">
+      <nav aria-label="Mobile" className="flex flex-col">
+        {groups.map((group) => {
+          const expanded = section === group.id;
+          return (
+            <div key={group.id} className="border-b border-black/10">
+              <button
+                type="button"
+                className="flex w-full items-center justify-between py-4 text-left font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase"
+                aria-expanded={expanded}
+                onClick={() => setSection(expanded ? null : group.id)}
+              >
+                {group.label}
+                <span aria-hidden className="text-[18px] leading-none text-black/45">
+                  {expanded ? "–" : "+"}
+                </span>
+              </button>
+              {expanded ? (
+                <div className="flex flex-col gap-3 pb-5">
+                  {group.links.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      className="!font-[family-name:var(--font-season)] !text-[22px] !leading-[1.2] !font-normal !normal-case !tracking-normal text-[rgba(0,0,0,0.875)] no-underline"
+                      onClick={onNavigate(link.href)}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
+        <a
+          href="/blog"
+          className="border-b border-black/10 py-4 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase no-underline"
+          onClick={onNavigate("/blog")}
+        >
+          Blog
+        </a>
+        <a
+          href="/#contact"
+          className="border-b border-black/10 py-4 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase no-underline"
+          onClick={onClose}
+        >
+          Contact
+        </a>
+      </nav>
+    </div>
+  );
+}
+
 export default function SiteNav() {
   const { navigate, isTransitioning } = usePageTransition();
   const [menuValue, setMenuValue] = useState("");
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const closeMenu = () => setMenuValue("");
+  const closeMobile = () => setMobileOpen(false);
 
   const onProductClick = (href: string) => (e: MouseEvent<HTMLAnchorElement>) => {
     if (!shouldHandleClick(e)) return;
@@ -128,6 +218,26 @@ export default function SiteNav() {
   };
 
   const menuOpen = Boolean(menuValue);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previous;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [mobileOpen]);
+
+  const onMobileNavigate = (href: string) => (e: MouseEvent<HTMLAnchorElement>) => {
+    closeMobile();
+    if (href.startsWith("/#")) return;
+    onProductClick(href)(e);
+  };
 
   useEffect(() => {
     const header = document.querySelector(".site-header");
@@ -153,6 +263,22 @@ export default function SiteNav() {
 
   return (
     <>
+      <button
+        type="button"
+        className="relative z-50 rounded-none p-2 lg:hidden"
+        aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
+        aria-expanded={mobileOpen}
+        onClick={() => setMobileOpen((open) => !open)}
+      >
+        <span
+          className={`block h-px w-5 bg-current transition ${mobileOpen ? "translate-y-[3.5px] rotate-45" : ""}`}
+        />
+        <span
+          className={`mt-1.5 block h-px w-5 bg-current transition ${mobileOpen ? "-translate-y-[3.5px] -rotate-45" : ""}`}
+        />
+      </button>
+      <MobileMenu open={mobileOpen} onClose={closeMobile} onNavigate={onMobileNavigate} />
+
       {menuOpen ? (
         <button
           type="button"

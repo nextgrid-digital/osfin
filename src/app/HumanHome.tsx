@@ -44,8 +44,8 @@ export default function HumanHome() {
                     text={"Architecting agentic\ntransactional intelligence"}
                     splitBy="lines"
                     startOnView
-                    maskClassName="w-max shrink-0 whitespace-nowrap"
-                    className="max-w-none justify-start"
+                    maskClassName="block max-w-full whitespace-normal"
+                    className="w-full max-w-full justify-start"
                   />
                 </h1>
                 <p className="mt-8 max-w-[36rem] text-black/60 md:mt-10">
@@ -76,16 +76,16 @@ export default function HumanHome() {
         <section className="py-28 md:py-40">
           <SiteContainer>
             <div className="flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between md:gap-10">
-              <div className="flex w-max max-w-full flex-col gap-4">
+              <div className="flex w-full max-w-full flex-col gap-4">
                 <p
                   className="not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-black/45 uppercase"
                   data-not-typeset
                 >
                   Built for production
                 </p>
-                <h2 className="!mb-0 !mt-0 w-max max-w-none text-left !text-[42px] !leading-[1.15] !font-normal tracking-[-0.02em] text-[rgba(0,0,0,0.875)]">
-                  <span className="block whitespace-nowrap">Transaction integrity.</span>
-                  <span className="block whitespace-nowrap">Institution wide control.</span>
+                <h2 className="!mb-0 !mt-0 max-w-full text-left !text-[clamp(1.85rem,7vw,42px)] !leading-[1.15] !font-normal tracking-[-0.02em] text-[rgba(0,0,0,0.875)]">
+                  <span className="block">Transaction integrity.</span>
+                  <span className="block">Institution wide control.</span>
                 </h2>
               </div>
               <p className="!mb-0 !mt-0 max-w-[26rem] !text-[16px] !leading-[1.45] text-black">
