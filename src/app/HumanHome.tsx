@@ -156,15 +156,15 @@ export default function HumanHome() {
               ).map((column) => (
                 <div
                   key={column.fig}
-                  className="flex min-w-0 flex-col border border-black/15 bg-white px-8 py-8 md:py-10"
+                  className="flex min-w-0 flex-col border border-black/15 bg-white px-6 py-6 md:px-7 md:py-8"
                 >
-                  <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-[5/6]">
+                  <div className="relative aspect-square w-full overflow-hidden">
                     <ProductionHairline figure={column.figure} />
                     <p className="not-typeset absolute top-0 left-0 z-10 !m-0 font-[family-name:var(--font-mono)] text-[14px] leading-5 tracking-[-0.02em] text-black/55 uppercase">
                       {column.fig}
                     </p>
                   </div>
-                  <h3 className="!mb-0 !mt-8 !text-[22px] !font-normal !leading-[1.25] !tracking-normal text-[rgba(0,0,0,0.875)] normal-case md:!text-[24px]">
+                  <h3 className="!mb-0 !mt-6 !text-[22px] !font-normal !leading-[1.25] !tracking-normal text-[rgba(0,0,0,0.875)] normal-case md:!text-[24px]">
                     {column.title}
                   </h3>
                   <p className="!mb-0 !mt-3 text-[16px] leading-6 text-black">

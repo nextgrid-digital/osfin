@@ -2,24 +2,28 @@ import SiteContainer from "./SiteContainer";
 
 const ITEMS = [
   {
-    title: "SOC Type 2",
+    title: "GDPR Compliant",
+    kicker: null,
+    body: "With our operations in Ireland, we operate under GDPR, the world's strictest standard for data privacy.",
+    icon: "gdpr" as const,
+  },
+  {
+    title: "ISO 27001 Certification",
+    kicker: "BSI",
+    body: "Certified by BSI to ISO/IEC 27001, with an information security management system that protects client data.",
+    icon: "iso" as const,
+  },
+  {
+    title: "SOC 2 Compliance",
+    kicker: null,
     body: "We meet SOC 2 requirements to ensure secure and compliant management of data across all our systems.",
     icon: "soc" as const,
   },
   {
-    title: "GDPR",
-    body: "With our operations in Ireland, we operate under GDPR — the world's strictest standard for data privacy.",
-    icon: "gdpr" as const,
-  },
-  {
-    title: "PCI DSS",
-    body: "We protect cardholder and payment data in line with PCI DSS standards, ensuring secure processing across all transactions.",
+    title: "PCI DSS & PCI SSF Standards",
+    kicker: "DSS Compliant - Osfin",
+    body: "Osfin is DSS compliant, protecting payment data to PCI DSS in the cloud and PCI SSF for on-premise solutions.",
     icon: "pci" as const,
-  },
-  {
-    title: "Encryption",
-    body: "We encrypt your data with AES-256 at rest and TLS in transit, ensuring end-to-end protection for every byte.",
-    icon: "encryption" as const,
   },
 ] as const;
 
@@ -39,7 +43,6 @@ function CertIcon({ kind }: { kind: (typeof ITEMS)[number]["icon"] }) {
           y="28"
           textAnchor="middle"
           fill="currentColor"
-          className="fill-current"
           style={{ fontSize: 7, fontFamily: "var(--font-mono), monospace" }}
         >
           AICPA
@@ -98,21 +101,38 @@ function CertIcon({ kind }: { kind: (typeof ITEMS)[number]["icon"] }) {
     );
   }
 
-  if (kind === "pci") {
+  if (kind === "iso") {
     return (
       <svg
         viewBox="0 0 64 64"
         className="size-14 text-white/80"
         fill="none"
-        stroke="currentColor"
-        strokeWidth="1.25"
         aria-hidden
       >
-        <rect x="8" y="20" width="40" height="28" rx="4" />
-        <path d="M8 28h40" />
-        <path d="M16 38h12" />
-        <circle cx="52" cy="20" r="10" />
-        <path d="M48 20l3 3 6-6" stroke="white" />
+        <circle cx="32" cy="32" r="28" stroke="currentColor" strokeWidth="1.25" />
+        <circle cx="32" cy="32" r="22" stroke="currentColor" strokeWidth="1" />
+        <text
+          x="32"
+          y="29"
+          textAnchor="middle"
+          fill="currentColor"
+          style={{ fontSize: 7, fontFamily: "var(--font-mono), monospace" }}
+        >
+          ISO
+        </text>
+        <text
+          x="32"
+          y="41"
+          textAnchor="middle"
+          fill="white"
+          style={{
+            fontSize: 9,
+            fontWeight: 600,
+            fontFamily: "system-ui, sans-serif",
+          }}
+        >
+          27001
+        </text>
       </svg>
     );
   }
@@ -126,8 +146,11 @@ function CertIcon({ kind }: { kind: (typeof ITEMS)[number]["icon"] }) {
       strokeWidth="1.25"
       aria-hidden
     >
-      <path d="M32 6l22 8v14c0 14-9 24-22 28C19 52 10 42 10 28V14l22-8z" />
-      <path d="M24 32l5 5 11-11" stroke="white" />
+      <rect x="8" y="20" width="40" height="28" rx="4" />
+      <path d="M8 28h40" />
+      <path d="M16 38h12" />
+      <circle cx="52" cy="20" r="10" />
+      <path d="M48 20l3 3 6-6" stroke="white" />
     </svg>
   );
 }
@@ -148,6 +171,11 @@ export default function HomeSecurity() {
             >
               <CertIcon kind={item.icon} />
               <div>
+                {item.kicker ? (
+                  <p className="not-typeset !mb-2 !mt-0 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-white/45 uppercase">
+                    {item.kicker}
+                  </p>
+                ) : null}
                 <h3 className="!mb-0 !mt-0 !text-[22px] !font-medium !leading-[1.2] !tracking-[-0.01em] text-white normal-case">
                   {item.title}
                 </h3>

@@ -4,7 +4,7 @@ import type { CSSProperties } from "react";
 import { Riffle, Slow, Turntable } from "@lucasmarkes/hairline/react";
 
 const plateStyle = {
-  ["--hairline-plate" as string]: "#E4E4E4",
+  ["--hairline-plate" as string]: "#f5f5f5",
   ["--hairline-edge" as string]: "#001D20",
   ["--hairline-mid" as string]: "rgba(0, 29, 32, 0.55)",
   ["--hairline-lo" as string]: "rgba(0, 29, 32, 0.28)",
