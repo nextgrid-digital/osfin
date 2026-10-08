@@ -46,7 +46,7 @@ const TextReveal = React.memo(function TextReveal({
 
   const rootProps: Record<string, unknown> = {
     className: cn(
-      "group/cascade relative inline-flex items-center cursor-pointer select-none no-underline leading-[1.25]",
+      "group/cascade relative inline-flex items-center cursor-pointer select-none no-underline leading-none",
       className,
     ),
     style: {
@@ -79,7 +79,7 @@ const TextReveal = React.memo(function TextReveal({
 
   return (
     <Component {...rootProps}>
-      <span aria-hidden="true">
+      <span aria-hidden="true" className="inline-flex items-center leading-none">
         <TextRoll hovered={hovered}>{text}</TextRoll>
       </span>
     </Component>
