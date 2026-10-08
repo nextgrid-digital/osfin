@@ -46,7 +46,7 @@ const TextReveal = React.memo(function TextReveal({
 
   const rootProps: Record<string, unknown> = {
     className: cn(
-      "group/cascade relative inline-flex items-center cursor-pointer select-none no-underline leading-none",
+      "group/cascade relative inline-flex items-center cursor-pointer select-none no-underline leading-[1.25]",
       className,
     ),
     style: {

@@ -3,6 +3,7 @@ import { KineticTextReveal } from "@/components/ui/kinetic-text-reveal";
 import MetalLapJoint from "@/components/MetalLapJoint";
 import { POSTS } from "../content/posts";
 import HomePlatformMotion from "./HomePlatformMotion";
+import HomeSecurity from "./HomeSecurity";
 import ProductionHairline from "./ProductionHairlines";
 import SiteContainer from "./SiteContainer";
 import SiteFooter from "./SiteFooter";
@@ -121,7 +122,7 @@ export default function HumanHome() {
               </p>
             </div>
 
-            <div className="mt-8 grid grid-cols-1 border-x border-y border-black/15 md:mt-10 md:grid-cols-3">
+            <div className="mt-8 grid grid-cols-1 gap-4 md:mt-10 md:grid-cols-3 md:gap-6">
               {(
                 [
                   {
@@ -152,14 +153,10 @@ export default function HumanHome() {
                     ],
                   },
                 ] as const
-              ).map((column, index) => (
+              ).map((column) => (
                 <div
                   key={column.fig}
-                  className={`flex min-w-0 flex-col border-black/15 px-8 py-8 md:py-10 ${
-                    index > 0
-                      ? "border-t md:border-t-0 md:border-l"
-                      : "md:border-l md:border-l-transparent"
-                  }`}
+                  className="flex min-w-0 flex-col border border-black/15 bg-white px-8 py-8 md:py-10"
                 >
                   <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-[5/6]">
                     <ProductionHairline figure={column.figure} />
@@ -180,6 +177,8 @@ export default function HumanHome() {
             </div>
           </SiteContainer>
         </section>
+
+        <HomeSecurity />
 
         {/* Changelog */}
         <section id="changelog" className="py-28 md:py-40">

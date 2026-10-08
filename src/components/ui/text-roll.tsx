@@ -28,7 +28,7 @@ export default function TextRoll({
         ? { animate: hovered ? "hovered" : "initial" }
         : { whileHover: "hovered" as const })}
       className={cn(
-        "relative inline-block overflow-hidden leading-none",
+        "relative inline-block overflow-hidden leading-[1.25]",
         className,
       )}
       aria-hidden="true"
