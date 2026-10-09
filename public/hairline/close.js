@@ -1,163 +1,202 @@
 /**
- * Close: a shallow tray of five record plates under a floating lid. Hover a
- * plate to inspect it; hover the lid to settle the raised plate, then close.
+ * Close: a shallow tray of five exposure plates under a floating lid.
+ * Ambient cycle raises unresolved plates in turn, then settles and closes.
+ * Hover inspects a plate or the lid.
  */
 const {
   Cam, clamp, fit, proj, facing, rings, prism, solid, put, mk, seg,
-  tween, tset, tval, tdone, pointer, register, disposer,
+  spring, stepS, pointer, register, disposer, reducedMotion, lerp,
 } = HL;
 
-const N = 5, W = 42, H = 36, G = 7, TK = 1.6;
-const TX0 = -4, TX1 = W + 4, TY0 = -6, TY1 = (N - 1) * G + 10;
-const WH = 8, WR = 4, WT = 2;
-const LID_Z = 48, PLATE_H = 34;
-const RAISED = 2; // index raised at rest
+const N = 5;
+const W = 42;
+const G = 7;
+const TK = 1.6;
+const TX0 = -4;
+const TX1 = W + 4;
+const TY0 = -6;
+const TY1 = (N - 1) * G + 10;
+const WH = 8;
+const WR = 4;
+const WT = 2;
+const LID_Z = 48;
+const PLATE_H = 34;
+const CYCLE = 8;
 
 function mount({ stage, svg, read }, value) {
   const bag = disposer();
-  let stag = value;
-  const C = Cam(45, 0.5, 3.45);
+  let slowRate = value;
+  let clock = 0;
+  let hover = -1; // -1 rest, 0..N-1 plate, N = lid
+  const rate = spring(1, { eps: 2e-3 });
+
+  const C = Cam(45, 0.5, 3.2);
   fit(C, [
     [TX0 - 4, TY0 - 4, 0], [TX1 + 4, TY1 + 4, 0],
     [TX1 + 4, TY0 - 4, 0], [TX0 - 4, TY1 + 4, 0],
     [TX0, TY0, LID_Z + 4], [TX1, TY1, LID_Z + 4],
   ], 200, 166);
-  const P = proj(C), front = facing(C), g = mk("g", {}, svg);
+  const P = proj(C);
+  const front = facing(C);
+  const g = mk("g", {}, svg);
 
-  // Tray (fixed)
-  const outer = rings(TX0, TY0, TX1, TY1, WR, 1.1);
-  put(solid(g), prism(P, front, outer[0], outer[1], 0, WH));
-  const floor = rings(TX0 + WT, TY0 + WT, TX1 - WT, TY1 - WT, WR - WT, 0.8);
-  put(solid(g), prism(P, front, floor[0], floor[1], WH - 1.2, WH));
+  // Tray (far)
+  {
+    const outer = rings(TX0, TY0, TX1, TY1, WR, 1.1);
+    put(solid(g), prism(P, front, outer[0], outer[1], 0, WH));
+    const floor = rings(TX0 + WT, TY0 + WT, TX1 - WT, TY1 - WT, WR - WT, 0.8);
+    put(solid(g), prism(P, front, floor[0], floor[1], WH - 1.2, WH));
+  }
 
-  // Lid guides + lid
   const guides = mk("path", { class: "lo dash nf" }, g);
-  const lid = solid(g);
-  const [lR, lI] = rings(TX0 + 1, TY0 + 1, TX1 - 1, TY1 - 1, 3, 1);
-  const lidDrop = tween(0); // 0 floating, 1 closed on tray
+  guides.setAttribute("d", [
+    seg(P(TX0 + 2, TY0 + 2, WH), P(TX0 + 2, TY0 + 2, LID_Z)),
+    seg(P(TX1 - 2, TY0 + 2, WH), P(TX1 - 2, TY0 + 2, LID_Z)),
+    seg(P(TX0 + 2, TY1 - 2, WH), P(TX0 + 2, TY1 - 2, LID_Z)),
+    seg(P(TX1 - 2, TY1 - 2, WH), P(TX1 - 2, TY1 - 2, LID_Z)),
+  ].join(""));
 
-  // Plates
+  const layer = mk("g", {}, g);
+  const lid = solid(layer);
+  const [lR, lI] = rings(TX0 + 1, TY0 + 1, TX1 - 1, TY1 - 1, 3, 1);
+
+  // Plates created far→near (ascending y)
   const plates = [];
   for (let i = 0; i < N; i++) {
-    const [ring, inner] = rings(4, 0, 4 + W - 8, TK, 1.2, 0.5);
-    // each plate is a thin upright slab along y
-    plates.push({
-      i,
-      el: solid(g),
-      lift: tween(i === RAISED ? 10 : 0),
-      ring, inner,
-    });
+    plates.push({ i, el: solid(layer), y: i * G + 2 });
   }
 
   function platePose(i, lift) {
     const y = i * G + 2;
     const z0 = WH + lift;
-    const x0 = 6, x1 = W - 2;
-    const [ring, inner] = rings(x0, y, x1, y + TK, 1.1, 0.5);
-    return { ring, inner, z0, z1: z0 + PLATE_H, y };
+    const [ring, inner] = rings(6, y, W - 2, y + TK, 1.1, 0.5);
+    return { ring, inner, z0, z1: z0 + PLATE_H, key: (6 + W - 2) / 2 + y };
   }
 
-  function draw(now) {
-    const close = tval(lidDrop, now);
-    const lidZ = LID_Z - close * (LID_Z - WH - 1.5);
+  function ambientLifts(u) {
+    const lifts = Array(N).fill(0);
+    let lidDrop = 0;
+    if (u < 0.55) {
+      const span = 0.55 / N;
+      for (let i = 0; i < N; i++) {
+        const local = (u - i * span) / span;
+        if (local > 0 && local < 1) {
+          lifts[i] = local < 0.5 ? local * 2 * 14 : (1 - local) * 2 * 14;
+        }
+      }
+      const cur = Math.min(N - 1, Math.floor(u / span));
+      if (lifts[cur] < 4) lifts[cur] = Math.max(lifts[cur], 4);
+    } else if (u < 0.7) {
+      const p = (u - 0.55) / 0.15;
+      for (let i = 0; i < N; i++) lifts[i] = lerp(i === 2 ? 4 : 0, 0, p);
+    } else if (u < 0.88) {
+      lidDrop = (u - 0.7) / 0.18;
+    } else {
+      lidDrop = 1 - (u - 0.88) / 0.12;
+    }
+    return { lifts, lidDrop: clamp(lidDrop, 0, 1) };
+  }
+
+  // Rest-pose hit bands (rule 01) — tops at rest raise for plate 2
+  const tops = Array.from({ length: N }, (_, i) => {
+    const y = i * G + 2 + TK / 2;
+    const restLift = i === 2 ? 4 : 0;
+    return P(W / 2, y, WH + restLift + PLATE_H);
+  });
+  const lidPt = P((TX0 + TX1) / 2, (TY0 + TY1) / 2, LID_Z + 1);
+
+  let orderSig = "";
+
+  const loop = register(stage, (dt) => {
+    stepS(rate, dt);
+    const base = reducedMotion() ? 0 : 1;
+    if (hover < 0) rate.t = base;
+    else rate.t = slowRate;
+    clock += dt * rate.x;
+
+    const u = (clock / CYCLE) % 1;
+    let { lifts, lidDrop } = ambientLifts(u);
+
+    if (hover >= 0 && hover < N) {
+      lifts = lifts.map((v, i) => {
+        if (i === hover) return 16;
+        if (Math.abs(i - hover) === 1) return Math.max(v, 5);
+        return v * 0.25;
+      });
+      lidDrop = 0;
+    } else if (hover === N) {
+      lifts = lifts.map(() => 0);
+      lidDrop = 1;
+    }
+
+    const lidZ = LID_Z - lidDrop * (LID_Z - WH - 1.5);
     put(lid, prism(P, front, lR, lI, lidZ, lidZ + 1.8));
-    guides.setAttribute("d", [
-      seg(P(TX0 + 2, TY0 + 2, WH), P(TX0 + 2, TY0 + 2, LID_Z)),
-      seg(P(TX1 - 2, TY0 + 2, WH), P(TX1 - 2, TY0 + 2, LID_Z)),
-      seg(P(TX0 + 2, TY1 - 2, WH), P(TX0 + 2, TY1 - 2, LID_Z)),
-      seg(P(TX1 - 2, TY1 - 2, WH), P(TX1 - 2, TY1 - 2, LID_Z)),
-    ].join(""));
-    // paint plates back to front (small i is farther in +y? append ascending x+y)
-    // plates along +y: smaller i is farther (smaller y)
+    lid.sil.classList.toggle("hi", hover === N || (hover < 0 && lidDrop > 0.4));
+
+    const drawList = [];
     plates.forEach((pl) => {
-      const lift = tval(pl.lift, now) * (1 - close * 0.95);
+      const lift = lifts[pl.i] * (1 - lidDrop * 0.95);
       const q = platePose(pl.i, lift);
       put(pl.el, prism(P, front, q.ring, q.inner, q.z0, q.z1));
+      pl.el.sil.classList.toggle("hi", hover === pl.i || (hover < 0 && lifts[pl.i] > 8));
+      drawList.push({ id: `p${pl.i}`, key: q.key, g: pl.el.g });
     });
-  }
+    // Lid after plates when closed-ish (nearer / on top); when high, still after for coverage
+    drawList.push({ id: "lid", key: (TX0 + TX1) / 2 + (TY0 + TY1) / 2 + 40 + lidDrop * 20, g: lid.g });
 
-  const loop = register(stage, (_dt, now) => {
-    draw(now);
-    let moving = !tdone(lidDrop, now);
-    plates.forEach((pl) => { if (!tdone(pl.lift, now)) moving = true; });
-    return moving;
+    drawList.sort((a, b) => a.key - b.key);
+    const sig = drawList.map((d) => d.id).join();
+    if (sig !== orderSig) {
+      orderSig = sig;
+      drawList.forEach((d) => layer.appendChild(d.g));
+    }
+
+    if (hover === N) read.textContent = "close";
+    else if (hover >= 0) read.textContent = String(hover + 1).padStart(2, "0");
+    else if (lidDrop > 0.4) read.textContent = "close";
+    else {
+      const hi = lifts.indexOf(Math.max(...lifts));
+      read.textContent = lifts[hi] > 2 ? String(hi + 1).padStart(2, "0") : "rest";
+    }
+
+    if (reducedMotion() && hover < 0 && rate.x === 0) return false;
+    return true;
   });
   bag.add(loop.unregister);
 
-  // Static hit bands along resting top edges (like Riffle)
-  const top = (i) => {
-    const y = i * G + 2 + TK / 2;
-    const lift = i === RAISED ? 10 : 0;
-    return P(W / 2, y, WH + lift + PLATE_H);
-  };
-  const tops = Array.from({ length: N }, (_, i) => top(i));
-  const lidPt = P((TX0 + TX1) / 2, (TY0 + TY1) / 2, LID_Z + 1);
-
   function hit([sx, sy]) {
-    if (Math.hypot(lidPt[0] - sx, lidPt[1] - sy) < 34) return "lid";
-    let best = -1, d = 26;
+    if (Math.hypot(lidPt[0] - sx, lidPt[1] - sy) < 55) return N;
+    let best = -1;
+    let d = Infinity;
     tops.forEach((pt, i) => {
       const dd = Math.hypot(pt[0] - sx, pt[1] - sy);
       if (dd < d) { d = dd; best = i; }
     });
-    return best;
+    return d < 70 ? best : -1;
   }
 
-  let mode = "rest"; // rest | plate | close
-  function apply(target) {
-    const now = performance.now();
-    if (target === "lid") {
-      mode = "close";
-      // settle raised first, then lid
-      plates.forEach((pl, i) => {
-        tset(pl.lift, 0, now, Math.abs(i - RAISED) * (stag * 0.4));
-        pl.el.sil.classList.remove("hi");
-      });
-      tset(lidDrop, 1, now, 320);
-      lid.sil.classList.add("hi");
-      read.textContent = "close";
-    } else if (typeof target === "number" && target >= 0) {
-      mode = "plate";
-      tset(lidDrop, 0, now, 0);
-      lid.sil.classList.remove("hi");
-      plates.forEach((pl, i) => {
-        const delay = Math.abs(i - target) * stag;
-        const base = i === RAISED ? 10 : 0;
-        const boost = i === target ? 16 : base + (i === target - 1 || i === target + 1 ? 4 : 0);
-        tset(pl.lift, mode === "plate" ? boost : base, now, delay);
-        pl.el.sil.classList.toggle("hi", i === target);
-      });
-      read.textContent = String(target + 1).padStart(2, "0");
-    } else {
-      mode = "rest";
-      tset(lidDrop, 0, now, 0);
-      lid.sil.classList.remove("hi");
-      plates.forEach((pl, i) => {
-        tset(pl.lift, i === RAISED ? 10 : 0, now, Math.abs(i - RAISED) * (stag * 0.35));
-        pl.el.sil.classList.toggle("hi", i === RAISED);
-      });
-      read.textContent = "rest";
-    }
-    loop.wake();
-  }
-
-  apply(-1);
   bag.add(pointer(stage, {
-    move: (p) => apply(hit(p)),
-    leave: () => apply(-1),
+    move: (p) => {
+      hover = hit(p);
+      loop.wake();
+    },
+    leave: () => {
+      hover = -1;
+      loop.wake();
+    },
   }));
   bag.add(() => svg.replaceChildren());
 
   return {
-    set: (v) => { stag = v; },
+    set: (v) => { slowRate = v; loop.wake(); },
     destroy: bag.dispose,
   };
 }
 
 hairline({
   name: "close",
-  means: "Five plates in a tray under a floating lid; the pointer inspects a plate or closes the set.",
-  rules: [1, 2, 5, 8],
-  range: [20, 40, 60],
+  means: "Exposure plates rise in turn under a floating lid; the set closes, then reopens. Hover inspects.",
+  rules: [1, 5, 7, 9],
+  range: [0.15, 0.35, 0.55],
   mount,
 });

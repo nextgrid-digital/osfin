@@ -5,8 +5,8 @@ import MetalLapJoint from "@/components/MetalLapJoint";
 import { POSTS } from "../content/posts";
 import CascadeBands from "./CascadeBands";
 import HomeSecurity from "./HomeSecurity";
+import HomeProduction from "./HomeProduction";
 import HomeStories from "./HomeStories";
-import ProductionHairline from "./ProductionHairlines";
 import SiteContainer from "./SiteContainer";
 import SiteFooter from "./SiteFooter";
 import TransitionLink from "./TransitionLink";
@@ -76,83 +76,7 @@ export default function HumanHome() {
           </SiteContainer>
         </section>
 
-        <section className="py-28 md:py-40">
-          <SiteContainer>
-            <div className="flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between md:gap-10">
-              <div className="flex w-full max-w-full flex-col gap-4">
-                <p
-                  className="not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-black/45 uppercase"
-                  data-not-typeset
-                >
-                  Built for production
-                </p>
-                <h2 className="!mb-0 !mt-0 max-w-full text-left !text-[clamp(1.85rem,7vw,42px)] !leading-[1.15] !font-normal tracking-[-0.02em] text-[rgba(0,0,0,0.875)]">
-                  <span className="block">Transaction integrity.</span>
-                  <span className="block">Institution wide control.</span>
-                </h2>
-              </div>
-              <p className="!mb-0 !mt-0 max-w-[26rem] !text-[16px] !leading-[1.45] text-black">
-                A consistent view of transaction integrity across banking,
-                payments, and settlement, with governed exceptions and clear
-                exposures before financial close.
-              </p>
-            </div>
-
-            <div className="mt-8 grid grid-cols-1 gap-4 md:mt-10 md:grid-cols-3 md:gap-6">
-              {(
-                [
-                  {
-                    fig: "FIG 0.1",
-                    title: "Reconciled with context",
-                    figure: "slow" as const,
-                    body: [
-                      "Connect ledger, payment & settlement records to",
-                      "distinguish timing differences from genuine breaks.",
-                    ],
-                  },
-                  {
-                    fig: "FIG 0.2",
-                    title: "Resolved with accountability",
-                    figure: "turntable" as const,
-                    body: [
-                      "Guide AI assisted exception investigation with",
-                      "clear ownership and governed approvals.",
-                    ],
-                  },
-                  {
-                    fig: "FIG 0.3",
-                    title: "Closed with confidence",
-                    figure: "riffle" as const,
-                    body: [
-                      "See unresolved exposures and outstanding",
-                      "dependencies before completing financial close.",
-                    ],
-                  },
-                ] as const
-              ).map((column) => (
-                <div
-                  key={column.fig}
-                  className="flex min-w-0 flex-col border border-black/15 bg-white px-6 py-6 md:px-7 md:py-8"
-                >
-                  <div className="relative aspect-square w-full overflow-hidden">
-                    <ProductionHairline figure={column.figure} />
-                    <p className="not-typeset absolute top-0 left-0 z-10 !m-0 font-[family-name:var(--font-mono)] text-[14px] leading-5 tracking-[-0.02em] text-black/55 uppercase">
-                      {column.fig}
-                    </p>
-                  </div>
-                  <h3 className="!mb-0 !mt-6 !text-[22px] !font-normal !leading-[1.25] !tracking-normal text-[rgba(0,0,0,0.875)] normal-case md:!text-[24px]">
-                    {column.title}
-                  </h3>
-                  <p className="!mb-0 !mt-3 text-[16px] leading-6 text-black">
-                    {column.body[0]}
-                    <br />
-                    {column.body[1]}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </SiteContainer>
-        </section>
+        <HomeProduction />
 
         <HomeStories />
 

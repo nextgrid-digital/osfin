@@ -223,114 +223,117 @@ export function SheetGridLines() {
 
 export const SHEET_VIEWBOX = `0 0 ${W} ${H}`;
 
-const SIGNAL_VIEWBOX = "74.4 78 486.2 500";
+const FIELD_COLS = 6;
+const FIELD_ROWS = 6;
+const FIELD_CELL = 100;
+const FIELD_VIEWBOX = `0 0 ${FIELD_COLS * FIELD_CELL} ${FIELD_ROWS * FIELD_CELL}`;
 
-// Dark vertical strokes traced from the reference. Faint full-height guides are omitted.
-const SIGNAL_LINES: { x: number; w: number; segs: readonly (readonly [number, number])[] }[] = [
-  { x: 75.7, w: 1.3, segs: [] },
-  { x: 86.2, w: 1.2, segs: [] },
-  { x: 96.7, w: 1.3, segs: [] },
-  { x: 106.8, w: 1.3, segs: [] },
-  { x: 116.8, w: 1.3, segs: [] },
-  { x: 126.9, w: 1.3, segs: [] },
-  { x: 137.9, w: 1.3, segs: [] },
-  { x: 148, w: 1.3, segs: [] },
-  { x: 158, w: 1.3, segs: [] },
-  { x: 168.1, w: 1.3, segs: [] },
-  { x: 179.1, w: 1.3, segs: [] },
-  { x: 189.1, w: 1.3, segs: [] },
-  { x: 199.2, w: 1.3, segs: [] },
-  { x: 209.3, w: 1.3, segs: [] },
-  { x: 220.3, w: 1.3, segs: [] },
-  { x: 230.3, w: 1.3, segs: [] },
-  { x: 240.4, w: 1.3, segs: [[533, 45]] },
-  { x: 250.9, w: 2, segs: [[124, 181], [351, 227]] },
-  { x: 261, w: 2, segs: [[79, 227], [351, 227]] },
-  { x: 271.5, w: 2.6, segs: [[80, 226], [351, 227]] },
-  { x: 281.6, w: 2.6, segs: [[124, 182], [351, 227]] },
-  { x: 292.1, w: 2, segs: [[79, 227], [351, 227]] },
-  { x: 302.2, w: 2, segs: [[79, 227], [351, 227]] },
-  { x: 312.7, w: 2.6, segs: [[79, 227], [351, 227]] },
-  { x: 322.7, w: 2.6, segs: [[79, 227], [351, 227]] },
-  { x: 333.3, w: 2, segs: [[79, 227], [351, 227]] },
-  { x: 343.3, w: 2, segs: [[79, 227], [351, 227]] },
-  { x: 353.4, w: 2, segs: [[79, 227], [351, 227]] },
-  { x: 363.9, w: 2.6, segs: [[124, 182], [351, 227]] },
-  { x: 374.5, w: 2, segs: [[124, 182], [351, 227]] },
-  { x: 384.5, w: 2, segs: [[124, 182], [351, 227]] },
-  { x: 394.6, w: 2, segs: [[169, 47], [260, 46], [352, 136], [532, 46]] },
-  { x: 405.1, w: 1.3, segs: [[125, 45], [533, 45]] },
-  { x: 415.2, w: 1.3, segs: [] },
-  { x: 425.7, w: 2, segs: [[124, 91]] },
-  { x: 436.2, w: 1.3, segs: [[85, 35]] },
-  { x: 446.3, w: 1.3, segs: [] },
-  { x: 456.8, w: 2, segs: [[79, 46]] },
-  { x: 466.9, w: 2, segs: [[79, 46], [170, 45]] },
-  { x: 476.9, w: 2, segs: [[79, 46], [170, 45]] },
-  { x: 487.5, w: 2.6, segs: [[79, 45], [170, 45], [261, 45]] },
-  { x: 498, w: 2, segs: [[79, 46], [170, 45], [260, 46]] },
-  { x: 508.1, w: 2, segs: [[79, 46], [170, 136], [397, 45]] },
-  { x: 518.1, w: 2, segs: [[215, 91], [397, 45], [488, 44]] },
-  { x: 528.6, w: 2.6, segs: [[215, 91], [397, 45]] },
-  { x: 539.2, w: 2, segs: [[215, 91], [397, 45]] },
-  { x: 549.2, w: 2, segs: [[215, 136], [488, 44]] },
-  { x: 559.3, w: 2, segs: [[215, 46], [306, 45], [488, 44]] },
-];
+const TILE_PALETTE = [
+  "#F3C07A",
+  "#E8923A",
+  "#F6D3A8",
+  "#EFE8E0",
+  "#F0B15C",
+  "#E39B45",
+  "#F8E2C8",
+  "#F6C98A",
+] as const;
 
-/** Vertical strokes in the same register as the traced cluster, arranged from a seed. */
-function signalLines(seed: number) {
-  const rand = mulberry32(seed);
-  const lines: { x: number; w: number; segs: [number, number][] }[] = [];
-  let cursor = 110 + rand() * 220;
-  for (let i = 0; i < 48; i++) {
-    const x = Math.round((76 + i * 10.05) * 10) / 10;
-    const segs: [number, number][] = [];
-    if (rand() > 0.16) {
-      const count = rand() < 0.5 ? 2 : rand() < 0.82 ? 1 : 3;
-      let y = cursor + (rand() - 0.5) * 90;
-      for (let k = 0; k < count; k++) {
-        const top = Math.max(82, Math.min(490, y));
-        const height = Math.min(24 + rand() * (rand() < 0.3 ? 200 : 90), 568 - top);
-        if (height > 16) segs.push([Math.round(top), Math.round(height)]);
-        y = top + height + 18 + rand() * 46;
-      }
-      if (segs.length > 0) cursor = segs[0][0] + (rand() - 0.45) * 36;
-    }
-    const roll = rand();
-    lines.push({ x, w: roll < 0.5 ? 1.3 : roll < 0.78 ? 2 : 2.6, segs });
+type GradientTile = {
+  col: number;
+  row: number;
+  span: number;
+  color: string;
+  strength: number;
+  flip: boolean;
+};
+
+function hashSeed(text: string) {
+  let hash = 2166136261;
+  for (let i = 0; i < text.length; i++) {
+    hash ^= text.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
   }
-  return lines;
+  return hash >>> 0;
 }
 
-function SignalCluster({ seed }: { seed?: number }) {
-  const lines = seed == null ? SIGNAL_LINES : signalLines(seed);
+/** Sparse warm squares. Placement, height, and tone come from the seed. */
+function gradientTiles(seed: number): GradientTile[] {
+  const rand = mulberry32(seed);
+  const taken = new Set<string>();
+  const tiles: GradientTile[] = [];
+  const target = 8 + Math.floor(rand() * 5);
+  let guard = 0;
+  while (tiles.length < target && guard < 240) {
+    guard += 1;
+    const col = Math.floor(rand() * FIELD_COLS);
+    const row = Math.floor(rand() * FIELD_ROWS);
+    const span = rand() < 0.36 && row < FIELD_ROWS - 1 ? 2 : 1;
+    const cells = Array.from({ length: span }, (_, index) => `${col},${row + index}`);
+    if (cells.some((key) => taken.has(key))) continue;
+    cells.forEach((key) => taken.add(key));
+    tiles.push({
+      col,
+      row,
+      span,
+      color: TILE_PALETTE[Math.floor(rand() * TILE_PALETTE.length)]!,
+      strength: 0.78 + rand() * 0.22,
+      flip: rand() < 0.2,
+    });
+  }
+  return tiles;
+}
+
+function GradientField({ seed }: { seed: number }) {
+  const tiles = gradientTiles(seed);
+  const inset = 8;
   return (
-    <g stroke="#001D20" strokeOpacity="0.4" strokeLinecap="round">
-      {lines.filter((line) => line.segs.length > 0).map((line, lineIndex) => (
-        <g key={line.x}>
-          {line.segs.map(([y, height], seg) => {
-            const upward = (lineIndex + seg) % 2 === 0;
-            return (
-              <line
-                key={`${line.x}-${seg}`}
-                x1={line.x}
-                x2={line.x}
-                y1={y}
-                y2={y + height}
-                strokeWidth={Math.max(1.6, line.w)}
-                strokeDasharray="1.2 5.5"
-              >
-                <animate
-                  attributeName="stroke-dashoffset"
-                  from="0"
-                  to={upward ? "-40" : "40"}
-                  dur={`${16 + ((lineIndex * 3 + seg * 5) % 12)}s`}
-                  repeatCount="indefinite"
-                />
-              </line>
-            );
-          })}
-        </g>
+    <g>
+      <g stroke="rgba(0,0,0,0.12)" strokeWidth="1">
+        {Array.from({ length: FIELD_COLS + 1 }, (_, index) => (
+          <line
+            key={`v${index}`}
+            x1={index * FIELD_CELL}
+            y1={0}
+            x2={index * FIELD_CELL}
+            y2={FIELD_ROWS * FIELD_CELL}
+          />
+        ))}
+        {Array.from({ length: FIELD_ROWS + 1 }, (_, index) => (
+          <line
+            key={`h${index}`}
+            x1={0}
+            y1={index * FIELD_CELL}
+            x2={FIELD_COLS * FIELD_CELL}
+            y2={index * FIELD_CELL}
+          />
+        ))}
+      </g>
+      <defs>
+        {tiles.map((tile, index) => (
+          <linearGradient
+            key={index}
+            id={`tile-${seed}-${index}`}
+            x1="0"
+            y1={tile.flip ? "1" : "0"}
+            x2="0"
+            y2={tile.flip ? "0" : "1"}
+          >
+            <stop offset="0%" stopColor={tile.color} stopOpacity="0" />
+            <stop offset="28%" stopColor={tile.color} stopOpacity={tile.strength * 0.22} />
+            <stop offset="100%" stopColor={tile.color} stopOpacity={tile.strength} />
+          </linearGradient>
+        ))}
+      </defs>
+      {tiles.map((tile, index) => (
+        <rect
+          key={index}
+          x={tile.col * FIELD_CELL + inset}
+          y={tile.row * FIELD_CELL + inset}
+          width={FIELD_CELL - inset * 2}
+          height={tile.span * FIELD_CELL - inset * 2}
+          fill={`url(#tile-${seed}-${index})`}
+        />
       ))}
     </g>
   );
@@ -352,7 +355,7 @@ export default function ProductSheet({
   art?: boolean;
   indexes?: boolean;
   cluster?: boolean;
-  /** When set, the cluster is generated instead of the traced drawing. */
+  /** Seed for the random square field. Defaults to a hash of `name`. */
   seed?: number;
   className?: string;
 }) {
@@ -362,14 +365,14 @@ export default function ProductSheet({
 
   return (
     <svg
-      viewBox={cluster ? SIGNAL_VIEWBOX : SHEET_VIEWBOX}
-      preserveAspectRatio={cluster ? "none" : "xMidYMid slice"}
+      viewBox={cluster ? FIELD_VIEWBOX : SHEET_VIEWBOX}
+      preserveAspectRatio={cluster ? "xMidYMid meet" : "xMidYMid slice"}
       className={className}
       role="img"
       aria-label={name}
     >
       {cluster ? (
-        <SignalCluster seed={seed} />
+        <GradientField seed={seed ?? hashSeed(name)} />
       ) : (
         <>
           <SheetGridLines />

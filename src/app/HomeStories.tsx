@@ -22,12 +22,13 @@ function SliderArrow({ direction }: { direction: "prev" | "next" }) {
 export default function HomeStories() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
-    containScroll: false,
+    containScroll: "trimSnaps",
     slidesToScroll: 1,
   });
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(false);
   const [selected, setSelected] = useState(0);
+  const [snapCount, setSnapCount] = useState(STORIES.length);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -35,6 +36,7 @@ export default function HomeStories() {
       setCanPrev(emblaApi.canGoToPrev());
       setCanNext(emblaApi.canGoToNext());
       setSelected(emblaApi.selectedSnap());
+      setSnapCount(emblaApi.snapList().length);
     };
     sync();
     emblaApi.on("select", sync);
@@ -91,25 +93,25 @@ export default function HomeStories() {
 
       {/* Full-bleed to the right; first card lines up with SiteContainer content. */}
       <div className={`mt-8 overflow-hidden md:mt-10 ${GUTTER}`} ref={emblaRef}>
-        <div className="flex items-stretch gap-5 pr-5 md:gap-7 sm:pr-8">
+        <div className="flex items-stretch gap-4 lg:gap-5">
           {STORIES.map((story) => (
             <article
               key={story.slug}
-              className="flex min-h-[28rem] min-w-0 flex-[0_0_min(92vw,64rem)] flex-col md:min-h-[32rem] md:flex-[0_0_min(82vw,72rem)]"
+              className="@container flex min-w-0 flex-[0_0_calc((100%-1rem)/1.15)] flex-col lg:flex-[0_0_calc((100%-2.5rem)/2.5)]"
               style={{ backgroundColor: story.fill }}
             >
-              <div className="grid flex-1 grid-cols-1 md:grid-cols-[minmax(0,1.55fr)_minmax(0,0.9fr)]">
-                <div className="flex flex-col px-7 py-10 md:px-12 md:py-14">
-                  <h3 className="!mb-0 !mt-0 !text-[28px] !font-normal !leading-[1.2] !tracking-normal text-[rgba(0,0,0,0.875)] normal-case md:!text-[40px]">
+              <div className="grid h-full flex-1 grid-cols-1 grid-rows-[1fr] @min-[32rem]:grid-cols-[minmax(0,1.35fr)_minmax(0,0.85fr)]">
+                <div className="flex h-full flex-col px-5 py-6 sm:px-6 sm:py-7">
+                  <h3 className="!mb-0 !mt-0 !text-[22px] !font-normal !leading-[1.2] !tracking-normal text-[rgba(0,0,0,0.875)] normal-case @min-[32rem]:!text-[26px]">
                     {story.company}
                   </h3>
-                  <p className="!mb-0 !mt-6 max-w-2xl text-[18px] leading-[1.55] text-black/70 md:mt-8 md:text-[20px]">
+                  <p className="!mb-0 !mt-4 line-clamp-6 text-[15px] leading-[1.5] text-black/70">
                     “{story.quote}”
                   </p>
-                  <div className="mt-auto pt-12 md:pt-16">
+                  <div className="mt-auto pt-6">
                     <TransitionLink
                       href={story.href}
-                      className="not-typeset font-[family-name:var(--font-mono)] text-[13px] tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase underline underline-offset-4"
+                      className="not-typeset font-[family-name:var(--font-mono)] text-[12px] tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase underline underline-offset-4"
                       data-not-typeset
                     >
                       Read more
@@ -118,30 +120,27 @@ export default function HomeStories() {
                 </div>
 
                 {story.meta && story.meta.length > 0 ? (
-                  <div className="flex flex-col justify-end border-t border-black/15 px-7 py-10 md:border-t-0 md:border-l md:px-10 md:py-14">
-                    <div className="mb-10 flex items-center md:mb-12">
+                  <div className="flex h-full flex-col justify-between border-t border-black/15 px-5 py-5 @min-[32rem]:border-t-0 @min-[32rem]:border-l @min-[32rem]:px-6 @min-[32rem]:py-7">
+                    <div className="mb-5 flex h-8 items-center @min-[32rem]:mb-6">
                       <img
                         src={story.logo}
                         alt=""
-                        className={
-                          story.logoClass ??
-                          "h-11 w-auto max-w-[14rem] object-contain object-left md:h-14 md:max-w-[18rem]"
-                        }
+                        className="max-h-8 w-auto max-w-[8.5rem] object-contain object-left"
                       />
                     </div>
                     <ul className="!m-0 !list-none !p-0">
                       {story.meta.map((row) => (
                         <li
                           key={row.label}
-                          className="border-b border-black/10 py-3 first:pt-0 last:border-b-0 last:pb-0"
+                          className="border-b border-black/10 py-2 first:pt-0 last:border-b-0 last:pb-0"
                         >
                           <p
-                            className="not-typeset !m-0 font-[family-name:var(--font-mono)] text-[11px] tracking-[-0.02em] text-black/45 uppercase"
+                            className="not-typeset !m-0 font-[family-name:var(--font-mono)] text-[10px] tracking-[-0.02em] text-black/45 uppercase"
                             data-not-typeset
                           >
                             {row.label}
                           </p>
-                          <p className="!mb-0 !mt-1 text-[15px] leading-5 text-[rgba(0,0,0,0.875)]">
+                          <p className="!mb-0 !mt-0.5 text-[13px] leading-5 text-[rgba(0,0,0,0.875)]">
                             {row.value}
                           </p>
                         </li>
@@ -157,9 +156,9 @@ export default function HomeStories() {
 
       <SiteContainer>
         <div className="mt-6 flex justify-center gap-2" aria-hidden>
-          {STORIES.map((story, index) => (
+          {Array.from({ length: snapCount }, (_, index) => (
             <button
-              key={story.slug}
+              key={index}
               type="button"
               className={`h-1.5 rounded-none transition-all ${
                 index === selected

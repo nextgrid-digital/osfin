@@ -1,13 +1,11 @@
 import { TextReveal } from "@/components/ui/cascade-text";
 import Link from "next/link";
-import FooterReveal from "./FooterReveal";
 import SiteContainer from "./SiteContainer";
 import SiteLogo from "./SiteLogo";
 
 export default function SiteFooter() {
   return (
-    <FooterReveal>
-    <footer className="site-footer not-typeset border-t border-white/10 bg-[#001D20] px-0 py-20 text-[13px] text-white/60 md:py-24" data-not-typeset>
+    <footer className="site-footer not-typeset bg-[#001D20] px-0 py-20 text-[13px] text-white/60 md:py-24" data-not-typeset>
       <SiteContainer>
         <div className="mb-16 flex flex-wrap gap-3">
           <p className="mr-2 w-full text-[12px] text-white/50 sm:mr-4 sm:w-auto sm:self-center">
@@ -105,6 +103,5 @@ export default function SiteFooter() {
         </div>
       </SiteContainer>
     </footer>
-    </FooterReveal>
   );
 }
