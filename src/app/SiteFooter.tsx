@@ -60,7 +60,7 @@ export default function SiteFooter() {
                 <li key={l}>
                   <TextReveal
                     as={Link}
-                    href={l === "About" ? "/about" : "/#company"}
+                    href={l === "About" ? "/about" : l === "Security" ? "/security" : "/#company"}
                     text={l}
                     className="hover:text-white"
                   />

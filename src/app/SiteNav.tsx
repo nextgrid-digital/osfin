@@ -93,7 +93,7 @@ const COMPANY = [
   {
     label: "Security",
     description: "Protect payment data with end-to-end controls.",
-    href: "/#company",
+    href: "/security",
   },
 ] as const;
 
@@ -147,7 +147,7 @@ function MobileMenu({
   ];
 
   return (
-    <div className="fixed inset-x-0 top-14 z-40 max-h-[calc(100svh-3.5rem)] overflow-y-auto bg-[#E4E4E4] px-5 pt-4 pb-16 md:top-16 md:max-h-[calc(100svh-4rem)] lg:hidden">
+    <div className="site-mobile-nav fixed inset-x-0 top-14 z-40 max-h-[calc(100svh-3.5rem)] overflow-y-auto bg-[#E4E4E4] px-5 pt-4 pb-16 md:top-16 md:max-h-[calc(100svh-4rem)] lg:hidden">
       <nav aria-label="Mobile" className="flex flex-col">
         {groups.map((group) => {
           const expanded = section === group.id;

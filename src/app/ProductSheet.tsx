@@ -305,20 +305,31 @@ function signalLines(seed: number) {
 function SignalCluster({ seed }: { seed?: number }) {
   const lines = seed == null ? SIGNAL_LINES : signalLines(seed);
   return (
-    <g>
-      {lines.filter((line) => line.segs.length > 0).map((line) => (
+    <g stroke="#001D20" strokeOpacity="0.4" strokeLinecap="round">
+      {lines.filter((line) => line.segs.length > 0).map((line, lineIndex) => (
         <g key={line.x}>
-          {line.segs.map(([y, height], seg) => (
-            <line
-              key={`${line.x}-${seg}`}
-              x1={line.x}
-              x2={line.x}
-              y1={y}
-              y2={y + height}
-              stroke="#001D20"
-              strokeWidth={Math.max(1.6, line.w)}
-            />
-          ))}
+          {line.segs.map(([y, height], seg) => {
+            const upward = (lineIndex + seg) % 2 === 0;
+            return (
+              <line
+                key={`${line.x}-${seg}`}
+                x1={line.x}
+                x2={line.x}
+                y1={y}
+                y2={y + height}
+                strokeWidth={Math.max(1.6, line.w)}
+                strokeDasharray="1.2 5.5"
+              >
+                <animate
+                  attributeName="stroke-dashoffset"
+                  from="0"
+                  to={upward ? "-40" : "40"}
+                  dur={`${16 + ((lineIndex * 3 + seg * 5) % 12)}s`}
+                  repeatCount="indefinite"
+                />
+              </line>
+            );
+          })}
         </g>
       ))}
     </g>

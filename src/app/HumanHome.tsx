@@ -1,7 +1,9 @@
 import { TextReveal } from "@/components/ui/cascade-text";
+import GatewayFlow from "@/components/ui/gateway-flow";
 import { KineticTextReveal } from "@/components/ui/kinetic-text-reveal";
 import MetalLapJoint from "@/components/MetalLapJoint";
 import { POSTS } from "../content/posts";
+import CascadeBands from "./CascadeBands";
 import HomeSecurity from "./HomeSecurity";
 import ProductionHairline from "./ProductionHairlines";
 import SiteContainer from "./SiteContainer";
@@ -151,7 +153,9 @@ export default function HumanHome() {
           </SiteContainer>
         </section>
 
+        <CascadeBands from="#E4E4E4" to="#0A0A0A" />
         <HomeSecurity />
+        <CascadeBands from="#0A0A0A" to="#E4E4E4" />
 
         {/* Changelog */}
         <section id="changelog" className="py-28 md:py-40">
@@ -221,22 +225,25 @@ export default function HumanHome() {
         </section>
 
         {/* Bottom CTA */}
-        <section className="pb-20 md:pb-28">
-          <SiteContainer>
-            <div className="rounded-none bg-white px-6 py-20 text-center md:py-28">
-              <div className="mx-auto max-w-[1000px]">
-                <h2>
-                  Architecting agentic
-                  <br />
-                  payment operations
-                </h2>
-                <div className="not-typeset mt-10 flex justify-center" data-not-typeset>
-                  <BtnPrimary href="#signup">Talk to Sales</BtnPrimary>
-                </div>
+        <section className="relative overflow-hidden bg-[#E4E4E4]">
+          <GatewayFlow
+            mode="light"
+            className="pointer-events-none absolute inset-0 z-0 h-full w-full"
+          />
+          <SiteContainer className="relative z-10 py-20 text-center md:py-28">
+            <div className="mx-auto max-w-[1000px]">
+              <h2>
+                Put agentic ops
+                <br />
+                in production
+              </h2>
+              <div className="not-typeset mt-10 flex justify-center" data-not-typeset>
+                <BtnPrimary href="#signup">Talk to Sales</BtnPrimary>
               </div>
             </div>
           </SiteContainer>
         </section>
+        <CascadeBands from="#E4E4E4" to="#001D20" />
       </main>
 
       <SiteFooter />

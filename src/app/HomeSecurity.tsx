@@ -1,3 +1,4 @@
+import DarkWhenInView from "./DarkWhenInView";
 import SiteContainer from "./SiteContainer";
 
 const ITEMS = [
@@ -27,12 +28,20 @@ const ITEMS = [
   },
 ] as const;
 
-function CertIcon({ kind }: { kind: (typeof ITEMS)[number]["icon"] }) {
+function CertIcon({
+  kind,
+  ink = "white",
+}: {
+  kind: (typeof ITEMS)[number]["icon"];
+  ink?: "white" | "dark";
+}) {
+  const label = ink === "white" ? "white" : "currentColor";
+  const mark = ink === "white" ? "text-white/80" : "text-black/70";
   if (kind === "soc") {
     return (
       <svg
         viewBox="0 0 64 64"
-        className="size-14 text-white/80"
+        className={`size-14 ${mark}`}
         fill="none"
         aria-hidden
       >
@@ -51,7 +60,7 @@ function CertIcon({ kind }: { kind: (typeof ITEMS)[number]["icon"] }) {
           x="32"
           y="42"
           textAnchor="middle"
-          fill="white"
+          fill={label}
           style={{
             fontSize: 12,
             fontWeight: 600,
@@ -68,7 +77,7 @@ function CertIcon({ kind }: { kind: (typeof ITEMS)[number]["icon"] }) {
     return (
       <svg
         viewBox="0 0 64 64"
-        className="size-14 text-white/80"
+        className={`size-14 ${mark}`}
         fill="none"
         stroke="currentColor"
         strokeWidth="1.25"
@@ -87,7 +96,7 @@ function CertIcon({ kind }: { kind: (typeof ITEMS)[number]["icon"] }) {
           x="32"
           y="36"
           textAnchor="middle"
-          fill="white"
+          fill={label}
           stroke="none"
           style={{
             fontSize: 11,
@@ -105,7 +114,7 @@ function CertIcon({ kind }: { kind: (typeof ITEMS)[number]["icon"] }) {
     return (
       <svg
         viewBox="0 0 64 64"
-        className="size-14 text-white/80"
+        className={`size-14 ${mark}`}
         fill="none"
         aria-hidden
       >
@@ -124,7 +133,7 @@ function CertIcon({ kind }: { kind: (typeof ITEMS)[number]["icon"] }) {
           x="32"
           y="41"
           textAnchor="middle"
-          fill="white"
+          fill={label}
           style={{
             fontSize: 9,
             fontWeight: 600,
@@ -140,7 +149,7 @@ function CertIcon({ kind }: { kind: (typeof ITEMS)[number]["icon"] }) {
   return (
     <svg
       viewBox="0 0 64 64"
-      className="size-14 text-white/80"
+      className={`size-14 ${mark}`}
       fill="none"
       stroke="currentColor"
       strokeWidth="1.25"
@@ -150,42 +159,63 @@ function CertIcon({ kind }: { kind: (typeof ITEMS)[number]["icon"] }) {
       <path d="M8 28h40" />
       <path d="M16 38h12" />
       <circle cx="52" cy="20" r="10" />
-      <path d="M48 20l3 3 6-6" stroke="white" />
+      <path d="M48 20l3 3 6-6" stroke={label} />
     </svg>
   );
 }
 
-export default function HomeSecurity() {
+export function SecurityCards({
+  className = "",
+  tone = "dark",
+}: {
+  className?: string;
+  tone?: "dark" | "light";
+}) {
+  const light = tone === "light";
+  return (
+    <div className={`grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4 ${className}`.trim()}>
+      {ITEMS.map((item) => (
+        <div
+          key={item.title}
+          className={
+            light
+              ? "flex min-h-0 min-w-0 flex-col justify-between gap-16 bg-[#E4E4E4] px-6 py-8 md:min-h-[420px] md:px-8 md:py-10"
+              : "flex min-h-0 min-w-0 flex-col justify-between gap-16 bg-[#141414] px-6 py-8 md:min-h-[420px] md:px-8 md:py-10"
+          }
+        >
+          <CertIcon kind={item.icon} ink={light ? "dark" : "white"} />
+          <div>
+            {item.kicker ? (
+              <p
+                className={`not-typeset !mb-2 !mt-0 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] uppercase ${light ? "text-black/45" : "text-white/45"}`}
+              >
+                {item.kicker}
+              </p>
+            ) : null}
+            <h3
+              className={`!mb-0 !mt-0 !text-[22px] !font-medium !leading-[1.2] !tracking-[-0.01em] normal-case ${light ? "text-[rgba(0,0,0,0.875)]" : "text-white"}`}
+            >
+              {item.title}
+            </h3>
+            <p className={`!mb-0 !mt-3 text-[15px] leading-6 ${light ? "text-black/60" : "text-white/45"}`}>
+              {item.body}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default function HomeSecurity({ watch = true }: { watch?: boolean }) {
   return (
     <section id="security" className="bg-[#0A0A0A] py-28 text-white md:py-40">
+      {watch ? <DarkWhenInView targetId="security" /> : null}
       <SiteContainer>
         <h2 className="!mb-0 !mt-0 max-w-2xl !text-[clamp(1.85rem,7vw,36px)] !font-normal !leading-[1.15] tracking-[-0.02em] text-white md:!text-[42px]">
           Compliance and security guardrails built in.
         </h2>
-
-        <div className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
-          {ITEMS.map((item) => (
-            <div
-              key={item.title}
-              className="flex min-h-0 min-w-0 flex-col justify-between gap-16 border border-white/15 bg-[#141414] px-6 py-8 md:min-h-[420px] md:px-8 md:py-10"
-            >
-              <CertIcon kind={item.icon} />
-              <div>
-                {item.kicker ? (
-                  <p className="not-typeset !mb-2 !mt-0 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-white/45 uppercase">
-                    {item.kicker}
-                  </p>
-                ) : null}
-                <h3 className="!mb-0 !mt-0 !text-[22px] !font-medium !leading-[1.2] !tracking-[-0.01em] text-white normal-case">
-                  {item.title}
-                </h3>
-                <p className="!mb-0 !mt-3 text-[15px] leading-6 text-white/45">
-                  {item.body}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <SecurityCards className="mt-12 md:mt-16" />
       </SiteContainer>
     </section>
   );
