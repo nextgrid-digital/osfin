@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState, type MouseEvent, type ReactNode } from "react";
 import {
   MotionNavigationMenu,
@@ -181,20 +182,20 @@ function MobileMenu({
             </div>
           );
         })}
-        <a
+        <Link
           href="/blog"
           className="border-b border-black/10 py-4 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase no-underline"
           onClick={onNavigate("/blog")}
         >
           Blog
-        </a>
-        <a
+        </Link>
+        <Link
           href="/#contact"
           className="border-b border-black/10 py-4 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase no-underline"
           onClick={onClose}
         >
           Contact
-        </a>
+        </Link>
       </nav>
     </div>
   );
