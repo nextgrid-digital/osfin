@@ -49,7 +49,7 @@ export default function CascadeBands({ from, to }: CascadeBandsProps) {
 
   const gradient = useMemo(() => {
     const stops = Array.from({ length: BAND_COUNT }, (_, i) => {
-      const color = mixHex(from, to, BAND_COUNT === 1 ? 0 : i / (BAND_COUNT - 1));
+      const color = mixHex(from, to, i / (BAND_COUNT - 1));
       const start = (i / BAND_COUNT) * 100;
       const end = ((i + 1) / BAND_COUNT) * 100;
       return `${color} ${start}% ${end}%`;

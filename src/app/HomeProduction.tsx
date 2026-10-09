@@ -35,8 +35,14 @@ const FEATURES = [
   },
 ] as const;
 
+type FeatureId = (typeof FEATURES)[number]["id"];
+
+function isFeatureId(value: string | null): value is FeatureId {
+  return FEATURES.some((feature) => feature.id === value);
+}
+
 export default function HomeProduction() {
-  const [active, setActive] = useState(FEATURES[0].id);
+  const [active, setActive] = useState<FeatureId>(FEATURES[0].id);
   const itemRefs = useRef<Record<string, HTMLElement | null>>({});
 
   useEffect(() => {
@@ -50,8 +56,8 @@ export default function HomeProduction() {
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        const top = visible[0]?.target.getAttribute("data-feature-id");
-        if (top) setActive(top);
+        const top = visible[0]?.target.getAttribute("data-feature-id") ?? null;
+        if (isFeatureId(top)) setActive(top);
       },
       { rootMargin: "-30% 0px -40% 0px", threshold: [0.2, 0.45, 0.7] },
     );
