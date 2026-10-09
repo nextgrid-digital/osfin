@@ -393,7 +393,7 @@ html.theme-dark .btn-primary {
 html.over-dark .site-header,
 html.over-dark .site-header.header-menu-open,
 html.over-dark .site-header.header-over-video {
-  background: #0a0a0a;
+  background: #001d20;
   color: #fff;
 }
 
@@ -413,14 +413,14 @@ html.over-dark .site-header .site-nav [data-slot="navigation-menu-link"],
 html.over-dark .site-header .site-nav button[data-slot="navigation-menu-trigger"],
 html.over-dark .site-header .site-nav [data-slot="navigation-menu-list"] .bg-white,
 html.over-dark .site-header [data-slot="motion-highlight"] {
-  background-color: #141414;
+  background-color: #0a3034;
   color: #fff;
 }
 
 html.over-dark .site-header .site-nav [data-slot="navigation-menu-link"]:hover,
 html.over-dark .site-header .site-nav button[data-slot="navigation-menu-trigger"]:hover,
 html.over-dark .site-header .site-nav button[data-slot="navigation-menu-trigger"][data-state="open"] {
-  background-color: #141414;
+  background-color: #0a3034;
   color: #fff;
 }
 
@@ -428,7 +428,7 @@ html.over-dark .site-header .site-nav-viewport,
 html.over-dark .site-header [data-slot="navigation-menu-viewport"],
 html.over-dark .site-header .site-nav-viewport--mega,
 html.over-dark .site-header [data-layout="mega"] [data-slot="navigation-menu-viewport"] {
-  background: #0a0a0a;
+  background: #001d20;
   color: #fff;
   border-color: rgba(255, 255, 255, 0.12);
 }
@@ -444,7 +444,7 @@ html.over-dark .site-header [data-layout="mega"] [data-slot="navigation-menu-con
 }
 
 html.over-dark .site-mobile-nav {
-  background: #0a0a0a;
+  background: #001d20;
   color: #fff;
 }
 
@@ -470,7 +470,7 @@ html.over-dark .site-mobile-nav [class*="border-black"] {
 
 html.over-dark .btn-primary {
   background: #fff;
-  color: #0a0a0a;
+  color: #001d20;
 }
 
 html.over-dark .btn-secondary {

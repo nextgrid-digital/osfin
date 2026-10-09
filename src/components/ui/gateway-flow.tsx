@@ -367,10 +367,11 @@ const gatewayFlowSource = `<!DOCTYPE html>
                 ctx.save();
                 ctx.globalCompositeOperation = 'destination-in';
                 ctx.translate(width / 2, height / 2);
-                ctx.scale(1, 2.4);
-                const mask = ctx.createRadialGradient(0, 0, width * 0.2, 0, 0, width * 0.48);
-                mask.addColorStop(0, 'rgba(0, 0, 0, 0)');
-                mask.addColorStop(0.2, 'rgba(0, 0, 0, 0)');
+                // Mild ellipse so short sections (CTA) still show lines at top/bottom.
+                ctx.scale(1.15, 1.2);
+                const mask = ctx.createRadialGradient(0, 0, width * 0.08, 0, 0, width * 0.62);
+                mask.addColorStop(0, 'rgba(0, 0, 0, 0.55)');
+                mask.addColorStop(0.35, 'rgba(0, 0, 0, 1)');
                 mask.addColorStop(1, 'rgba(0, 0, 0, 1)');
                 ctx.fillStyle = mask;
                 ctx.fillRect(-width * 2, -height * 3, width * 4, height * 6);

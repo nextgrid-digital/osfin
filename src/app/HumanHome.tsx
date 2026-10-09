@@ -5,6 +5,7 @@ import MetalLapJoint from "@/components/MetalLapJoint";
 import { POSTS } from "../content/posts";
 import CascadeBands from "./CascadeBands";
 import HomeSecurity from "./HomeSecurity";
+import HomeStories from "./HomeStories";
 import ProductionHairline from "./ProductionHairlines";
 import SiteContainer from "./SiteContainer";
 import SiteFooter from "./SiteFooter";
@@ -153,9 +154,11 @@ export default function HumanHome() {
           </SiteContainer>
         </section>
 
-        <CascadeBands from="#E4E4E4" to="#0A0A0A" />
+        <HomeStories />
+
+        <CascadeBands from="#E4E4E4" to="#001D20" />
         <HomeSecurity />
-        <CascadeBands from="#0A0A0A" to="#E4E4E4" />
+        <CascadeBands from="#001D20" to="#E4E4E4" />
 
         {/* Changelog */}
         <section id="changelog" className="py-28 md:py-40">
@@ -229,6 +232,17 @@ export default function HumanHome() {
           <GatewayFlow
             mode="light"
             className="pointer-events-none absolute inset-0 z-0 h-full w-full"
+          />
+          {/* Keep lines at top; clear behind copy and fade out toward the bottom. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-[1]"
+            style={{
+              background: [
+                "radial-gradient(ellipse 80% 55% at 50% 52%, rgba(228,228,228,0.97) 0%, rgba(228,228,228,0.82) 38%, rgba(228,228,228,0.2) 62%, transparent 78%)",
+                "linear-gradient(to bottom, transparent 0%, transparent 14%, rgba(228,228,228,0.25) 36%, rgba(228,228,228,0.78) 68%, #E4E4E4 90%)",
+              ].join(", "),
+            }}
           />
           <SiteContainer className="relative z-10 py-20 text-center md:py-28">
             <div className="mx-auto max-w-[1000px]">

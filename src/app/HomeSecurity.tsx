@@ -180,7 +180,7 @@ export function SecurityCards({
           className={
             light
               ? "flex min-h-0 min-w-0 flex-col justify-between gap-16 bg-[#E4E4E4] px-6 py-8 md:min-h-[420px] md:px-8 md:py-10"
-              : "flex min-h-0 min-w-0 flex-col justify-between gap-16 bg-[#141414] px-6 py-8 md:min-h-[420px] md:px-8 md:py-10"
+              : "flex min-h-0 min-w-0 flex-col justify-between gap-16 bg-[#0A3034] px-6 py-8 md:min-h-[420px] md:px-8 md:py-10"
           }
         >
           <CertIcon kind={item.icon} ink={light ? "dark" : "white"} />
@@ -209,10 +209,10 @@ export function SecurityCards({
 
 export default function HomeSecurity({ watch = true }: { watch?: boolean }) {
   return (
-    <section id="security" className="bg-[#0A0A0A] py-28 text-white md:py-40">
+    <section id="security" className="bg-[#001D20] pt-16 pb-28 text-white md:pt-20 md:pb-40">
       {watch ? <DarkWhenInView targetId="security" /> : null}
       <SiteContainer>
-        <h2 className="!mb-0 !mt-0 max-w-2xl !text-[clamp(1.85rem,7vw,36px)] !font-normal !leading-[1.15] tracking-[-0.02em] text-white md:!text-[42px]">
+        <h2 className="mx-auto !mb-0 !mt-0 max-w-2xl text-center !text-[clamp(1.85rem,7vw,36px)] !font-normal !leading-[1.15] tracking-[-0.02em] text-white md:!text-[42px]">
           Compliance and security guardrails built in.
         </h2>
         <SecurityCards className="mt-12 md:mt-16" />

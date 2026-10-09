@@ -4,8 +4,8 @@ import { useLayoutEffect, useMemo, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const BAND_COUNT = 6;
-const MAX_HEIGHT = 40;
+const BAND_COUNT = 12;
+const MAX_HEIGHT = 18;
 const STACK_HEIGHT = MAX_HEIGHT * BAND_COUNT;
 
 function parseHex(hex: string): [number, number, number] {
