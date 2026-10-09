@@ -76,7 +76,7 @@ export default function AboutPage() {
                       {column.index}
                     </span>
                   </div>
-                  <h3 className="!mb-0 !mt-6 !font-[family-name:var(--font-season)] !text-[clamp(1.75rem,6.2vw,48px)] !leading-[1.15] !font-normal text-[rgba(0,0,0,0.875)]">
+                  <h3 className="!mb-0 !mt-6">
                     {column.title}
                   </h3>
                   <p className="!mb-0 !mt-10 text-[15px] leading-6 text-black/55">{column.body}</p>
