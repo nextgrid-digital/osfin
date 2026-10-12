@@ -12,10 +12,10 @@ const figures = {
 
 /** Cover-scale each sculpture inside the shared frame. */
 const scale = {
-  slow: 1.35,
-  loupe: 1.15,
-  riffle: 1.3,
-  vault: 1.2,
+  slow: 1.7,
+  loupe: 1.55,
+  riffle: 1.65,
+  vault: 1.6,
 } as const;
 
 /** Grayscale faces and strokes — same wash on every figure. */
@@ -30,15 +30,23 @@ export function productionCardColor(figure: keyof typeof figures) {
   return palette[figure].card;
 }
 
-/** One line per rule on the loupe sheet. The glass enlarges whichever line it covers. */
+/** Grid on the loupe sheet: one row per rule, four columns across the card. */
 const RECORD = [
-  "EXC-1842 INVESTIGATING AGE 2D",
-  "LEDGER 44821  14,820.00 USD",
-  "SETTLE 9F2A   14,806.40 USD",
-  "DELTA 13.60 SCHEME FEE BREAK",
-  "CAUSE NOT A TIMING GAP 4812",
-  "OWNER DISPUTES DESK APPROVAL",
-  "TRACE ACQUIRER INTO NOSTRO",
+  ["EXC-1842", "LEDGER", "14,820.00", "OPEN"],
+  ["QUEUE", "BREAKS", "DESK 04", "AGE 2D"],
+  ["44821", "POSTED", "14:02", "ACQR"],
+  ["9F2A", "SETTLE", "14,806.40", "NET"],
+  ["BATCH", "4812", "SCHEME", "NET"],
+  ["DELTA", "FEE", "13.60", "BREAK"],
+  ["CAUSE", "RULE", "MISMATCH", "HELD"],
+  ["TIMING", "GAP", "NONE", "CLEAR"],
+  ["OWNER", "DISPUTES", "DESK", "PEND"],
+  ["TRACE", "ACQUIRER", "NOSTRO", "OPEN"],
+  ["REF", "9F2A", "SETTLE", "IN"],
+  ["ACTION", "RECLASS", "FEE", "13.60"],
+  ["STATUS", "INVEST", "QUEUE", "LIVE"],
+  ["MATCH", "FAIL", "ROW", "44821"],
+  ["SIGN", "OFF", "BLOCKED", "HELD"],
 ];
 
 const LOUPE_MAG = 1.8;
@@ -113,43 +121,119 @@ function mountLoupeRecord(host: HTMLElement) {
   lensBody.append(ground);
   lens.append(lensBody);
 
+  const unit = (x: number, y: number) => {
+    const length = Math.hypot(x, y) || 1;
+    return [x / length, y / length] as const;
+  };
+  const rule = segments[0]!;
+  const [ux, uy] = unit(rule.x2 - rule.x1, rule.y2 - rule.y1);
+  const pitchX = (segments[1]?.x1 ?? rule.x1) - rule.x1;
+  const pitchY = (segments[1]?.y1 ?? rule.y1) - rule.y1;
+  const [px, py] = unit(pitchX, pitchY);
+  const shift = (
+    segment: (typeof segments)[number],
+    steps: number,
+    drawn: boolean,
+  ) => ({
+    x1: segment.x1 + pitchX * steps,
+    y1: segment.y1 + pitchY * steps,
+    x2: segment.x2 + pitchX * steps,
+    y2: segment.y2 + pitchY * steps,
+    drawn,
+  });
+  const rows = [shift(segments[0]!, -0.5, true)];
+  segments.forEach((segment, index) => {
+    rows.push({ ...segment, drawn: false });
+    if (index < segments.length - 1) rows.push(shift(segment, 0.5, true));
+  });
+  rows.push(shift(segments[segments.length - 1]!, 0.5, true));
+
+  const card = drawing.querySelector("path.sil:not(.hi)");
+  const cardClip = document.createElementNS(SVG_NS, "clipPath");
+  const cardClipId = `loupe-card-${uid}`;
+  cardClip.id = cardClipId;
+  cardClip.setAttribute("clipPathUnits", "userSpaceOnUse");
+  const cardShape = document.createElementNS(SVG_NS, "path");
+  cardShape.setAttribute("d", card?.getAttribute("d") ?? "");
+  cardClip.append(cardShape);
+  defs.append(cardClip);
+  sheet.setAttribute("clip-path", `url(#${cardClipId})`);
+
+  const ruleLength = Math.hypot(rule.x2 - rule.x1, rule.y2 - rule.y1);
+  const columns = RECORD[0]?.length ?? 1;
+  const inset = 5;
+  const columnWidth = (ruleLength - inset * 2) / columns;
+  const pointAt = (segment: (typeof rows)[number], along: number) => ({
+    x: segment.x1 + ux * along,
+    y: segment.y1 + uy * along,
+  });
+  const first = rows[0]!;
+  const last = rows[rows.length - 1]!;
+  const columnRules = Array.from({ length: columns - 1 }, (_, index) => {
+    const along = inset + (index + 1) * columnWidth - 1.6;
+    const start = pointAt(first, along);
+    const end = pointAt(last, along);
+    return `M${start.x} ${start.y}L${end.x} ${end.y}`;
+  }).join("");
+  const rowRules = rows
+    .filter((row) => row.drawn)
+    .map((row) => `M${row.x1} ${row.y1}L${row.x2} ${row.y2}`)
+    .join("");
+
+  const extra = document.createElementNS(SVG_NS, "path");
+  extra.setAttribute("class", "nf lo");
+  extra.setAttribute("d", rowRules + columnRules);
+  sheet.append(extra);
+
   const font = "var(--font-ibm-plex-mono), ui-monospace, monospace";
+  const size = 4.2;
   const makeText = (line: string, opacity: string) => {
     const text = document.createElementNS(SVG_NS, "text");
     text.textContent = line;
     text.setAttribute("fill", "#232327");
     text.setAttribute("fill-opacity", opacity);
-    text.setAttribute("font-size", "7.4");
+    text.setAttribute("font-size", String(size));
     text.setAttribute("font-family", font);
     text.setAttribute("font-weight", "500");
     return text;
   };
+  // Baseline follows the rule; glyph height follows the card's depth axis.
+  const lay = (text: SVGTextElement, segment: (typeof rows)[number], column: number) => {
+    const lift = 1.35;
+    const along = inset + column * columnWidth;
+    const ox = segment.x1 + ux * along - px * lift;
+    const oy = segment.y1 + uy * along - py * lift;
+    text.setAttribute("x", "0");
+    text.setAttribute("y", "0");
+    text.setAttribute("transform", `matrix(${ux} ${uy} ${px} ${py} ${ox} ${oy})`);
+  };
 
-  segments.forEach((segment, index) => {
-    const text = makeText(RECORD[index] ?? "", "0.72");
-    const length = Math.hypot(segment.x2 - segment.x1, segment.y2 - segment.y1);
-    const angle = (Math.atan2(segment.y2 - segment.y1, segment.x2 - segment.x1) * 180) / Math.PI;
-    text.setAttribute("x", String(segment.x1));
-    text.setAttribute("y", String(segment.y1));
-    text.setAttribute("dy", "-2.8");
-    text.setAttribute("textLength", String(Math.max(0, length - 8)));
-    text.setAttribute("lengthAdjust", "spacing");
-    text.setAttribute("transform", `rotate(${angle} ${segment.x1} ${segment.y1})`);
-    sheet.append(text);
+  rows.forEach((segment, index) => {
+    (RECORD[index] ?? []).forEach((cell, column) => {
+      const text = makeText(cell, "0.8");
+      lay(text, segment, column);
+      sheet.append(text);
+    });
   });
 
-  const lensText = segments.map((segment, index) => {
-    const text = makeText(RECORD[index] ?? "", "1");
-    text.setAttribute("font-size", "10");
-    text.setAttribute("dy", "-2.2");
-    text.setAttribute(
-      "textLength",
-      String(Math.hypot(segment.x2 - segment.x1, segment.y2 - segment.y1)),
-    );
-    text.setAttribute("lengthAdjust", "spacing");
-    lensBody.append(text);
-    return text;
-  });
+  const lensRules = document.createElementNS(SVG_NS, "path");
+  lensRules.setAttribute("fill", "none");
+  lensRules.setAttribute("stroke", "#e0e0e4");
+  lensRules.setAttribute("stroke-width", "0.75");
+  lensRules.setAttribute(
+    "d",
+    rows.map((row) => `M${row.x1} ${row.y1}L${row.x2} ${row.y2}`).join("") + columnRules,
+  );
+  lensBody.append(lensRules);
+
+  const lensText = rows.flatMap((segment, index) =>
+    (RECORD[index] ?? []).map((cell, column) => {
+      const text = makeText(cell, "1");
+      lay(text, segment, column);
+      lensBody.append(text);
+      return { text, row: index };
+    }),
+  );
 
   svg.append(defs, sheet, lens);
   host.append(svg);
@@ -167,8 +251,7 @@ function mountLoupeRecord(host: HTMLElement) {
 
     let focus = 0;
     let nearest = Infinity;
-    let along = 0.5;
-    segments.forEach((segment, index) => {
+    rows.forEach((segment, index) => {
       const dx = segment.x2 - segment.x1;
       const dy = segment.y2 - segment.y1;
       const span = dx * dx + dy * dy || 1;
@@ -177,22 +260,16 @@ function mountLoupeRecord(host: HTMLElement) {
       if (distance < nearest) {
         nearest = distance;
         focus = index;
-        along = t;
       }
     });
 
-    const row = segments[focus]!;
-    const angle = (Math.atan2(row.y2 - row.y1, row.x2 - row.x1) * 180) / Math.PI;
-    const rad = (angle * Math.PI) / 180;
-    const neighbor = segments[Math.min(focus + 1, segments.length - 1)] ?? row;
-    const step = -(neighbor.x1 - row.x1) * Math.sin(rad) + (neighbor.y1 - row.y1) * Math.cos(rad);
-    lensBody.setAttribute("transform", `translate(${cx} ${cy}) rotate(${angle}) scale(${LOUPE_MAG})`);
-    lensText.forEach((text, index) => {
-      const segment = segments[index]!;
-      const length = Math.hypot(segment.x2 - segment.x1, segment.y2 - segment.y1);
-      text.setAttribute("x", String(-along * length));
-      text.setAttribute("y", String((index - focus) * (Math.abs(step) > 1 ? step : 16)));
-      text.setAttribute("fill-opacity", index === focus ? "1" : "0.38");
+    lensBody.setAttribute(
+      "transform",
+      `translate(${cx} ${cy}) scale(${LOUPE_MAG}) translate(${-cx} ${-cy})`,
+    );
+    lensText.forEach(({ text, row }) => {
+      const away = Math.abs(row - focus);
+      text.setAttribute("fill-opacity", away === 0 ? "1" : away === 1 ? "0.5" : "0.22");
     });
   };
 

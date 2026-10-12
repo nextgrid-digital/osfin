@@ -3,7 +3,6 @@ import {
   TextScrollRead,
   TextScrollReadWrap,
 } from "@/components/systaliko-ui/text/text-scroll-read";
-import SlidingEaseVerticalBars from "@/components/ui/sliding-ease";
 import { GlyphMatrix } from "@/components/ui/glyph-matrix";
 import type { Product } from "../content/products";
 import PlatformSplit from "./PlatformSplit";
@@ -102,18 +101,23 @@ export default function ProductTemplate({ product }: { product: Product }) {
                 }
                 visual={
                   <>
-                    <SlidingEaseVerticalBars
-                      backgroundColor="#E4E4E4"
-                      lineColor="rgba(0, 0, 0, 0.14)"
-                      barColor="#C8C8C6"
-                      horizontal
-                    />
+                    <div className="pointer-events-none absolute inset-0 overflow-hidden bg-[#E4E4E4]">
+                      <GlyphMatrix
+                        glyphs="01.+*/<>="
+                        cellSize={14}
+                        mutationRate={0.04}
+                        interval={90}
+                        fadeBottom={0}
+                        color="rgba(0, 0, 0, 0.16)"
+                        className="h-full w-full"
+                      />
+                    </div>
                     <div
                       aria-hidden
                       className="pointer-events-none absolute inset-0"
                       style={{
                         background:
-                          "linear-gradient(to bottom, #E4E4E4 0%, rgba(228,228,228,0.15) 22%, rgba(228,228,228,0.15) 58%, #E4E4E4 100%)",
+                          "radial-gradient(ellipse 70% 62% at 50% 50%, rgba(228,228,228,0.97) 0%, rgba(228,228,228,0.72) 42%, rgba(228,228,228,0.22) 68%, transparent 86%)",
                       }}
                     />
                   </>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import SlidingEaseVerticalBars from "@/components/ui/sliding-ease";
+import { GlyphMatrix } from "@/components/ui/glyph-matrix";
 import ProductionHairline from "./ProductionHairlines";
 import SiteContainer from "./SiteContainer";
 
@@ -141,21 +141,24 @@ export default function HomeProduction() {
                     {feature.body}
                   </p>
                 </div>
-                <div className="relative flex min-h-[16rem] overflow-hidden p-4 md:min-h-0 md:p-5">
-                  <SlidingEaseVerticalBars
-                    backgroundColor="#FFFFFF"
-                    lineColor="rgba(0, 0, 0, 0.12)"
-                    barColor="#C8C8C6"
-                    horizontal
-                  />
+                <div className="relative flex min-h-[16rem] overflow-hidden bg-white p-2 md:min-h-0 md:p-3">
+                  <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                    <GlyphMatrix
+                      glyphs="01.+*/<>="
+                      cellSize={14}
+                      mutationRate={0.04}
+                      interval={90}
+                      fadeBottom={0}
+                      color="rgba(0, 0, 0, 0.16)"
+                      className="h-full w-full"
+                    />
+                  </div>
                   <div
                     aria-hidden
                     className="pointer-events-none absolute inset-0 z-[1]"
                     style={{
-                      background: [
-                        "radial-gradient(ellipse 72% 64% at 50% 50%, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.82) 38%, rgba(255,255,255,0.35) 62%, transparent 82%)",
-                        "linear-gradient(to bottom, #FFFFFF 0%, rgba(255,255,255,0.55) 18%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.55) 82%, #FFFFFF 100%)",
-                      ].join(", "),
+                      background:
+                        "radial-gradient(ellipse 70% 62% at 50% 50%, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.78) 42%, rgba(255,255,255,0.28) 68%, transparent 86%)",
                     }}
                   />
                   <div className="relative z-10 h-full min-h-0 w-full flex-1 overflow-hidden">
