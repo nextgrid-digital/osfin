@@ -285,9 +285,9 @@ const gatewayFlowSource = `<!DOCTYPE html>
                 const dpr = window.devicePixelRatio || 1;
                 width = window.innerWidth;
                 height = window.innerHeight;
-                canvas.width = width * dpr;
-                canvas.height = height * dpr;
-                ctx.scale(dpr, dpr);
+                canvas.width = Math.max(1, Math.floor(width * dpr));
+                canvas.height = Math.max(1, Math.floor(height * dpr));
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             }
             window.addEventListener('resize', resize);
             resize();
@@ -302,7 +302,8 @@ const gatewayFlowSource = `<!DOCTYPE html>
             for(let i = 0; i < numPaths; i++) {
                 paths.push({
                     isLeft: i % 2 === 0,
-                    startY: (i / numPaths) * height * 1.4 - height * 0.2,
+                    slot: i / numPaths,
+                    drift: 0,
                     particles: [{
                         t: Math.random(),
                         speed: 0.00035 + Math.random() * 0.00045
@@ -321,7 +322,7 @@ const gatewayFlowSource = `<!DOCTYPE html>
                 explosions = explosions.filter(exp => exp.life > 0);
 
                 paths.forEach(path => {
-                    const y = path.startY;
+                    const y = path.slot * height * 1.4 - height * 0.2;
 
                     ctx.beginPath();
                     ctx.moveTo(0, y);
@@ -336,12 +337,11 @@ const gatewayFlowSource = `<!DOCTYPE html>
                         p.t += p.speed;
                         if (p.t > 1) {
                             p.t = 0;
-                            path.startY += (Math.random() - 0.5) * 10;
                         }
 
                         let pos = {
                             x: path.isLeft ? p.t * width : width - p.t * width,
-                            y: path.startY
+                            y: y
                         };
 
                         let dxTotal = 0, dyTotal = 0;

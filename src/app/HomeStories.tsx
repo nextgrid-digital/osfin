@@ -97,8 +97,7 @@ export default function HomeStories() {
           {STORIES.map((story) => (
             <article
               key={story.slug}
-              className="@container flex min-w-0 flex-[0_0_calc((100%-1rem)/1.15)] flex-col lg:flex-[0_0_calc((100%-2.5rem)/2.5)]"
-              style={{ backgroundColor: story.fill }}
+              className="@container flex min-w-0 flex-[0_0_calc((100%-1rem)/1.15)] flex-col border border-black/15 bg-white lg:flex-[0_0_calc((100%-2.5rem)/2.5)]"
             >
               <div className="grid h-full flex-1 grid-cols-1 grid-rows-[1fr] @min-[32rem]:grid-cols-[minmax(0,1.35fr)_minmax(0,0.85fr)]">
                 <div className="flex h-full flex-col px-5 py-6 sm:px-6 sm:py-7">
@@ -125,7 +124,7 @@ export default function HomeStories() {
                       <img
                         src={story.logo}
                         alt=""
-                        className="max-h-8 w-auto max-w-[8.5rem] object-contain object-left"
+                        className="max-h-8 w-auto max-w-[8.5rem] object-contain object-left grayscale"
                       />
                     </div>
                     <ul className="!m-0 !list-none !p-0">

@@ -4,6 +4,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useRef,
   useState,
   type ReactNode,
@@ -63,6 +64,22 @@ export default function PageTransitionProvider({ children }: { children: ReactNo
   const router = useRouter();
   const [isTransitioning, setIsTransitioning] = useState(false);
   const transitioningRef = useRef(false);
+  const strippedCursorRefs = useRef(false);
+
+  useEffect(() => {
+    (
+      window as Window & { __osfinStopStrippingCursorRefs?: () => void }
+    ).__osfinStopStrippingCursorRefs?.();
+  }, []);
+
+  // The browser inspector stamps data-cursor-ref onto the server HTML before
+  // hydration. Remove it while this tree is rendering, before child nodes are matched.
+  if (typeof document !== "undefined" && !strippedCursorRefs.current) {
+    strippedCursorRefs.current = true;
+    document.querySelectorAll("[data-cursor-ref]").forEach((node) => {
+      node.removeAttribute("data-cursor-ref");
+    });
+  }
 
   const clearTransitioning = useCallback(() => {
     transitioningRef.current = false;

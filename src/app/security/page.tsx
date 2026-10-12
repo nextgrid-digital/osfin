@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import GatewayFlow from "@/components/ui/gateway-flow";
 import { SecurityCards } from "../HomeSecurity";
 import SiteContainer from "../SiteContainer";
-import SiteFooter from "../SiteFooter";
+import SiteClose from "../SiteClose";
 
 export const metadata: Metadata = {
   title: "Security — Osfin",
@@ -32,7 +32,7 @@ export default function SecurityPage() {
           </SiteContainer>
         </section>
       </main>
-      <SiteFooter />
+      <SiteClose />
     </div>
   );
 }

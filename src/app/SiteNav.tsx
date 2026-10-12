@@ -37,9 +37,9 @@ function NavLabel({ text }: { text: string }) {
 }
 
 const PRODUCT_NAV = [
-  "settlement-mesh",
-  "exception-resolution",
-  "control-views",
+  "match-iq",
+  "exception-desk",
+  "regulatory-reporting",
   "risk-signals",
   "close-orchestration",
 ] as const;

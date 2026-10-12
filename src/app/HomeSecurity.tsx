@@ -4,24 +4,34 @@ import SiteContainer from "./SiteContainer";
 const ITEMS = [
   {
     title: "GDPR Compliant",
+    titleLines: ["GDPR", "Compliant"],
     kicker: null,
     body: "With our operations in Ireland, we operate under GDPR, the world's strictest standard for data privacy.",
+    lines: [
+      "With our operations in Ireland,",
+      "we operate under GDPR, the",
+      "world's strictest standard",
+      "for data privacy.",
+    ],
     icon: "gdpr" as const,
   },
   {
     title: "ISO 27001 Certification",
+    titleLines: ["ISO 27001", "Certification"],
     kicker: "BSI",
     body: "Certified by BSI to ISO/IEC 27001, with an information security management system that protects client data.",
     icon: "iso" as const,
   },
   {
     title: "SOC 2 Compliance",
+    titleLines: ["SOC 2", "Compliance"],
     kicker: null,
     body: "We meet SOC 2 requirements to ensure secure and compliant management of data across all our systems.",
     icon: "soc" as const,
   },
   {
     title: "PCI DSS & PCI SSF Standards",
+    titleLines: ["PCI DSS & PCI SSF", "Standards"],
     kicker: "DSS Compliant - Osfin",
     body: "Osfin is DSS compliant, protecting payment data to PCI DSS in the cloud and PCI SSF for on-premise solutions.",
     icon: "pci" as const,
@@ -195,10 +205,28 @@ export function SecurityCards({
             <h3
               className={`!mb-0 !mt-0 !text-[22px] !font-medium !leading-[1.2] !tracking-[-0.01em] normal-case ${light ? "text-[rgba(0,0,0,0.875)]" : "text-white"}`}
             >
-              {item.title}
+              {item.titleLines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
             </h3>
-            <p className={`!mb-0 !mt-3 text-[15px] leading-6 ${light ? "text-black/60" : "text-white/45"}`}>
-              {item.body}
+            <p className={`@container !mb-0 !mt-3 text-[15px] leading-6 ${light ? "text-black/60" : "text-white/45"}`}>
+              {"lines" in item ? (
+                <>
+                  <span className="@min-[15rem]:hidden">{item.body}</span>
+                  <span className="hidden @min-[15rem]:inline">
+                    {item.lines.map((line, index) => (
+                      <span key={line}>
+                        {index > 0 ? <br /> : null}
+                        {line}
+                      </span>
+                    ))}
+                  </span>
+                </>
+              ) : (
+                item.body
+              )}
             </p>
           </div>
         </div>

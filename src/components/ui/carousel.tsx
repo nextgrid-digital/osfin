@@ -54,6 +54,8 @@ export interface CarouselProps {
   onIndexChange?: (index: number) => void;
   /** Width of one slide as a CSS length. Use `cqw` for a share of the carousel width. */
   slideSize?: string;
+  /** Opacity of a slide one step from the center. Defaults to a strong fade. */
+  dim?: number;
   /** Names each slide and its indicator. Defaults to "2 of 5". */
   slideLabel?: (index: number, count: number) => string;
   /** Milliseconds per slide. Adds a play control that rotates through the slides; rotation pauses on hover, keyboard focus, and drag, and is unavailable with reduced motion. */
@@ -134,6 +136,7 @@ export function Carousel({
   defaultIndex = 0,
   onIndexChange,
   slideSize = "min(80cqw, 340px)",
+  dim = DIM,
   slideLabel = defaultSlideLabel,
   interval,
   autoplay = false,
@@ -496,6 +499,7 @@ export function Carousel({
               id={`${id}-slide-${i}`}
               index={i}
               progress={progress}
+              dim={dim}
               active={i === index}
               label={slideLabel(i, count)}
             >
@@ -596,6 +600,7 @@ function Slide({
   id,
   index,
   progress,
+  dim,
   active,
   label,
   children,
@@ -603,12 +608,13 @@ function Slide({
   id: string;
   index: number;
   progress: MotionValue<number>;
+  dim: number;
   active: boolean;
   label: string;
   children: ReactNode;
 }) {
   const scale = useTransform(progress, [index - 1, index, index + 1], [SCALE, 1, SCALE]);
-  const opacity = useTransform(progress, [index - 1, index, index + 1], [DIM, 1, DIM]);
+  const opacity = useTransform(progress, [index - 1, index, index + 1], [dim, 1, dim]);
   return (
     <motion.div
       id={id}

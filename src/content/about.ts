@@ -63,13 +63,19 @@ export const ABOUT = {
   places: {
     label: "Where the work sits",
     title: "The team sits where the money moves, and shows up where the industry does.",
+    // Landmark photos, Wikimedia Commons:
+    // Vidhana Soudha — Moheen Reeyad, CC BY-SA 4.0
+    // Statue of Liberty — William Warby, CC BY 2.0
+    // Burj Khalifa — Laika ac, CC BY-SA 2.0
     cities: [
       {
         name: "Bengaluru",
         role: "Headquarters",
         detail: "Koramangala.",
         image: "/about/bengaluru.jpg",
-        imageAlt: "Bengaluru cityscape",
+        imageAlt: "Vidhana Soudha, Bengaluru",
+        from: "#FF8A78",
+        to: "#E23B2F",
       },
       {
         name: "United States",
@@ -77,7 +83,9 @@ export const ABOUT = {
         detail:
           "In September 2025 the team gathered payments leaders from Visa, Mastercard, and L.E.K. at Finovate.",
         image: "/about/united-states.jpg",
-        imageAlt: "Austin, Texas",
+        imageAlt: "Statue of Liberty, United States",
+        from: "#7AA2FF",
+        to: "#2C4FD6",
       },
       {
         name: "Dubai",
@@ -85,7 +93,9 @@ export const ABOUT = {
         detail:
           "Returning networking sponsor of MEBIS, 16–17 September 2026, Jumeirah Emirates Towers.",
         image: "/about/dubai.jpg",
-        imageAlt: "Dubai skyline",
+        imageAlt: "Burj Khalifa, Dubai",
+        from: "#FFC56A",
+        to: "#E07A1A",
       },
     ],
   },

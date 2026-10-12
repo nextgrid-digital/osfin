@@ -1,11 +1,17 @@
+import {
+  ScrollReadParagraphs,
+  TextScrollRead,
+  TextScrollReadWrap,
+} from "@/components/systaliko-ui/text/text-scroll-read";
+import SlidingEaseVerticalBars from "@/components/ui/sliding-ease";
+import { GlyphMatrix } from "@/components/ui/glyph-matrix";
 import type { Product } from "../content/products";
 import PlatformSplit from "./PlatformSplit";
 import ProductHeroCarousel from "./ProductHeroCarousel";
-import ProductSheet, { schemeForIcon } from "./ProductSheet";
 import ProductTabs from "./ProductTabs";
 import SectionHeading from "./SectionHeading";
 import SiteContainer from "./SiteContainer";
-import SiteFooter from "./SiteFooter";
+import SiteClose from "./SiteClose";
 
 export default function ProductTemplate({ product }: { product: Product }) {
   return (
@@ -15,7 +21,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
       className="site-shell typeset typeset-docs min-h-screen bg-[#E4E4E4] text-[rgba(0,0,0,0.875)]"
     >
       <main className="pt-14 md:pt-16">
-        <SiteContainer className="pt-8 pb-28 md:pt-10 md:pb-36">
+        <SiteContainer className="pt-8 md:pt-10">
           <h1 className="mx-auto max-w-full text-center">
             <span className="block">Architecting the</span>
             <span className="block">Transaction-Intelligent Enterprise</span>
@@ -32,19 +38,46 @@ export default function ProductTemplate({ product }: { product: Product }) {
           />
 
           <ProductHeroCarousel currentSlug={product.slug} />
+        </SiteContainer>
 
-          <section className="mt-24 md:mt-32">
-            <div className="mx-auto flex w-max max-w-full flex-col items-start gap-4 text-left md:flex-row md:items-baseline md:gap-16">
+        <section className="relative mt-24 overflow-hidden bg-[#E4E4E4] [--muted:rgba(0,0,0,0.28)] md:mt-32">
+          <div className="pointer-events-none absolute inset-0">
+            <GlyphMatrix
+              glyphs="01.+*/<>="
+              cellSize={14}
+              mutationRate={0.04}
+              interval={90}
+              fadeBottom={0.6}
+              fadeOrigin="bottom"
+              color="rgba(0, 0, 0, 0.4)"
+              className="h-full w-full"
+            />
+          </div>
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-[1]"
+            style={{
+              background: [
+                "radial-gradient(ellipse 36% 62% at 50% 48%, rgba(228,228,228,0.97) 0%, rgba(228,228,228,0.82) 38%, rgba(228,228,228,0.2) 62%, transparent 78%)",
+                "linear-gradient(to top, transparent 0%, transparent 14%, rgba(228,228,228,0.25) 36%, rgba(228,228,228,0.78) 68%, #E4E4E4 90%)",
+              ].join(", "),
+            }}
+          />
+          <SiteContainer className="relative z-10 pb-16 md:pb-24">
+            <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-4 text-center">
               <p className="not-typeset shrink-0 !m-0 !font-[family-name:var(--font-mono)] !text-[14px] !font-medium !leading-[1.4] !tracking-[-0.02em] !text-black/45 uppercase" data-not-typeset>
                 Problem
               </p>
-              <div className="!mt-0 w-full max-w-xl text-[rgba(0,0,0,0.875)] [&>p]:!mt-4 [&>p:first-child]:!mt-0">
-                {product.problem.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
+              <TextScrollRead className="w-full" spaceClass="h-16">
+                <TextScrollReadWrap className="w-full" yRange={[0, 0]}>
+                  <ScrollReadParagraphs paragraphs={product.problem} />
+                </TextScrollReadWrap>
+              </TextScrollRead>
             </div>
-          </section>
+          </SiteContainer>
+        </section>
+
+        <SiteContainer className="pb-28 md:pb-36">
 
           {product.platform ? (
             <section className="mt-24 md:mt-32">
@@ -68,13 +101,22 @@ export default function ProductTemplate({ product }: { product: Product }) {
                   </>
                 }
                 visual={
-                  <ProductSheet
-                    name={product.name}
-                    scheme={schemeForIcon(product.icon)}
-                    wordmark={false}
-                    indexes={false}
-                    cluster
-                  />
+                  <>
+                    <SlidingEaseVerticalBars
+                      backgroundColor="#E4E4E4"
+                      lineColor="rgba(0, 0, 0, 0.14)"
+                      barColor="#C8C8C6"
+                      horizontal
+                    />
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0"
+                      style={{
+                        background:
+                          "linear-gradient(to bottom, #E4E4E4 0%, rgba(228,228,228,0.15) 22%, rgba(228,228,228,0.15) 58%, #E4E4E4 100%)",
+                      }}
+                    />
+                  </>
                 }
               />
             </section>
@@ -111,7 +153,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
         </SiteContainer>
       </main>
 
-      <SiteFooter />
+      <SiteClose />
     </div>
   );
 }

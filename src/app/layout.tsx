@@ -80,13 +80,13 @@ export default function RootLayout({
                 childList: true,
                 subtree: true,
               });
+              function stop() {
+                observer.disconnect();
+                Element.prototype.setAttribute = original;
+                stripTree(document.documentElement);
+              }
+              window.__osfinStopStrippingCursorRefs = stop;
               queueMicrotask(function () { stripTree(document.documentElement); });
-              window.addEventListener("load", function () {
-                setTimeout(function () {
-                  observer.disconnect();
-                  Element.prototype.setAttribute = original;
-                }, 0);
-              });
             })();`}
           </Script>
         ) : null}

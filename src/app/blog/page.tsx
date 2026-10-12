@@ -1,7 +1,7 @@
 import { TextReveal } from "@/components/ui/cascade-text";
 import { POSTS, POST_CATEGORIES, type PostCategory } from "../../content/posts";
 import SiteContainer from "../SiteContainer";
-import SiteFooter from "../SiteFooter";
+import SiteClose from "../SiteClose";
 import TransitionLink from "../TransitionLink";
 
 const FILTERS = ["All", ...POST_CATEGORIES] as const;
@@ -130,7 +130,7 @@ export default async function BlogPage({
           </div>
         </SiteContainer>
       </main>
-      <SiteFooter />
+      <SiteClose />
     </div>
   );
 }

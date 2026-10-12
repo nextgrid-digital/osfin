@@ -8,9 +8,9 @@ import SiteContainer from "./SiteContainer";
 import TransitionLink from "./TransitionLink";
 
 const productArt: Record<string, string> = {
-  "settlement-mesh": "/products/match-iq.png?v=7",
-  "exception-resolution": "/products/exception-resolution.png?v=4",
-  "control-views": "/products/control-views.png?v=3",
+  "match-iq": "/products/match-iq.png?v=7",
+  "exception-desk": "/products/exception-resolution.png?v=4",
+  "regulatory-reporting": "/products/control-views.png?v=3",
   "risk-signals": "/products/risk-signals.png?v=5",
   "close-orchestration": "/products/close-orchestration.png?v=5",
 };
@@ -88,7 +88,7 @@ export default function HomeProductRows() {
                   data-not-typeset
                 >
                   <div className="aspect-[16/10] w-full overflow-hidden border border-black/15 bg-black/[0.03]">
-                    {product.slug === "control-views" ? (
+                    {product.slug === "regulatory-reporting" ? (
                       <ControlViewsFigure />
                     ) : (
                       // eslint-disable-next-line @next/next/no-img-element

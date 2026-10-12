@@ -28,12 +28,12 @@ export type Product = {
 
 export const PRODUCTS: Product[] = [
   {
-    slug: "settlement-mesh",
+    slug: "match-iq",
     name: "Match IQ",
     cardLabel: "Reconciliation",
     cardBody:
       "Match IQ is the reconciliation foundation for enterprises where millions of transactions must be matched, resolved, and accounted for.",
-    cardBg: "#d9e5d8",
+    cardBg: "#eccfc0",
     homeLabel: "Reconciliation",
     homeTitle: "One platform. Every transaction.",
     homeBody:
@@ -78,7 +78,7 @@ export const PRODUCTS: Product[] = [
     ],
   },
   {
-    slug: "exception-resolution",
+    slug: "exception-desk",
     name: "Exception Desk",
     cardLabel: "Exception management",
     cardBody:
@@ -128,7 +128,7 @@ export const PRODUCTS: Product[] = [
     ],
   },
   {
-    slug: "control-views",
+    slug: "regulatory-reporting",
     name: "Regulatory Reporting",
     cardLabel: "Reporting and Compliance",
     cardBody:
@@ -233,7 +233,7 @@ export const PRODUCTS: Product[] = [
     cardLabel: "Financial close",
     cardBody:
       "Close Orchestration is the financial close foundation for enterprises where every entity must be reconciled, certified, and signed off.",
-    cardBg: "#e6e6e6",
+    cardBg: "#cfe8ec",
     homeLabel: "Close",
     homeTitle: "One close. Every entity.",
     homeBody:

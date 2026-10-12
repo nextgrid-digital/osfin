@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPost, postSlugs } from "../../../content/posts";
 import SiteContainer from "../../SiteContainer";
-import SiteFooter from "../../SiteFooter";
+import SiteClose from "../../SiteClose";
 import BlogShare from "../BlogShare";
 
 export function generateStaticParams() {
@@ -70,7 +70,7 @@ export default async function BlogPostPage({
           </article>
         </SiteContainer>
       </main>
-      <SiteFooter />
+      <SiteClose />
     </div>
   );
 }

@@ -15,6 +15,8 @@ interface GlyphMatrixProps extends React.HTMLAttributes<HTMLCanvasElement> {
   interval?: number;
   /** Fade out toward bottom (0 = no fade) */
   fadeBottom?: number;
+  /** Which edge stays dense. `bottom` flips the fade so the field is strongest at the bottom. */
+  fadeOrigin?: "top" | "bottom";
   /** Glyph color (any CSS color). Pass a theme-aware value from the consumer. */
   color?: string;
 }
@@ -31,6 +33,7 @@ export function GlyphMatrix({
   interval = 90,
   className,
   fadeBottom = 0.6,
+  fadeOrigin = "top",
   color = "#6B7280",
   style,
   ...props
@@ -101,7 +104,8 @@ export function GlyphMatrix({
 
       const { r, g, b, a: colorAlpha } = rgbaRef.current;
       for (let y = 0; y < rows; y++) {
-        const fade = fadeBottom > 0 ? 1 - (y / rows) * fadeBottom : 1;
+        const along = fadeOrigin === "bottom" ? 1 - y / Math.max(rows, 1) : y / Math.max(rows, 1);
+        const fade = fadeBottom > 0 ? 1 - along * fadeBottom : 1;
         for (let x = 0; x < cols; x++) {
           const i = y * cols + x;
           const a = alphas[i] * fade * colorAlpha;
@@ -147,7 +151,7 @@ export function GlyphMatrix({
       cancelAnimationFrame(raf);
       ro.disconnect();
     };
-  }, [glyphs, cellSize, mutationRate, interval, fadeBottom]);
+  }, [glyphs, cellSize, mutationRate, interval, fadeBottom, fadeOrigin]);
 
   return (
     <canvas

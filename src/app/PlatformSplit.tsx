@@ -53,7 +53,7 @@ export default function PlatformSplit({
       className={
         flank
           ? "mx-auto grid w-full grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,36rem)_minmax(0,1fr)] lg:items-stretch lg:gap-16"
-          : "mx-auto flex w-full flex-col items-center gap-12 lg:w-fit lg:flex-row lg:items-center lg:justify-center lg:gap-16"
+          : "mx-auto flex w-full flex-col items-center gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-16"
       }
     >
       {flank ? frame("start", flankStart ?? visual) : null}

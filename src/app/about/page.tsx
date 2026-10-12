@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { GlyphMatrix } from "@/components/ui/glyph-matrix";
+import HalftonePoster from "@/components/ui/halftone-poster";
 import { ABOUT } from "../../content/about";
 import SiteContainer from "../SiteContainer";
-import SiteFooter from "../SiteFooter";
+import SiteClose from "../SiteClose";
 
 export const metadata: Metadata = {
   title: "About — Osfin",
@@ -127,35 +128,45 @@ export default function AboutPage() {
 
         <section className="pt-8 pb-24 md:pt-12 md:pb-36">
           <SiteContainer>
-            <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-12">
-              <div className="lg:col-span-4">
-                <p className={labelClassName} data-not-typeset>
-                  {ABOUT.places.label}
-                </p>
-                <h2 className="!mt-5 max-w-[12em] md:!mt-6">{ABOUT.places.title}</h2>
-              </div>
-              <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-4 lg:col-span-8">
-                {ABOUT.places.cities.map((city) => (
-                  <figure key={city.name} className="not-typeset !m-0" data-not-typeset>
-                    <div className="aspect-square overflow-hidden bg-black/[0.04]">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={city.image} alt={city.imageAlt} className="size-full object-cover" />
-                    </div>
-                    <figcaption className="mt-3">
-                      <p className="!m-0 font-sans text-[15px] font-medium text-[rgba(0,0,0,0.875)]">
-                        {city.name}
-                      </p>
-                      <p className="!m-0 mt-0.5 font-sans text-[13px] text-black/45">{city.role}</p>
-                      <p className="!m-0 mt-2 font-sans text-[13px] leading-5 text-black/55">{city.detail}</p>
-                    </figcaption>
-                  </figure>
-                ))}
-              </div>
+            <p className={labelClassName} data-not-typeset>
+              {ABOUT.places.label}
+            </p>
+            <h2 className="!mt-5 max-w-[16em] md:!mt-6">{ABOUT.places.title}</h2>
+            <div className="mt-12 grid grid-cols-1 border-x border-b border-black/15 md:mt-16 md:grid-cols-3">
+              {ABOUT.places.cities.map((city, index) => (
+                <figure
+                  key={city.name}
+                  className={`not-typeset !m-0 flex flex-col border-black/15 px-8 py-8 md:py-10 ${
+                    index > 0
+                      ? "border-t md:border-t-0 md:border-l"
+                      : "md:border-l md:border-l-transparent"
+                  }`}
+                  data-not-typeset
+                >
+                  <div className="aspect-square w-full overflow-hidden border border-black/15 bg-black/[0.03]">
+                    <HalftonePoster
+                      src={city.image}
+                      alt={city.imageAlt}
+                      from={city.from}
+                      to={city.to}
+                      className="size-full"
+                    />
+                  </div>
+                  <h3 className="!mb-0 !mt-8 !text-[22px] !font-normal !leading-[1.25] !tracking-normal text-[rgba(0,0,0,0.875)] normal-case md:!text-[24px]">
+                    {city.name}
+                  </h3>
+                  <p className="!m-0 mt-auto flex items-baseline gap-2 pt-12 font-[family-name:var(--font-mono)] text-[14px] leading-5 tracking-[-0.02em] text-black/55">
+                    <span className="shrink-0 uppercase">{city.role}</span>
+                    <span className="mt-[0.45em] inline-block size-1 shrink-0 self-start bg-current" aria-hidden />
+                    <span>{city.detail}</span>
+                  </p>
+                </figure>
+              ))}
             </div>
           </SiteContainer>
         </section>
       </main>
-      <SiteFooter />
+      <SiteClose />
     </div>
   );
 }
