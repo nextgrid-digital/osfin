@@ -20,7 +20,7 @@ export const POSTS: Post[] = [
     title: "Users View for each team\non a single record",
     category: "Product",
     date: "Sep 21, 2026",
-    cover: "/changelog/cover.png",
+    cover: "/changelog/cover.png?v=3",
     sections: [
       {
         heading: "One record, more than one desk",

@@ -18,12 +18,12 @@ const scale = {
   vault: 1.2,
 } as const;
 
-/** Soft wash on the faces, pastel strokes on the lines, a white field behind. */
+/** Grayscale faces and strokes — same wash on every figure. */
 const palette = {
-  slow: { plate: "#F7FBFA", edge: "#7EAEA6", mid: "#B7D4CE", lo: "#E4F1EE", hi: "#3E756E", card: "transparent" },
-  loupe: { plate: "#F8F6FC", edge: "#A399C9", mid: "#CBC4E2", lo: "#EBE7F6", hi: "#655C92", card: "transparent" },
-  riffle: { plate: "#FBF7F3", edge: "#C9A88C", mid: "#E0C9B4", lo: "#F6EBE3", hi: "#8E684C", card: "transparent" },
-  vault: { plate: "#F5F8FC", edge: "#8EABCB", mid: "#BFD0E4", lo: "#E6EEF6", hi: "#456488", card: "transparent" },
+  slow: { plate: "#ffffff", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4", hi: "#232327", card: "transparent" },
+  loupe: { plate: "#ffffff", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4", hi: "#232327", card: "transparent" },
+  riffle: { plate: "#ffffff", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4", hi: "#232327", card: "transparent" },
+  vault: { plate: "#ffffff", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4", hi: "#232327", card: "transparent" },
 } as const;
 
 export function productionCardColor(figure: keyof typeof figures) {
@@ -109,7 +109,7 @@ function mountLoupeRecord(host: HTMLElement) {
   ground.setAttribute("y", "-800");
   ground.setAttribute("width", "1600");
   ground.setAttribute("height", "1600");
-  ground.setAttribute("fill", "#F8F6FC");
+  ground.setAttribute("fill", "#ffffff");
   lensBody.append(ground);
   lens.append(lensBody);
 
@@ -117,7 +117,7 @@ function mountLoupeRecord(host: HTMLElement) {
   const makeText = (line: string, opacity: string) => {
     const text = document.createElementNS(SVG_NS, "text");
     text.textContent = line;
-    text.setAttribute("fill", "#655C92");
+    text.setAttribute("fill", "#232327");
     text.setAttribute("fill-opacity", opacity);
     text.setAttribute("font-size", "7.4");
     text.setAttribute("font-family", font);
