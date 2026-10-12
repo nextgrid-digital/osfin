@@ -33,7 +33,7 @@ export const PRODUCTS: Product[] = [
     cardLabel: "Reconciliation",
     cardBody:
       "Match IQ is the reconciliation foundation for enterprises where millions of transactions must be matched, resolved, and accounted for.",
-    cardBg: "#eccfc0",
+    cardBg: "#d8dcec",
     homeLabel: "Reconciliation",
     homeTitle: "One platform. Every transaction.",
     homeBody:
@@ -183,7 +183,7 @@ export const PRODUCTS: Product[] = [
     cardLabel: "AML Reporting And Fraud Prevention",
     cardBody:
       "Risk Signals watches every payment as it moves, scores risk in real time, links related accounts and merchants, and opens a case with the evidence already gathered.",
-    cardBg: "#d8e2ea",
+    cardBg: "#edd9b0",
     homeLabel: "Risk",
     homeTitle: "One view. Every rail.",
     homeBody:
