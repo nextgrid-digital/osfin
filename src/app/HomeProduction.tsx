@@ -85,8 +85,7 @@ export default function HomeProduction() {
           </div>
           <p className="!mb-0 !mt-0 max-w-[26rem] !text-[16px] !leading-[1.45] text-black">
             A consistent view of transaction integrity across banking,
-            payments, and settlement, with governed exceptions and clear
-            exposures before financial close.
+            payments, and settlement before close.
           </p>
         </div>
 

@@ -410,11 +410,11 @@ const GATEWAY_FLOW_DEFINITION: EffectDefinition = {
       next = next
         .replace(
           "ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';",
-          "ctx.strokeStyle = 'rgba(0, 29, 32, 0.4)';",
+          "ctx.strokeStyle = 'rgba(0, 29, 32, 0.62)';",
         )
         .replace(
           "ctx.fillStyle = `rgba(255, 255, 255, 0.7)`;",
-          "ctx.fillStyle = `rgba(0, 29, 32, 0.9)`;",
+          "ctx.fillStyle = `rgba(0, 29, 32, 0.95)`;",
         );
     }
     return next;

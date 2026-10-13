@@ -43,7 +43,7 @@ export const POSTS: Post[] = [
     title: "Consent stays beside\neach payment it covers",
     category: "Product",
     date: "Mar 12, 2026",
-    cover: "/changelog/cover-2.png",
+    cover: "/changelog/cover-2.jpg?v=1",
     sections: [
       {
         heading: "Consent belongs on the payment",
@@ -66,7 +66,7 @@ export const POSTS: Post[] = [
     title: "A clearer timeline of\nevery payment handoff",
     category: "Research",
     date: "Feb 11, 2026",
-    cover: "/changelog/cover-3.jpg",
+    cover: "/changelog/cover-3.jpg?v=2",
     sections: [
       {
         heading: "The trail was hard to read",

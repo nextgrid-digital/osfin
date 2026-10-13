@@ -64,7 +64,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
             }}
           />
           <SiteContainer className="relative z-10 pb-16 md:pb-24">
-            <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-4 text-center">
+            <div className="mx-auto flex w-full max-w-[60ch] flex-col items-center gap-4 text-center">
               <p className="not-typeset shrink-0 !m-0 !font-[family-name:var(--font-mono)] !text-[14px] !font-medium !leading-[1.4] !tracking-[-0.02em] !text-black/45 uppercase" data-not-typeset>
                 Problem
               </p>

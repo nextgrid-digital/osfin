@@ -183,7 +183,10 @@ export function SecurityCards({
 }) {
   const light = tone === "light";
   return (
-    <div className={`grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4 ${className}`.trim()}>
+    <div className={className}>
+    <div
+      className={`grid grid-cols-1 gap-px md:grid-cols-2 lg:grid-cols-4 ${light ? "bg-black/15" : "bg-[#001D20]"}`}
+    >
       {ITEMS.map((item) => (
         <div
           key={item.title}
@@ -231,6 +234,7 @@ export function SecurityCards({
           </div>
         </div>
       ))}
+    </div>
     </div>
   );
 }

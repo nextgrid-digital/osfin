@@ -12,68 +12,70 @@ const slideArt: Record<string, string> = {
   "close-orchestration": "/products/close-orchestration.png?v=5",
 };
 
-function hslToRgb(h: number, s: number, l: number) {
-  const chroma = (1 - Math.abs(2 * l - 1)) * s;
-  const hp = h / 60;
-  const x = chroma * (1 - Math.abs((hp % 2) - 1));
-  const channel =
-    hp < 1
-      ? [chroma, x, 0]
-      : hp < 2
-        ? [x, chroma, 0]
-        : hp < 3
-          ? [0, chroma, x]
-          : hp < 4
-            ? [0, x, chroma]
-            : hp < 5
-              ? [x, 0, chroma]
-              : [chroma, 0, x];
-  const match = l - chroma / 2;
-  return channel.map((value) => value + match);
-}
+/** Field, line, mid form, and face — the same roles as the isometric studies, one hue each. */
+const PALETTES: Record<string, { field: string; line: string; mid: string; face: string; border: string }> = {
+  "match-iq": {
+    field: "#6A807D",
+    line: "#F4F3EE",
+    mid: "#486060",
+    face: "#F0F0E4",
+    border: "rgba(244,243,238,0.35)",
+  },
+  "exception-desk": {
+    field: "#1B2838",
+    line: "#F4F3EE",
+    mid: "#101C28",
+    face: "#F0F0E4",
+    border: "rgba(244,243,238,0.28)",
+  },
+  "regulatory-reporting": {
+    field: "#C0D8DC",
+    line: "#0C243C",
+    mid: "#0C243C",
+    face: "#8EAEB4",
+    border: "rgba(12,36,60,0.18)",
+  },
+  "risk-signals": {
+    field: "#6E5A6C",
+    line: "#F4F3EE",
+    mid: "#453848",
+    face: "#F0F0E4",
+    border: "rgba(244,243,238,0.3)",
+  },
+  "close-orchestration": {
+    field: "#A68472",
+    line: "#F4F3EE",
+    mid: "#6B4E42",
+    face: "#F0F0E4",
+    border: "rgba(244,243,238,0.35)",
+  },
+};
 
-function channelHex(value: number) {
-  return Math.round(Math.min(1, Math.max(0, value)) * 255)
-    .toString(16)
-    .padStart(2, "0");
-}
-
-/** Dark field in the card's hue, with the drawing mapped onto a lighter shade of it. */
-function tintFromCard(hex: string) {
+function channels(hex: string) {
   const value = Number.parseInt(hex.slice(1), 16);
-  const red = ((value >> 16) & 255) / 255;
-  const green = ((value >> 8) & 255) / 255;
-  const blue = (value & 255) / 255;
-  const max = Math.max(red, green, blue);
-  const min = Math.min(red, green, blue);
-  const delta = max - min;
-  const lightness = (max + min) / 2;
-  let hue = 0;
-  if (delta !== 0) {
-    if (max === red) hue = ((green - blue) / delta) % 6;
-    else if (max === green) hue = (blue - red) / delta + 2;
-    else hue = (red - green) / delta + 4;
-    hue *= 60;
-    if (hue < 0) hue += 360;
-  }
-  const saturation = delta === 0 ? 0 : delta / (1 - Math.abs(2 * lightness - 1));
-  const vivid = Math.min(0.34, Math.max(0.14, saturation * 1.35));
-  const highlight = hslToRgb(hue, vivid * 0.7, 0.9);
-  const shadow = hslToRgb(hue, Math.min(0.4, vivid + 0.06), 0.66);
-  const field = hslToRgb(hue, Math.min(0.42, Math.max(0.2, vivid + 0.06)), 0.22);
-  const row = (index: number) => {
-    const span = highlight[index]! - shadow[index]!;
-    return `${(0.2126 * span).toFixed(4)} ${(0.7152 * span).toFixed(4)} ${(0.0722 * span).toFixed(4)} 0 ${shadow[index]!.toFixed(4)}`;
-  };
-  return {
-    matrix: `${row(0)} ${row(1)} ${row(2)} 0 0 0 1 0`,
-    field: `#${channelHex(field[0]!)}${channelHex(field[1]!)}${channelHex(field[2]!)}`,
-  };
+  return [((value >> 16) & 255) / 255, ((value >> 8) & 255) / 255, (value & 255) / 255];
+}
+
+/** Map drawing luminance onto line, mid form, and face colors. */
+function tintStops(palette: (typeof PALETTES)[string]) {
+  const line = channels(palette.line);
+  const mid = channels(palette.mid);
+  const face = channels(palette.face);
+  const table = (index: number) =>
+    [line[index], mid[index], mid[index], face[index], face[index]]
+      .map((value) => value!.toFixed(4))
+      .join(" ");
+  return { r: table(0), g: table(1), b: table(2) };
 }
 
 export default function ProductHeroCarousel({ currentSlug }: { currentSlug: string }) {
   const select = useProductSelect();
-  const tints = Object.fromEntries(PRODUCTS.map((item) => [item.slug, tintFromCard(item.cardBg)]));
+  const tints = Object.fromEntries(
+    PRODUCTS.map((item) => {
+      const palette = PALETTES[item.slug] ?? PALETTES["match-iq"]!;
+      return [item.slug, { palette, stops: tintStops(palette) }];
+    }),
+  );
   const product = PRODUCTS.find((item) => item.slug === currentSlug);
   const currentIndex = Math.max(
     0,
@@ -90,7 +92,15 @@ export default function ProductHeroCarousel({ currentSlug }: { currentSlug: stri
               key={item.slug}
               colorInterpolationFilters="sRGB"
             >
-              <feColorMatrix type="matrix" values={tints[item.slug]!.matrix} />
+              <feColorMatrix
+                type="matrix"
+                values="0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0 0 0 1 0"
+              />
+              <feComponentTransfer>
+                <feFuncR type="table" tableValues={tints[item.slug]!.stops.r} />
+                <feFuncG type="table" tableValues={tints[item.slug]!.stops.g} />
+                <feFuncB type="table" tableValues={tints[item.slug]!.stops.b} />
+              </feComponentTransfer>
             </filter>
           ))}
         </defs>
@@ -110,8 +120,11 @@ export default function ProductHeroCarousel({ currentSlug }: { currentSlug: stri
         {PRODUCTS.map((item) => (
           <div
             key={item.slug}
-            className="aspect-square overflow-hidden border border-white/20"
-            style={{ backgroundColor: tints[item.slug]!.field }}
+            className="aspect-square overflow-hidden border"
+            style={{
+              backgroundColor: tints[item.slug]!.palette.field,
+              borderColor: tints[item.slug]!.palette.border,
+            }}
           >
             {slideArt[item.slug] ? (
               // eslint-disable-next-line @next/next/no-img-element

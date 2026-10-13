@@ -48,13 +48,13 @@ export default function HumanHome() {
             className="pointer-events-none absolute inset-0 z-[1]"
             style={{
               background: [
-                "radial-gradient(ellipse 48% 55% at 50% 48%, rgba(228,228,228,0.97) 0%, rgba(228,228,228,0.82) 42%, rgba(228,228,228,0.2) 68%, transparent 82%)",
-                "linear-gradient(to top, transparent 0%, transparent 14%, rgba(228,228,228,0.25) 36%, rgba(228,228,228,0.78) 68%, #E4E4E4 90%)",
+                "radial-gradient(ellipse 42% 48% at 50% 48%, rgba(228,228,228,0.72) 0%, rgba(228,228,228,0.42) 45%, rgba(228,228,228,0.12) 70%, transparent 88%)",
+                "linear-gradient(to top, transparent 0%, transparent 18%, rgba(228,228,228,0.12) 42%, rgba(228,228,228,0.45) 72%, #E4E4E4 94%)",
               ].join(", "),
               maskImage:
-                "linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)",
+                "linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)",
               WebkitMaskImage:
-                "linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)",
+                "linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)",
             }}
           />
           <SiteContainer className="relative z-10 w-full">
