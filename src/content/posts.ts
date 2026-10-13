@@ -43,7 +43,7 @@ export const POSTS: Post[] = [
     title: "Consent stays beside\neach payment it covers",
     category: "Product",
     date: "Mar 12, 2026",
-    cover: "/changelog/cover-2.jpg?v=1",
+    cover: "/changelog/cover-2.jpg?v=2",
     sections: [
       {
         heading: "Consent belongs on the payment",

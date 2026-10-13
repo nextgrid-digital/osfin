@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { GlyphMatrix } from "@/components/ui/glyph-matrix";
-import HalftonePoster from "@/components/ui/halftone-poster";
 import { ABOUT } from "../../content/about";
 import SiteContainer from "../SiteContainer";
 import SiteClose from "../SiteClose";
@@ -105,22 +104,27 @@ export default function AboutPage() {
                   data-not-typeset
                 >
                   <div className="aspect-square w-full overflow-hidden border border-black/15 bg-black/[0.03]">
-                    <HalftonePoster
+                    <img
                       src={city.image}
                       alt={city.imageAlt}
-                      from={city.from}
-                      to={city.to}
-                      className="size-full"
+                      className="size-full object-cover grayscale"
                     />
                   </div>
                   <h3 className="!mb-0 !mt-8 !text-[22px] !font-normal !leading-[1.25] !tracking-normal text-[rgba(0,0,0,0.875)] normal-case md:!text-[24px]">
                     {city.name}
                   </h3>
-                  <p className="!m-0 mt-auto flex items-baseline gap-2 pt-12 font-[family-name:var(--font-mono)] text-[14px] leading-5 tracking-[-0.02em] text-black/55">
-                    <span className="shrink-0 uppercase">{city.role}</span>
-                    <span className="mt-[0.45em] inline-block size-1 shrink-0 self-start bg-current" aria-hidden />
-                    <span>{city.detail}</span>
-                  </p>
+                  <div
+                    className="mt-auto flex !flex-row items-start gap-2 pt-12 text-[14px] leading-5 text-black/55"
+                    data-not-typeset
+                  >
+                    <span className="shrink-0 font-[family-name:var(--font-mono)] uppercase tracking-[-0.02em]">
+                      {city.role}
+                    </span>
+                    <span className="mt-[0.55em] inline-block size-1 shrink-0 bg-current" aria-hidden />
+                    <span className="min-w-0 flex-1 font-sans font-normal tracking-normal">
+                      {city.detail}
+                    </span>
+                  </div>
                 </figure>
               ))}
             </div>

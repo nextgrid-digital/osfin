@@ -370,7 +370,7 @@ const gatewayFlowSource = `<!DOCTYPE html>
                 // Mild ellipse so short sections (CTA) still show lines at top/bottom.
                 ctx.scale(1.15, 1.2);
                 const mask = ctx.createRadialGradient(0, 0, width * 0.08, 0, 0, width * 0.62);
-                mask.addColorStop(0, 'rgba(0, 0, 0, 0.55)');
+                mask.addColorStop(0, 'rgba(0, 0, 0, 1)');
                 mask.addColorStop(0.35, 'rgba(0, 0, 0, 1)');
                 mask.addColorStop(1, 'rgba(0, 0, 0, 1)');
                 ctx.fillStyle = mask;

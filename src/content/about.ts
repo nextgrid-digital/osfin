@@ -74,8 +74,6 @@ export const ABOUT = {
         detail: "Koramangala.",
         image: "/about/bengaluru.jpg",
         imageAlt: "Vidhana Soudha, Bengaluru",
-        from: "#FF8A78",
-        to: "#E23B2F",
       },
       {
         name: "United States",
@@ -84,8 +82,6 @@ export const ABOUT = {
           "In September 2025 the team gathered payments leaders from Visa, Mastercard, and L.E.K. at Finovate.",
         image: "/about/united-states.jpg",
         imageAlt: "Statue of Liberty, United States",
-        from: "#7AA2FF",
-        to: "#2C4FD6",
       },
       {
         name: "Dubai",
@@ -94,8 +90,6 @@ export const ABOUT = {
           "Returning networking sponsor of MEBIS, 16–17 September 2026, Jumeirah Emirates Towers.",
         image: "/about/dubai.jpg",
         imageAlt: "Burj Khalifa, Dubai",
-        from: "#FFC56A",
-        to: "#E07A1A",
       },
     ],
   },
