@@ -183,7 +183,7 @@ export const PRODUCTS: Product[] = [
     cardLabel: "AML Reporting And Fraud Prevention",
     cardBody:
       "Risk Signals watches every payment as it moves, scores risk in real time, links related accounts and merchants, and opens a case with the evidence already gathered.",
-    cardBg: "#edd9b0",
+    cardBg: "#d5e2d4",
     homeLabel: "Risk",
     homeTitle: "One view. Every rail.",
     homeBody:

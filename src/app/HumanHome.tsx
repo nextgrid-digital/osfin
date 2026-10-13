@@ -6,7 +6,6 @@ import { POSTS } from "../content/posts";
 import CascadeBands from "./CascadeBands";
 import HomeSecurity from "./HomeSecurity";
 import HomeProduction from "./HomeProduction";
-import HomeStories from "./HomeStories";
 import SiteClose from "./SiteClose";
 import SiteContainer from "./SiteContainer";
 import TransitionLink from "./TransitionLink";
@@ -109,8 +108,6 @@ export default function HumanHome() {
         </section>
 
         <HomeProduction />
-
-        <HomeStories />
 
         <CascadeBands from="#E4E4E4" to="#001D20" />
         <HomeSecurity />
