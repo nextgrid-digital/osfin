@@ -28,12 +28,12 @@ export default function TextRoll({
         ? { animate: hovered ? "hovered" : "initial" }
         : { whileHover: "hovered" as const })}
       className={cn(
-        "relative inline-flex items-center overflow-hidden leading-none",
+        "relative inline-flex items-baseline overflow-hidden leading-[1.3]",
         className,
       )}
       aria-hidden="true"
     >
-      <span className="flex items-center">
+      <span className="flex items-baseline">
         {chars.map((l, i) => {
           const glyph = l === " " ? "\u00A0" : l;
 
@@ -47,7 +47,7 @@ export default function TextRoll({
                 ease: "easeInOut",
                 duration: DURATION,
               }}
-              className="inline-block"
+              className="inline-block leading-[1.3]"
               key={`top-${i}`}
             >
               {glyph}
@@ -56,7 +56,7 @@ export default function TextRoll({
         })}
       </span>
 
-      <span className="absolute inset-0 flex items-center">
+      <span className="absolute inset-0 flex items-baseline">
         {chars.map((l, i) => {
           const glyph = l === " " ? "\u00A0" : l;
 
@@ -70,7 +70,7 @@ export default function TextRoll({
                 ease: "easeInOut",
                 duration: DURATION,
               }}
-              className="inline-block"
+              className="inline-block leading-[1.3]"
               key={`bottom-${i}`}
             >
               {glyph}

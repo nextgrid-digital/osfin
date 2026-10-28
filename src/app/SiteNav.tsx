@@ -11,15 +11,16 @@ import {
   MotionNavigationMenuTrigger,
 } from "@/components/unlumen-ui/motion-navigation-menu";
 import { TextReveal } from "@/components/ui/cascade-text";
+import { SOLUTIONS } from "../content/industries";
 import { PRODUCTS } from "../content/products";
 import { usePageTransition } from "./PageTransitionProvider";
 
-const listHighlightClassName = "rounded-none bg-white";
+const listHighlightClassName = "rounded-none bg-[#E4E4E4]";
 
 const navItemClassName =
-  "group/cascade h-auto min-h-0 gap-1.5 rounded-none bg-white px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase inline-flex items-center hover:bg-white hover:text-[rgba(0,0,0,0.875)] focus:text-[rgba(0,0,0,0.875)] data-[state=open]:bg-white data-[state=open]:text-[rgba(0,0,0,0.875)]";
+  "group/cascade h-auto min-h-0 gap-1.5 rounded-none bg-[#E4E4E4] px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase inline-flex items-center hover:bg-[#E4E4E4] hover:text-[rgba(0,0,0,0.875)] focus:text-[rgba(0,0,0,0.875)] data-[state=open]:bg-[#E4E4E4] data-[state=open]:text-[rgba(0,0,0,0.875)]";
 const navLinkClassName =
-  "group/cascade h-auto min-h-0 gap-0 rounded-none bg-white px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase inline-flex items-center no-underline hover:bg-white hover:text-[rgba(0,0,0,0.875)] hover:no-underline";
+  "group/cascade h-auto min-h-0 gap-0 rounded-none bg-[#E4E4E4] px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase inline-flex items-center no-underline hover:bg-[#E4E4E4] hover:text-[rgba(0,0,0,0.875)] hover:no-underline";
 
 const largeLinkClassName =
   "site-nav-link-lg group/cascade block w-fit p-0 text-left text-[28px] leading-[1.15] font-normal normal-case tracking-normal text-[rgba(0,0,0,0.875)] no-underline hover:text-black hover:no-underline";
@@ -42,37 +43,6 @@ const PRODUCT_NAV = [
   "regulatory-reporting",
   "risk-signals",
   "close-orchestration",
-] as const;
-
-const SOLUTIONS = [
-  {
-    label: "Banking",
-    description: "Reconcile cores and ledgers across every settlement window.",
-  },
-  {
-    label: "Payments & Cards",
-    description: "Align processors, gateways, and networks in one loop.",
-  },
-  {
-    label: "Fintech",
-    description: "Govern agents across high-velocity payment flows.",
-  },
-  {
-    label: "Insurance",
-    description: "Unify premiums, claims, and remittance in one mesh.",
-  },
-  {
-    label: "Capital Markets",
-    description: "Match trades, cash, and custody with firm controls.",
-  },
-  {
-    label: "Gaming Platform",
-    description: "Track wallets, payouts, and risk in real time.",
-  },
-  {
-    label: "Retail",
-    description: "One mesh for stores, e-commerce, and tender types.",
-  },
 ] as const;
 
 const COMPANY = [
@@ -136,8 +106,8 @@ function MobileMenu({
       }),
     },
     {
-      id: "solutions",
-      label: "Solutions",
+      id: "industries",
+      label: "Industries",
       links: SOLUTIONS.map(({ label }) => ({ label, href: "/#roles" })),
     },
     {
@@ -148,7 +118,7 @@ function MobileMenu({
   ];
 
   return (
-    <div className="site-mobile-nav fixed inset-x-0 top-14 z-40 max-h-[calc(100svh-3.5rem)] overflow-y-auto bg-[#E4E4E4] px-5 pt-4 pb-16 md:top-16 md:max-h-[calc(100svh-4rem)] lg:hidden">
+    <div className="site-mobile-nav fixed inset-x-0 top-14 z-40 max-h-[calc(100svh-3.5rem)] overflow-y-auto bg-white px-5 pt-4 pb-16 md:top-16 md:max-h-[calc(100svh-4rem)] lg:hidden">
       <nav aria-label="Mobile" className="flex flex-col">
         {groups.map((group) => {
           const expanded = section === group.id;
@@ -168,15 +138,15 @@ function MobileMenu({
               {expanded ? (
                 <div className="flex flex-col gap-3 pb-5">
                   {group.links.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      className="!font-[family-name:var(--font-season)] !text-[22px] !leading-[1.2] !font-normal !normal-case !tracking-normal text-[rgba(0,0,0,0.875)] no-underline"
-                      onClick={onNavigate(link.href)}
-                    >
-                      {link.label}
-                    </a>
-                  ))}
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        className="flex items-center gap-3 !font-[family-name:var(--font-season)] !text-[22px] !leading-[1.2] !font-normal !normal-case !tracking-normal text-[rgba(0,0,0,0.875)] no-underline"
+                        onClick={onNavigate(link.href)}
+                      >
+                        {link.label}
+                      </a>
+                    ))}
                 </div>
               ) : null}
             </div>
@@ -336,9 +306,9 @@ export default function SiteNav() {
             </MotionNavigationMenuContent>
           </MotionNavigationMenuItem>
 
-          <MotionNavigationMenuItem value="solutions">
-            <MotionNavigationMenuTrigger className={navItemClassName} aria-label="Solutions">
-              <NavLabel text="Solutions" />
+          <MotionNavigationMenuItem value="industries">
+            <MotionNavigationMenuTrigger className={navItemClassName} aria-label="Industries">
+              <NavLabel text="Industries" />
             </MotionNavigationMenuTrigger>
             <MotionNavigationMenuContent
               highlightClassName="hidden"

@@ -49,7 +49,7 @@ export default function ProductsScroll() {
     <section
       id="product"
       ref={sectionRef}
-      className="flex min-h-svh flex-col justify-center bg-[#E4E4E4] text-[rgba(0,0,0,0.875)]"
+      className="flex min-h-svh flex-col justify-center bg-white text-[rgba(0,0,0,0.875)]"
     >
       <div className="flex flex-col justify-center py-28 md:py-40">
         <SiteContainer>

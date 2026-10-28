@@ -39,7 +39,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={cn(
-        "bg-[#E4E4E4]",
+        "bg-white",
         "font-sans",
         inter.variable,
         seasonMix.variable,
@@ -90,6 +90,10 @@ export default function RootLayout({
             })();`}
           </Script>
         ) : null}
+        <Script
+          src="https://mcp.figma.com/mcp/html-to-design/capture.js"
+          strategy="afterInteractive"
+        />
         <PageTransitionProvider>{children}</PageTransitionProvider>
       </body>
     </html>

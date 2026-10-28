@@ -18,7 +18,7 @@ export default function AboutPage() {
     <div
       data-transition="container"
       data-namespace="about"
-      className="site-shell typeset typeset-docs min-h-screen bg-[#E4E4E4] text-[rgba(0,0,0,0.875)]"
+      className="site-shell typeset typeset-docs min-h-screen bg-white text-[rgba(0,0,0,0.875)]"
     >
       <main className="pt-14 md:pt-16">
         <section className="pt-16 pb-12 md:pt-28 md:pb-20">

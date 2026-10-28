@@ -37,13 +37,22 @@ type CascadeBandsProps = {
   from: string;
   /** Next section / footer body color (bottom of blend). */
   to: string;
+  /** Follow `--cascade-scale` on an ancestor instead of this band's own scroll. */
+  sync?: boolean;
+  /** Edge the stack grows from. Bottom bands open upward. */
+  origin?: "top" | "bottom";
 };
 
 /**
  * AngelList-style cascade: expands on enter, contracts on exit.
  * One hard-stop gradient (no per-band seams) scaled as a unit.
  */
-export default function CascadeBands({ from, to }: CascadeBandsProps) {
+export default function CascadeBands({
+  from,
+  to,
+  sync = false,
+  origin = "top",
+}: CascadeBandsProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const stackRef = useRef<HTMLDivElement>(null);
 
@@ -58,6 +67,8 @@ export default function CascadeBands({ from, to }: CascadeBandsProps) {
   }, [from, to]);
 
   useLayoutEffect(() => {
+    if (sync) return;
+
     const root = rootRef.current;
     const stack = stackRef.current;
     if (!root || !stack) return;
@@ -65,9 +76,10 @@ export default function CascadeBands({ from, to }: CascadeBandsProps) {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     gsap.registerPlugin(ScrollTrigger);
 
+    const transformOrigin = origin === "bottom" ? "50% 100%" : "50% 0%";
     gsap.set(stack, {
       scaleY: reduce ? 0.35 : 0,
-      transformOrigin: "50% 0%",
+      transformOrigin,
     });
 
     if (reduce) return;
@@ -92,13 +104,13 @@ export default function CascadeBands({ from, to }: CascadeBandsProps) {
       tween.scrollTrigger?.kill();
       tween.kill();
     };
-  }, [from, to]);
+  }, [from, to, origin, sync]);
 
   return (
     <div
       ref={rootRef}
       className="pointer-events-none overflow-hidden"
-      style={{ backgroundColor: to, height: STACK_HEIGHT }}
+      style={{ backgroundColor: origin === "bottom" ? from : to, height: STACK_HEIGHT }}
       aria-hidden="true"
     >
       <div
@@ -107,6 +119,8 @@ export default function CascadeBands({ from, to }: CascadeBandsProps) {
         style={{
           height: STACK_HEIGHT,
           backgroundImage: gradient,
+          transform: sync ? "scaleY(var(--cascade-scale, 0))" : undefined,
+          transformOrigin: origin === "bottom" ? "50% 100%" : "50% 0%",
         }}
       />
     </div>

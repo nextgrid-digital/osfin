@@ -10,7 +10,7 @@
   --duration-spring: 580ms;
   --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
-  --surface: #e4e4e4;
+  --surface: #ffffff;
   --surface-muted: rgba(0, 0, 0, 0.06);
   --border: rgba(0, 0, 0, 0.15);
   --border-strong: rgba(0, 0, 0, 0.28);

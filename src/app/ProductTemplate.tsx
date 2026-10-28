@@ -18,7 +18,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
     <div
       data-transition="container"
       data-namespace="product"
-      className="site-shell typeset typeset-docs min-h-screen bg-[#E4E4E4] text-[rgba(0,0,0,0.875)]"
+      className="site-shell typeset typeset-docs min-h-screen bg-white text-[rgba(0,0,0,0.875)]"
     >
       <main className="pt-14 md:pt-16">
         <SiteContainer className="pt-8 md:pt-10">
@@ -40,7 +40,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
           <ProductHeroCarousel currentSlug={product.slug} />
         </SiteContainer>
 
-        <section className="relative mt-24 overflow-hidden bg-[#E4E4E4] [--muted:rgba(0,0,0,0.28)] md:mt-32">
+        <section className="relative mt-24 overflow-hidden bg-white [--muted:rgba(0,0,0,0.28)] md:mt-32">
           <div className="pointer-events-none absolute inset-0">
             <GlyphMatrix
               glyphs="01.+*/<>="
@@ -58,8 +58,8 @@ export default function ProductTemplate({ product }: { product: Product }) {
             className="pointer-events-none absolute inset-0 z-[1]"
             style={{
               background: [
-                "radial-gradient(ellipse 36% 62% at 50% 48%, rgba(228,228,228,0.97) 0%, rgba(228,228,228,0.82) 38%, rgba(228,228,228,0.2) 62%, transparent 78%)",
-                "linear-gradient(to top, transparent 0%, transparent 14%, rgba(228,228,228,0.25) 36%, rgba(228,228,228,0.78) 68%, #E4E4E4 90%)",
+                "radial-gradient(ellipse 36% 62% at 50% 48%, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.82) 38%, rgba(255,255,255,0.2) 62%, transparent 78%)",
+                "linear-gradient(to top, transparent 0%, transparent 14%, rgba(255,255,255,0.25) 36%, rgba(255,255,255,0.78) 68%, #ffffff 90%)",
               ].join(", "),
             }}
           />
@@ -103,7 +103,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
                 visual={
                   <>
                     <SlidingEaseVerticalBars
-                      backgroundColor="#E4E4E4"
+                      backgroundColor="#ffffff"
                       lineColor="rgba(0, 0, 0, 0.32)"
                       barColor="#8E8E8C"
                       horizontal
@@ -113,7 +113,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
                       className="pointer-events-none absolute inset-0"
                       style={{
                         background:
-                          "linear-gradient(to bottom, #E4E4E4 0%, rgba(228,228,228,0.08) 22%, rgba(228,228,228,0.08) 58%, #E4E4E4 100%)",
+                          "linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0.08) 22%, rgba(255,255,255,0.08) 58%, #ffffff 100%)",
                       }}
                     />
                   </>

@@ -1,28 +1,31 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Loupe, Riffle, Slow, Vault } from "@lucasmarkes/hairline/react";
+import { Branches, Cabinet, Loupe, Phosphor, Vault } from "@lucasmarkes/hairline/react";
 
 const figures = {
-  slow: Slow,
+  branches: Branches,
   loupe: Loupe,
-  riffle: Riffle,
+  cabinet: Cabinet,
+  phosphor: Phosphor,
   vault: Vault,
 } as const;
 
 /** Cover-scale each sculpture inside the shared frame. */
 const scale = {
-  slow: 1.7,
+  branches: 1.55,
   loupe: 1.55,
-  riffle: 1.65,
+  cabinet: 1.55,
+  phosphor: 1.45,
   vault: 1.6,
 } as const;
 
 /** Grayscale faces and strokes — same wash on every figure. */
 const palette = {
-  slow: { plate: "#ffffff", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4", hi: "#232327", card: "transparent" },
+  branches: { plate: "#ffffff", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4", hi: "#232327", card: "transparent" },
   loupe: { plate: "#ffffff", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4", hi: "#232327", card: "transparent" },
-  riffle: { plate: "#ffffff", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4", hi: "#232327", card: "transparent" },
+  cabinet: { plate: "#ffffff", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4", hi: "#232327", card: "transparent" },
+  phosphor: { plate: "#ffffff", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4", hi: "#232327", card: "transparent" },
   vault: { plate: "#ffffff", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4", hi: "#232327", card: "transparent" },
 } as const;
 
@@ -285,9 +288,11 @@ function mountLoupeRecord(host: HTMLElement) {
 /** Native Hairline package figures for the homepage production cards. */
 export default function ProductionHairline({
   figure,
+  label,
   className = "",
 }: {
   figure: keyof typeof figures;
+  label?: string;
   className?: string;
 }) {
   const Figure = figures[figure];
@@ -307,6 +312,7 @@ export default function ProductionHairline({
       <Figure
         ref={hostRef}
         theme="light"
+        label={label}
         className="max-w-none [&_[data-hairline-live]]:sr-only"
         style={{
           width: "100%",

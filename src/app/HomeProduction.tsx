@@ -7,31 +7,38 @@ import SiteContainer from "./SiteContainer";
 
 const FEATURES = [
   {
-    id: "reconcile",
-    nav: "Match with context",
-    title: ["Timing gaps and genuine breaks.", "Separated with context."],
-    body: "Connect ledger, payment & settlement records to distinguish timing differences from genuine breaks.",
-    figure: "slow" as const,
+    id: "map",
+    nav: "Map",
+    title: ["See today’s work", "end to end."],
+    body: "Our forward-deployed team and agents map your data, workflows, and internal policies. Together, we uncover opportunities to automate work, improve customer and employee experience, and reduce risk, giving leaders the evidence they need to drive change and free up resources.",
+    figure: "branches" as const,
   },
   {
-    id: "resolve",
-    nav: "Resolve with ownership",
-    title: ["Every exception investigated.", "Owned end to end."],
-    body: "Guide AI assisted exception investigation with clear ownership and governed approvals.",
+    id: "reimagine",
+    nav: "Re-Imagine",
+    title: ["Redesign how", "work gets done."],
+    body: "We’re in the earliest innings of a fundamental shift in how work gets done. Osfin works alongside your teams to rethink how they operate, bringing lessons from across the industry and co-creating new ways of working.",
     figure: "loupe" as const,
   },
   {
-    id: "close",
-    nav: "Close with evidence",
-    title: ["Exposures visible before close.", "Nothing left assumed."],
-    body: "See unresolved exposures and outstanding dependencies before completing financial close.",
-    figure: "riffle" as const,
+    id: "transform",
+    nav: "Transform",
+    title: ["Deploy agents", "against your goals."],
+    body: "Osfin deploys goal-oriented agents, purpose-built for finance, accounting, and payments operations, that get the job done. They stand up quickly, run your operational processes end to end, and bring your team in only when judgment is needed.",
+    figure: "cabinet" as const,
+  },
+  {
+    id: "learn",
+    nav: "Learn",
+    title: ["Agents that get", "better every day."],
+    body: "Osfin’s agents learn from how your team resolves exceptions, edge cases, and escalations. Every decision makes them sharper, so they become a trusted coworker that knows how your team works.",
+    figure: "phosphor" as const,
   },
   {
     id: "control",
-    nav: "Control across teams",
-    title: ["One integrity standard.", "Shared across the institution."],
-    body: "Keep banking, payments, and settlement on the same governed view so ops, finance, and risk work from one picture of what still needs work.",
+    nav: "Control",
+    title: ["You stay in", "the driver’s seat."],
+    body: "Built for financial services, Osfin’s platform keeps agents within your internal policies, routes decisions to people where oversight is required, and records a full audit trail of every action they take.",
     figure: "vault" as const,
   },
 ] as const;
@@ -68,24 +75,22 @@ export default function HomeProduction() {
   }, []);
 
   return (
-    <section className="py-28 md:py-40">
+    <section id="process" className="py-28 md:py-40">
       <SiteContainer>
         <div className="flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between md:gap-10">
-          <div className="flex w-full max-w-full flex-col gap-4">
+          <div className="flex w-full max-w-[36rem] flex-col gap-4">
             <p
               className="not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-black/45 uppercase"
               data-not-typeset
             >
-              Built for production
+              Process
             </p>
-            <h2 className="!mb-0 !mt-0 max-w-full text-left !text-[clamp(1.85rem,7vw,42px)] !leading-[1.15] !font-normal tracking-[-0.02em] text-[rgba(0,0,0,0.875)]">
-              <span className="block">Transaction integrity.</span>
-              <span className="block">Institution wide control.</span>
+            <h2 className="!mb-0 !mt-0 max-w-[18em] text-left !text-[clamp(1.85rem,7vw,42px)] !leading-[1.15] !font-normal tracking-[-0.02em] text-[rgba(0,0,0,0.875)]">
+              We enable radical transformation in operations.
             </h2>
           </div>
           <p className="!mb-0 !mt-0 max-w-[26rem] !text-[16px] !leading-[1.45] text-black">
-            A consistent view of transaction integrity across banking,
-            payments, and settlement before close.
+            A granular view of transaction lifecycle across banking, payments, and settlement before close.
           </p>
         </div>
 
@@ -96,7 +101,7 @@ export default function HomeProduction() {
               data-not-typeset
             >
               <span className="size-1.5 shrink-0 bg-[#001D20]" aria-hidden />
-              Capabilities
+              Process
             </p>
             <nav aria-label="Capabilities" className="flex flex-col gap-3">
               {FEATURES.map((feature) => {
@@ -136,11 +141,11 @@ export default function HomeProduction() {
                     <span className="block">{feature.title[0]}</span>
                     <span className="block">{feature.title[1]}</span>
                   </h3>
-                  <p className="!mb-0 !mt-0 max-w-md text-[15px] leading-[1.5] text-black/65 md:text-[16px]">
+                  <p className="!mb-0 !mt-0 max-w-[34rem] text-[15px] leading-[1.5] text-black/65 md:text-[16px]">
                     {feature.body}
                   </p>
                 </div>
-                <div className="relative flex min-h-[16rem] overflow-hidden bg-white p-2 md:min-h-0 md:p-3">
+                <div className="relative flex min-h-[16rem] overflow-hidden bg-[#E4E4E4] p-2 md:min-h-0 md:p-3">
                   <div className="pointer-events-none absolute inset-0 overflow-hidden">
                     <GlyphMatrix
                       glyphs="01.+*/<>="
@@ -157,11 +162,14 @@ export default function HomeProduction() {
                     className="pointer-events-none absolute inset-0 z-[1]"
                     style={{
                       background:
-                        "radial-gradient(ellipse 70% 62% at 50% 50%, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.78) 42%, rgba(255,255,255,0.28) 68%, transparent 86%)",
+                        "radial-gradient(ellipse 70% 62% at 50% 50%, rgba(228,228,228,0.97) 0%, rgba(228,228,228,0.78) 42%, rgba(228,228,228,0.28) 68%, transparent 86%)",
                     }}
                   />
                   <div className="relative z-10 h-full min-h-0 w-full flex-1 overflow-hidden">
-                    <ProductionHairline figure={feature.figure} />
+                    <ProductionHairline
+                      figure={feature.figure}
+                      label={`${feature.title[0]} ${feature.title[1]}`}
+                    />
                   </div>
                 </div>
               </article>

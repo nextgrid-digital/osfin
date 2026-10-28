@@ -1,7 +1,6 @@
 "use client";
 
 import { useId } from "react";
-import { TextReveal } from "@/components/ui/cascade-text";
 import TransitionLink from "./TransitionLink";
 
 function OsfinMark({ className }: { className?: string }) {
@@ -14,7 +13,7 @@ function OsfinMark({ className }: { className?: string }) {
       viewBox="0 0 571 571"
       className={className}
       aria-hidden
-      fill="currentColor"
+      fill="#3D6DF2"
     >
       <g clipPath={`url(#${clipOuter})`}>
         <g clipPath={`url(#${clipInner})`}>
@@ -40,10 +39,9 @@ export default function SiteLogo({ className = "text-[18px]" }: { className?: st
     <TransitionLink
       href="/"
       aria-label="Osfin"
-      className={`inline-flex items-center gap-2 font-sans text-[18px] font-medium leading-none tracking-[-0.02em] text-current ${className}`}
+      className={`inline-flex items-center text-current ${className}`}
     >
       <OsfinMark className="size-[18px] shrink-0" />
-      <TextReveal as="span" text="Osfin" aria-label="" className="font-medium tracking-[-0.02em]" />
     </TransitionLink>
   );
 }

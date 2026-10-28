@@ -11,7 +11,7 @@ export default function ProductTabs({ currentSlug }: { currentSlug: string }) {
   return (
     <nav
       aria-label="Products"
-      className="not-typeset sticky top-14 z-40 -mx-5 mt-14 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 border-b border-black/10 bg-[#E4E4E4] px-5 py-4 sm:-mx-8 sm:px-8 md:top-16 md:mt-16 md:gap-x-4"
+      className="not-typeset sticky top-14 z-40 -mx-5 mt-14 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 border-b border-black/10 bg-white px-5 py-4 sm:-mx-8 sm:px-8 md:top-16 md:mt-16 md:gap-x-4"
       data-not-typeset
     >
       {PRODUCTS.map((product) => {

@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
 
 const Skiper49 = () => {
   return (
-    <div className="flex h-full w-full items-center justify-center overflow-hidden bg-[#E4E4E4]">
+    <div className="flex h-full w-full items-center justify-center overflow-hidden bg-white">
       <Carousel_003 className="" slides={[]} showPagination loop />
     </div>
   );
@@ -80,7 +80,7 @@ const Carousel_003 = ({
 
   .Carousal_003 .swiper-slide {
     box-sizing: border-box;
-    background-color: #E4E4E4;
+    background-color: #ffffff;
     background-position: center;
     background-size: cover;
     width: clamp(220px, 28vw, 420px);

@@ -1,4 +1,4 @@
-import DarkWhenInView from "./DarkWhenInView";
+import Link from "next/link";
 import SiteContainer from "./SiteContainer";
 
 const ITEMS = [
@@ -18,7 +18,7 @@ const ITEMS = [
   {
     title: "ISO 27001 Certification",
     titleLines: ["ISO 27001", "Certification"],
-    kicker: "BSI",
+    kicker: null,
     body: "Certified by BSI to ISO/IEC 27001, with an information security management system that protects client data.",
     icon: "iso" as const,
   },
@@ -32,7 +32,7 @@ const ITEMS = [
   {
     title: "PCI DSS & PCI SSF Standards",
     titleLines: ["PCI DSS & PCI SSF", "Standards"],
-    kicker: "DSS Compliant - Osfin",
+    kicker: null,
     body: "Osfin is DSS compliant, protecting payment data to PCI DSS in the cloud and PCI SSF for on-premise solutions.",
     icon: "pci" as const,
   },
@@ -185,15 +185,15 @@ export function SecurityCards({
   return (
     <div className={className}>
     <div
-      className={`grid grid-cols-1 gap-px md:grid-cols-2 lg:grid-cols-4 ${light ? "bg-black/15" : "bg-[#001D20]"}`}
+      className={`grid grid-cols-1 border-r border-b md:grid-cols-2 lg:grid-cols-4 ${light ? "border-black/15" : "border-white/15"}`}
     >
       {ITEMS.map((item) => (
         <div
           key={item.title}
           className={
             light
-              ? "flex min-h-0 min-w-0 flex-col justify-between gap-16 bg-[#E4E4E4] px-6 py-8 md:min-h-[420px] md:px-8 md:py-10"
-              : "flex min-h-0 min-w-0 flex-col justify-between gap-16 bg-[#0A3034] px-6 py-8 md:min-h-[420px] md:px-8 md:py-10"
+              ? "flex min-h-0 min-w-0 flex-col justify-between gap-16 border-t border-l border-black/15 bg-white px-6 py-8 md:min-h-[420px] md:px-8 md:py-10"
+              : "flex min-h-0 min-w-0 flex-col justify-between gap-16 border-t border-l border-white/15 bg-[#0A3034] px-6 py-8 md:min-h-[420px] md:px-8 md:py-10"
           }
         >
           <CertIcon kind={item.icon} ink={light ? "dark" : "white"} />
@@ -239,15 +239,23 @@ export function SecurityCards({
   );
 }
 
-export default function HomeSecurity({ watch = true }: { watch?: boolean }) {
+export default function HomeSecurity() {
   return (
-    <section id="security" className="bg-[#001D20] pt-16 pb-28 text-white md:pt-20 md:pb-40">
-      {watch ? <DarkWhenInView targetId="security" /> : null}
+    <section id="security" className="bg-white py-28 text-[rgba(0,0,0,0.875)] md:py-40">
       <SiteContainer>
-        <h2 className="mx-auto !mb-0 !mt-0 max-w-2xl text-center !text-[clamp(1.85rem,7vw,36px)] !font-normal !leading-[1.15] tracking-[-0.02em] text-white md:!text-[42px]">
+        <h2 className="mx-auto !mb-0 !mt-0 max-w-2xl text-center text-[rgba(0,0,0,0.875)]">
           Compliance and security guardrails built in.
         </h2>
-        <SecurityCards className="mt-12 md:mt-16" />
+        <SecurityCards className="mt-12 md:mt-16" tone="light" />
+        <div className="mt-12 flex justify-center md:mt-16">
+          <Link
+            href="/security"
+            data-not-typeset=""
+            className="not-typeset inline-flex h-10 items-center justify-center rounded-none bg-black px-5 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-white uppercase no-underline transition hover:opacity-90"
+          >
+            View security
+          </Link>
+        </div>
       </SiteContainer>
     </section>
   );

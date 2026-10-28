@@ -54,10 +54,10 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --header-bg: #E4E4E4;
+  --header-bg: #ffffff;
   --header-height: 64px;
   --max: 1440px;
-  --background: #E4E4E4;
+  --background: #ffffff;
   --background-subtle: oklch(0.985 0.002 247.839);
   --background-muted: oklch(0.967 0.003 264.542);
   --border-muted: oklch(0.967 0.003 264.542);
@@ -163,21 +163,12 @@ html {
 body {
   font-family: var(--font-inter), var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  transition:
-    background-color 0.55s ease,
-    color 0.55s ease;
-}
-
-.site-shell {
-  transition:
-    background-color 0.55s ease,
-    color 0.55s ease;
 }
 
 .site-shell > main {
   position: relative;
   z-index: 1;
-  background-color: #E4E4E4;
+  background-color: #ffffff;
 }
 
 .site-header {
@@ -358,16 +349,16 @@ html.theme-dark .site-header [data-slot="navigation-menu-content"] [data-slot="n
 }
 
 html.theme-dark {
-  --background: #E4E4E4;
+  --background: #ffffff;
   --foreground: rgba(0, 0, 0, 0.875);
   --muted: rgba(0, 0, 0, 0.55);
   --border: rgba(0, 0, 0, 0.1);
-  --header-bg: #E4E4E4;
+  --header-bg: #ffffff;
   color-scheme: light;
 }
 
 html.theme-dark .site-shell {
-  background: #E4E4E4;
+  background: #ffffff;
   color: rgba(0, 0, 0, 0.875);
 }
 
@@ -472,14 +463,14 @@ html.over-dark .btn-secondary {
 }
 
 .bg-muted-section {
-  background: #E4E4E4;
+  background: #ffffff;
   transition:
     background-color 0.55s ease,
     color 0.55s ease;
 }
 
 html.theme-dark .bg-muted-section {
-  background: #E4E4E4;
+  background: #ffffff;
   color: rgba(0, 0, 0, 0.875);
 }
 

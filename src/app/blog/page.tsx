@@ -38,7 +38,7 @@ export default async function BlogPage({
     <div
       data-transition="container"
       data-namespace="blog"
-      className="site-shell typeset typeset-docs min-h-screen bg-[#E4E4E4] text-[rgba(0,0,0,0.875)]"
+      className="site-shell typeset typeset-docs min-h-screen bg-white text-[rgba(0,0,0,0.875)]"
     >
       <main className="pt-14 md:pt-16">
         <SiteContainer className="py-16 md:py-24">

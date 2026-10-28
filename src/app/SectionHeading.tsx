@@ -21,10 +21,7 @@ export default function SectionHeading({
   titleAs = "h2",
 }: SectionHeadingProps) {
   const isDark = tone === "dark";
-  const resolvedCta =
-    aside || cta === null
-      ? null
-      : (cta ?? { href: "#product", label: "See how it works" });
+  const resolvedCta = cta && !aside ? cta : null;
   const TitleTag = titleAs;
 
   const revealTitle = typeof title === "string" && (titleAs === "h1" || title.includes("\n") || Boolean(aside));

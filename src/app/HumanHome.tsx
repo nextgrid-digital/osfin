@@ -1,43 +1,21 @@
-import { TextReveal } from "@/components/ui/cascade-text";
 import GatewayFlow from "@/components/ui/gateway-flow";
-import { KineticTextReveal } from "@/components/ui/kinetic-text-reveal";
 import MetalLapJoint from "@/components/MetalLapJoint";
 import { POSTS } from "../content/posts";
-import CascadeBands from "./CascadeBands";
 import HomeSecurity from "./HomeSecurity";
+import HomeCaseStudies from "./HomeCaseStudies";
+import HomeIndustries from "./HomeIndustries";
 import HomeProduction from "./HomeProduction";
+import HomeVision from "./HomeVision";
 import SiteClose from "./SiteClose";
 import SiteContainer from "./SiteContainer";
 import TransitionLink from "./TransitionLink";
 
-function BtnPrimary({ href, children }: { href: string; children: string }) {
-  return (
-    <TextReveal
-      href={href}
-      text={children}
-      className="btn-primary not-typeset inline-flex h-10 items-center rounded-none bg-black px-5 text-[13px] font-medium text-white transition hover:opacity-90"
-      data-not-typeset=""
-    />
-  );
-}
-
-function BtnSecondary({ href, children }: { href: string; children: string }) {
-  return (
-    <TextReveal
-      href={href}
-      text={children}
-      className="btn-secondary not-typeset inline-flex h-10 items-center rounded-none border border-black/15 bg-transparent px-5 text-[13px] font-medium text-[rgba(0,0,0,0.875)] transition hover:bg-black/5"
-      data-not-typeset=""
-    />
-  );
-}
-
 export default function HumanHome() {
   return (
-    <div className="site-shell typeset typeset-docs min-h-screen bg-[#E4E4E4] text-[rgba(0,0,0,0.875)]">
+    <div className="site-shell typeset typeset-docs min-h-screen bg-white text-[rgba(0,0,0,0.875)]">
       <main className="pt-14 md:pt-16">
         {/* Hero: copy left, image right — vertically centered in viewport below header */}
-        <section className="hero-section relative flex min-h-[calc(100svh-3.5rem)] items-center overflow-hidden bg-[#E4E4E4] md:min-h-[calc(100svh-4rem)]">
+        <section className="hero-section relative flex min-h-[calc(100svh-3.5rem)] items-center overflow-hidden bg-white md:min-h-[calc(100svh-4rem)]">
           <GatewayFlow
             mode="light"
             className="pointer-events-none absolute inset-0 z-0 h-full w-full"
@@ -48,8 +26,8 @@ export default function HumanHome() {
             className="pointer-events-none absolute inset-0 z-[1]"
             style={{
               background: [
-                "radial-gradient(ellipse 42% 48% at 50% 48%, rgba(228,228,228,0.72) 0%, rgba(228,228,228,0.42) 45%, rgba(228,228,228,0.12) 70%, transparent 88%)",
-                "linear-gradient(to top, transparent 0%, transparent 18%, rgba(228,228,228,0.12) 42%, rgba(228,228,228,0.45) 72%, #E4E4E4 94%)",
+                "radial-gradient(ellipse 42% 48% at 50% 48%, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.42) 45%, rgba(255,255,255,0.12) 70%, transparent 88%)",
+                "linear-gradient(to top, transparent 0%, transparent 18%, rgba(255,255,255,0.12) 42%, rgba(255,255,255,0.45) 72%, #ffffff 94%)",
               ].join(", "),
               maskImage:
                 "linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)",
@@ -66,7 +44,7 @@ export default function HumanHome() {
                   className="pointer-events-none absolute -left-[50vw] -top-[100vh] -bottom-8 z-[-1] w-[calc(100%+50vw)]"
                   style={{
                     background:
-                      "linear-gradient(to bottom, #E4E4E4 0%, #E4E4E4 calc(100% - 5rem), transparent 100%)",
+                      "linear-gradient(to bottom, #ffffff 0%, #ffffff calc(100% - 5rem), transparent 100%)",
                     maskImage:
                       "linear-gradient(to right, #000 0%, #000 calc(100% - 8rem), transparent 100%)",
                     WebkitMaskImage:
@@ -74,27 +52,15 @@ export default function HumanHome() {
                   }}
                 />
                 <h1 className="text-[rgba(0,0,0,0.875)]">
-                  <KineticTextReveal
-                    text={"Architecting agentic\ntransactional intelligence"}
-                    splitBy="lines"
-                    startOnView
-                    maskClassName="block max-w-full whitespace-normal"
-                    className="w-full max-w-full justify-start"
-                  />
+                  <span className="block">Orchestrating Transformation</span>
+                  <span className="block">in Finance Operations</span>
                 </h1>
                 <p className="mt-8 max-w-[36rem] text-[rgba(0,0,0,0.875)] md:mt-10">
-                  Osfin partners with the most ambitious enterprises to design
-                  and operationalize agentic transactional intelligence. We do this by forward-deploying our
-                  teams of engineers who own the outcome, and deploying purpose-built products customized to how
-                  they move money.
+                  Osfin partners with the most ambitious enterprises and leaders to drive transformation in finance
+                  operations. We do this by deploying our teams of forward-deployed engineers and purpose-built agents
+                  who own the outcome and act as a catalyst for change across your finance, accounting and payments
+                  functions.
                 </p>
-                <div
-                  className="not-typeset mt-10 flex flex-wrap items-center justify-start gap-3 md:mt-12"
-                  data-not-typeset
-                >
-                  <BtnPrimary href="#changelog">See how it works</BtnPrimary>
-                  <BtnSecondary href="#contact">Talk to Sales</BtnSecondary>
-                </div>
               </div>
               <div className="aspect-[4/3] w-full min-w-0 overflow-hidden lg:flex-1">
                 <MetalLapJoint
@@ -107,11 +73,15 @@ export default function HumanHome() {
           </SiteContainer>
         </section>
 
+        <HomeVision />
+
         <HomeProduction />
 
-        <CascadeBands from="#E4E4E4" to="#001D20" />
+        <HomeIndustries />
+
+        <HomeCaseStudies />
+
         <HomeSecurity />
-        <CascadeBands from="#001D20" to="#E4E4E4" />
 
         {/* Changelog */}
         <section id="changelog" className="py-28 md:py-40">

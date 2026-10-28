@@ -1,5 +1,6 @@
 import { TextReveal } from "@/components/ui/cascade-text";
 import Link from "next/link";
+import { INDUSTRIES } from "../content/industries";
 import SiteContainer from "./SiteContainer";
 import SiteLogo from "./SiteLogo";
 
@@ -26,15 +27,7 @@ export default function SiteFooter() {
           <div>
             <p className="mb-4 font-medium text-white/90">Osfin for</p>
             <ul className="space-y-2.5">
-              {[
-                "Banking",
-                "Payments & Cards",
-                "Fintech",
-                "Insurance",
-                "Capital Markets",
-                "Gaming Platform",
-                "Retail",
-              ].map((l) => (
+              {INDUSTRIES.map(({ label: l }) => (
                 <li key={l}>
                   <TextReveal as={Link} href="/#roles" text={l} className="hover:text-white" />
                 </li>
@@ -44,7 +37,7 @@ export default function SiteFooter() {
           <div>
             <p className="mb-4 font-medium text-white/90">Product</p>
             <ul className="space-y-2.5">
-              {["Request a demo", "Changelog", "Documentation", "Download"].map((l) => (
+              {["Changelog", "Documentation", "Download"].map((l) => (
                 <li key={l}>
                   <TextReveal as={Link} href="/#product" text={l} className="hover:text-white" />
                 </li>

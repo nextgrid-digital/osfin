@@ -56,8 +56,12 @@ export const ABOUT = {
       names: ["PharmEasy", "Games 24x7", "Manipal Cigna", "Buku Warung"],
     },
     {
+      label: "Partners",
+      names: ["Fiserv AgentOS", "McKinsey"],
+    },
+    {
       label: "Standards",
-      names: ["SOC 2", "ISO 27001", "GDPR", "PCI DSS"],
+      names: ["PCI DSS", "SOC 1 Type II", "SOC 2 Type II", "ISO 27001:2022", "GDPR", "CCPA", "HIPAA"],
     },
   ],
   places: {
@@ -76,10 +80,9 @@ export const ABOUT = {
         imageAlt: "Vidhana Soudha, Bengaluru",
       },
       {
-        name: "United States",
+        name: "San Francisco",
         role: "Office",
-        detail:
-          "In September 2025 the team gathered payments leaders from Visa, Mastercard, and L.E.K. at Finovate.",
+        detail: "United States.",
         image: "/about/united-states.jpg",
         imageAlt: "Statue of Liberty, United States",
       },

@@ -67,7 +67,7 @@ const GATEWAY_FLOW_DEFAULTS = {
   brightness: 1,
 } as const;
 
-const LIGHT_PAPER = "#E4E4E4";
+const LIGHT_PAPER = "#ffffff";
 
 function clamp(value: number, minimum: number, maximum: number) {
   return Math.min(maximum, Math.max(minimum, value));
