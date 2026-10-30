@@ -1,18 +1,6 @@
 export const ABOUT = {
   manifesto:
     "The books were never the problem. Institutions have tried, and hit the same wall: spreadsheets, point tools, and a break list.",
-  essays: [
-    {
-      label: "AI-native is a mindset",
-      body: "Automation is not the point. It changes how a finance operation thinks, matches, and signs off. The next generation of institutions will run with the transaction at the core: every file taken in its native form, every exception resolved before it becomes a project, the audit trail kept as the system of record. This is how banks, processors, and fintechs become operationally AI-native. By rebuilding the work itself.",
-    },
-    {
-      label: "Experts inside the operation",
-      body: "That takes a different kind of company. One built to sit with finance, operations, and risk, go deep enough to see how money actually moves, and rebuild the systems that reconcile, dispute, and close. Not a handoff. We are in it until the numbers hold.",
-      closer:
-        "Founded in 2021 by Pavan Rathore, Jainendra Batra, Vikash Goenka, and Shitikanth Kashyap.",
-    },
-  ],
   who: {
     label: "Who we are",
     title: "An applied technology company that owns the outcome.",
@@ -52,12 +40,21 @@ export const ABOUT = {
       ],
     },
     {
-      label: "In production",
-      names: ["PharmEasy", "Games 24x7", "Manipal Cigna", "Buku Warung"],
+      label: "Partners",
+      names: ["Fiserv", "McKinsey", "KPMG"],
     },
     {
-      label: "Partners",
-      names: ["Fiserv AgentOS", "McKinsey"],
+      label: "Team",
+      names: [
+        "BCG",
+        "Bain",
+        "Deloitte",
+        "University of California, Berkeley",
+        "The Wharton School of the University of Pennsylvania",
+        "University of North Carolina at Chapel Hill",
+        "The University of Waterloo",
+        "Indian Institutes of Technology",
+      ],
     },
     {
       label: "Standards",
@@ -68,31 +65,24 @@ export const ABOUT = {
     label: "Where the work sits",
     title: "The team sits where the money moves, and shows up where the industry does.",
     // Landmark photos, Wikimedia Commons:
+    // Golden Gate Bridge — Brocken Inaglory, CC BY-SA 3.0
     // Vidhana Soudha — Moheen Reeyad, CC BY-SA 4.0
-    // Statue of Liberty — William Warby, CC BY 2.0
     // Burj Khalifa — Laika ac, CC BY-SA 2.0
     cities: [
       {
-        name: "Bengaluru",
-        role: "Headquarters",
-        detail: "Koramangala.",
-        image: "/about/bengaluru.jpg",
-        imageAlt: "Vidhana Soudha, Bengaluru",
-      },
-      {
         name: "San Francisco",
-        role: "Office",
-        detail: "United States.",
-        image: "/about/united-states.jpg",
-        imageAlt: "Statue of Liberty, United States",
+        image: "/about/san-francisco.jpg",
+        imageAlt: "Golden Gate Bridge, San Francisco",
       },
       {
         name: "Dubai",
-        role: "Field",
-        detail:
-          "Returning networking sponsor of MEBIS, 16–17 September 2026, Jumeirah Emirates Towers.",
         image: "/about/dubai.jpg",
         imageAlt: "Burj Khalifa, Dubai",
+      },
+      {
+        name: "Bengaluru",
+        image: "/about/bengaluru.jpg",
+        imageAlt: "Vidhana Soudha, Bengaluru",
       },
     ],
   },

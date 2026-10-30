@@ -64,12 +64,12 @@ export default function HomeVision() {
   return (
     <section ref={sectionRef} className="relative bg-white">
       <div className="h-[170svh]">
-        <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden bg-[#3D6DF2]">
+        <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden bg-[#000E17]">
           <div className="pointer-events-none absolute inset-x-0 top-0 z-[1]">
-            <CascadeBands from="#ffffff" to="#3D6DF2" sync />
+            <CascadeBands from="#ffffff" to="#000E17" sync size={0.42} />
           </div>
           <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1]">
-            <CascadeBands from="#3D6DF2" to="#ffffff" sync origin="bottom" />
+            <CascadeBands from="#000E17" to="#ffffff" sync origin="bottom" size={0.42} />
           </div>
           <SiteContainer className="relative z-10 w-full">
             <div

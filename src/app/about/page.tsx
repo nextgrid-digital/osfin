@@ -43,36 +43,29 @@ export default function AboutPage() {
           />
         </div>
 
-        <section className="py-24 md:py-36">
-          <SiteContainer className="flex flex-col gap-20 md:gap-32">
-            {ABOUT.essays.map((essay) => (
-              <div key={essay.label} className="grid gap-5 md:grid-cols-12 md:gap-8">
-                <h2 className={`${essayLabelClassName} md:col-span-4`} data-not-typeset>
-                  {essay.label}
-                </h2>
-                <div className="max-w-[38rem] md:col-span-7 md:col-start-6">
-                  <p className="!mt-0 text-black/65">{essay.body}</p>
-                  {"closer" in essay ? (
-                    <p className="text-[15px] text-black/45">{essay.closer}</p>
-                  ) : null}
-                </div>
-              </div>
-            ))}
-          </SiteContainer>
-        </section>
-
         <section className="py-20 md:py-28">
           <SiteContainer className="flex flex-col gap-14 md:gap-16">
-            {ABOUT.proof.map((row) => (
+            {ABOUT.proof.map((row) => {
+              const columns = row.names.length % 4 === 0 ? 4 : row.names.length % 3 === 0 ? 3 : 4;
+              return (
               <div key={row.label}>
                 <p className={labelClassName} data-not-typeset>
                   {row.label}
                 </p>
-                <div className="not-typeset mt-4 grid grid-cols-2 border border-black/10 lg:grid-cols-4" data-not-typeset>
+                <div
+                  className={`not-typeset mt-4 grid grid-cols-2 border border-black/10 ${
+                    columns === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"
+                  }`}
+                  data-not-typeset
+                >
                   {row.names.map((name) => (
                     <div
                       key={name}
-                      className="flex min-h-24 items-center justify-center border-black/10 px-4 py-6 text-center font-sans text-[15px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] not-last:border-b lg:min-h-28 lg:not-last:border-b-0 lg:[&:not(:nth-child(4n))]:border-r max-lg:[&:nth-child(odd)]:border-r"
+                      className={`flex min-h-24 items-center justify-center border-black/10 px-4 py-6 text-center font-sans text-[15px] font-medium tracking-[-0.02em] text-balance text-[rgba(0,0,0,0.875)] not-last:border-b max-lg:[&:nth-child(odd)]:border-r lg:min-h-28 lg:not-last:border-b-0 ${
+                        columns === 3
+                          ? "lg:[&:not(:nth-child(3n))]:border-r lg:[&:nth-child(n+4)]:border-t"
+                          : "lg:[&:not(:nth-child(4n))]:border-r lg:[&:nth-child(n+5)]:border-t"
+                      }`}
                     >
                       {name}
                     </div>
@@ -82,7 +75,8 @@ export default function AboutPage() {
                   <p className="!mt-3 text-[13px] text-black/45">{row.note}</p>
                 ) : null}
               </div>
-            ))}
+              );
+            })}
           </SiteContainer>
         </section>
 
@@ -113,18 +107,6 @@ export default function AboutPage() {
                   <h3 className="!mb-0 !mt-8 !text-[22px] !font-normal !leading-[1.25] !tracking-normal text-[rgba(0,0,0,0.875)] normal-case md:!text-[24px]">
                     {city.name}
                   </h3>
-                  <div
-                    className="mt-auto flex !flex-row items-start gap-2 pt-12 text-[14px] leading-5 text-black/55"
-                    data-not-typeset
-                  >
-                    <span className="shrink-0 font-[family-name:var(--font-mono)] uppercase tracking-[-0.02em]">
-                      {city.role}
-                    </span>
-                    <span className="mt-[0.55em] inline-block size-1 shrink-0 bg-current" aria-hidden />
-                    <span className="min-w-0 flex-1 font-sans font-normal tracking-normal">
-                      {city.detail}
-                    </span>
-                  </div>
                 </figure>
               ))}
             </div>

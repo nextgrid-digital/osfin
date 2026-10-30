@@ -376,7 +376,7 @@ html.theme-dark .btn-primary {
 html.over-dark .site-header,
 html.over-dark .site-header.header-menu-open,
 html.over-dark .site-header.header-over-video {
-  background: #001d20;
+  background: #000e17;
   color: #fff;
 }
 
@@ -411,7 +411,7 @@ html.over-dark .site-header .site-nav-viewport,
 html.over-dark .site-header [data-slot="navigation-menu-viewport"],
 html.over-dark .site-header .site-nav-viewport--mega,
 html.over-dark .site-header [data-layout="mega"] [data-slot="navigation-menu-viewport"] {
-  background: #001d20;
+  background: #000e17;
   color: #fff;
   border-color: rgba(255, 255, 255, 0.12);
 }
@@ -427,7 +427,7 @@ html.over-dark .site-header [data-layout="mega"] [data-slot="navigation-menu-con
 }
 
 html.over-dark .site-mobile-nav {
-  background: #001d20;
+  background: #000e17;
   color: #fff;
 }
 
@@ -453,7 +453,7 @@ html.over-dark .site-mobile-nav [class*="border-black"] {
 
 html.over-dark .btn-primary {
   background: #fff;
-  color: #001d20;
+  color: #000e17;
 }
 
 html.over-dark .btn-secondary {

@@ -1,5 +1,14 @@
 import Link from "next/link";
+import { CreditCard, Globe, Lock, ShieldCheck, type LucideIcon } from "lucide-react";
+import DarkWhenInView from "./DarkWhenInView";
 import SiteContainer from "./SiteContainer";
+
+const LIST: { label: string; icon: LucideIcon }[] = [
+  { label: "GDPR", icon: Lock },
+  { label: "ISO 27001", icon: Globe },
+  { label: "SOC 2", icon: ShieldCheck },
+  { label: "PCI DSS & PCI SSF", icon: CreditCard },
+];
 
 const ITEMS = [
   {
@@ -241,20 +250,49 @@ export function SecurityCards({
 
 export default function HomeSecurity() {
   return (
-    <section id="security" className="bg-white py-28 text-[rgba(0,0,0,0.875)] md:py-40">
+    <section id="security" className="bg-[#000E17] py-28 text-white md:py-40">
+      <DarkWhenInView targetId="security" />
       <SiteContainer>
-        <h2 className="mx-auto !mb-0 !mt-0 max-w-2xl text-center text-[rgba(0,0,0,0.875)]">
-          Compliance and security guardrails built in.
-        </h2>
-        <SecurityCards className="mt-12 md:mt-16" tone="light" />
-        <div className="mt-12 flex justify-center md:mt-16">
-          <Link
-            href="/security"
-            data-not-typeset=""
-            className="not-typeset inline-flex h-10 items-center justify-center rounded-none bg-black px-5 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-white uppercase no-underline transition hover:opacity-90"
-          >
-            View security
-          </Link>
+        <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-24">
+          <div>
+            <h2 className="!mb-0 !mt-0 max-w-[18em] text-white">
+              Compliance and security guardrails built in.
+            </h2>
+            <p className="!mb-0 !mt-5 max-w-[36rem] text-[15px] leading-6 text-white/60 md:!mt-6">
+              Osfin operates under GDPR, ISO 27001, SOC 2, and PCI DSS &amp; PCI SSF, with
+              controls that protect payment data and client information.
+            </p>
+            <Link
+              href="/security"
+              data-not-typeset=""
+              className="not-typeset mt-8 inline-flex h-10 items-center justify-center rounded-none border border-white/35 px-5 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-white uppercase no-underline transition hover:bg-white/10 md:mt-10"
+            >
+              View security
+            </Link>
+          </div>
+          <ul className="not-typeset m-0 list-none p-0" data-not-typeset="">
+            {LIST.map(({ label, icon: Icon }, index) => (
+              <li
+                key={label}
+                className={`flex items-center gap-4 py-5 ${index > 0 ? "border-t border-white/15" : ""}`}
+              >
+                <Icon
+                  aria-hidden
+                  className="size-6 shrink-0 text-white"
+                  strokeWidth={1.4}
+                />
+                <span className="min-w-0 flex-1 text-[16px] leading-none text-white md:text-[18px]">
+                  {label}
+                </span>
+                <Link
+                  href="/security"
+                  className="shrink-0 text-[14px] text-white/40 no-underline transition hover:text-white/70"
+                >
+                  Details
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </SiteContainer>
     </section>

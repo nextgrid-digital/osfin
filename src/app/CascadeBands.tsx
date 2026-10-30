@@ -41,6 +41,8 @@ type CascadeBandsProps = {
   sync?: boolean;
   /** Edge the stack grows from. Bottom bands open upward. */
   origin?: "top" | "bottom";
+  /** Share of the full stack height to show. 1 is the footer size. */
+  size?: number;
 };
 
 /**
@@ -52,9 +54,11 @@ export default function CascadeBands({
   to,
   sync = false,
   origin = "top",
+  size = 1,
 }: CascadeBandsProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const stackRef = useRef<HTMLDivElement>(null);
+  const stackHeight = Math.round(STACK_HEIGHT * size);
 
   const gradient = useMemo(() => {
     const stops = Array.from({ length: BAND_COUNT }, (_, i) => {
@@ -110,14 +114,14 @@ export default function CascadeBands({
     <div
       ref={rootRef}
       className="pointer-events-none overflow-hidden"
-      style={{ backgroundColor: origin === "bottom" ? from : to, height: STACK_HEIGHT }}
+      style={{ backgroundColor: origin === "bottom" ? from : to, height: stackHeight }}
       aria-hidden="true"
     >
       <div
         ref={stackRef}
         className="w-full will-change-transform"
         style={{
-          height: STACK_HEIGHT,
+          height: stackHeight,
           backgroundImage: gradient,
           transform: sync ? "scaleY(var(--cascade-scale, 0))" : undefined,
           transformOrigin: origin === "bottom" ? "50% 100%" : "50% 0%",

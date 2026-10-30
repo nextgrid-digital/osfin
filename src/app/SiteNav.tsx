@@ -108,7 +108,7 @@ function MobileMenu({
     {
       id: "industries",
       label: "Industries",
-      links: SOLUTIONS.map(({ label }) => ({ label, href: "/#roles" })),
+      links: SOLUTIONS.map(({ label, href }) => ({ label, href })),
     },
     {
       id: "company",
@@ -317,10 +317,10 @@ export default function SiteNav() {
               <div className="site-nav-panel py-10 md:py-12">
                 <MenuLabel>Industries</MenuLabel>
                 <div className="flex flex-col gap-2">
-                  {SOLUTIONS.map(({ label }) => (
+                  {SOLUTIONS.map(({ label, href }) => (
                     <MotionNavigationMenuLink
                       key={label}
-                      href="/#roles"
+                      href={href}
                       onClick={closeMenu}
                       className={largeLinkClassName}
                     >
