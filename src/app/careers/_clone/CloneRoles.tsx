@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import Icon2 from "./svgs/svg-icon2";
 import TextLink from "./components/text-link";
 import MediaLink from "./components/media-link";
@@ -131,9 +132,9 @@ export default function CloneRoles() {
               {CAREERS.close.title}
             </h3>
             <p className="w-full max-w-120 block text-color-007 text-sm leading-[1.3125rem]">
-              <a className="inline text-color-001 leading-5 underline cursor-pointer hover:[text-decoration-color:var(--color-001)]" data-component="link" href="/#contact">
+              <Link className="inline text-color-001 leading-5 underline cursor-pointer hover:[text-decoration-color:var(--color-001)]" data-component="link" href="/#contact">
                 Get in touch
-              </a>
+              </Link>
             </p>
           </div>
         </div>
