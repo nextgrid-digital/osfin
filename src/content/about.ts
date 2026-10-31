@@ -41,7 +41,7 @@ export const ABOUT = {
     },
     {
       label: "Partners",
-      names: ["Fiserv", "McKinsey", "KPMG"],
+      names: ["Fiserv", "Fiserv AgentOS", "McKinsey", "KPMG"],
     },
     {
       label: "Team",

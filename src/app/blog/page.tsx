@@ -38,7 +38,7 @@ export default async function BlogPage({
     <div
       data-transition="container"
       data-namespace="blog"
-      className="site-shell typeset typeset-docs min-h-screen bg-white text-[rgba(0,0,0,0.875)]"
+      className="site-shell typeset typeset-docs min-h-screen bg-background text-[#5D524B]"
     >
       <main className="pt-14 md:pt-16">
         <SiteContainer className="py-16 md:py-24">
@@ -56,8 +56,8 @@ export default async function BlogPage({
                     href={listHref(filter, order)}
                     className={`text-[15px] no-underline hover:no-underline ${
                       selected
-                        ? "text-[rgba(0,0,0,0.875)]"
-                        : "text-black/40 hover:text-[rgba(0,0,0,0.875)]"
+                        ? "text-[#5D524B]"
+                        : "text-[#5D524B]/40 hover:text-[#5D524B]"
                     }`}
                   >
                     {filter}
@@ -67,13 +67,13 @@ export default async function BlogPage({
             </nav>
             <TransitionLink
               href={listHref(active, order === "newest" ? "oldest" : "newest")}
-              className="group/cascade inline-flex items-center text-[14px] text-black/45 no-underline hover:text-[rgba(0,0,0,0.875)] hover:no-underline"
+              className="group/cascade inline-flex items-center text-[14px] text-[#5D524B]/45 no-underline hover:text-[#5D524B] hover:no-underline"
             >
               <TextReveal as="span" text="Sort" />
               <TextReveal
                 as="span"
                 text={order === "newest" ? "Newest" : "Oldest"}
-                className="ml-2 text-black/35"
+                className="ml-2 text-[#5D524B]/35"
               />
             </TransitionLink>
           </div>
@@ -100,7 +100,7 @@ export default async function BlogPage({
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={post.cover} alt="" className="size-full object-cover" />
                 </div>
-                <h2 className="!mb-0 !mt-8 !text-[22px] !font-normal !leading-[1.25] !tracking-normal text-[rgba(0,0,0,0.875)] normal-case md:!text-[24px]">
+                <h2 className="!mb-0 !mt-8 !text-[22px] !font-normal !leading-[1.25] !tracking-normal text-[#5D524B] normal-case md:!text-[24px]">
                   {post.title.split("\n").map((line) => (
                     <span key={line} className="block">
                       {line}
@@ -108,12 +108,12 @@ export default async function BlogPage({
                   ))}
                 </h2>
                 <div className="mt-auto flex items-center justify-between gap-4 pt-12">
-                  <p className="!m-0 flex items-center gap-2 font-[family-name:var(--font-mono)] text-[14px] leading-5 tracking-[-0.02em] text-black/55 uppercase">
+                  <p className="!m-0 flex items-center gap-2 font-[family-name:var(--font-mono)] text-[14px] leading-5 tracking-[-0.02em] text-[#5D524B]/55 uppercase">
                     <span>{post.category}</span>
                     <span className="inline-block size-1 bg-current" aria-hidden />
                     <span>{post.date}</span>
                   </p>
-                  <span className="inline-flex size-8 shrink-0 items-center justify-center border border-black/15 text-black/55">
+                  <span className="inline-flex size-8 shrink-0 items-center justify-center border border-black/15 text-[#5D524B]/55">
                     <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden>
                       <path
                         d="M4 12 12 4M6 4h6v6"

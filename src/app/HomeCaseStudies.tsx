@@ -96,7 +96,7 @@ const TESTIMONIALS: Testimonial[] = [
 ];
 
 const linkClassName =
-  "not-typeset !m-0 w-fit border-b border-current pb-0.5 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase";
+  "not-typeset !m-0 w-fit border-b border-current pb-0.5 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-[#5D524B] uppercase";
 
 function Arrow({ direction }: { direction: "prev" | "next" }) {
   const d = direction === "prev" ? "M13 8H3M7 4 3 8l4 4" : "M3 8h10M9 4l4 4-4 4";
@@ -137,7 +137,7 @@ export default function HomeCaseStudies() {
     <section id="case-studies" className="py-28 md:py-40" aria-labelledby="case-studies-heading">
       <SiteContainer>
         <div className="flex items-end justify-between gap-6">
-          <h2 id="case-studies-heading" className="!mb-0 !mt-0 max-w-none text-[rgba(0,0,0,0.875)]">
+          <h2 id="case-studies-heading" className="!mb-0 !mt-0 max-w-none text-[#5D524B]">
             Outcomes from teams
             <br />
             already in production.
@@ -149,7 +149,7 @@ export default function HomeCaseStudies() {
 
         <div className="relative mt-12 border-t border-black/15 md:mt-16">
           <span
-            className="absolute top-0 right-0 flex size-9 -translate-y-1/2 items-center justify-center border border-black/15 bg-white font-[family-name:var(--font-season)] text-[22px] leading-none text-[rgba(0,0,0,0.875)]"
+            className="absolute top-0 right-0 flex size-9 -translate-y-1/2 items-center justify-center border border-black/15 bg-white font-[family-name:var(--font-season)] text-[22px] leading-none text-[#5D524B]"
             aria-hidden
           >
             ”
@@ -179,12 +179,12 @@ export default function HomeCaseStudies() {
 
           <div className="flex min-h-full flex-col md:min-h-[28rem]">
             <p
-              className="!mb-0 !mt-0 text-[22px] leading-none font-semibold tracking-[-0.03em] text-[rgba(0,0,0,0.875)]"
+              className="!mb-0 !mt-0 text-[22px] leading-none font-semibold tracking-[-0.03em] text-[#5D524B]"
               style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
             >
               {active.company}
             </p>
-            <p className="!mb-0 !mt-8 max-w-[34rem] text-[22px] leading-[1.35] text-[rgba(0,0,0,0.875)] md:text-[28px]">
+            <p className="!mb-0 !mt-8 max-w-[34rem] text-[22px] leading-[1.35] text-[#5D524B] md:text-[28px]">
               {active.quote}
             </p>
             <p
@@ -197,17 +197,17 @@ export default function HomeCaseStudies() {
 
             <div className="mt-auto flex flex-col gap-4 pt-12 sm:flex-row sm:items-center sm:justify-between">
               <p
-                className="not-typeset !m-0 border border-black/15 px-4 py-3 font-[family-name:var(--font-mono)] text-[11px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase"
+                className="not-typeset !m-0 border border-black/15 px-4 py-3 font-[family-name:var(--font-mono)] text-[11px] font-medium tracking-[-0.02em] text-[#5D524B] uppercase"
                 data-not-typeset
               >
                 {active.name}
-                <span className="px-2 text-black/30">|</span>
+                <span className="px-2 text-[#5D524B]/30">|</span>
                 {active.designation} @ {active.company}
               </p>
               <div className="flex shrink-0">
                 <button
                   type="button"
-                  className="inline-flex size-9 items-center justify-center border border-black/15 text-[rgba(0,0,0,0.875)]"
+                  className="inline-flex size-9 items-center justify-center border border-black/15 text-[#5D524B]"
                   aria-label="Previous case study"
                   onClick={() => go(-1)}
                 >
@@ -215,7 +215,7 @@ export default function HomeCaseStudies() {
                 </button>
                 <button
                   type="button"
-                  className="inline-flex size-9 items-center justify-center border border-l-0 border-black/15 text-[rgba(0,0,0,0.875)]"
+                  className="inline-flex size-9 items-center justify-center border border-l-0 border-black/15 text-[#5D524B]"
                   aria-label="Next case study"
                   onClick={() => go(1)}
                 >

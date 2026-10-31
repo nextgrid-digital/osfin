@@ -33,12 +33,12 @@ export default async function BlogPostPage({
     <div
       data-transition="container"
       data-namespace="blog-post"
-      className="site-shell typeset typeset-docs min-h-screen bg-white text-[rgba(0,0,0,0.875)]"
+      className="site-shell typeset typeset-docs min-h-screen bg-background text-[#5D524B]"
     >
       <main className="pt-14 md:pt-16">
         <SiteContainer className="py-20 md:py-28">
           <article className="mx-auto max-w-[72rem]">
-            <p className="not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] tracking-[-0.02em] text-black/55">
+            <p className="not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] tracking-[-0.02em] text-[#5D524B]/55">
               {post.date}
               <span className="px-2">·</span>
               {post.category}

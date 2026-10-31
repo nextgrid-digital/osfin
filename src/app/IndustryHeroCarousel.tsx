@@ -32,7 +32,7 @@ export default function IndustryHeroCarousel({ currentId }: { currentId: string 
             key={item.id}
             className="flex aspect-square items-center justify-center overflow-hidden border border-black/10 bg-[#F4F3EE]"
           >
-            <IndustryIcon id={item.id} className="h-auto w-[52%] text-[rgba(0,0,0,0.8)]" />
+            <IndustryIcon id={item.id} className="h-auto w-[52%] text-[#5D524B]" />
           </div>
         ))}
       </Carousel>

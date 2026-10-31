@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import { useScroll } from "motion/react";
-import CascadeBands from "./CascadeBands";
 import SiteContainer from "./SiteContainer";
 
 const LEAD =
@@ -29,6 +28,7 @@ const read = 0.9;
 export default function HomeVision() {
   const sectionRef = useRef<HTMLElement>(null);
   const wordsRef = useRef<HTMLDivElement>(null);
+  const leadRef = useRef<HTMLParagraphElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -41,43 +41,55 @@ export default function HomeVision() {
     const words = [...root.querySelectorAll<HTMLElement>("[data-word]")];
     const total = Math.max(1, words.length);
 
-    const paint = (progress: number) => {
-      const section = sectionRef.current;
-      if (section) {
-        const t = Math.min(1, Math.max(0, progress));
-        section.style.setProperty("--cascade-scale", String(Math.sin(t * Math.PI)));
+    const syncField = () => {
+      const box = leadRef.current?.getBoundingClientRect();
+      const root = document.documentElement;
+      if (!box) {
+        root.style.setProperty("--field-mix", "0%");
+        return;
       }
+      const view = window.innerHeight;
+      const travel = view * 0.45;
+      const enter = Math.min(1, Math.max(0, (view - box.top) / travel));
+      const leave = Math.min(1, Math.max(0, box.bottom / travel));
+      const mix = Math.min(enter, leave);
+      root.style.setProperty("--field-mix", `${(mix * 100).toFixed(1)}%`);
+    };
+
+    const paint = (progress: number) => {
+      syncField();
       words.forEach((word, index) => {
         const start = (index / total) * 0.55 + 0.12;
         const span = 0.12;
         const local = Math.min(1, Math.max(0, (progress - start) / span));
         const alpha = unread + (read - unread) * local;
-        word.style.color = `rgba(255, 255, 255, ${alpha})`;
+        word.style.color = `rgba(93, 82, 75, ${alpha})`;
       });
     };
 
     paint(scrollYProgress.get());
     const stop = scrollYProgress.on("change", paint);
-    return () => stop();
+    window.addEventListener("scroll", syncField, { passive: true });
+    window.addEventListener("resize", syncField);
+    return () => {
+      stop();
+      window.removeEventListener("scroll", syncField);
+      window.removeEventListener("resize", syncField);
+      document.documentElement.style.setProperty("--field-mix", "0%");
+    };
   }, [scrollYProgress]);
 
   return (
-    <section ref={sectionRef} className="relative bg-white">
+    <section ref={sectionRef} className="relative bg-background">
       <div className="h-[170svh]">
-        <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden bg-[#000E17]">
-          <div className="pointer-events-none absolute inset-x-0 top-0 z-[1]">
-            <CascadeBands from="#ffffff" to="#000E17" sync size={0.42} />
-          </div>
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1]">
-            <CascadeBands from="#000E17" to="#ffffff" sync origin="bottom" size={0.42} />
-          </div>
+        <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden bg-background">
           <SiteContainer className="relative z-10 w-full">
             <div
               ref={wordsRef}
               data-not-typeset
-              className="not-typeset mx-auto w-full max-w-[20em] text-left font-[family-name:var(--font-season)] text-[clamp(1.375rem,2.6vw,40px)] leading-[1.18] font-normal tracking-[-0.03em] text-white/15"
+              className="not-typeset mx-auto w-full max-w-[20em] text-left font-[family-name:var(--font-season)] text-[clamp(1.375rem,2.6vw,40px)] leading-[1.18] font-normal tracking-[-0.03em] text-[#5D524B]/15"
             >
-              <p className="!m-0">
+              <p ref={leadRef} className="!m-0">
                 <Words text={LEAD} />
                 <br />
                 <Words text={CLOSE} />

@@ -158,7 +158,7 @@ export function ScrollReadParagraphs({
         >
           {paragraph.split(/(\s+)/).map((part, partIndex) =>
             part.trim() ? (
-              <span key={partIndex} data-word className="text-black/30">
+              <span key={partIndex} data-word className="text-[#5D524B]/30">
                 {part}
               </span>
             ) : (

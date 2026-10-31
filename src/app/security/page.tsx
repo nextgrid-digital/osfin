@@ -15,10 +15,10 @@ export default function SecurityPage() {
     <div
       data-transition="container"
       data-namespace="security"
-      className="site-shell typeset typeset-docs min-h-screen bg-white text-[rgba(0,0,0,0.875)]"
+      className="site-shell typeset typeset-docs min-h-screen bg-background text-[#5D524B]"
     >
       <main className="pt-14 md:pt-16">
-        <section className="relative overflow-hidden bg-white">
+        <section className="relative overflow-hidden bg-background">
           <GatewayFlow
             mode="light"
             className="pointer-events-none absolute inset-0 z-0 h-full w-full"

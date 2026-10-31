@@ -51,7 +51,7 @@ export default function SectionHeading({
   return (
     <div className={`relative ${className}`}>
       {label ? (
-        <h6 className={isDark ? "text-white/70" : "text-black/50"}>{label}</h6>
+        <h6 className={isDark ? "text-white/70" : "text-[#5D524B]/50"}>{label}</h6>
       ) : null}
 
       <div
@@ -70,7 +70,7 @@ export default function SectionHeading({
                 : multilineTitle
                   ? "max-w-full md:w-max md:shrink-0"
                   : "max-w-full sm:max-w-[40rem]"
-          } ${aside ? "text-center" : "text-left"} ${isDark ? "text-white" : "text-[rgba(0,0,0,0.875)]"}`}
+          } ${aside ? "text-center" : "text-left"} ${isDark ? "text-white" : "text-[#5D524B]"}`}
         >
           {titleContent}
         </TitleTag>
@@ -78,7 +78,7 @@ export default function SectionHeading({
         {aside ? (
           <div
             className={`!mt-0 max-w-[36rem] text-center ${
-              isDark ? "text-white/60" : "text-black/55"
+              isDark ? "text-white/60" : "text-[#5D524B]/55"
             }`}
           >
             <p className="!mt-0 line-clamp-3 !text-[14px] !leading-[1.5]">{aside}</p>
@@ -90,7 +90,7 @@ export default function SectionHeading({
             href={resolvedCta.href}
             text={resolvedCta.label}
             className={`not-typeset inline-flex h-10 shrink-0 items-center justify-center rounded-none px-5 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] uppercase transition hover:opacity-90 ${
-              isDark ? "bg-white text-black" : "bg-black text-white"
+              isDark ? "bg-white text-[#5D524B]" : "bg-black text-white"
             }`}
             data-not-typeset=""
           />

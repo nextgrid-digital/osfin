@@ -15,15 +15,15 @@ import { SOLUTIONS } from "../content/industries";
 import { PRODUCTS } from "../content/products";
 import { usePageTransition } from "./PageTransitionProvider";
 
-const listHighlightClassName = "rounded-none bg-[#E4E4E4]";
+const listHighlightClassName = "rounded-none bg-background";
 
 const navItemClassName =
-  "group/cascade h-auto min-h-0 gap-1.5 rounded-none bg-[#E4E4E4] px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase inline-flex items-center hover:bg-[#E4E4E4] hover:text-[rgba(0,0,0,0.875)] focus:text-[rgba(0,0,0,0.875)] data-[state=open]:bg-[#E4E4E4] data-[state=open]:text-[rgba(0,0,0,0.875)]";
+  "group/cascade h-auto min-h-0 gap-1.5 rounded-none bg-background px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[#5D524B] uppercase inline-flex items-center hover:bg-background hover:text-[#5D524B] focus:text-[#5D524B] data-[state=open]:bg-background data-[state=open]:text-[#5D524B]";
 const navLinkClassName =
-  "group/cascade h-auto min-h-0 gap-0 rounded-none bg-[#E4E4E4] px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase inline-flex items-center no-underline hover:bg-[#E4E4E4] hover:text-[rgba(0,0,0,0.875)] hover:no-underline";
+  "group/cascade h-auto min-h-0 gap-0 rounded-none bg-background px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[#5D524B] uppercase inline-flex items-center no-underline hover:bg-background hover:text-[#5D524B] hover:no-underline";
 
 const largeLinkClassName =
-  "site-nav-link-lg group/cascade block w-fit p-0 text-left text-[28px] leading-[1.15] font-normal normal-case tracking-normal text-[rgba(0,0,0,0.875)] no-underline hover:text-black hover:no-underline";
+  "site-nav-link-lg group/cascade block w-fit p-0 text-left text-[28px] leading-[1.15] font-normal normal-case tracking-normal text-[#5D524B] no-underline hover:text-[#5D524B] hover:no-underline";
 
 function NavLabel({ text }: { text: string }) {
   return (
@@ -54,7 +54,7 @@ const COMPANY = [
   {
     label: "Careers",
     description: "Join the team building agentic payment operations.",
-    href: "/#company",
+    href: "/careers",
   },
   {
     label: "Compliance",
@@ -69,7 +69,7 @@ const COMPANY = [
 ] as const;
 
 function MenuLabel({ children }: { children: ReactNode }) {
-  return <p className="mb-5 text-[13px] text-black/45">{children}</p>;
+  return <p className="mb-5 text-[13px] text-[#5D524B]/45">{children}</p>;
 }
 
 function MenuColumns({ children }: { children: ReactNode }) {
@@ -118,7 +118,7 @@ function MobileMenu({
   ];
 
   return (
-    <div className="site-mobile-nav fixed inset-x-0 top-14 z-40 max-h-[calc(100svh-3.5rem)] overflow-y-auto bg-white px-5 pt-4 pb-16 md:top-16 md:max-h-[calc(100svh-4rem)] lg:hidden">
+    <div className="site-mobile-nav fixed inset-x-0 top-14 z-40 max-h-[calc(100svh-3.5rem)] overflow-y-auto bg-background px-5 pt-4 pb-16 md:top-16 md:max-h-[calc(100svh-4rem)] lg:hidden">
       <nav aria-label="Mobile" className="flex flex-col">
         {groups.map((group) => {
           const expanded = section === group.id;
@@ -126,12 +126,12 @@ function MobileMenu({
             <div key={group.id} className="border-b border-black/10">
               <button
                 type="button"
-                className="flex w-full items-center justify-between py-4 text-left font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase"
+                className="flex w-full items-center justify-between py-4 text-left font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[#5D524B] uppercase"
                 aria-expanded={expanded}
                 onClick={() => setSection(expanded ? null : group.id)}
               >
                 {group.label}
-                <span aria-hidden className="text-[18px] leading-none text-black/45">
+                <span aria-hidden className="text-[18px] leading-none text-[#5D524B]/45">
                   {expanded ? "–" : "+"}
                 </span>
               </button>
@@ -141,7 +141,7 @@ function MobileMenu({
                       <a
                         key={link.label}
                         href={link.href}
-                        className="flex items-center gap-3 !font-[family-name:var(--font-season)] !text-[22px] !leading-[1.2] !font-normal !normal-case !tracking-normal text-[rgba(0,0,0,0.875)] no-underline"
+                        className="flex items-center gap-3 !font-[family-name:var(--font-season)] !text-[22px] !leading-[1.2] !font-normal !normal-case !tracking-normal text-[#5D524B] no-underline"
                         onClick={onNavigate(link.href)}
                       >
                         {link.label}
@@ -154,14 +154,14 @@ function MobileMenu({
         })}
         <Link
           href="/blog"
-          className="border-b border-black/10 py-4 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase no-underline"
+          className="border-b border-black/10 py-4 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[#5D524B] uppercase no-underline"
           onClick={onNavigate("/blog")}
         >
           Blog
         </Link>
         <Link
           href="/#contact"
-          className="border-b border-black/10 py-4 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[rgba(0,0,0,0.875)] uppercase no-underline"
+          className="border-b border-black/10 py-4 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[#5D524B] uppercase no-underline"
           onClick={onClose}
         >
           Contact

@@ -15,7 +15,7 @@ const FEATURES = [
   },
   {
     id: "reimagine",
-    nav: "Re-Imagine",
+    nav: "Reimagine",
     title: ["Redesign how", "work gets done."],
     body: "We’re in the earliest innings of a fundamental shift in how work gets done. Osfin works alongside your teams to rethink how they operate, bringing lessons from across the industry and co-creating new ways of working.",
     figure: "loupe" as const,
@@ -80,16 +80,16 @@ export default function HomeProduction() {
         <div className="flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between md:gap-10">
           <div className="flex w-full max-w-[36rem] flex-col gap-4">
             <p
-              className="not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-black/45 uppercase"
+              className="not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-[#5D524B]/45 uppercase"
               data-not-typeset
             >
               Process
             </p>
-            <h2 className="!mb-0 !mt-0 max-w-[18em] text-left !text-[clamp(1.85rem,7vw,42px)] !leading-[1.15] !font-normal tracking-[-0.02em] text-[rgba(0,0,0,0.875)]">
+            <h2 className="!mb-0 !mt-0 max-w-[18em] text-left !text-[clamp(1.85rem,7vw,42px)] !leading-[1.15] !font-normal tracking-[-0.02em] text-[#5D524B]">
               We enable radical transformation in operations.
             </h2>
           </div>
-          <p className="!mb-0 !mt-0 max-w-[26rem] !text-[16px] !leading-[1.45] text-black">
+          <p className="!mb-0 !mt-0 max-w-[26rem] !text-[16px] !leading-[1.45] text-[#5D524B]">
             A granular view of transaction lifecycle across banking, payments, and settlement before close.
           </p>
         </div>
@@ -97,7 +97,7 @@ export default function HomeProduction() {
         <div className="mt-12 grid grid-cols-1 gap-10 md:mt-16 lg:grid-cols-[minmax(12rem,16rem)_minmax(0,1fr)] lg:gap-12 xl:gap-16">
           <aside className="lg:sticky lg:top-24 lg:self-start">
             <p
-              className="not-typeset mb-5 flex items-center gap-2 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-black/45 uppercase"
+              className="not-typeset mb-5 flex items-center gap-2 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-[#5D524B]/45 uppercase"
               data-not-typeset
             >
               <span className="size-1.5 shrink-0 bg-[#001D20]" aria-hidden />
@@ -112,8 +112,8 @@ export default function HomeProduction() {
                     href={`#feature-${feature.id}`}
                     className={`not-typeset block text-[15px] leading-snug no-underline transition-colors ${
                       isActive
-                        ? "text-[rgba(0,0,0,0.875)]"
-                        : "text-black/35 hover:text-black/55"
+                        ? "text-[#5D524B]"
+                        : "text-[#5D524B]/35 hover:text-[#5D524B]/55"
                     }`}
                     data-not-typeset
                     onClick={() => setActive(feature.id)}
@@ -134,18 +134,18 @@ export default function HomeProduction() {
                 ref={(el) => {
                   itemRefs.current[feature.id] = el;
                 }}
-                className="grid min-h-[28rem] min-w-0 grid-cols-1 overflow-hidden bg-[#EDEDED] md:min-h-[36rem] md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:min-h-[min(38rem,72svh)]"
+                className="grid min-h-[28rem] min-w-0 grid-cols-1 overflow-hidden bg-[#F7F1E3] md:min-h-[36rem] md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:min-h-[min(38rem,72svh)]"
               >
                 <div className="flex flex-col justify-between gap-10 px-7 py-8 md:px-9 md:py-10">
-                  <h3 className="!mb-0 !mt-0 !text-[26px] !font-normal !leading-[1.2] !tracking-[-0.02em] text-[rgba(0,0,0,0.875)] normal-case md:!text-[32px]">
+                  <h3 className="!mb-0 !mt-0 !text-[26px] !font-normal !leading-[1.2] !tracking-[-0.02em] text-[#5D524B] normal-case md:!text-[32px]">
                     <span className="block">{feature.title[0]}</span>
                     <span className="block">{feature.title[1]}</span>
                   </h3>
-                  <p className="!mb-0 !mt-0 max-w-[34rem] text-[15px] leading-[1.5] text-black/65 md:text-[16px]">
+                  <p className="!mb-0 !mt-0 max-w-[34rem] text-[15px] leading-[1.5] text-[#5D524B]/65 md:text-[16px]">
                     {feature.body}
                   </p>
                 </div>
-                <div className="relative flex min-h-[16rem] overflow-hidden bg-[#E4E4E4] p-2 md:min-h-0 md:p-3">
+                <div className="relative flex min-h-[16rem] overflow-hidden bg-[#F7F1E3] p-2 md:min-h-0 md:p-3">
                   <div className="pointer-events-none absolute inset-0 overflow-hidden">
                     <GlyphMatrix
                       glyphs="01.+*/<>="
@@ -162,7 +162,7 @@ export default function HomeProduction() {
                     className="pointer-events-none absolute inset-0 z-[1]"
                     style={{
                       background:
-                        "radial-gradient(ellipse 70% 62% at 50% 50%, rgba(228,228,228,0.97) 0%, rgba(228,228,228,0.78) 42%, rgba(228,228,228,0.28) 68%, transparent 86%)",
+                        "radial-gradient(ellipse 70% 62% at 50% 50%, rgba(247,241,227,0.97) 0%, rgba(247,241,227,0.78) 42%, rgba(247,241,227,0.28) 68%, transparent 86%)",
                     }}
                   />
                   <div className="relative z-10 h-full min-h-0 w-full flex-1 overflow-hidden">

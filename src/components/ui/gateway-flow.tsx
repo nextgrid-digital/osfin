@@ -67,8 +67,6 @@ const GATEWAY_FLOW_DEFAULTS = {
   brightness: 1,
 } as const;
 
-const LIGHT_PAPER = "#ffffff";
-
 function clamp(value: number, minimum: number, maximum: number) {
   return Math.min(maximum, Math.max(minimum, value));
 }
@@ -211,7 +209,7 @@ const gatewayFlowSource = `<!DOCTYPE html>
                 <div class="flex items-center gap-2 pt-1">
                     <div class="relative flex items-center justify-center w-4 h-4">
                         <input type="checkbox" id="session" class="peer appearance-none w-4 h-4 border border-slate-700 rounded bg-black/50 checked:bg-slate-300 checked:border-slate-300 cursor-pointer transition-colors">
-                        <iconify-icon icon="solar:check-linear" width="12" height="12" stroke-width="1.5" class="absolute text-black opacity-0 peer-checked:opacity-100 pointer-events-none"></iconify-icon>
+                        <iconify-icon icon="solar:check-linear" width="12" height="12" stroke-width="1.5" class="absolute text-[#5D524B] opacity-0 peer-checked:opacity-100 pointer-events-none"></iconify-icon>
                     </div>
                     <label for="session" class="text-xs font-extralight text-slate-400 cursor-pointer select-none uppercase tracking-wider">Maintain persistent uplink</label>
                 </div>
@@ -390,7 +388,7 @@ const GATEWAY_FLOW_DEFINITION: EffectDefinition = {
   title: "Gateway Flow",
   source: gatewayFlowSource,
   supportsMode: true,
-  background: (mode) => (mode === "light" ? LIGHT_PAPER : "#0a0a0a"),
+  background: (mode) => (mode === "light" ? "transparent" : "#0a0a0a"),
   targets: [{ selector: "#flow-canvas", role: "background" }],
   patch(source, { size, density, mode }) {
     let next = source
@@ -498,7 +496,13 @@ ${definition.focusCss ?? ""}
     });
   }
   window.addEventListener('message', function (event) {
-    if (!event.data || event.data.type !== 'threeui-controls') return;
+    if (!event.data) return;
+    if (event.data.type === 'osfin-paper' && event.data.color) {
+      document.documentElement.style.setProperty('background', event.data.color, 'important');
+      document.body.style.setProperty('background', event.data.color, 'important');
+      return;
+    }
+    if (event.data.type !== 'threeui-controls') return;
     var next = event.data.controls || {};
     Object.keys(next).forEach(function (key) { controls[key] = next[key]; });
     applyVisual();
@@ -605,6 +609,30 @@ function GatewayFlowFrame({
   );
 
   useEffect(() => {
+    if (resolvedMode !== "light") return;
+    const frame = iframeRef.current;
+    if (!frame) return;
+
+    const syncPaper = () => {
+      const color = getComputedStyle(document.documentElement).backgroundColor;
+      frame.style.backgroundColor = color;
+      frame.contentWindow?.postMessage({ type: "osfin-paper", color }, "*");
+    };
+
+    syncPaper();
+    frame.addEventListener("load", syncPaper);
+    const observer = new MutationObserver(syncPaper);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class", "style"],
+    });
+    return () => {
+      frame.removeEventListener("load", syncPaper);
+      observer.disconnect();
+    };
+  }, [resolvedMode, source]);
+
+  useEffect(() => {
     const frame = iframeRef.current?.contentWindow;
     if (!frame) return;
     frame.postMessage(
@@ -653,7 +681,7 @@ function GatewayFlowFrame({
         width: "100%",
         height: "100%",
         border: 0,
-        background,
+        background: resolvedMode === "light" ? "var(--background)" : background,
         filter,
         ...style,
       }}

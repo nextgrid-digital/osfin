@@ -190,7 +190,7 @@ export const INDUSTRIES = [
       },
       {
         title: "Disputes & Chargebacks",
-        body: "Osfin links every chargeback to its order and settlement impact, tracking each case to final outcome.",
+        body: "Osfin links every chargeback to its order and settlement impact, tracking each case to the final outcome.",
       },
       {
         title: "Financial Close & Account Certification",

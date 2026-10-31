@@ -786,8 +786,8 @@ export function ServicesStack({ services = defaultServices, eyebrow = "Under one
             }}
             style={{ transformOrigin: "top center", willChange: "transform, opacity" }}
           >
-            <h2 className="text-2xl font-medium text-[rgba(0,0,0,0.875)] lg:sr-only">
-              <span className="block text-black/45">{eyebrow}</span>
+            <h2 className="text-2xl font-medium text-[#5D524B] lg:sr-only">
+              <span className="block text-[#5D524B]/45">{eyebrow}</span>
               <span className="block">{s.title}</span>
             </h2>
             <div className="mt-6 lg:mt-0">

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const essayLabelClassName =
-  "not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] leading-none font-medium tracking-[-0.02em] text-black/45";
+  "not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] leading-none font-medium tracking-[-0.02em] text-[#5D524B]/45";
 const labelClassName = `${essayLabelClassName} uppercase`;
 
 export default function AboutPage() {
@@ -18,13 +18,13 @@ export default function AboutPage() {
     <div
       data-transition="container"
       data-namespace="about"
-      className="site-shell typeset typeset-docs min-h-screen bg-white text-[rgba(0,0,0,0.875)]"
+      className="site-shell typeset typeset-docs min-h-screen bg-background text-[#5D524B]"
     >
       <main className="pt-14 md:pt-16">
         <section className="pt-16 pb-12 md:pt-28 md:pb-20">
           <SiteContainer>
             <p
-              className="not-typeset !m-0 max-w-[18em] font-[family-name:var(--font-season)] text-[clamp(2rem,4.4vw,56px)] leading-[1.12] font-normal tracking-[-0.02em] text-[rgba(0,0,0,0.875)]"
+              className="not-typeset !m-0 max-w-[18em] font-[family-name:var(--font-season)] text-[clamp(2rem,4.4vw,56px)] leading-[1.12] font-normal tracking-[-0.02em] text-[#5D524B]"
               data-not-typeset
             >
               {ABOUT.manifesto}
@@ -61,7 +61,7 @@ export default function AboutPage() {
                   {row.names.map((name) => (
                     <div
                       key={name}
-                      className={`flex min-h-24 items-center justify-center border-black/10 px-4 py-6 text-center font-sans text-[15px] font-medium tracking-[-0.02em] text-balance text-[rgba(0,0,0,0.875)] not-last:border-b max-lg:[&:nth-child(odd)]:border-r lg:min-h-28 lg:not-last:border-b-0 ${
+                      className={`flex min-h-24 items-center justify-center border-black/10 px-4 py-6 text-center font-sans text-[15px] font-medium tracking-[-0.02em] text-balance text-[#5D524B] not-last:border-b max-lg:[&:nth-child(odd)]:border-r lg:min-h-28 lg:not-last:border-b-0 ${
                         columns === 3
                           ? "lg:[&:not(:nth-child(3n))]:border-r lg:[&:nth-child(n+4)]:border-t"
                           : "lg:[&:not(:nth-child(4n))]:border-r lg:[&:nth-child(n+5)]:border-t"
@@ -72,7 +72,7 @@ export default function AboutPage() {
                   ))}
                 </div>
                 {"note" in row ? (
-                  <p className="!mt-3 text-[13px] text-black/45">{row.note}</p>
+                  <p className="!mt-3 text-[13px] text-[#5D524B]/45">{row.note}</p>
                 ) : null}
               </div>
               );
@@ -104,7 +104,7 @@ export default function AboutPage() {
                       className="size-full object-cover grayscale"
                     />
                   </div>
-                  <h3 className="!mb-0 !mt-8 !text-[22px] !font-normal !leading-[1.25] !tracking-normal text-[rgba(0,0,0,0.875)] normal-case md:!text-[24px]">
+                  <h3 className="!mb-0 !mt-8 !text-[22px] !font-normal !leading-[1.25] !tracking-normal text-[#5D524B] normal-case md:!text-[24px]">
                     {city.name}
                   </h3>
                 </figure>

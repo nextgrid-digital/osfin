@@ -75,7 +75,7 @@ export default function ApproachSection() {
   }, [active, reducedMotion]);
 
   return (
-    <section className="approach-section relative flex min-h-svh items-center overflow-hidden bg-white py-28 text-[rgba(0,0,0,0.875)] md:py-40">
+    <section className="approach-section relative flex min-h-svh items-center overflow-hidden bg-background py-28 text-[#5D524B] md:py-40">
       <SiteContainer className="grid grid-cols-1 items-stretch gap-20 lg:h-[min(40rem,72vh)] lg:grid-cols-[minmax(0,32rem)_minmax(0,1fr)] lg:gap-20">
         <div className="flex min-w-0 flex-col lg:h-full">
           <h2 className="max-w-[16em]">
@@ -126,7 +126,7 @@ export default function ApproachSection() {
                     style={{ gridTemplateRows: expanded ? "1fr" : "0fr" }}
                   >
                     <div className="min-h-0 overflow-hidden" aria-hidden={!expanded}>
-                      <p className="mt-3 max-w-[36rem] text-[14px] leading-6 text-black/65">
+                      <p className="mt-3 max-w-[36rem] text-[14px] leading-6 text-[#5D524B]/65">
                         <span className="block">{step.lines[0]}</span>
                         <span className="block">{step.lines[1]}</span>
                       </p>

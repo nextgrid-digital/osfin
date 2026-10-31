@@ -231,7 +231,7 @@ const Carousel_003 = ({
           {showNavigation && (
             <div>
               <div
-                className="swiper-button-next after:hidden !flex !h-6 !w-6 items-center justify-center rounded-full !border-0 !bg-white/40 text-black shadow-[0_4px_12px_rgba(0,0,0,0.08)] backdrop-blur-md transition [--swiper-navigation-size:24px] hover:!bg-white/55"
+                className="swiper-button-next after:hidden !flex !h-6 !w-6 items-center justify-center rounded-full !border-0 !bg-white/40 text-[#5D524B] shadow-[0_4px_12px_rgba(0,0,0,0.08)] backdrop-blur-md transition [--swiper-navigation-size:24px] hover:!bg-white/55"
                 onPointerDown={() => {
                   userMove.current = true;
                 }}
@@ -239,7 +239,7 @@ const Carousel_003 = ({
                 <CircleArrow direction="right" />
               </div>
               <div
-                className="swiper-button-prev after:hidden !flex !h-6 !w-6 items-center justify-center rounded-full !border-0 !bg-white/40 text-black shadow-[0_4px_12px_rgba(0,0,0,0.08)] backdrop-blur-md transition [--swiper-navigation-size:24px] hover:!bg-white/55"
+                className="swiper-button-prev after:hidden !flex !h-6 !w-6 items-center justify-center rounded-full !border-0 !bg-white/40 text-[#5D524B] shadow-[0_4px_12px_rgba(0,0,0,0.08)] backdrop-blur-md transition [--swiper-navigation-size:24px] hover:!bg-white/55"
                 onPointerDown={() => {
                   userMove.current = true;
                 }}

@@ -39,7 +39,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={cn(
-        "bg-white",
+        "bg-background",
         "font-sans",
         inter.variable,
         seasonMix.variable,

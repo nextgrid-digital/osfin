@@ -171,7 +171,7 @@ export default function ApproachProgressionDiagram({
         <div className="relative mx-auto h-full min-h-[22rem] w-full min-w-[36rem]">
           <svg
             viewBox={`0 0 ${VB_W} ${VB_H}`}
-            className="h-full w-full text-black"
+            className="h-full w-full text-[#5D524B]"
             preserveAspectRatio="xMidYMid meet"
             aria-hidden="true"
           >
@@ -633,7 +633,7 @@ export default function ApproachProgressionDiagram({
                   className="relative border-0 bg-transparent outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-black/30"
                 >
                   <span
-                    className={`pointer-events-none absolute bottom-[14%] left-1/2 z-10 w-[min(11rem,90%)] -translate-x-1/2 rounded-none border border-black/10 bg-white/95 px-2 py-1.5 text-left font-[family-name:var(--font-mono)] text-[10px] leading-snug tracking-[-0.02em] text-black/75 shadow-none transition-opacity ${
+                    className={`pointer-events-none absolute bottom-[14%] left-1/2 z-10 w-[min(11rem,90%)] -translate-x-1/2 rounded-none border border-black/10 bg-white/95 px-2 py-1.5 text-left font-[family-name:var(--font-mono)] text-[10px] leading-snug tracking-[-0.02em] text-[#5D524B]/75 shadow-none transition-opacity ${
                       tipVisible ? "opacity-100" : "opacity-0"
                     }`}
                     aria-hidden={!tipVisible}

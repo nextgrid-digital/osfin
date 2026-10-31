@@ -1,13 +1,18 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { CreditCard, Globe, Lock, ShieldCheck, type LucideIcon } from "lucide-react";
-import DarkWhenInView from "./DarkWhenInView";
+import { BadgeCheck, CreditCard, HeartPulse, Lock, Scale, Shield, ShieldCheck, type LucideIcon } from "lucide-react";
 import SiteContainer from "./SiteContainer";
 
 const LIST: { label: string; icon: LucideIcon }[] = [
-  { label: "GDPR", icon: Lock },
-  { label: "ISO 27001", icon: Globe },
-  { label: "SOC 2", icon: ShieldCheck },
-  { label: "PCI DSS & PCI SSF", icon: CreditCard },
+  { label: "PCI DSS", icon: CreditCard },
+  { label: "SOC 1 Type II", icon: Shield },
+  { label: "SOC 2 Type II", icon: ShieldCheck },
+  { label: "ISO 27001:2022", icon: BadgeCheck },
+  { label: "GDPR Compliant", icon: Lock },
+  { label: "CCPA", icon: Scale },
+  { label: "HIPAA Compliant", icon: HeartPulse },
 ];
 
 const ITEMS = [
@@ -55,7 +60,7 @@ function CertIcon({
   ink?: "white" | "dark";
 }) {
   const label = ink === "white" ? "white" : "currentColor";
-  const mark = ink === "white" ? "text-white/80" : "text-black/70";
+  const mark = ink === "white" ? "text-white/80" : "text-[#5D524B]/70";
   if (kind === "soc") {
     return (
       <svg
@@ -209,13 +214,13 @@ export function SecurityCards({
           <div>
             {item.kicker ? (
               <p
-                className={`not-typeset !mb-2 !mt-0 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] uppercase ${light ? "text-black/45" : "text-white/45"}`}
+                className={`not-typeset !mb-2 !mt-0 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] uppercase ${light ? "text-[#5D524B]/45" : "text-white/45"}`}
               >
                 {item.kicker}
               </p>
             ) : null}
             <h3
-              className={`!mb-0 !mt-0 !text-[22px] !font-medium !leading-[1.2] !tracking-[-0.01em] normal-case ${light ? "text-[rgba(0,0,0,0.875)]" : "text-white"}`}
+              className={`!mb-0 !mt-0 !text-[22px] !font-medium !leading-[1.2] !tracking-[-0.01em] normal-case ${light ? "text-[#5D524B]" : "text-white"}`}
             >
               {item.titleLines.map((line) => (
                 <span key={line} className="block">
@@ -223,7 +228,7 @@ export function SecurityCards({
                 </span>
               ))}
             </h3>
-            <p className={`@container !mb-0 !mt-3 text-[15px] leading-6 ${light ? "text-black/60" : "text-white/45"}`}>
+            <p className={`@container !mb-0 !mt-3 text-[15px] leading-6 ${light ? "text-[#5D524B]/60" : "text-white/45"}`}>
               {"lines" in item ? (
                 <>
                   <span className="@min-[15rem]:hidden">{item.body}</span>
@@ -249,23 +254,53 @@ export function SecurityCards({
 }
 
 export default function HomeSecurity() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const leadRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const sync = () => {
+      const section = sectionRef.current?.getBoundingClientRect();
+      const lead = leadRef.current?.getBoundingClientRect();
+      const root = document.documentElement;
+      if (!section || !lead) {
+        root.style.setProperty("--night-mix", "0%");
+        return;
+      }
+      const view = window.innerHeight;
+      const travel = view * 0.45;
+      const enter = Math.min(1, Math.max(0, (view - lead.top) / travel));
+      const leave = Math.min(1, Math.max(0, section.bottom / travel));
+      const mix = Math.min(enter, leave);
+      root.style.setProperty("--night-mix", `${(mix * 100).toFixed(1)}%`);
+    };
+
+    sync();
+    window.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    return () => {
+      window.removeEventListener("scroll", sync);
+      window.removeEventListener("resize", sync);
+      document.documentElement.style.setProperty("--night-mix", "0%");
+    };
+  }, []);
+
   return (
-    <section id="security" className="bg-[#000E17] py-28 text-white md:py-40">
-      <DarkWhenInView targetId="security" />
+    <section ref={sectionRef} id="security" className="bg-background py-28 md:py-40">
       <SiteContainer>
         <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-24">
           <div>
-            <h2 className="!mb-0 !mt-0 max-w-[18em] text-white">
+            <h2 ref={leadRef} className="!mb-0 !mt-0 max-w-[18em]">
               Compliance and security guardrails built in.
             </h2>
-            <p className="!mb-0 !mt-5 max-w-[36rem] text-[15px] leading-6 text-white/60 md:!mt-6">
-              Osfin operates under GDPR, ISO 27001, SOC 2, and PCI DSS &amp; PCI SSF, with
-              controls that protect payment data and client information.
+            <p className="security-copy !mb-0 !mt-5 max-w-[36rem] text-[15px] leading-6 md:!mt-6">
+              Osfin operates under PCI DSS, SOC 1 Type II, SOC 2 Type II, ISO 27001:2022,
+              GDPR, CCPA, and HIPAA, with controls that protect payment data and client
+              information.
             </p>
             <Link
               href="/security"
               data-not-typeset=""
-              className="not-typeset mt-8 inline-flex h-10 items-center justify-center rounded-none border border-white/35 px-5 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-white uppercase no-underline transition hover:bg-white/10 md:mt-10"
+              className="security-cta not-typeset mt-8 inline-flex h-10 items-center justify-center rounded-none border px-5 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] uppercase no-underline md:mt-10"
             >
               View security
             </Link>
@@ -274,20 +309,11 @@ export default function HomeSecurity() {
             {LIST.map(({ label, icon: Icon }, index) => (
               <li
                 key={label}
-                className={`flex items-center gap-4 py-5 ${index > 0 ? "border-t border-white/15" : ""}`}
+                className={`flex items-center gap-4 py-5 ${index > 0 ? "security-rule border-t" : ""}`}
               >
-                <Icon
-                  aria-hidden
-                  className="size-6 shrink-0 text-white"
-                  strokeWidth={1.4}
-                />
-                <span className="min-w-0 flex-1 text-[16px] leading-none text-white md:text-[18px]">
-                  {label}
-                </span>
-                <Link
-                  href="/security"
-                  className="shrink-0 text-[14px] text-white/40 no-underline transition hover:text-white/70"
-                >
+                <Icon aria-hidden className="size-6 shrink-0" strokeWidth={1.4} />
+                <span className="min-w-0 flex-1 text-[16px] leading-none md:text-[18px]">{label}</span>
+                <Link href="/security" className="security-details shrink-0 text-[14px] no-underline">
                   Details
                 </Link>
               </li>

@@ -1,0 +1,445 @@
+@import "./ditto.css";
+
+/* Ditto-only color names. Shared tokens (background, foreground, primary, muted)
+   keep Osfin's @theme mapping to CSS variables; values are overridden on the
+   clone wrapper below so other routes are unchanged. */
+@theme inline {
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-surface-4: var(--surface-4);
+  --color-surface-5: var(--surface-5);
+  --color-color-001: var(--color-001);
+  --color-color-002: var(--color-002);
+  --color-color-003: var(--color-003);
+  --color-color-004: var(--color-004);
+  --color-color-005: var(--color-005);
+  --color-color-006: var(--color-006);
+  --color-color-007: var(--color-007);
+  --color-color-008: var(--color-008);
+  --color-color-009: var(--color-009);
+  --color-color-010: var(--color-010);
+  --color-color-011: var(--color-011);
+  --color-color-012: var(--color-012);
+  --color-color-013: var(--color-013);
+  --color-color-014: var(--color-014);
+  --color-color-015: var(--color-015);
+  --color-color-016: var(--color-016);
+  --color-color-017: var(--color-017);
+  --color-color-018: var(--color-018);
+  --color-color-019: var(--color-019);
+  --color-clr-0: var(--clr-0);
+  --color-clr-1: var(--clr-1);
+  --color-clr-2: var(--clr-2);
+  --color-clr-3: var(--clr-3);
+  --color-clr-4: var(--clr-4);
+  --color-clr-5: var(--clr-5);
+  --color-clr-6: var(--clr-6);
+  --color-clr-7: var(--clr-7);
+  --color-clr-8: var(--clr-8);
+  --color-clr-9: var(--clr-9);
+  --color-clr-10: var(--clr-10);
+  --color-clr-11: var(--clr-11);
+  --color-clr-12: var(--clr-12);
+  --color-clr-13: var(--clr-13);
+  --color-clr-14: var(--clr-14);
+  --color-clr-15: var(--clr-15);
+  --color-clr-16: var(--clr-16);
+  --z-index-80: 80;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/616f01e30d48.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/b1fb7591b1ab.woff2") format("woff2");
+  unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/c9c74c0b6a32.woff2") format("woff2");
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/3fa4f50859d5.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/5db54bdcfd6b.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/cf7c742ac6bc.woff2") format("woff2");
+  unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/616f01e30d48.woff2") format("woff2");
+  unicode-range: U+460-52F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/b1fb7591b1ab.woff2") format("woff2");
+  unicode-range: U+301,U+400-45F,U+490-491,U+4B0-4B1,U+2116;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/c9c74c0b6a32.woff2") format("woff2");
+  unicode-range: U+2000-2001,U+2004-2008,U+200A,U+23B8-23BD,U+2500-259F;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/3fa4f50859d5.woff2") format("woff2");
+  unicode-range: U+102-103,U+110-111,U+128-129,U+168-169,U+1A0-1A1,U+1AF-1B0,U+300-301,U+303-304,U+308-309,U+323,U+329,U+1EA0-1EF9,U+20AB;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/5db54bdcfd6b.woff2") format("woff2");
+  unicode-range: U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/cf7c742ac6bc.woff2") format("woff2");
+  unicode-range: U+0-FF,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/2c591baa9953.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/777d557a89ea.woff2") format("woff2");
+  unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/f58ce9c368a4.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/90b16ca5a1c6.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/e0d7a499a5a8.woff2") format("woff2");
+  unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/2c591baa9953.woff2") format("woff2");
+  unicode-range: U+460-52F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/777d557a89ea.woff2") format("woff2");
+  unicode-range: U+301,U+400-45F,U+490-491,U+4B0-4B1,U+2116;
+}
+
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/f58ce9c368a4.woff2") format("woff2");
+  unicode-range: U+102-103,U+110-111,U+128-129,U+168-169,U+1A0-1A1,U+1AF-1B0,U+300-301,U+303-304,U+308-309,U+323,U+329,U+1EA0-1EF9,U+20AB;
+}
+
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/90b16ca5a1c6.woff2") format("woff2");
+  unicode-range: U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/e0d7a499a5a8.woff2") format("woff2");
+  unicode-range: U+0-FF,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/56d01ae7609c.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/a4d8ef956be9.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/8ed5b639ec6e.woff2") format("woff2");
+  unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/56d01ae7609c.woff2") format("woff2");
+  unicode-range: U+102-103,U+110-111,U+128-129,U+168-169,U+1A0-1A1,U+1AF-1B0,U+300-301,U+303-304,U+308-309,U+323,U+329,U+1EA0-1EF9,U+20AB;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/a4d8ef956be9.woff2") format("woff2");
+  unicode-range: U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/8ed5b639ec6e.woff2") format("woff2");
+  unicode-range: U+0-FF,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family: "stkBureauSerif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/337211fef7f1.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "stkBureauSerifRegular";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/ditto-careers/assets/cloned/fonts/2aa242c842f3.woff2") format("woff2");
+}
+
+[data-clone="replay-careers"] {
+  --foreground: #5d524b;
+  --primary: rgb(84, 112, 47);
+  --accent: rgb(73, 157, 248);
+  --border: rgb(0 0 0 / 0.1);
+  --muted-foreground: rgb(93 82 75 / 0.55);
+  --muted: rgb(93 82 75 / 0.45);
+  --surface: var(--background);
+  --surface-2: rgb(93 82 75 / 0.08);
+  --surface-3: rgb(93 82 75 / 0.22);
+  --surface-4: var(--background);
+  --surface-5: var(--background);
+  --color-001: #5d524b;
+  --color-002: rgb(93 82 75 / 0.6);
+  --color-003: rgb(0 0 0 / 0.1);
+  --color-004: rgb(0 0 0 / 0.08);
+  --color-005: rgb(93 82 75 / 0.28);
+  --color-006: #5d524b;
+  --color-007: rgb(93 82 75 / 0.65);
+  --color-008: rgb(93 82 75 / 0.22);
+  --color-009: rgb(0 0 0 / 0.1);
+  --color-010: rgb(0 0 0 / 0.1);
+  --color-011: rgb(93 82 75 / 0.4);
+  --color-012: var(--background);
+  --color-013: rgb(93 82 75 / 0.6);
+  --color-014: rgb(93 82 75 / 0.4);
+  --color-015: rgb(93 82 75 / 0.65);
+  --color-016: rgb(0 0 0 / 0.12);
+  --color-017: rgb(93 82 75 / 0.5);
+  --color-018: rgb(93 82 75 / 0.55);
+  --color-019: rgb(93 82 75 / 0.5);
+  --clr-0: rgb(0 0 0 / 0.1);
+  --clr-1: rgba(0, 0, 0, 0);
+  --clr-2: var(--background);
+  --clr-3: var(--background);
+  --clr-4: rgb(93 82 75 / 0.3);
+  --clr-5: rgb(93 82 75 / 0.45);
+  --clr-6: rgb(126, 126, 126);
+  --clr-7: rgb(234, 224, 88);
+  --clr-8: var(--background);
+  --clr-9: var(--background);
+  --clr-10: rgb(93 82 75 / 0.16);
+  --clr-11: rgb(93 82 75 / 0.55);
+  --clr-12: var(--background);
+  --clr-13: rgb(93 82 75 / 0.04);
+  --clr-14: rgb(93 82 75 / 0.65);
+  --clr-15: rgb(93 82 75 / 0.04);
+  --clr-16: #5d524b;
+  --font-body: Geist, "Geist Fallback";
+  --font-001: "Geist Mono", "Geist Mono Fallback";
+  --font-002: stkBureauSerif, "stkBureauSerif Fallback";
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Geist, "Geist Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  overflow-x: clip;
+  padding-top: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  [data-clone="replay-careers"] {
+    padding-top: 4rem;
+  }
+}
+
+@layer base {
+  [data-clone="replay-careers"] *,
+  [data-clone="replay-careers"] *::before,
+  [data-clone="replay-careers"] *::after {
+    box-sizing: border-box;
+  }
+
+  [data-clone="replay-careers"] :where(h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd, ul, ol) {
+    margin: 0;
+  }
+
+  [data-clone="replay-careers"] a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  [data-clone="replay-careers"] ul,
+  [data-clone="replay-careers"] ol {
+    list-style: none;
+    padding: 0;
+  }
+
+  [data-clone="replay-careers"] img,
+  [data-clone="replay-careers"] svg {
+    display: inline-block;
+  }
+
+  [data-clone="replay-careers"] input,
+  [data-clone="replay-careers"] textarea,
+  [data-clone="replay-careers"] select {
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+[data-clone="replay-careers"] button {
+  font-family: inherit;
+  font-weight: inherit;
+  text-transform: none;
+  letter-spacing: inherit;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+[data-clone="replay-careers"] header.fixed {
+  top: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  [data-clone="replay-careers"] header.fixed {
+    top: 4rem;
+  }
+}

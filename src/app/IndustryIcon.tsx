@@ -3,7 +3,7 @@ import type { Industry } from "../content/industries";
 
 function Mark({
   children,
-  className = "h-16 w-20 text-[rgba(0,0,0,0.8)]",
+  className = "h-16 w-20 text-[#5D524B]",
   strokeWidth = 1.25,
 }: {
   children: ReactNode;

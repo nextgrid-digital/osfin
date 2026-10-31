@@ -49,7 +49,7 @@ export default function ProductsScroll() {
     <section
       id="product"
       ref={sectionRef}
-      className="flex min-h-svh flex-col justify-center bg-white text-[rgba(0,0,0,0.875)]"
+      className="flex min-h-svh flex-col justify-center bg-background text-[#5D524B]"
     >
       <div className="flex flex-col justify-center py-28 md:py-40">
         <SiteContainer>
@@ -71,10 +71,10 @@ export default function ProductsScroll() {
                 className="flex min-w-[480px] w-[480px] shrink-0 flex-col rounded-none sm:min-w-[520px] sm:w-[520px]"
                 style={{ backgroundColor: product.cardBg }}
               >
-                <div className="flex shrink-0 flex-col p-6 text-[rgba(0,0,0,0.875)] sm:p-8">
-                  <h6 className="text-black/40">{product.cardLabel}</h6>
-                  <h3 className="mt-6 text-black">{product.name}</h3>
-                  <p className="mt-4 max-w-[36ch] text-black/65">{product.cardBody}</p>
+                <div className="flex shrink-0 flex-col p-6 text-[#5D524B] sm:p-8">
+                  <h6 className="text-[#5D524B]/40">{product.cardLabel}</h6>
+                  <h3 className="mt-6 text-[#5D524B]">{product.name}</h3>
+                  <p className="mt-4 max-w-[36ch] text-[#5D524B]/65">{product.cardBody}</p>
                 </div>
                 <div className="mx-6 mb-6 mt-0 flex aspect-[4/3] items-center justify-center rounded-none bg-white/50 sm:mx-8 sm:mb-8">
                   <ProductIcon kind={product.icon} className="h-[45%] w-[45%]" />

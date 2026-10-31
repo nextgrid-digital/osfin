@@ -18,7 +18,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
     <div
       data-transition="container"
       data-namespace="product"
-      className="site-shell typeset typeset-docs min-h-screen bg-white text-[rgba(0,0,0,0.875)]"
+      className="site-shell typeset typeset-docs min-h-screen bg-background text-[#5D524B]"
     >
       <main className="pt-14 md:pt-16">
         <SiteContainer className="pt-8 md:pt-10">
@@ -40,7 +40,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
           <ProductHeroCarousel currentSlug={product.slug} />
         </SiteContainer>
 
-        <section className="relative mt-24 overflow-hidden bg-white [--muted:rgba(0,0,0,0.28)] md:mt-32">
+        <section className="relative mt-24 overflow-hidden bg-background [--muted:rgba(0,0,0,0.28)] md:mt-32">
           <div className="pointer-events-none absolute inset-0">
             <GlyphMatrix
               glyphs="01.+*/<>="
@@ -58,14 +58,14 @@ export default function ProductTemplate({ product }: { product: Product }) {
             className="pointer-events-none absolute inset-0 z-[1]"
             style={{
               background: [
-                "radial-gradient(ellipse 36% 62% at 50% 48%, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.82) 38%, rgba(255,255,255,0.2) 62%, transparent 78%)",
-                "linear-gradient(to top, transparent 0%, transparent 14%, rgba(255,255,255,0.25) 36%, rgba(255,255,255,0.78) 68%, #ffffff 90%)",
+                "radial-gradient(ellipse 36% 62% at 50% 48%, rgba(254,249,237,0.97) 0%, rgba(254,249,237,0.82) 38%, rgba(254,249,237,0.2) 62%, transparent 78%)",
+                "linear-gradient(to top, transparent 0%, transparent 14%, rgba(254,249,237,0.25) 36%, rgba(254,249,237,0.78) 68%, #FEF9ED 90%)",
               ].join(", "),
             }}
           />
           <SiteContainer className="relative z-10 pb-16 md:pb-24">
             <div className="mx-auto flex w-full max-w-[60ch] flex-col items-center gap-4 text-center">
-              <p className="not-typeset shrink-0 !m-0 !font-[family-name:var(--font-mono)] !text-[14px] !font-medium !leading-[1.4] !tracking-[-0.02em] !text-black/45 uppercase" data-not-typeset>
+              <p className="not-typeset shrink-0 !m-0 !font-[family-name:var(--font-mono)] !text-[14px] !font-medium !leading-[1.4] !tracking-[-0.02em] !text-[#5D524B]/45 uppercase" data-not-typeset>
                 Problem
               </p>
               <TextScrollRead className="w-full" spaceClass="h-16">
@@ -84,7 +84,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
               <PlatformSplit
                 copy={
                   <>
-                    <h2 className="!mb-0 !mt-0 max-w-full text-[rgba(0,0,0,0.875)]">
+                    <h2 className="!mb-0 !mt-0 max-w-full text-[#5D524B]">
                       {product.platform.heading.split("\n").map((line) => (
                         <span key={line} className="block">
                           {line}
@@ -92,18 +92,18 @@ export default function ProductTemplate({ product }: { product: Product }) {
                       ))}
                     </h2>
                     {product.platform.body.map((paragraph) => (
-                      <p key={paragraph} className="!mb-0 !mt-8 max-w-xl text-black/60">
+                      <p key={paragraph} className="!mb-0 !mt-8 max-w-xl text-[#5D524B]/60">
                         {paragraph}
                       </p>
                     ))}
-                    <p className="!mb-0 !mt-8 text-[rgba(0,0,0,0.875)]">{product.platform.kicker}</p>
-                    <p className="!mb-0 !mt-8 max-w-xl text-black/60">{product.platform.close}</p>
+                    <p className="!mb-0 !mt-8 text-[#5D524B]">{product.platform.kicker}</p>
+                    <p className="!mb-0 !mt-8 max-w-xl text-[#5D524B]/60">{product.platform.close}</p>
                   </>
                 }
                 visual={
                   <>
                     <SlidingEaseVerticalBars
-                      backgroundColor="#ffffff"
+                      backgroundColor="#FEF9ED"
                       lineColor="rgba(0, 0, 0, 0.32)"
                       barColor="#8E8E8C"
                       horizontal
@@ -113,7 +113,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
                       className="pointer-events-none absolute inset-0"
                       style={{
                         background:
-                          "linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0.08) 22%, rgba(255,255,255,0.08) 58%, #ffffff 100%)",
+                          "linear-gradient(to bottom, #FEF9ED 0%, rgba(254,249,237,0.08) 22%, rgba(254,249,237,0.08) 58%, #FEF9ED 100%)",
                       }}
                     />
                   </>
@@ -123,7 +123,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
           ) : null}
 
           <section className="mt-24 md:mt-32">
-            <p className="not-typeset !m-0 text-left !font-[family-name:var(--font-mono)] !text-[14px] !font-medium !leading-[1.4] !tracking-[-0.02em] !text-black/45 uppercase" data-not-typeset>
+            <p className="not-typeset !m-0 text-left !font-[family-name:var(--font-mono)] !text-[14px] !font-medium !leading-[1.4] !tracking-[-0.02em] !text-[#5D524B]/45 uppercase" data-not-typeset>
               Capabilities
             </p>
             <div className="mt-8 border-t border-black/10">
@@ -132,10 +132,10 @@ export default function ProductTemplate({ product }: { product: Product }) {
                   key={cap.title}
                   className="grid grid-cols-1 items-start gap-4 border-b border-black/10 py-10 md:grid-cols-[2.75rem_minmax(0,0.9fr)_minmax(0,1.2fr)] md:gap-x-10"
                 >
-                  <span className="not-typeset pt-1.5 !font-[family-name:var(--font-mono)] !text-[14px] !font-medium !leading-[1.4] !tracking-[-0.02em] !text-black/45 uppercase" data-not-typeset>
+                  <span className="not-typeset pt-1.5 !font-[family-name:var(--font-mono)] !text-[14px] !font-medium !leading-[1.4] !tracking-[-0.02em] !text-[#5D524B]/45 uppercase" data-not-typeset>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="!mb-0 !mt-0 text-[rgba(0,0,0,0.875)]">
+                  <h3 className="!mb-0 !mt-0 text-[#5D524B]">
                     {cap.title.split("\n").map((line) => (
                       <span key={line} className="block">
                         {line}
@@ -143,8 +143,8 @@ export default function ProductTemplate({ product }: { product: Product }) {
                     ))}
                   </h3>
                   <div className="!mt-0 [&>:first-child]:!mt-0">
-                    {cap.lead ? <p className="text-[rgba(0,0,0,0.875)]">{cap.lead}</p> : null}
-                    <p className="text-black/60">{cap.body}</p>
+                    {cap.lead ? <p className="text-[#5D524B]">{cap.lead}</p> : null}
+                    <p className="text-[#5D524B]/60">{cap.body}</p>
                   </div>
                 </div>
               ))}

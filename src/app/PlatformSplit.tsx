@@ -35,7 +35,7 @@ export default function PlatformSplit({
       className={
         flank
           ? "relative mx-auto aspect-square w-full max-w-xs bg-transparent lg:mx-0 lg:aspect-auto lg:h-full lg:max-w-none"
-          : "relative aspect-square w-full max-w-md shrink-0 bg-transparent text-black/40 lg:aspect-auto lg:h-[var(--platform-visual,26rem)] lg:w-[var(--platform-visual,26rem)] lg:max-w-none"
+          : "relative aspect-square w-full max-w-md shrink-0 bg-transparent text-[#5D524B]/40 lg:aspect-auto lg:h-[var(--platform-visual,26rem)] lg:w-[var(--platform-visual,26rem)] lg:max-w-none"
       }
       style={
         !flank && height
