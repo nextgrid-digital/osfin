@@ -1,6 +1,16 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { hairlineVars } from "./ProductionHairlines";
+
+const defaultWash = {
+  plate: "#FEF9ED",
+  hi: "#5D524B",
+  edge: "#5D524B",
+  mid: "#5D524B",
+  lo: "#F7F1E3",
+  card: "transparent",
+};
 
 type HairlineHost = {
   stage: HTMLElement;
@@ -89,7 +99,10 @@ export default function HairlineFigure({
       <div
         ref={stageRef}
         className="relative h-full w-full max-w-full [&_svg]:h-full [&_svg]:w-full [&_svg]:origin-center"
-        style={zoom !== 1 ? { transform: `scale(${zoom})` } : undefined}
+        style={{
+          ...(zoom !== 1 ? { transform: `scale(${zoom})` } : {}),
+          ...hairlineVars(defaultWash),
+        }}
       >
         <span ref={readRef} className="sr-only" data-hairline-live="" />
       </div>

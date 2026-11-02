@@ -99,7 +99,7 @@ export default function HomeProductRows() {
                       />
                     )}
                   </div>
-                  <h3 className="!mb-0 !mt-8 !text-[22px] !font-normal !leading-[1.25] !tracking-normal text-[#5D524B] normal-case md:!text-[24px]">
+                  <h3 className="!mb-0 !mt-8 !text-[20px] !font-normal !leading-[1.33] !tracking-[-0.012em] text-[#5D524B] normal-case">
                     {product.homeTitle.split("\n").map((line) => (
                       <span key={line} className="block">
                         {line}

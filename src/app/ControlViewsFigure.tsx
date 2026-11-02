@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { controlViewsWash, hairlineVars } from "./ProductionHairlines";
 
 type HairlineHost = {
   stage: HTMLElement;
@@ -71,7 +72,11 @@ export default function ControlViewsFigure() {
 
   return (
     <div className="flex size-full items-center justify-center">
-      <div ref={stageRef} className="relative h-full max-w-full">
+      <div
+        ref={stageRef}
+        className="relative h-full max-w-full"
+        style={hairlineVars(controlViewsWash)}
+      >
         <span ref={readRef} data-hairline-live="" />
       </div>
     </div>

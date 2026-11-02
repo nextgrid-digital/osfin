@@ -3,6 +3,7 @@
 import { Carousel } from "@/components/ui/carousel";
 import { INDUSTRIES } from "../content/industries";
 import IndustryIcon from "./IndustryIcon";
+import { industryArt } from "./industry-art";
 import { useIndustrySelect } from "./industry-select";
 
 export default function IndustryHeroCarousel({ currentId }: { currentId: string }) {
@@ -30,9 +31,18 @@ export default function IndustryHeroCarousel({ currentId }: { currentId: string 
         {INDUSTRIES.map((item) => (
           <div
             key={item.id}
-            className="flex aspect-square items-center justify-center overflow-hidden border border-black/10 bg-[#F4F3EE]"
+            className="flex aspect-square items-center justify-center overflow-hidden border border-black/10 bg-[#F2E6C7]"
           >
-            <IndustryIcon id={item.id} className="h-auto w-[52%] text-[#5D524B]" />
+            {industryArt[item.id] ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={industryArt[item.id]}
+                alt=""
+                className="h-auto max-h-[86%] w-[86%] object-contain"
+              />
+            ) : (
+              <IndustryIcon id={item.id} className="h-auto w-[52%] text-[#5D524B]" />
+            )}
           </div>
         ))}
       </Carousel>

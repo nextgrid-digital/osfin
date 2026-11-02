@@ -7,7 +7,7 @@ export const SITE_NAV = [
   { label: "Industries", href: "/#roles" },
   { label: "Blog", href: "/blog" },
   { label: "Company", href: "/#company" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "mailto:socials@osfin.ai" },
 ];
 
 export default function SiteHeader() {

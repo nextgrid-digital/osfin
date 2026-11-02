@@ -14,7 +14,7 @@ export default function FeatureGridSection({ features = featuresContent } = {}) 
   return (
     <section className="flex relative px-18 justify-center overflow-hidden max-lg:px-3" style={{ backgroundImage: "linear-gradient(var(--clr-2) 0%, var(--clr-3) 160%)" }}>
       <div className="h-full block absolute top-0 inset-x-0 [mix-blend-mode:soft-light] min-w-0 [background-size:296px_296px] pointer-events-none" style={{ backgroundImage: "url(\"/ditto-careers/assets/cloned/images/c980a706315f.webp\")" }} aria-hidden="true" />
-      <div className="border border-dashed border-border block relative max-w-390 mx-auto w-full">
+      <div className="border border-dashed border-border block relative max-w-[1440px] mx-auto w-full">
         <div className="w-px h-full border-l border-dashed border-l-border block absolute top-0 left-10 pointer-events-none max-lg:hidden" />
         <div className="w-px h-full border-r border-dashed border-r-border block absolute top-0 right-10 pointer-events-none max-lg:hidden" />
         <div className="h-full block pt-36 pb-48 px-10 max-lg:py-16 max-lg:px-3" data-ditto-id="motion-div-3">

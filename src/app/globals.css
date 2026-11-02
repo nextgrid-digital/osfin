@@ -7,40 +7,43 @@
   --typeset-font-body: var(--font-inter);
   --typeset-font-heading: var(--font-season);
   --typeset-font-mono: var(--font-ibm-plex-mono);
-  --typeset-size: 18px;
-  --typeset-leading: 1.6;
+  --typeset-size: 16px;
+  --typeset-leading: 1.5;
   --typeset-flow: 1em;
 }
 
-/* Heading scale from h1 @ 72px. Season Mix for all levels. */
+/* Linear marketing scale: 64 / 48 / 20, tracking ~-2.2%. */
 .typeset :where(h1, h2, h3, h4, h5, h6) {
   font-family: var(--font-season), Georgia, serif;
   font-weight: 400;
 }
 
 .typeset :where(h1) {
-  font-size: clamp(2.25rem, 8vw, 72px);
-  line-height: 1.1;
+  font-size: clamp(2rem, 6vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.022em;
 }
 
 .typeset :where(h2) {
-  font-size: clamp(1.75rem, 6.2vw, 48px);
-  line-height: 1.15;
+  font-size: clamp(1.75rem, 4.5vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.022em;
 }
 
 .typeset :where(h3) {
-  font-size: clamp(1.625rem, 7vw, 36px);
-  line-height: 1.2;
+  font-size: 20px;
+  line-height: 1.33;
+  letter-spacing: -0.012em;
 }
 
 .typeset :where(h4) {
-  font-size: 28px;
-  line-height: 1.3;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .typeset :where(h5) {
-  font-size: 22px;
-  line-height: 1.35;
+  font-size: 15px;
+  line-height: 1.6;
   color: var(--color-foreground, currentColor);
 }
 
@@ -441,11 +444,11 @@ html.theme-dark {
 }
 
 #security .security-cta {
-  border-color: rgb(0 0 0 / 0.15);
+  border-color: rgb(0 0 0 / 0.06);
 }
 
 #security .security-rule {
-  border-color: rgb(0 0 0 / 0.15);
+  border-color: rgb(0 0 0 / 0.06);
 }
 
 #security .security-details {

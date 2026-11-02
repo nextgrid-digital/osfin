@@ -24,7 +24,7 @@ export default function AboutPage() {
         <section className="pt-16 pb-12 md:pt-28 md:pb-20">
           <SiteContainer>
             <p
-              className="not-typeset !m-0 max-w-[18em] font-[family-name:var(--font-season)] text-[clamp(2rem,4.4vw,56px)] leading-[1.12] font-normal tracking-[-0.02em] text-[#5D524B]"
+              className="not-typeset !m-0 max-w-[18em] font-[family-name:var(--font-season)] text-[clamp(2rem,5vw,64px)] leading-none font-normal tracking-[-0.022em] text-[#5D524B]"
               data-not-typeset
             >
               {ABOUT.manifesto}
@@ -45,38 +45,56 @@ export default function AboutPage() {
 
         <section className="py-20 md:py-28">
           <SiteContainer className="flex flex-col gap-14 md:gap-16">
-            {ABOUT.proof.map((row) => {
-              const columns = row.names.length % 4 === 0 ? 4 : row.names.length % 3 === 0 ? 3 : 4;
-              return (
+            {ABOUT.proof.map((row) => (
               <div key={row.label}>
                 <p className={labelClassName} data-not-typeset>
                   {row.label}
                 </p>
                 <div
-                  className={`not-typeset mt-4 grid grid-cols-2 border border-black/10 ${
-                    columns === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"
-                  }`}
+                  className="not-typeset mt-4 overflow-hidden border border-black/10"
                   data-not-typeset
                 >
-                  {row.names.map((name) => (
-                    <div
-                      key={name}
-                      className={`flex min-h-24 items-center justify-center border-black/10 px-4 py-6 text-center font-sans text-[15px] font-medium tracking-[-0.02em] text-balance text-[#5D524B] not-last:border-b max-lg:[&:nth-child(odd)]:border-r lg:min-h-28 lg:not-last:border-b-0 ${
-                        columns === 3
-                          ? "lg:[&:not(:nth-child(3n))]:border-r lg:[&:nth-child(n+4)]:border-t"
-                          : "lg:[&:not(:nth-child(4n))]:border-r lg:[&:nth-child(n+5)]:border-t"
-                      }`}
+                  <div className="grid grid-cols-2 lg:grid-cols-4">
+                  {row.items.map((item) => (
+                    <article
+                      key={item.name}
+                      className="flex aspect-[5/3] flex-col text-[#5D524B] shadow-[1px_1px_0_0_rgba(0,0,0,0.08)]"
                     >
-                      {name}
-                    </div>
+                      <div className="flex flex-1 items-center justify-center px-10">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={item.logo}
+                          alt={item.name}
+                          className="h-8 w-auto max-w-[11rem] object-contain object-center md:h-9"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between gap-3 px-4 pb-3.5">
+                        {Array.isArray(item.short) ? (
+                          <p className="!m-0 flex min-w-0 items-center gap-2.5 font-sans text-[13px] font-medium tracking-[-0.02em]">
+                            {item.short.map((line) => (
+                              <span key={line} className="whitespace-nowrap">
+                                {line}
+                              </span>
+                            ))}
+                          </p>
+                        ) : (
+                          <p className="!m-0 min-w-0 truncate font-sans text-[13px] font-medium tracking-[-0.02em]">
+                            {item.short}
+                          </p>
+                        )}
+                        <span className="shrink-0 rounded-full border border-black/10 bg-black/[0.03] px-2 py-0.5 font-[family-name:var(--font-mono)] text-[10px] tracking-[-0.02em] text-[#5D524B]/55">
+                          {row.label}
+                        </span>
+                      </div>
+                    </article>
                   ))}
+                  </div>
                 </div>
                 {"note" in row ? (
                   <p className="!mt-3 text-[13px] text-[#5D524B]/45">{row.note}</p>
                 ) : null}
               </div>
-              );
-            })}
+            ))}
           </SiteContainer>
         </section>
 
@@ -104,7 +122,7 @@ export default function AboutPage() {
                       className="size-full object-cover grayscale"
                     />
                   </div>
-                  <h3 className="!mb-0 !mt-8 !text-[22px] !font-normal !leading-[1.25] !tracking-normal text-[#5D524B] normal-case md:!text-[24px]">
+                  <h3 className="!mb-0 !mt-8 !text-[20px] !font-normal !leading-[1.33] !tracking-[-0.012em] text-[#5D524B] normal-case">
                     {city.name}
                   </h3>
                 </figure>

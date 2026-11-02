@@ -2,11 +2,11 @@ import GatewayFlow from "@/components/ui/gateway-flow";
 import { TextReveal } from "@/components/ui/cascade-text";
 import MetalLapJoint from "@/components/MetalLapJoint";
 import { POSTS } from "../content/posts";
+import BlogCoverPlaceholder from "./BlogCoverPlaceholder";
 import HomeSecurity from "./HomeSecurity";
 import HomeCaseStudies from "./HomeCaseStudies";
 import HomeIndustries from "./HomeIndustries";
 import HomeProduction from "./HomeProduction";
-import ColorStrip from "./ColorStrip";
 import HomeVision from "./HomeVision";
 import SiteClose from "./SiteClose";
 import SiteContainer from "./SiteContainer";
@@ -21,6 +21,11 @@ function BtnPrimary({ href, children }: { href: string; children: string }) {
       data-not-typeset=""
     />
   );
+}
+
+/** Full-bleed 1px rule between homepage sections (Linear keyline). */
+function SectionRule() {
+  return <div aria-hidden className="h-px w-full bg-black/[0.06]" />;
 }
 
 export default function HumanHome() {
@@ -65,10 +70,10 @@ export default function HumanHome() {
                   }}
                 />
                 <h1 className="text-[#5D524B]">
-                  <span className="block">Orchestrating Transformation</span>
+                  <span className="block">Orchestrating transformation</span>
                   <span className="block">in Finance Operations</span>
                 </h1>
-                <p className="mt-8 max-w-[36rem] text-[#5D524B] md:mt-10">
+                <p className="mt-8 max-w-[36rem] text-[18px] leading-[1.5] text-[#5D524B] md:mt-10">
                   Osfin partners with the most ambitious enterprises and leaders to drive transformation in finance
                   operations. We do this by deploying our teams of forward-deployed engineers and purpose-built agents
                   who own the outcome and act as a catalyst for change across your finance, accounting and payments
@@ -92,20 +97,24 @@ export default function HumanHome() {
           </SiteContainer>
         </section>
 
-        <ColorStrip />
-
+        <SectionRule />
         <HomeVision />
 
+        <SectionRule />
         <HomeProduction />
 
+        <SectionRule />
         <HomeIndustries />
 
+        <SectionRule />
         <HomeCaseStudies />
 
+        <SectionRule />
         <HomeSecurity />
 
         {/* Changelog */}
-        <section id="changelog" className="pt-28 pb-0 md:pt-40">
+        <SectionRule />
+        <section id="changelog" className="pt-28 pb-28 md:pt-40 md:pb-40">
           <SiteContainer>
             <div className="flex items-end justify-between gap-6 border-b border-black/15 pb-5">
               <h2 className="!mb-0 !mt-0 text-[#5D524B]">From the frontier</h2>
@@ -137,11 +146,8 @@ export default function HumanHome() {
                   }`}
                   data-not-typeset
                 >
-                  <div className="aspect-[16/10] w-full overflow-hidden border border-black/15 bg-black/[0.03]">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={post.cover} alt="" className="size-full object-cover" />
-                  </div>
-                  <h3 className="!mb-0 !mt-8 !text-[22px] !font-normal !leading-[1.25] !tracking-normal text-[#5D524B] normal-case md:!text-[24px]">
+                  <BlogCoverPlaceholder src={post.cover} alt={post.title} />
+                  <h3 className="!mb-0 !mt-8 !text-[20px] !font-normal !leading-[1.33] !tracking-[-0.012em] text-[#5D524B] normal-case">
                     {post.title.split("\n").map((line) => (
                       <span key={line} className="block">
                         {line}
@@ -173,6 +179,7 @@ export default function HumanHome() {
 
       </main>
 
+      <SectionRule />
       <SiteClose />
     </div>
   );

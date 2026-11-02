@@ -8,7 +8,7 @@ import TransitionLink from "./TransitionLink";
 
 /** Matches SiteContainer left edge; track bleeds to the viewport right. */
 const GUTTER =
-  "pl-[max(1.25rem,calc((100vw-1440px)/2+1.25rem))] sm:pl-[max(2rem,calc((100vw-1440px)/2+2rem))]";
+  "pl-[max(1.25rem,calc((100vw-var(--max))/2+1.25rem))] sm:pl-[max(2rem,calc((100vw-var(--max))/2+2rem))]";
 
 function SliderArrow({ direction }: { direction: "prev" | "next" }) {
   const d = direction === "prev" ? "M13 8H3M7 4 3 8l4 4" : "M3 8h10M9 4l4 4-4 4";
@@ -101,7 +101,7 @@ export default function HomeStories() {
             >
               <div className="grid h-full flex-1 grid-cols-1 grid-rows-[1fr] @min-[32rem]:grid-cols-[minmax(0,1.35fr)_minmax(0,0.85fr)]">
                 <div className="flex h-full flex-col px-5 py-6 sm:px-6 sm:py-7">
-                  <h3 className="!mb-0 !mt-0 !text-[22px] !font-normal !leading-[1.2] !tracking-normal text-[#5D524B] normal-case @min-[32rem]:!text-[26px]">
+                  <h3 className="!mb-0 !mt-0 !text-[20px] !font-normal !leading-[1.33] !tracking-[-0.012em] text-[#5D524B] normal-case">
                     {story.company}
                   </h3>
                   <p className="!mb-0 !mt-4 line-clamp-6 text-[15px] leading-[1.5] text-[#5D524B]/70">

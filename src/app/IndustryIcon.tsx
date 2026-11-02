@@ -5,10 +5,12 @@ function Mark({
   children,
   className = "h-16 w-20 text-[#5D524B]",
   strokeWidth = 1.25,
+  preserveAspectRatio,
 }: {
   children: ReactNode;
   className?: string;
   strokeWidth?: number;
+  preserveAspectRatio?: string;
 }) {
   return (
     <svg
@@ -19,6 +21,7 @@ function Mark({
       strokeWidth={strokeWidth}
       strokeLinecap="round"
       strokeLinejoin="round"
+      preserveAspectRatio={preserveAspectRatio}
       aria-hidden
     >
       {children}
@@ -30,14 +33,16 @@ export default function IndustryIcon({
   id,
   className,
   strokeWidth,
+  preserveAspectRatio,
 }: {
   id: Industry["id"];
   className?: string;
   strokeWidth?: number;
+  preserveAspectRatio?: string;
 }) {
   if (id === "banks") {
     return (
-      <Mark className={className} strokeWidth={strokeWidth}>
+      <Mark className={className} strokeWidth={strokeWidth} preserveAspectRatio={preserveAspectRatio}>
         <path d="M16 30 44 14 72 30" />
         <path d="M20 30h48" />
         <path d="M26 32v22M36 32v22M46 32v22M58 32v22" />
@@ -49,7 +54,7 @@ export default function IndustryIcon({
 
   if (id === "payments") {
     return (
-      <Mark className={className} strokeWidth={strokeWidth}>
+      <Mark className={className} strokeWidth={strokeWidth} preserveAspectRatio={preserveAspectRatio}>
         <rect x="16" y="18" width="34" height="22" />
         <path d="M22 26h16M22 32h10" />
         <path d="M40 40h32" />
@@ -62,7 +67,7 @@ export default function IndustryIcon({
 
   if (id === "insurance") {
     return (
-      <Mark className={className} strokeWidth={strokeWidth}>
+      <Mark className={className} strokeWidth={strokeWidth} preserveAspectRatio={preserveAspectRatio}>
         <path d="M44 8 70 18v16c0 16-10 26-26 34C28 60 18 50 18 34V18Z" />
         <path d="M44 16 62 24v10c0 10-7 17-18 22" />
         <path d="M34 36h18M34 42h12" />
@@ -73,7 +78,7 @@ export default function IndustryIcon({
 
   if (id === "fintech") {
     return (
-      <Mark className={className} strokeWidth={strokeWidth}>
+      <Mark className={className} strokeWidth={strokeWidth} preserveAspectRatio={preserveAspectRatio}>
         <path d="M12 34 40 22 76 36 48 48Z" />
         <path d="M12 34v16l36 12V48" />
         <path d="M76 36v16L48 62V48" />
@@ -86,7 +91,7 @@ export default function IndustryIcon({
 
   if (id === "crypto") {
     return (
-      <Mark className={className} strokeWidth={strokeWidth}>
+      <Mark className={className} strokeWidth={strokeWidth} preserveAspectRatio={preserveAspectRatio}>
         <ellipse cx="44" cy="26" rx="24" ry="10" />
         <path d="M20 26v16c0 6 24 12 24 12s24-6 24-12V26" />
         <path d="M20 34c0 6 24 12 24 12s24-6 24-12" />
@@ -97,7 +102,7 @@ export default function IndustryIcon({
 
   if (id === "ecommerce") {
     return (
-      <Mark className={className} strokeWidth={strokeWidth}>
+      <Mark className={className} strokeWidth={strokeWidth} preserveAspectRatio={preserveAspectRatio}>
         <path d="M22 28h40l8 30H16Z" />
         <path d="M30 28c0-10 24-10 24 0" />
         <path d="M20 40h46M18 50h48" />
@@ -107,7 +112,7 @@ export default function IndustryIcon({
   }
 
   return (
-    <Mark className={className} strokeWidth={strokeWidth}>
+    <Mark className={className} strokeWidth={strokeWidth} preserveAspectRatio={preserveAspectRatio}>
       <path d="M14 38h58l8-3-8-3H14" />
       <path d="M40 35 30 16h12l10 19" />
       <path d="M40 41 26 58h14l8-17" />

@@ -21,7 +21,7 @@ export default function CareersPage() {
       >
         <ClonePage />
       </div>
-      <SiteClose reveal />
+      <SiteClose reveal tone="dark" />
     </div>
   );
 }

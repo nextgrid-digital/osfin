@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useScroll } from "motion/react";
 import SiteContainer from "./SiteContainer";
+import HomeVisionField from "./HomeVisionField";
 
 const LEAD =
   "We envision a world where every team runs a fleet of AI agents to handle operational work, freeing people to do what humans do best:";
@@ -83,11 +84,12 @@ export default function HomeVision() {
     <section ref={sectionRef} className="relative bg-background">
       <div className="h-[170svh]">
         <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden bg-background">
+          <HomeVisionField />
           <SiteContainer className="relative z-10 w-full">
             <div
               ref={wordsRef}
               data-not-typeset
-              className="not-typeset mx-auto w-full max-w-[20em] text-left font-[family-name:var(--font-season)] text-[clamp(1.375rem,2.6vw,40px)] leading-[1.18] font-normal tracking-[-0.03em] text-[#5D524B]/15"
+              className="not-typeset mx-auto w-full max-w-[20em] text-left font-[family-name:var(--font-season)] text-[clamp(1.5rem,3.2vw,48px)] leading-[1.2] font-normal tracking-[-0.022em] text-[#5D524B]/15"
             >
               <p ref={leadRef} className="!m-0">
                 <Words text={LEAD} />

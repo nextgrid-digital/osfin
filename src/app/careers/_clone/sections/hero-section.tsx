@@ -10,7 +10,7 @@ export default function HeroSection() {
   return (
     <section className="h-200 flex relative flex-col overflow-hidden bg-[var(--header-bg)] max-md:h-203 md:max-lg:h-256 2xl:h-270">
       <img className="w-full block absolute top-0 left-0 min-w-0 max-w-full overflow-clip object-cover aspect-[auto_2880/1280] align-middle text-clr-1 pointer-events-none h-full max-lg:hidden mix-blend-multiply" data-component="image" alt="" height="1280" src="/ditto-careers/assets/cloned/images/7a0e25a61472-ink.webp" width="2880" />
-      <div className="border border-dashed border-color-010 flex relative max-w-390 flex-col flex-1 min-h-0 mx-auto w-full">
+      <div className="border border-dashed border-color-010 flex relative max-w-[1440px] flex-col flex-1 min-h-0 mx-auto w-full">
         <div className="flex relative pt-40 pb-24 flex-col justify-center items-center flex-1 text-center max-lg:pt-27 max-lg:pb-16 max-lg:px-6">
           <div className="flex flex-col items-center gap-6">
             <div className="flex items-start">
@@ -77,26 +77,6 @@ export default function HeroSection() {
               {CAREERS.hero.plate[2].value}
             </p>
           </div>
-        </div>
-      </div>
-      <div className="w-full flex shrink-0 overflow-hidden h-5 max-lg:h-2">
-        <div className="flex-[24.5] block relative bg-accent h-full min-w-0">
-          <div className="h-full block absolute top-0 inset-x-0 [mix-blend-mode:soft-light] [background-size:720px_30.24px] pointer-events-none" style={{ backgroundImage: "url(\"/ditto-careers/assets/cloned/images/422e70820966.webp\")" }} />
-        </div>
-        <div className="flex-[19] block relative bg-primary h-full min-w-0">
-          <div className="h-full block absolute top-0 inset-x-0 [mix-blend-mode:soft-light] [background-size:720px_30.24px] pointer-events-none" style={{ backgroundImage: "url(\"/ditto-careers/assets/cloned/images/422e70820966.webp\")" }} />
-        </div>
-        <div className="flex-[27] block relative bg-clr-6 h-full min-w-0">
-          <div className="h-full block absolute top-0 inset-x-0 [mix-blend-mode:soft-light] [background-size:720px_30.24px] pointer-events-none" style={{ backgroundImage: "url(\"/ditto-careers/assets/cloned/images/422e70820966.webp\")" }} />
-        </div>
-        <div className="flex-[3.6] block relative bg-clr-7 h-full min-w-0">
-          <div className="h-full block absolute top-0 inset-x-0 [mix-blend-mode:soft-light] [background-size:720px_30.24px] pointer-events-none" style={{ backgroundImage: "url(\"/ditto-careers/assets/cloned/images/422e70820966.webp\")" }} />
-        </div>
-        <div className="flex-[5.4] block relative bg-accent h-full min-w-0">
-          <div className="h-full block absolute top-0 inset-x-0 [mix-blend-mode:soft-light] [background-size:720px_30.24px] pointer-events-none" style={{ backgroundImage: "url(\"/ditto-careers/assets/cloned/images/422e70820966.webp\")" }} />
-        </div>
-        <div className="flex-[20.5] block relative bg-primary h-full min-w-0">
-          <div className="h-full block absolute top-0 inset-x-0 [mix-blend-mode:soft-light] [background-size:720px_30.24px] pointer-events-none" style={{ backgroundImage: "url(\"/ditto-careers/assets/cloned/images/422e70820966.webp\")" }} />
         </div>
       </div>
     </section>

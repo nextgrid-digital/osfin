@@ -1,7 +1,6 @@
 import type { Industry } from "../content/industries";
 import IndustryHeroCarousel from "./IndustryHeroCarousel";
 import IndustryTabs from "./IndustryTabs";
-import SectionHeading from "./SectionHeading";
 import SiteClose from "./SiteClose";
 import SiteContainer from "./SiteContainer";
 
@@ -21,13 +20,9 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
 
           <IndustryTabs currentId={industry.id} />
 
-          <SectionHeading
-            className="mt-4 pt-4 pb-0 md:mt-6 md:pt-6 md:pb-0 [&_h3]:py-1"
-            title={industry.label}
-            titleAs="h3"
-            aside={industry.summary}
-            cta={null}
-          />
+          <p className="mx-auto mt-4 max-w-[36rem] pt-4 text-center text-[#5D524B] !text-[14px] !leading-[1.5] md:mt-6 md:pt-6">
+            {industry.summary}
+          </p>
 
           <IndustryHeroCarousel currentId={industry.id} />
         </SiteContainer>
@@ -52,7 +47,9 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
                   >
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="!mb-0 !mt-0 text-[#5D524B]">{item.title}</h3>
+                  <h3 className="!mb-0 !mt-0 !text-[28px] !font-normal !leading-[1.2] !tracking-[-0.02em] text-[#5D524B]">
+                    {item.title}
+                  </h3>
                   <p className="!mt-0 text-[#5D524B]/60">{item.body}</p>
                 </div>
               ))}

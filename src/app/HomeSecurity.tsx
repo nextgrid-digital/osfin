@@ -2,18 +2,20 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { BadgeCheck, CreditCard, HeartPulse, Lock, Scale, Shield, ShieldCheck, type LucideIcon } from "lucide-react";
 import SiteContainer from "./SiteContainer";
 
-const LIST: { label: string; icon: LucideIcon }[] = [
-  { label: "PCI DSS", icon: CreditCard },
-  { label: "SOC 1 Type II", icon: Shield },
-  { label: "SOC 2 Type II", icon: ShieldCheck },
-  { label: "ISO 27001:2022", icon: BadgeCheck },
-  { label: "GDPR Compliant", icon: Lock },
-  { label: "CCPA", icon: Scale },
-  { label: "HIPAA Compliant", icon: HeartPulse },
-];
+const LIST = [
+  "PCI DSS",
+  "SOC 2 Type II",
+  "SOC 1 Type II",
+  "ISO 27001:2022",
+  "GDPR Compliant",
+  "CCPA",
+  "HIPAA Compliant",
+] as const;
+
+const kickerClassName =
+  "not-typeset !m-0 flex items-center gap-2 font-[family-name:var(--font-mono)] text-[11px] font-medium tracking-[0.08em] uppercase";
 
 const ITEMS = [
   {
@@ -199,14 +201,14 @@ export function SecurityCards({
   return (
     <div className={className}>
     <div
-      className={`grid grid-cols-1 border-r border-b md:grid-cols-2 lg:grid-cols-4 ${light ? "border-black/15" : "border-white/15"}`}
+      className={`grid grid-cols-1 border-r border-b md:grid-cols-2 lg:grid-cols-4 ${light ? "border-black/[0.06]" : "border-white/15"}`}
     >
       {ITEMS.map((item) => (
         <div
           key={item.title}
           className={
             light
-              ? "flex min-h-0 min-w-0 flex-col justify-between gap-16 border-t border-l border-black/15 bg-white px-6 py-8 md:min-h-[420px] md:px-8 md:py-10"
+              ? "flex min-h-0 min-w-0 flex-col justify-between gap-16 border-t border-l border-black/[0.06] bg-white px-6 py-8 md:min-h-[420px] md:px-8 md:py-10"
               : "flex min-h-0 min-w-0 flex-col justify-between gap-16 border-t border-l border-white/15 bg-[#0A3034] px-6 py-8 md:min-h-[420px] md:px-8 md:py-10"
           }
         >
@@ -220,7 +222,7 @@ export function SecurityCards({
               </p>
             ) : null}
             <h3
-              className={`!mb-0 !mt-0 !text-[22px] !font-medium !leading-[1.2] !tracking-[-0.01em] normal-case ${light ? "text-[#5D524B]" : "text-white"}`}
+              className={`!mb-0 !mt-0 !text-[20px] !font-medium !leading-[1.33] !tracking-[-0.012em] normal-case ${light ? "text-[#5D524B]" : "text-white"}`}
             >
               {item.titleLines.map((line) => (
                 <span key={line} className="block">
@@ -285,41 +287,133 @@ export default function HomeSecurity() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="security" className="bg-background py-28 md:py-40">
+    <section
+      ref={sectionRef}
+      id="security"
+      className="flex min-h-[100svh] flex-col justify-center bg-background py-28 md:py-40"
+    >
       <SiteContainer>
-        <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-24">
-          <div>
-            <h2 ref={leadRef} className="!mb-0 !mt-0 max-w-[18em]">
-              Compliance and security guardrails built in.
-            </h2>
-            <p className="security-copy !mb-0 !mt-5 max-w-[36rem] text-[15px] leading-6 md:!mt-6">
-              Osfin operates under PCI DSS, SOC 1 Type II, SOC 2 Type II, ISO 27001:2022,
-              GDPR, CCPA, and HIPAA, with controls that protect payment data and client
-              information.
-            </p>
-            <Link
-              href="/security"
-              data-not-typeset=""
-              className="security-cta not-typeset mt-8 inline-flex h-10 items-center justify-center rounded-none border px-5 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] uppercase no-underline md:mt-10"
-            >
-              View security
-            </Link>
-          </div>
-          <ul className="not-typeset m-0 list-none p-0" data-not-typeset="">
-            {LIST.map(({ label, icon: Icon }, index) => (
-              <li
-                key={label}
-                className={`flex items-center gap-4 py-5 ${index > 0 ? "security-rule border-t" : ""}`}
-              >
-                <Icon aria-hidden className="size-6 shrink-0" strokeWidth={1.4} />
-                <span className="min-w-0 flex-1 text-[16px] leading-none md:text-[18px]">{label}</span>
-                <Link href="/security" className="security-details shrink-0 text-[14px] no-underline">
-                  Details
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-end sm:justify-between sm:gap-10">
+          <h2 ref={leadRef} className="!mb-0 !mt-0 max-w-[40rem] text-left text-[#5D524B]">
+            Compliance and security guardrails built in.
+          </h2>
+          <Link
+            href="/security"
+            data-not-typeset=""
+            className="security-cta not-typeset inline-flex h-10 shrink-0 items-center justify-center rounded-none border px-5 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] uppercase no-underline"
+          >
+            View security
+          </Link>
         </div>
+
+        <div className="mt-6 grid grid-cols-1 gap-3 md:h-[min(50svh,32rem)] md:grid-cols-[1.1fr_1fr]">
+          <div className="flex min-h-[16rem] flex-col justify-between border border-black/[0.06] bg-background p-6 md:min-h-0 md:h-full md:p-8">
+            <p className={`${kickerClassName} text-[#5D524B]/45`} data-not-typeset>
+              <span className="size-1.5 shrink-0 bg-current" aria-hidden />
+              Policy bound
+            </p>
+            <p className="not-typeset !m-0 max-w-[18em] font-[family-name:var(--font-season)] text-[clamp(1.5rem,2.4vw,32px)] leading-none font-normal tracking-[-0.022em] text-[#5D524B]" data-not-typeset>
+              Osfin is built so finance teams can run agents without giving up control.
+            </p>
+          </div>
+
+          <div className="grid min-h-0 grid-cols-1 gap-3 sm:grid-cols-2 md:h-full md:grid-rows-[0.85fr_1.4fr_0.85fr]">
+            <div className="relative flex min-h-[14rem] flex-col justify-between overflow-hidden border border-black/[0.06] p-5 md:col-start-1 md:row-span-2 md:min-h-0 md:p-6">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/security/pci-grid.jpg"
+                alt=""
+                data-not-typeset=""
+                className="absolute inset-0 !m-0 size-full !h-full !max-w-none object-cover"
+              />
+              <p className={`${kickerClassName} relative z-10 text-white`} data-not-typeset>
+                <span className="size-1.5 shrink-0 bg-current" aria-hidden />
+                PCI DSS & PCI SSF
+              </p>
+              <h3 className="relative z-10 !mb-0 !mt-4 !font-[family-name:var(--font-season)] !text-[clamp(1.25rem,1.8vw,28px)] !font-normal !leading-none !tracking-[-0.022em] text-white">
+                Payment-grade encryption
+              </h3>
+            </div>
+
+            <div className="flex min-h-[8rem] flex-col overflow-hidden border border-black/[0.06] bg-[#0B1633] text-[#F7F1E3] md:col-start-2 md:row-start-1 md:min-h-0">
+              <p className="not-typeset !m-0 shrink-0 p-4 text-[15px] leading-5 md:p-5" data-not-typeset>
+                Every agent action is recorded for close, SOX, and regulator review.
+              </p>
+              <div className="relative min-h-[2.5rem] flex-1 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/security/audit-grain.png"
+                  alt=""
+                  data-not-typeset=""
+                  className="absolute inset-0 !m-0 size-full !h-full !max-w-none object-cover"
+                />
+              </div>
+            </div>
+
+            <div className="flex min-h-[8rem] flex-col justify-center border border-black/[0.06] bg-[#F7F1E3] p-4 md:col-start-1 md:row-start-3 md:min-h-0 md:p-5">
+              <p className="!mb-0 !mt-0 text-[14px] leading-5 text-[#5D524B]/80">
+                Agents stay inside internal policies, route exceptions to people, and keep a complete audit trail of every step.
+              </p>
+            </div>
+
+            <div className="relative flex min-h-[12rem] min-h-0 flex-col items-start justify-between overflow-hidden border border-black/[0.06] bg-background p-5 md:col-start-2 md:row-span-2 md:row-start-2 md:min-h-0 md:p-6">
+              <svg
+                viewBox="0 0 32 36"
+                className="relative z-10 block h-10 w-9 shrink-0 text-[#5D524B]"
+                fill="none"
+                aria-hidden
+                data-not-typeset=""
+              >
+                <path
+                  d="M16 2.5 29 8.2v12.2c0 7.4-5.8 12.6-13 15.6C8.8 33 3 27.8 3 20.4V8.2Z"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M10.4 18.6 14.2 22.4 22.2 13.4"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <h3 className="relative z-10 !m-0 !font-[family-name:var(--font-season)] !text-[clamp(1.25rem,1.8vw,28px)] !font-normal !leading-none !tracking-[-0.022em] text-[#5D524B]">
+                SOC 2 Type II and ISO 27001
+              </h3>
+            </div>
+          </div>
+        </div>
+
+        <ul
+          className="not-typeset mt-5 m-0 grid list-none grid-cols-1 p-0 md:mt-6 md:grid-cols-2"
+          data-not-typeset=""
+        >
+          {LIST.map((label, index) => (
+            <li
+              key={label}
+              className={`flex items-center gap-4 py-2.5 ${index > 0 ? "security-rule border-t" : ""} ${
+                index % 2 === 1 ? "md:border-l md:pl-6" : "md:pr-6"
+              } ${index === 1 ? "md:border-t-0" : ""}`}
+            >
+              <span className="min-w-0 flex-1 text-[15px] leading-none md:text-[16px]">{label}</span>
+              <Link
+                href="/security"
+                className="security-details inline-flex shrink-0 items-center gap-2 text-[13px] no-underline hover:no-underline"
+              >
+                Details
+                <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden>
+                  <path
+                    d="M4 12 12 4M6 4h6v6"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.25"
+                  />
+                </svg>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </SiteContainer>
     </section>
   );

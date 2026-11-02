@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-/** Shared content shell: max 1440px, 32px horizontal padding. */
+/** Shared content shell: max 1440px (OpenAI), 32px horizontal padding. */
 export default function SiteContainer({
   children,
   className = "",
@@ -11,7 +11,7 @@ export default function SiteContainer({
   as?: "div" | "section" | "header" | "footer";
 }) {
   return (
-    <Tag className={`mx-auto w-full max-w-[1440px] px-5 sm:px-8 ${className}`.trim()}>
+    <Tag className={`mx-auto w-full max-w-[var(--max)] px-5 sm:px-8 ${className}`.trim()}>
       {children}
     </Tag>
   );

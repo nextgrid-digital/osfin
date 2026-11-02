@@ -1,5 +1,6 @@
 import { TextReveal } from "@/components/ui/cascade-text";
 import { POSTS, POST_CATEGORIES, type PostCategory } from "../../content/posts";
+import BlogCoverPlaceholder from "../BlogCoverPlaceholder";
 import SiteContainer from "../SiteContainer";
 import SiteClose from "../SiteClose";
 import TransitionLink from "../TransitionLink";
@@ -96,11 +97,8 @@ export default async function BlogPage({
                 }`}
                 data-not-typeset
               >
-                <div className="aspect-[16/10] w-full overflow-hidden border border-black/15 bg-black/[0.03]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={post.cover} alt="" className="size-full object-cover" />
-                </div>
-                <h2 className="!mb-0 !mt-8 !text-[22px] !font-normal !leading-[1.25] !tracking-normal text-[#5D524B] normal-case md:!text-[24px]">
+                <BlogCoverPlaceholder src={post.cover} alt={post.title} />
+                <h2 className="!mb-0 !mt-8 !text-[20px] !font-normal !leading-[1.33] !tracking-[-0.012em] text-[#5D524B] normal-case">
                   {post.title.split("\n").map((line) => (
                     <span key={line} className="block">
                       {line}

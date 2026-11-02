@@ -20,7 +20,7 @@ const MediaTile2_data: MediaTile2Data[] = CAREERS.beliefs.items.map((item, i) =>
 export default function GalleryShowcaseSection2({ mediaTile2Data = MediaTile2_data } = {}) {
   return (
     <section className="flex py-30 px-18 justify-center bg-color-012 max-md:py-16 max-md:px-6 md:max-lg:py-24">
-      <div className="flex max-w-390 flex-col items-center gap-10 mx-auto w-full">
+      <div className="flex max-w-[1440px] flex-col items-center gap-10 mx-auto w-full">
         <div className="flex flex-col items-center gap-6 text-center">
           <div className="flex items-start">
             <div className="border border-dashed border-surface-3 flex -mr-px py-1 px-2 justify-center items-center h-auto">

@@ -1,9 +1,105 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getPost, postSlugs } from "../../../content/posts";
-import SiteContainer from "../../SiteContainer";
+import {
+  getPost,
+  postSlugs,
+  type PostBlock,
+  type PostSection,
+  type PostSubsection,
+} from "../../../content/posts";
 import SiteClose from "../../SiteClose";
+import TransitionLink from "../../TransitionLink";
 import BlogShare from "../BlogShare";
+
+function BlockList({ blocks }: { blocks: PostBlock[] }) {
+  return (
+    <>
+      {blocks.map((block, index) => {
+        if (block.type === "p") {
+          return <p key={`p-${index}`}>{block.text}</p>;
+        }
+        if (block.type === "ul") {
+          return (
+            <ul key={`ul-${index}`}>
+              {block.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          );
+        }
+        if (block.type === "ol") {
+          return (
+            <ol key={`ol-${index}`}>
+              {block.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ol>
+          );
+        }
+        return (
+          <div key={`table-${index}`} className="my-12 overflow-x-auto">
+            <table className="w-full min-w-[36rem] border-collapse text-left text-[14px] leading-[1.45]">
+              <thead>
+                <tr>
+                  {block.headers.map((header) => (
+                    <th
+                      key={header}
+                      className="border-b border-black/15 px-0 py-2 pr-6 font-medium text-[#5D524B]"
+                    >
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {block.rows.map((row, rowIndex) => (
+                  <tr key={row.join("|") + rowIndex}>
+                    {row.map((cell, cellIndex) => (
+                      <td
+                        key={`${cellIndex}-${cell}`}
+                        className="border-b border-black/10 px-0 py-2.5 pr-6 align-top text-[#5D524B]/80"
+                      >
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      })}
+    </>
+  );
+}
+
+function SubsectionBody({ subsection }: { subsection: PostSubsection }) {
+  return (
+    <>
+      <h3>{subsection.heading}</h3>
+      {subsection.paragraphs?.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
+      {subsection.blocks ? <BlockList blocks={subsection.blocks} /> : null}
+    </>
+  );
+}
+
+function ArticleSection({ section }: { section: PostSection }) {
+  const hideHeading = section.heading === "Overview";
+  return (
+    <section>
+      {hideHeading ? null : <h2>{section.heading}</h2>}
+      {section.paragraphs?.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
+      {section.blocks ? <BlockList blocks={section.blocks} /> : null}
+      {section.subsections?.map((subsection) => (
+        <SubsectionBody key={subsection.heading} subsection={subsection} />
+      ))}
+    </section>
+  );
+}
 
 export function generateStaticParams() {
   return postSlugs().map((slug) => ({ slug }));
@@ -29,46 +125,72 @@ export default async function BlogPostPage({
   const post = getPost(slug);
   if (!post) notFound();
 
+  const title = post.title.replace("\n", " ");
+
   return (
     <div
       data-transition="container"
       data-namespace="blog-post"
-      className="site-shell typeset typeset-docs min-h-screen bg-background text-[#5D524B]"
+      className="site-shell min-h-screen bg-background text-[#5D524B]"
     >
       <main className="pt-14 md:pt-16">
-        <SiteContainer className="py-20 md:py-28">
-          <article className="mx-auto max-w-[72rem]">
-            <p className="not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] tracking-[-0.02em] text-[#5D524B]/55">
-              {post.date}
-              <span className="px-2">·</span>
-              {post.category}
-            </p>
-            <h1 className="!mb-0 !mt-6 !text-[clamp(1.75rem,5vw,48px)] !leading-[1.15]">
-              {post.title.split("\n").map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
-            </h1>
-            <div className="not-typeset mt-8 flex justify-end" data-not-typeset>
+        <article
+          className="not-typeset mx-auto w-full max-w-[1024px] px-6 pb-24 pt-16 font-sans md:pb-32 md:pt-20"
+          data-not-typeset
+        >
+          <p className="m-0 text-center font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[#5D524B]/45 uppercase">
+            <TransitionLink
+              href="/blog"
+              className="text-[#5D524B]/45 no-underline hover:text-[#5D524B] hover:no-underline"
+            >
+              Blog
+            </TransitionLink>
+            <span className="px-1.5">/</span>
+            <span>{post.category}</span>
+          </p>
+          <h1 className="mx-auto mt-3 mb-0 max-w-[900px] text-center font-[family-name:var(--font-season)] text-[clamp(1.75rem,4.2vw,48px)] font-normal leading-none tracking-[-0.022em] text-[#5D524B]">
+            {title}
+          </h1>
+          {post.cover ? (
+            <div className="mt-12 overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={post.cover} alt="" className="block w-full" />
+            </div>
+          ) : null}
+          <p className="mt-6 mb-0 text-center text-[13px] font-medium tracking-[-0.01em] text-[#5D524B]/45">
+            Osfin
+            <span className="px-1.5">·</span>
+            {post.date}
+          </p>
+          <div
+            className="
+              mx-auto mt-[4.625rem] max-w-[624px] text-[17px] leading-[1.6] text-[#5D524B]/80
+              [&_p]:mt-5 [&_p]:mb-0
+              [&_section:first-child_p:first-of-type]:mt-0
+              [&_h2]:mt-14 [&_h2]:mb-0 [&_h2]:font-sans [&_h2]:text-[24px] [&_h2]:font-medium [&_h2]:leading-[1.33] [&_h2]:tracking-[-0.012em] [&_h2]:text-[#5D524B]
+              [&_h2+p]:mt-4
+              [&_h3]:mt-7 [&_h3]:mb-0 [&_h3]:font-sans [&_h3]:text-[17px] [&_h3]:font-medium [&_h3]:leading-[1.4] [&_h3]:tracking-[-0.012em] [&_h3]:text-[#5D524B]
+              [&_h3+p]:mt-2.5
+              [&_ul]:mt-3 [&_ul]:mb-0 [&_ul]:list-disc [&_ul]:pl-6
+              [&_ol]:mt-3 [&_ol]:mb-0 [&_ol]:list-decimal [&_ol]:pl-6
+              [&_li]:mt-1.5 [&_li]:pl-0.5
+              [&_li]:marker:text-[#5D524B]/35
+              [&_p+ul]:mt-3 [&_p+ol]:mt-3
+            "
+          >
+            {post.sections.map((section) => (
+              <ArticleSection key={section.heading} section={section} />
+            ))}
+            <div className="mt-16 flex items-center justify-between gap-4 border-t border-black/10 pt-6 text-[13px] font-medium tracking-[-0.01em] text-[#5D524B]/45">
+              <p className="m-0">
+                Osfin
+                <span className="px-1.5">·</span>
+                {post.date}
+              </p>
               <BlogShare />
             </div>
-            <div className="not-typeset mt-8 overflow-hidden rounded-none bg-black/[0.03]" data-not-typeset>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={post.cover} alt="" className="aspect-[2/1] w-full object-cover" />
-            </div>
-            <div className="mt-10 max-w-[80ch] border-t border-black/10 pt-2">
-              {post.sections.map((section) => (
-                <section key={section.heading}>
-                  <h2 className="!mb-0 !text-[28px] !leading-[1.3]">{section.heading}</h2>
-                  {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                </section>
-              ))}
-            </div>
-          </article>
-        </SiteContainer>
+          </div>
+        </article>
       </main>
       <SiteClose />
     </div>

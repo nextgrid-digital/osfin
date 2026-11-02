@@ -46,9 +46,8 @@ export default function CloneRoles() {
   }, [department, query]);
 
   return (
-    <section className="block relative px-18 overflow-hidden bg-surface-4 max-md:px-3" id="open-roles">
-      <div className="h-full block absolute top-0 inset-x-0 [mix-blend-mode:multiply] [background-size:100%] [background-position:50%_0%] pointer-events-none" style={{ backgroundImage: "url(\"/ditto-careers/assets/cloned/svg/5898f0d430b1.svg\")" }} aria-hidden="true" />
-      <div className="border border-dashed border-color-005 block relative max-w-390 mx-auto w-full">
+    <section className="block relative px-18 overflow-hidden bg-[var(--header-bg)] max-md:px-3" id="open-roles">
+      <div className="border border-dashed border-color-005 block relative max-w-[1440px] mx-auto w-full">
         <div className="flex py-20 px-10 flex-col gap-10 max-md:py-16 max-md:px-3">
           <div className="w-full max-w-140 flex flex-col items-start gap-6">
             <div className="flex items-start">

@@ -160,7 +160,7 @@ function MobileMenu({
           Blog
         </Link>
         <Link
-          href="/#contact"
+          href="mailto:socials@osfin.ai"
           className="border-b border-black/10 py-4 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[#5D524B] uppercase no-underline"
           onClick={onClose}
         >
@@ -365,7 +365,7 @@ export default function SiteNav() {
           </MotionNavigationMenuItem>
 
           <MotionNavigationMenuItem>
-            <MotionNavigationMenuLink href="/#contact" className={navLinkClassName}>
+            <MotionNavigationMenuLink href="mailto:socials@osfin.ai" className={navLinkClassName}>
               <NavLabel text="Contact" />
             </MotionNavigationMenuLink>
           </MotionNavigationMenuItem>

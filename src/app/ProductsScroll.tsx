@@ -62,7 +62,7 @@ export default function ProductsScroll() {
         <div className="mt-16 overflow-hidden md:mt-20">
           <div
             ref={trackRef}
-            className="flex w-max gap-6 px-5 will-change-transform sm:px-8 lg:px-[max(2rem,calc((100vw-1440px)/2+2rem))]"
+            className="flex w-max gap-6 px-5 will-change-transform sm:px-8 lg:px-[max(2rem,calc((100vw-var(--max))/2+2rem))]"
           >
             {PRODUCTS.map((product) => (
               <TransitionLink

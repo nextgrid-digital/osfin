@@ -20,14 +20,44 @@ const scale = {
   vault: 1.6,
 } as const;
 
-/** Grayscale faces and strokes — same wash on every figure. */
-const palette = {
-  branches: { plate: "#ffffff", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4", hi: "#232327", card: "transparent" },
-  loupe: { plate: "#ffffff", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4", hi: "#232327", card: "transparent" },
-  cabinet: { plate: "#ffffff", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4", hi: "#232327", card: "transparent" },
-  phosphor: { plate: "#ffffff", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4", hi: "#232327", card: "transparent" },
-  vault: { plate: "#ffffff", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4", hi: "#232327", card: "transparent" },
-} as const;
+type HairlineWash = {
+  plate: string;
+  edge: string;
+  mid: string;
+  lo: string;
+  hi: string;
+  card: string;
+};
+
+/** Ink + cream only — same three colors on every figure. */
+const osfinWash: HairlineWash = {
+  plate: "#FEF9ED",
+  hi: "#5D524B",
+  edge: "#5D524B",
+  mid: "#5D524B",
+  lo: "#F7F1E3",
+  card: "transparent",
+};
+
+const palette: Record<keyof typeof figures, HairlineWash> = {
+  branches: osfinWash,
+  loupe: osfinWash,
+  cabinet: osfinWash,
+  phosphor: osfinWash,
+  vault: osfinWash,
+};
+
+export const controlViewsWash: HairlineWash = osfinWash;
+
+export function hairlineVars(colors: HairlineWash) {
+  return {
+    ["--hairline-plate" as string]: colors.plate,
+    ["--hairline-edge" as string]: colors.edge,
+    ["--hairline-mid" as string]: colors.mid,
+    ["--hairline-lo" as string]: colors.lo,
+    ["--hairline-hi" as string]: colors.hi,
+  };
+}
 
 export function productionCardColor(figure: keyof typeof figures) {
   return palette[figure].card;
@@ -55,7 +85,7 @@ const RECORD = [
 const LOUPE_MAG = 1.8;
 const SVG_NS = "http://www.w3.org/2000/svg";
 
-function mountLoupeRecord(host: HTMLElement) {
+function mountLoupeRecord(host: HTMLElement, colors: HairlineWash) {
   const drawing = host.querySelector("svg");
   if (!(drawing instanceof SVGSVGElement)) return () => {};
 
@@ -120,7 +150,7 @@ function mountLoupeRecord(host: HTMLElement) {
   ground.setAttribute("y", "-800");
   ground.setAttribute("width", "1600");
   ground.setAttribute("height", "1600");
-  ground.setAttribute("fill", "#ffffff");
+  ground.setAttribute("fill", colors.plate);
   lensBody.append(ground);
   lens.append(lensBody);
 
@@ -193,7 +223,7 @@ function mountLoupeRecord(host: HTMLElement) {
   const makeText = (line: string, opacity: string) => {
     const text = document.createElementNS(SVG_NS, "text");
     text.textContent = line;
-    text.setAttribute("fill", "#232327");
+    text.setAttribute("fill", colors.hi);
     text.setAttribute("fill-opacity", opacity);
     text.setAttribute("font-size", String(size));
     text.setAttribute("font-family", font);
@@ -221,7 +251,7 @@ function mountLoupeRecord(host: HTMLElement) {
 
   const lensRules = document.createElementNS(SVG_NS, "path");
   lensRules.setAttribute("fill", "none");
-  lensRules.setAttribute("stroke", "#e0e0e4");
+  lensRules.setAttribute("stroke", colors.lo);
   lensRules.setAttribute("stroke-width", "0.75");
   lensRules.setAttribute(
     "d",
@@ -301,8 +331,8 @@ export default function ProductionHairline({
 
   useEffect(() => {
     if (figure !== "loupe" || !hostRef.current) return;
-    return mountLoupeRecord(hostRef.current);
-  }, [figure]);
+    return mountLoupeRecord(hostRef.current, colors);
+  }, [figure, colors]);
 
   return (
     <div
@@ -320,11 +350,7 @@ export default function ProductionHairline({
           height: "auto",
           transform: `scale(${scale[figure]})`,
           transformOrigin: "center center",
-          ["--hairline-plate" as string]: colors.plate,
-          ["--hairline-edge" as string]: colors.edge,
-          ["--hairline-mid" as string]: colors.mid,
-          ["--hairline-lo" as string]: colors.lo,
-          ["--hairline-hi" as string]: colors.hi,
+          ...hairlineVars(colors),
         }}
       />
     </div>
