@@ -3,11 +3,14 @@ import { notFound } from "next/navigation";
 import {
   getPost,
   postSlugs,
+  recommendedPosts,
   type PostBlock,
   type PostSection,
   type PostSubsection,
 } from "../../../content/posts";
+import BlogCoverPlaceholder from "../../BlogCoverPlaceholder";
 import SiteClose from "../../SiteClose";
+import SiteContainer from "../../SiteContainer";
 import TransitionLink from "../../TransitionLink";
 import BlogShare from "../BlogShare";
 
@@ -126,6 +129,7 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   const title = post.title.replace("\n", " ");
+  const related = recommendedPosts(slug, 3);
 
   return (
     <div
@@ -135,7 +139,7 @@ export default async function BlogPostPage({
     >
       <main className="pt-14 md:pt-16">
         <article
-          className="not-typeset mx-auto w-full max-w-[1024px] px-6 pb-24 pt-16 font-sans md:pb-32 md:pt-20"
+          className="not-typeset mx-auto w-full max-w-[1024px] px-6 pb-16 pt-16 font-sans md:pb-20 md:pt-20"
           data-not-typeset
         >
           <p className="m-0 text-center font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[#5D524B]/45 uppercase">
@@ -164,7 +168,7 @@ export default async function BlogPostPage({
           </p>
           <div
             className="
-              mx-auto mt-[4.625rem] max-w-[624px] text-[17px] leading-[1.6] text-[#5D524B]/80
+              mx-auto mt-[4.625rem] max-w-[calc(624px+10ch)] text-[17px] leading-[1.6] text-[#5D524B]/80
               [&_p]:mt-5 [&_p]:mb-0
               [&_section:first-child_p:first-of-type]:mt-0
               [&_h2]:mt-14 [&_h2]:mb-0 [&_h2]:font-sans [&_h2]:text-[24px] [&_h2]:font-medium [&_h2]:leading-[1.33] [&_h2]:tracking-[-0.012em] [&_h2]:text-[#5D524B]
@@ -191,6 +195,62 @@ export default async function BlogPostPage({
             </div>
           </div>
         </article>
+        {related.length > 0 ? (
+          <SiteContainer className="pb-24 md:pb-32">
+            <div className="flex items-end justify-between gap-6 border-b border-black/15 pb-5">
+              <h2 className="!mb-0 !mt-0 font-[family-name:var(--font-season)] text-[clamp(1.5rem,3vw,32px)] font-normal tracking-[-0.022em] text-[#5D524B]">
+                Recommended
+              </h2>
+              <TransitionLink
+                href="/blog"
+                className="not-typeset mb-1 inline-flex shrink-0 items-center gap-2 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[#5D524B] uppercase no-underline hover:no-underline"
+                data-not-typeset
+              >
+                <span className="underline underline-offset-4">View all</span>
+              </TransitionLink>
+            </div>
+            <div className="grid grid-cols-1 border-x border-b border-black/15 md:grid-cols-3">
+              {related.map((item, index) => (
+                <TransitionLink
+                  key={item.slug}
+                  href={`/blog/${item.slug}`}
+                  className={`not-typeset flex flex-col border-black/15 px-8 py-8 no-underline hover:no-underline md:py-10 ${
+                    index > 0
+                      ? "border-t md:border-t-0 md:border-l"
+                      : "md:border-l md:border-l-transparent"
+                  }`}
+                  data-not-typeset
+                >
+                  <BlogCoverPlaceholder src={item.cover} alt={item.title} />
+                  <h3 className="!mb-0 !mt-8 !font-sans !text-[20px] !font-normal !leading-[1.33] !tracking-[-0.012em] text-[#5D524B] normal-case">
+                    {item.title.split("\n").map((line) => (
+                      <span key={line} className="block">
+                        {line}
+                      </span>
+                    ))}
+                  </h3>
+                  <div className="mt-auto flex items-center justify-between gap-4 pt-12">
+                    <p className="!m-0 flex items-center gap-2 font-[family-name:var(--font-mono)] text-[14px] leading-5 tracking-[-0.02em] text-[#5D524B]/55 uppercase">
+                      <span>{item.category}</span>
+                      <span className="inline-block size-1 bg-current" aria-hidden />
+                      <span>{item.date}</span>
+                    </p>
+                    <span className="inline-flex size-8 shrink-0 items-center justify-center border border-black/15 text-[#5D524B]/55">
+                      <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden>
+                        <path
+                          d="M4 12 12 4M6 4h6v6"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.25"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </TransitionLink>
+              ))}
+            </div>
+          </SiteContainer>
+        ) : null}
       </main>
       <SiteClose />
     </div>

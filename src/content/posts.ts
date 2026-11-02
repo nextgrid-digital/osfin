@@ -55,3 +55,13 @@ export function getPost(slug: string) {
 export function postSlugs() {
   return POSTS.map((post) => post.slug);
 }
+
+export function recommendedPosts(slug: string, count = 3) {
+  const index = POSTS.findIndex((post) => post.slug === slug);
+  if (index === -1) return POSTS.slice(0, count);
+  const next: Post[] = [];
+  for (let step = 1; step < POSTS.length && next.length < count; step += 1) {
+    next.push(POSTS[(index + step) % POSTS.length]!);
+  }
+  return next;
+}
