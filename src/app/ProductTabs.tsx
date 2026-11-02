@@ -34,7 +34,7 @@ export default function ProductTabs({ currentSlug }: { currentSlug: string }) {
             {active ? (
               <motion.span
                 layoutId="product-tab-highlight"
-                className="absolute inset-0 z-0 rounded-none bg-background"
+                className="absolute inset-0 z-0 rounded-none bg-[#5D524B]/10"
                 transition={{ type: "spring", stiffness: 350, damping: 32 }}
               />
             ) : null}

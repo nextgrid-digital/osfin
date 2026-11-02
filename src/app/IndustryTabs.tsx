@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import { INDUSTRIES } from "../content/industries";
 import { useIndustrySelect } from "./industry-select";
 
@@ -25,11 +26,18 @@ export default function IndustryTabs({ currentId }: { currentId: string }) {
               event.preventDefault();
               select(item.id);
             }}
-            className={`inline-flex items-center justify-center px-2.5 py-1.5 font-[family-name:var(--font-mono)] text-[14px] font-medium leading-none tracking-[-0.02em] uppercase no-underline ${
+            className={`relative inline-flex items-center justify-center px-2.5 py-1.5 font-[family-name:var(--font-mono)] text-[14px] font-medium leading-none tracking-[-0.02em] uppercase no-underline ${
               active ? "text-[#5D524B]" : "text-[#5D524B]/45 hover:text-[#5D524B]/70"
             }`}
           >
-            {item.label}
+            {active ? (
+              <motion.span
+                layoutId="industry-tab-highlight"
+                className="absolute inset-0 z-0 rounded-none bg-[#5D524B]/10"
+                transition={{ type: "spring", stiffness: 350, damping: 32 }}
+              />
+            ) : null}
+            <span className="relative z-10">{item.label}</span>
           </a>
         );
       })}
