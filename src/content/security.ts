@@ -43,7 +43,7 @@ export const SECURITY = {
       {
         title: "ISO 27001:2022",
         body: "Certified by BSI to ISO/IEC 27001, with an information security management system that protects client data.",
-        logo: "/security/badges/ISO.png",
+        logo: "/security/badges/ISO.png?v=2",
         alt: "ISO 27001",
       },
       {
@@ -54,7 +54,7 @@ export const SECURITY = {
       },
       {
         title: "HIPAA",
-        body: "We safeguard protected health information with access controls, audit trails, and BAAs for healthcare operations.",
+        body: "We safeguard protected health information with access controls, audit trails, and BAAs.",
         logo: "/security/badges/HIPAA.png",
         alt: "HIPAA",
       },

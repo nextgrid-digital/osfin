@@ -35,11 +35,13 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
   const strong = dark ? "text-white" : "text-[#5D524B]";
   const rule = dark ? "border-white/15" : "border-black/10";
   const hover = dark ? "hover:text-white" : "hover:text-[#5D524B]";
+  const mono =
+    "font-[family-name:var(--font-mono)] font-medium tracking-[-0.02em] uppercase";
 
   return (
     <footer
       className={`site-footer not-typeset px-0 pt-12 pb-20 text-[13px] md:pt-16 md:pb-24 ${
-        dark ? "bg-black text-white/55" : "bg-background text-[#5D524B]/60"
+        dark ? "bg-[#2A2421] text-white/55" : "bg-background text-[#5D524B]/60"
       }`}
       data-not-typeset
     >
@@ -55,7 +57,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
               href={href}
               target="_blank"
               text={name}
-              className={`rounded-none border px-3 py-1.5 text-[12px] ${
+              className={`rounded-none border px-3 py-1.5 text-[12px] ${mono} ${
                 dark
                   ? "border-white/20 text-white/70 hover:bg-white/10 hover:text-white"
                   : "border-black/15 text-[#5D524B]/70 hover:bg-black/5 hover:text-[#5D524B]"
@@ -70,7 +72,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
             <ul className="space-y-2.5">
               {SOLUTIONS.map(({ id, label, href }) => (
                 <li key={id}>
-                  <TextReveal as={Link} href={href} text={label} className={`${muted} ${hover}`} />
+                  <TextReveal as={Link} href={href} text={label} className={`${mono} ${muted} ${hover}`} />
                 </li>
               ))}
             </ul>
@@ -84,7 +86,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
                     as={Link}
                     href={`/products/${product.slug}`}
                     text={product.name}
-                    className={`${muted} ${hover}`}
+                    className={`${mono} ${muted} ${hover}`}
                   />
                 </li>
               ))}
@@ -95,7 +97,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
             <ul className="space-y-2.5">
               {COMPANY_LINKS.map(({ label, href }) => (
                 <li key={label}>
-                  <TextReveal as={Link} href={href} text={label} className={`${muted} ${hover}`} />
+                  <TextReveal as={Link} href={href} text={label} className={`${mono} ${muted} ${hover}`} />
                 </li>
               ))}
             </ul>
@@ -105,7 +107,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
             <ul className="space-y-2.5">
               {LEGAL_LINKS.map(({ label, href }) => (
                 <li key={label}>
-                  <TextReveal as={Link} href={href} text={label} className={`${muted} ${hover}`} />
+                  <TextReveal as={Link} href={href} text={label} className={`${mono} ${muted} ${hover}`} />
                 </li>
               ))}
             </ul>
@@ -119,7 +121,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
                   href="https://www.linkedin.com/company/osfin-ai"
                   target="_blank"
                   text="LinkedIn"
-                  className={`${muted} ${hover}`}
+                  className={`${mono} ${muted} ${hover}`}
                 />
               </li>
             </ul>
