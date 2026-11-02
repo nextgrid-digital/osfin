@@ -31,7 +31,7 @@ export default function IndustryHeroCarousel({ currentId }: { currentId: string 
         {INDUSTRIES.map((item) => (
           <div
             key={item.id}
-            className="flex aspect-square items-center justify-center overflow-hidden border border-black/10 bg-[#F2E6C7]"
+            className="flex aspect-square items-center justify-center overflow-hidden border border-black/10"
           >
             {industryArt[item.id] ? (
               // eslint-disable-next-line @next/next/no-img-element
