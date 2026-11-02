@@ -31,20 +31,20 @@ export const ABOUT = {
   proof: [
     {
       label: "Investors",
-      note: "Seed in 2022. Peak XV partnered in 2024.",
+      note: "Seed in 2022. Peak XV led Series A.",
       items: [
-        { name: "Peak XV Partners", short: "Peak XV", logo: "/about/logos/peak-xv.png?v=4" },
-        { name: "PointOne Capital", short: "PointOne", logo: "/about/logos/pointone.png?v=4" },
+        { name: "Peak XV Partners", short: "Peak XV", logo: "/about/logos/peak-xv.png?v=8" },
         { name: "Info Edge Ventures", short: "Info Edge", logo: "/about/logos/info-edge.png?v=4" },
-        { name: "QED Innovation Labs", short: "QED", logo: "/about/logos/qed.png?v=4" },
+        { name: "PointOne Capital", short: "PointOne", logo: "/about/logos/pointone.png?v=8" },
+        { name: "Mitcon Credentia", short: "Mitcon Credentia", logo: "/about/logos/mitcon-credentia.png?v=1" },
+        { name: "QED Innovation Labs", short: "QED", logo: "/about/logos/qed.png?v=8" },
       ],
     },
     {
       label: "Partners",
       items: [
-        { name: "Fiserv", short: "Fiserv", logo: "/about/logos/fiserv.png?v=4" },
-        { name: "Fiserv AgentOS", short: "agentOS", logo: "/about/logos/agentos.png?v=4" },
-        { name: "McKinsey", short: "McKinsey", logo: "/about/logos/mckinsey.png?v=4" },
+        { name: "Fiserv", short: "Fiserv", logo: "/about/logos/fiserv.png?v=8" },
+        { name: "McKinsey", short: "McKinsey", logo: "/about/logos/mckinsey.png?v=8" },
         { name: "KPMG", short: "KPMG", logo: "/about/logos/kpmg.png?v=4" },
       ],
     },
@@ -52,13 +52,13 @@ export const ABOUT = {
       label: "Team",
       items: [
         { name: "BCG", short: "BCG", logo: "/about/logos/bcg.png?v=4" },
-        { name: "Bain", short: "Bain", logo: "/about/logos/bain.png?v=4" },
+        { name: "Bain", short: "Bain", logo: "/about/logos/bain.png?v=8" },
         { name: "Deloitte", short: "Deloitte", logo: "/about/logos/deloitte.png?v=4" },
         { name: "University of California, Berkeley", short: "Berkeley", logo: "/about/logos/berkeley.png?v=4" },
         { name: "The Wharton School of the University of Pennsylvania", short: "Wharton", logo: "/about/logos/wharton.png?v=4" },
-        { name: "University of North Carolina at Chapel Hill", short: "UNC", logo: "/about/logos/unc.png?v=4" },
-        { name: "The University of Waterloo", short: "Waterloo", logo: "/about/logos/waterloo.png?v=4" },
-        { name: "Indian Institutes of Technology", short: "IIT", logo: "/about/logos/iit.png?v=4" },
+        { name: "University of North Carolina at Chapel Hill", short: "UNC", logo: "/about/logos/unc.png?v=8" },
+        { name: "The University of Waterloo", short: "Waterloo", logo: "/about/logos/waterloo.png?v=8" },
+        { name: "Indian Institute of Technology Kanpur", short: "IIT Kanpur", logo: "/about/logos/iit.png?v=7" },
       ],
     },
     {
@@ -71,33 +71,29 @@ export const ABOUT = {
           logo: "/about/logos/aicpa.png?v=4",
         },
         { name: "ISO 27001:2022", short: "ISO 27001", logo: "/about/logos/iso.png?v=4" },
-        { name: "GDPR", short: "GDPR", logo: "/about/logos/gdpr.png?v=4" },
-        { name: "CCPA", short: "CCPA", logo: "/about/logos/california.png?v=4" },
-        { name: "HIPAA", short: "HIPAA", logo: "/about/logos/hhs.png?v=4" },
+        { name: "GDPR", short: "GDPR", logo: "/about/logos/gdpr.png?v=10" },
+        { name: "CCPA", short: "CCPA", logo: "/about/logos/california.png?v=11" },
+        { name: "HIPAA", short: "HIPAA", logo: "/about/logos/hhs.png?v=10" },
       ],
     },
   ],
   places: {
     label: "Where the work sits",
     title: "The team sits where the money moves, and shows up where the industry does.",
-    // Landmark photos, Wikimedia Commons:
-    // Golden Gate Bridge — Brocken Inaglory, CC BY-SA 3.0
-    // Vidhana Soudha — Moheen Reeyad, CC BY-SA 4.0
-    // Burj Khalifa — Laika ac, CC BY-SA 2.0
     cities: [
       {
         name: "San Francisco",
-        image: "/about/san-francisco.jpg",
+        image: "/about/san-francisco.jpg?v=2",
         imageAlt: "Golden Gate Bridge, San Francisco",
       },
       {
         name: "Dubai",
-        image: "/about/dubai.jpg",
+        image: "/about/dubai.jpg?v=2",
         imageAlt: "Burj Khalifa, Dubai",
       },
       {
         name: "Bengaluru",
-        image: "/about/bengaluru.jpg",
+        image: "/about/bengaluru.jpg?v=2",
         imageAlt: "Vidhana Soudha, Bengaluru",
       },
     ],

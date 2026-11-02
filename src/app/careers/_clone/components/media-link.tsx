@@ -5,14 +5,14 @@ export type MediaLinkData = {
   href: string;
   label: string;
   label2: string;
-  location: string;
+  location?: string;
   description?: string;
 };
 /** A linked media tile. */
 export default function MediaLink({ d, meta, styles }: { d: MediaLinkData; meta: DittoNodeMetaMap; styles: MediaLinkStyles }) {
   return (
-    <a className={cn("border-b border-solid flex relative mx-6 p-5 items-start gap-4 text-left cursor-pointer max-lg:my-1.5 max-lg:mx-0 max-lg:px-0 hover:bg-clr-15 focus:bg-clr-1 group", styles.className)} data-component="link" href={d.href}>
-      <span className="block mt-1 text-muted-foreground [font-family:'Geist_Mono',_'Geist_Mono_Fallback'] text-xs leading-4">
+    <a className={cn("border-b border-solid flex relative mx-6 p-5 items-start gap-4 text-left cursor-pointer max-lg:my-1.5 max-lg:mx-0 max-lg:px-0 hover:bg-clr-15 focus:bg-clr-1 group", styles.className)} data-component="link" href={d.href} target={d.href.startsWith("http") ? "_blank" : undefined} rel={d.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+      <span className="block mt-1 text-muted-foreground [font-family:'Geist_Mono',_'Geist_Mono_Fallback'] text-xs leading-4 uppercase">
         {d.label}
       </span>
       <span className="flex flex-col flex-1 gap-1">
@@ -20,9 +20,6 @@ export default function MediaLink({ d, meta, styles }: { d: MediaLinkData; meta:
           {d.label2}
         </span>
         <span className="flex flex-wrap gap-x-3 text-muted [font-family:'Geist_Mono',_'Geist_Mono_Fallback'] text-xs leading-4 tracking-[0.3px] uppercase">
-          <span className="block">
-            {d.location}
-          </span>
           <span data-ditto-id={meta[6]?.anchor} className="block">
             Full-time
           </span>

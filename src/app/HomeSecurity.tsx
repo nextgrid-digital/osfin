@@ -52,6 +52,13 @@ const ITEMS = [
     body: "Osfin is DSS compliant, protecting payment data to PCI DSS in the cloud and PCI SSF for on-premise solutions.",
     icon: "pci" as const,
   },
+  {
+    title: "HIPAA Compliant",
+    titleLines: ["HIPAA", "Compliant"],
+    kicker: null,
+    body: "We safeguard protected health information under HIPAA, with access controls, audit trails, and BAAs for healthcare operations.",
+    icon: "hipaa" as const,
+  },
 ] as const;
 
 function CertIcon({
@@ -136,6 +143,22 @@ function CertIcon({
     );
   }
 
+  if (kind === "hipaa") {
+    return (
+      <svg
+        viewBox="0 0 64 64"
+        className={`size-14 ${mark}`}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        aria-hidden
+      >
+        <path d="M32 8 54 18v16c0 14-9 24-22 30C19 58 10 48 10 34V18Z" />
+        <path d="M32 22v20M22 32h20" />
+      </svg>
+    );
+  }
+
   if (kind === "iso") {
     return (
       <svg
@@ -201,7 +224,7 @@ export function SecurityCards({
   return (
     <div className={className}>
     <div
-      className={`grid grid-cols-1 border-r border-b md:grid-cols-2 lg:grid-cols-4 ${light ? "border-black/[0.06]" : "border-white/15"}`}
+      className={`grid grid-cols-1 border-r border-b md:grid-cols-2 lg:grid-cols-3 ${light ? "border-black/[0.06]" : "border-white/15"}`}
     >
       {ITEMS.map((item) => (
         <div

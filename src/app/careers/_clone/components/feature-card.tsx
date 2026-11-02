@@ -10,7 +10,7 @@ export type FeatureCardData = {
 export default function FeatureCard({ d, meta, styles }: { d: FeatureCardData; meta: DittoNodeMetaMap; styles: FeatureCardStyles }) {
   return (
     <div className={cn("h-[14.05rem] min-h-45 flex p-6 flex-col justify-between gap-10 bg-color-004 max-lg:p-5 2xl:h-[16.75rem]", styles.className)}>
-      <span className="w-8 h-8 flex justify-center items-center shrink-0 text-color-018 [font-family:'Geist_Mono',_'Geist_Mono_Fallback'] text-[0.625rem] leading-[0.9375rem] bg-surface-2">
+      <span className="w-8 h-8 flex justify-center items-center shrink-0 text-color-018 [font-family:'Geist_Mono',_'Geist_Mono_Fallback'] text-[0.625rem] leading-[0.9375rem] bg-surface-2 uppercase">
         {d.title}
       </span>
       <div className="flex flex-col gap-3">

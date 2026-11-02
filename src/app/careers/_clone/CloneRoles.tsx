@@ -1,49 +1,46 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import Icon2 from "./svgs/svg-icon2";
 import TextLink from "./components/text-link";
 import MediaLink from "./components/media-link";
 import { MediaLink_meta } from "./ditto-meta";
 import { TextLink_styles } from "./_styles";
 import { CAREERS } from "@/content/careers";
+import type { LinkedInJob } from "@/lib/linkedin-jobs";
+import { LINKEDIN_JOBS_URL } from "@/lib/linkedin-jobs";
 
-const ROLES = CAREERS.roles.groups.flatMap((group) =>
-  group.roles.map((role) => ({ ...role, department: group.department })),
-);
-
-const FILTERS = [
-  { label: "All", department: "All" as const },
-  ...CAREERS.roles.groups.map((group) => ({
-    label: group.department,
-    department: group.department,
-  })),
-];
-
-export default function CloneRoles() {
+export default function CloneRoles({ jobs }: { jobs: LinkedInJob[] }) {
   const [query, setQuery] = useState("");
   const [department, setDepartment] = useState("All");
 
+  const departments = useMemo(() => {
+    const order = ["Engineering", "Product", "Sales", "Operations", "People"];
+    const present = new Set(jobs.map((job) => job.department));
+    return order.filter((name) => present.has(name));
+  }, [jobs]);
+
+  const filters = useMemo(
+    () => [{ label: "All", department: "All" as const }, ...departments.map((name) => ({ label: name, department: name }))],
+    [departments],
+  );
+
   const counts = useMemo(() => {
-    const next: Record<string, number> = { All: ROLES.length };
-    for (const role of ROLES) {
-      next[role.department] = (next[role.department] ?? 0) + 1;
+    const next: Record<string, number> = { All: jobs.length };
+    for (const job of jobs) {
+      next[job.department] = (next[job.department] ?? 0) + 1;
     }
     return next;
-  }, []);
+  }, [jobs]);
 
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
-    return ROLES.filter((role) => {
-      if (department !== "All" && role.department !== department) return false;
+    return jobs.filter((job) => {
+      if (department !== "All" && job.department !== department) return false;
       if (!needle) return true;
-      return [role.title, role.location, role.brief, role.department]
-        .join(" ")
-        .toLowerCase()
-        .includes(needle);
+      return [job.title, job.department, job.description ?? ""].join(" ").toLowerCase().includes(needle);
     });
-  }, [department, query]);
+  }, [department, jobs, query]);
 
   return (
     <section className="block relative px-18 overflow-hidden bg-[var(--header-bg)] max-md:px-3" id="open-roles">
@@ -67,15 +64,16 @@ export default function CloneRoles() {
               <input className="w-full h-11.5 border border-solid border-color-005 inline-block py-3 pr-4 pl-11 overflow-clip text-color-001 text-sm leading-5 cursor-text focus:border-color-001" data-ditto-id="style-search-all-roles" data-component="input" aria-label="Search All roles" placeholder="Search all roles" type="text" value={query} onChange={(event) => setQuery(event.target.value)} />
             </div>
             <div className="border border-solid border-color-005 grid grid-cols-[220px_1fr] max-md:-mx-3 max-lg:border-[0] max-lg:border-initial max-lg:border-[initial] max-lg:grid-cols-1">
-              <div className="border-r border-solid border-r-color-005 flex relative p-6 flex-col max-lg:border-b max-lg:border-b-color-005 max-lg:border-r-[0] max-lg:border-initial max-lg:border-r-[initial] max-lg:p-0">
+              <div className="border-r border-solid border-r-color-005 relative max-lg:border-b max-lg:border-b-color-005 max-lg:border-r-[0] max-lg:border-initial max-lg:border-r-[initial]">
+                <div className="flex relative p-6 flex-col bg-[var(--header-bg)] max-lg:p-0 lg:sticky lg:top-16">
                 <div
                   className="block absolute left-0 min-w-0 bg-color-001 pointer-events-none h-14 w-0.5 transition-transform duration-200"
                   aria-hidden="true"
-                  style={{ transform: `translateY(${FILTERS.findIndex((filter) => filter.department === department) * 3.5}rem)` }}
+                  style={{ transform: `translateY(${filters.findIndex((filter) => filter.department === department) * 3.5}rem)` }}
                 />
-                {FILTERS.map((filter, i) => {
+                {filters.map((filter, i) => {
                   const selected = filter.department === department;
-                  const last = i === FILTERS.length - 1;
+                  const last = i === filters.length - 1;
                   return (
                     <TextLink
                       key={filter.department}
@@ -97,6 +95,7 @@ export default function CloneRoles() {
                     />
                   );
                 })}
+                </div>
               </div>
               <div className="flex p-6 flex-col overflow-hidden">
                 {filtered.length === 0 ? (
@@ -104,15 +103,14 @@ export default function CloneRoles() {
                     No roles match.
                   </p>
                 ) : (
-                  filtered.map((role, i) => (
+                  filtered.map((job, i) => (
                     <MediaLink
-                      key={role.id}
+                      key={job.id}
                       d={{
-                        href: "/#contact",
+                        href: job.href,
                         label: String(i + 1).padStart(2, "0"),
-                        label2: role.title,
-                        location: role.location,
-                        description: role.brief,
+                        label2: job.title,
+                        description: job.description,
                       }}
                       meta={MediaLink_meta[i] ?? {}}
                       styles={
@@ -131,9 +129,15 @@ export default function CloneRoles() {
               {CAREERS.close.title}
             </h3>
             <p className="w-full max-w-120 block text-color-007 text-sm leading-[1.3125rem]">
-              <Link className="inline text-color-001 leading-5 underline cursor-pointer hover:[text-decoration-color:var(--color-001)]" data-component="link" href="/#contact">
-                Get in touch
-              </Link>
+              <a
+                className="inline text-color-001 leading-5 underline cursor-pointer hover:[text-decoration-color:var(--color-001)]"
+                data-component="link"
+                href={LINKEDIN_JOBS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                See all roles on LinkedIn
+              </a>
             </p>
           </div>
         </div>

@@ -1,14 +1,40 @@
 import { TextReveal } from "@/components/ui/cascade-text";
 import Link from "next/link";
 import { SOLUTIONS } from "../content/industries";
+import { PRODUCTS } from "../content/products";
 import SiteContainer from "./SiteContainer";
 import SiteLogo from "./SiteLogo";
+
+const ASK_PROMPT = encodeURIComponent(
+  "What is Osfin and how does it automate financial operations and reconciliation?",
+);
+
+const ASK_LINKS: { name: string; href: string }[] = [
+  { name: "ChatGPT", href: `https://chatgpt.com/?q=${ASK_PROMPT}` },
+  { name: "Claude", href: `https://claude.ai/new?q=${ASK_PROMPT}` },
+  { name: "Perplexity", href: `https://www.perplexity.ai/search?q=${ASK_PROMPT}` },
+  { name: "Gemini", href: `https://www.google.com/search?udm=50&q=${ASK_PROMPT}` },
+  { name: "Grok", href: `https://grok.com/?q=${ASK_PROMPT}` },
+];
+
+const COMPANY_LINKS = [
+  { label: "About", href: "/about" },
+  { label: "Careers", href: "/careers" },
+  { label: "Security", href: "/security" },
+] as const;
+
+const LEGAL_LINKS = [
+  { label: "Terms of Service", href: "/legal/terms-of-service" },
+  { label: "Privacy Policy", href: "/legal/privacy-policy" },
+  { label: "Cookie Policy", href: "/legal/cookie-policy" },
+] as const;
 
 export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark" }) {
   const dark = tone === "dark";
   const muted = dark ? "text-white/55" : "text-[#5D524B]/60";
   const strong = dark ? "text-white" : "text-[#5D524B]";
   const rule = dark ? "border-white/15" : "border-black/10";
+  const hover = dark ? "hover:text-white" : "hover:text-[#5D524B]";
 
   return (
     <footer
@@ -22,11 +48,12 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
             <p className={`mr-2 w-full text-[12px] sm:mr-4 sm:w-auto sm:self-center ${dark ? "text-white/45" : "text-[#5D524B]/50"}`}>
             Ask about Osfin on
           </p>
-          {["ChatGPT", "Claude", "Perplexity", "Gemini", "Grok"].map((name) => (
+          {ASK_LINKS.map(({ name, href }) => (
             <TextReveal
               key={name}
-              as={Link}
-              href={`/#ask-${name.toLowerCase()}`}
+              as="a"
+              href={href}
+              target="_blank"
               text={name}
               className={`rounded-none border px-3 py-1.5 text-[12px] ${
                 dark
@@ -43,7 +70,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
             <ul className="space-y-2.5">
               {SOLUTIONS.map(({ id, label, href }) => (
                 <li key={id}>
-                  <TextReveal as={Link} href={href} text={label} className={`${muted} ${dark ? "hover:text-white" : "hover:text-[#5D524B]"}`} />
+                  <TextReveal as={Link} href={href} text={label} className={`${muted} ${hover}`} />
                 </li>
               ))}
             </ul>
@@ -51,9 +78,14 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
           <div>
             <p className={`mb-4 font-medium ${strong}`}>Product</p>
             <ul className="space-y-2.5">
-              {["Changelog", "Documentation", "Download"].map((l) => (
-                <li key={l}>
-                  <TextReveal as={Link} href="/#product" text={l} className={`${muted} ${dark ? "hover:text-white" : "hover:text-[#5D524B]"}`} />
+              {PRODUCTS.map((product) => (
+                <li key={product.slug}>
+                  <TextReveal
+                    as={Link}
+                    href={`/products/${product.slug}`}
+                    text={product.name}
+                    className={`${muted} ${hover}`}
+                  />
                 </li>
               ))}
             </ul>
@@ -61,22 +93,9 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
           <div>
             <p className={`mb-4 font-medium ${strong}`}>Company</p>
             <ul className="space-y-2.5">
-              {["About", "Careers", "Compliance", "Security"].map((l) => (
-                <li key={l}>
-                  <TextReveal
-                    as={Link}
-                    href={
-                      l === "About"
-                        ? "/about"
-                        : l === "Careers"
-                          ? "/careers"
-                          : l === "Security"
-                            ? "/security"
-                            : "/#company"
-                    }
-                    text={l}
-                    className={`${muted} ${dark ? "hover:text-white" : "hover:text-[#5D524B]"}`}
-                  />
+              {COMPANY_LINKS.map(({ label, href }) => (
+                <li key={label}>
+                  <TextReveal as={Link} href={href} text={label} className={`${muted} ${hover}`} />
                 </li>
               ))}
             </ul>
@@ -84,16 +103,9 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
           <div>
             <p className={`mb-4 font-medium ${strong}`}>Legal</p>
             <ul className="space-y-2.5">
-              {[
-                "Terms of Service",
-                "Support Policy",
-                "Privacy Policy",
-                "Cookie Policy",
-                "Service Level Agreement",
-                "Data Processing Agreement",
-              ].map((l) => (
-                <li key={l}>
-                  <TextReveal as={Link} href="/#legal" text={l} className={`${muted} ${dark ? "hover:text-white" : "hover:text-[#5D524B]"}`} />
+              {LEGAL_LINKS.map(({ label, href }) => (
+                <li key={label}>
+                  <TextReveal as={Link} href={href} text={label} className={`${muted} ${hover}`} />
                 </li>
               ))}
             </ul>
@@ -101,11 +113,15 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
           <div>
             <p className={`mb-4 font-medium ${strong}`}>Social</p>
             <ul className="space-y-2.5">
-              {["X", "LinkedIn", "Discord"].map((l) => (
-                <li key={l}>
-                  <TextReveal as={Link} href="/#social" text={l} className={`${muted} ${dark ? "hover:text-white" : "hover:text-[#5D524B]"}`} />
-                </li>
-              ))}
+              <li>
+                <TextReveal
+                  as="a"
+                  href="https://www.linkedin.com/company/osfin-ai"
+                  target="_blank"
+                  text="LinkedIn"
+                  className={`${muted} ${hover}`}
+                />
+              </li>
             </ul>
           </div>
         </div>

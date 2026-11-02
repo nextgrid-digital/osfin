@@ -100,6 +100,21 @@ export default function IndustryIcon({
     );
   }
 
+  if (id === "gaming") {
+    return (
+      <Mark className={className} strokeWidth={strokeWidth} preserveAspectRatio={preserveAspectRatio}>
+        <rect x="14" y="28" width="60" height="22" rx="8" />
+        <circle cx="28" cy="39" r="5" />
+        <path d="M28 36v6M25 39h6" />
+        <circle cx="56" cy="36" r="2" />
+        <circle cx="62" cy="39" r="2" />
+        <circle cx="56" cy="42" r="2" />
+        <circle cx="50" cy="39" r="2" />
+        <path d="M22 28c0-8 8-12 22-12s22 4 22 12" />
+      </Mark>
+    );
+  }
+
   if (id === "ecommerce") {
     return (
       <Mark className={className} strokeWidth={strokeWidth} preserveAspectRatio={preserveAspectRatio}>

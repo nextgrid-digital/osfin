@@ -454,4 +454,5 @@
 
 [data-clone="replay-careers"] [class*="Geist_Mono"] {
   font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  text-transform: uppercase;
 }

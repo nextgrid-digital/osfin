@@ -8,4 +8,5 @@ export const industryArt: Partial<Record<(typeof INDUSTRIES)[number]["id"], stri
   ecommerce: "/industries/ecommerce.png?v=2",
   travel: "/industries/travel.png?v=2",
   crypto: "/industries/crypto.png?v=2",
+  gaming: "/industries/gaming.png?v=1",
 };

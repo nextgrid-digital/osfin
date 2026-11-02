@@ -57,11 +57,6 @@ const COMPANY = [
     href: "/careers",
   },
   {
-    label: "Compliance",
-    description: "Operate to SOC, PCI, and regulated standards.",
-    href: "/#company",
-  },
-  {
     label: "Security",
     description: "Protect payment data with end-to-end controls.",
     href: "/security",

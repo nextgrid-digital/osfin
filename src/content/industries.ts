@@ -276,6 +276,45 @@ export const INDUSTRIES = [
       },
     ],
   },
+  {
+    id: "gaming",
+    label: "Gaming",
+    summary: "Player wallets, wagers, and payouts on one ledger.",
+    useCases: [
+      {
+        title: "Player Deposit & Withdrawal Reconciliation",
+        body: "Matches every player deposit and withdrawal across cards, ACH, wallets and PSPs to the player account and bank, flagging failed, duplicate and stuck transactions before players notice.",
+      },
+      {
+        title: "Player Wallet Balance Reconciliation",
+        body: "Rebuilds each player's wallet balance from deposits, wagers, wins, bonuses and withdrawals, and flags accounts where the platform and ledger disagree.",
+      },
+      {
+        title: "Player Funds Segregation Reconciliation",
+        body: "Ties total player liabilities to segregated and protected bank accounts daily, giving finance and compliance teams evidence regulators can review.",
+      },
+      {
+        title: "Wager & Settlement Reconciliation",
+        body: "Reconciles bets placed, settled, voided and resettled on the gaming platform to wallet movements and the GL, catching unsettled and mis-settled wagers.",
+      },
+      {
+        title: "Payment Processor & PSP Settlement Reconciliation",
+        body: "Breaks each PSP payout into its underlying transactions, fees, refunds and reserves, and ties it to the bank deposit.",
+      },
+      {
+        title: "App Store & Platform Payout Reconciliation",
+        body: "Reconciles Apple, Google, and console platform payouts to in-game purchase data, separating fees, refunds, taxes and FX from genuine breaks.",
+      },
+      {
+        title: "Chargebacks & Friendly Fraud",
+        body: "Links every chargeback to the player's deposit, gameplay and withdrawal history, tracking each case to resolution and flagging repeat offenders.",
+      },
+      {
+        title: "Financial Close & Certification",
+        body: "Reconciles and signs off player liability, clearing and revenue accounts with evidence attached, ready for auditors and gaming regulators.",
+      },
+    ],
+  },
 ] as const;
 
 export type Industry = (typeof INDUSTRIES)[number];

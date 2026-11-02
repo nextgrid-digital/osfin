@@ -17,7 +17,7 @@ export type Story = {
   meta?: StoryMeta[];
 };
 
-/** Homepage testimonials from osfin.ai — linked to case-study placeholder routes. */
+/** Homepage testimonials from osfin.ai — linked to matching industry pages. */
 export const STORIES: Story[] = [
   {
     slug: "pharmeasy",
@@ -28,7 +28,7 @@ export const STORIES: Story[] = [
     quote:
       "Real-time visibility of cashflows at an SKU level is achieved with Osfin's intuitive dashboards. We were able to not only manage customer transactions level but also complex recon of state-wise charges and taxes for our B2B business.",
     role: "Accounting Team",
-    href: "/customers/ecommerce-payment-reconciliation",
+    href: "/industries/ecommerce",
     meta: [
       { label: "Industry", value: "Healthcare retail" },
       { label: "Team", value: "Accounting" },
@@ -44,7 +44,7 @@ export const STORIES: Story[] = [
     quote:
       "Managing voluminous transaction data has become seamless using Osfin. We are able to achieve complete visibility on the cashflows across our Internal database, Payment Gateways and Banks. Moreover, Osfin also became our defacto auditor for PG charges and failure rates.",
     role: "Finance Team",
-    href: "/customers/gaming-finance-automation",
+    href: "/industries/gaming",
     meta: [
       { label: "Industry", value: "Gaming" },
       { label: "Team", value: "Finance" },
@@ -61,7 +61,7 @@ export const STORIES: Story[] = [
     quote:
       "Osfin is a life saviour. With its support, we've been able to better administer payments to our partners. Timely settlement and distribution of payouts allow us to concentrate on expanding our primary business. For handling partner compensation or commissions, I can't speak highly enough about Osfin.",
     role: "Accounting Team",
-    href: "/customers/loan-reconciliation-automation",
+    href: "/industries/insurance",
     meta: [
       { label: "Industry", value: "Insurance" },
       { label: "Team", value: "Accounting" },
@@ -78,7 +78,7 @@ export const STORIES: Story[] = [
     quote:
       "Osfin offers efficient financial reconciliation, enhancing accuracy and productivity. Recommended to decrease dependency on internal team.",
     role: "Finance Team",
-    href: "/customers/ecommerce-inventory-reconciliation",
+    href: "/industries/fintech",
     meta: [
       { label: "Industry", value: "Fintech" },
       { label: "Team", value: "Finance" },

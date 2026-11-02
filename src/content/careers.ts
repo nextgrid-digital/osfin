@@ -94,65 +94,9 @@ export const CAREERS = {
   roles: {
     label: "Open roles",
     title: "Every role, in full, right here.",
-    groups: [
-      {
-        department: "Engineering",
-        roles: [
-          {
-            id: "fde-san-francisco",
-            title: "Forward-deployed engineer",
-            location: "San Francisco",
-            brief:
-              "Build the systems beside finance, operations, and risk. Map the payment context, deploy into the live operation, and stay until reconciliation and close change.",
-          },
-          {
-            id: "fde-bengaluru",
-            title: "Forward-deployed engineer",
-            location: "Bengaluru",
-            brief:
-              "Same work, from the team in Bengaluru. Connect banks, gateways, processors, and ledgers, and keep the audit intact while the records move.",
-          },
-          {
-            id: "platform-bengaluru",
-            title: "Platform engineer",
-            location: "Bengaluru",
-            brief:
-              "Build the shared system the forward-deployed work runs on: connectors, agent workflows, and the controls that keep payment data accountable.",
-          },
-        ],
-      },
-      {
-        department: "Product",
-        roles: [
-          {
-            id: "product-san-francisco",
-            title: "Product, payment operations",
-            location: "San Francisco",
-            brief:
-              "Decide what the operation needs next. Sit with the teams who run reconciliation, disputes, and close, and turn that into a system that owns the outcome.",
-          },
-        ],
-      },
-      {
-        department: "Operations",
-        roles: [
-          {
-            id: "ops-dubai",
-            title: "Operations, financial close",
-            location: "Dubai",
-            brief:
-              "Run the close with the institutions we serve. Coordinate checks, approvals, and sign-off, and bring engineering in where the process still breaks.",
-          },
-          {
-            id: "ops-bengaluru",
-            title: "Operations, reconciliation",
-            location: "Bengaluru",
-            brief:
-              "Work the breaks that do not fit a template. Keep each exception tied to its source, and turn it into a next action the books can stand on.",
-          },
-        ],
-      },
-    ],
+    body: "We post every role on LinkedIn. Apply there, or write to careers@osfin.ai if you want to talk first.",
+    cta: "Open roles on LinkedIn",
+    href: "https://www.linkedin.com/company/osfin-ai/jobs/",
   },
   close: {
     title: "If you want the outcome, not the tool.",

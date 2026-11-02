@@ -83,7 +83,7 @@ export default function HumanHome() {
                   className="not-typeset mt-10 flex flex-wrap items-center justify-start gap-3 md:mt-12"
                   data-not-typeset
                 >
-                  <BtnPrimary href="/#contact">Get in touch</BtnPrimary>
+                  <BtnPrimary href="mailto:socials@osfin.ai">Get in touch</BtnPrimary>
                 </div>
               </div>
               <div className="aspect-[4/3] w-full min-w-0 overflow-hidden lg:flex-1">

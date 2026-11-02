@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 };
 
 const essayLabelClassName =
-  "not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] leading-none font-medium tracking-[-0.02em] text-[#5D524B]/45";
-const labelClassName = `${essayLabelClassName} uppercase`;
+  "not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] leading-none font-medium tracking-[-0.02em] text-[#5D524B]/45 uppercase";
+const labelClassName = essayLabelClassName;
 
 export default function AboutPage() {
   return (
@@ -65,26 +65,18 @@ export default function AboutPage() {
                         <img
                           src={item.logo}
                           alt={item.name}
-                          className="h-8 w-auto max-w-[11rem] object-contain object-center md:h-9"
+                          className={
+                            item.short === "IIT Kanpur"
+                              ? "h-16 w-auto max-w-[11rem] object-contain object-center md:h-20 lg:h-24"
+                              : item.short === "Waterloo"
+                                ? "h-12 w-auto max-w-[11rem] object-contain object-center md:h-14"
+                                : item.short === "CCPA"
+                                  ? "h-16 w-auto max-w-[11rem] object-contain object-center md:h-20 lg:h-24"
+                                  : item.short === "HIPAA"
+                                    ? "h-12 w-auto max-w-[11rem] object-contain object-center md:h-14"
+                                    : "h-8 w-auto max-w-[11rem] object-contain object-center md:h-9"
+                          }
                         />
-                      </div>
-                      <div className="flex items-center justify-between gap-3 px-4 pb-3.5">
-                        {Array.isArray(item.short) ? (
-                          <p className="!m-0 flex min-w-0 items-center gap-2.5 font-sans text-[13px] font-medium tracking-[-0.02em]">
-                            {item.short.map((line) => (
-                              <span key={line} className="whitespace-nowrap">
-                                {line}
-                              </span>
-                            ))}
-                          </p>
-                        ) : (
-                          <p className="!m-0 min-w-0 truncate font-sans text-[13px] font-medium tracking-[-0.02em]">
-                            {item.short}
-                          </p>
-                        )}
-                        <span className="shrink-0 rounded-full border border-black/10 bg-black/[0.03] px-2 py-0.5 font-[family-name:var(--font-mono)] text-[10px] tracking-[-0.02em] text-[#5D524B]/55">
-                          {row.label}
-                        </span>
                       </div>
                     </article>
                   ))}
@@ -119,7 +111,7 @@ export default function AboutPage() {
                     <img
                       src={city.image}
                       alt={city.imageAlt}
-                      className="size-full object-cover grayscale"
+                      className="size-full object-cover"
                     />
                   </div>
                   <h3 className="!mb-0 !mt-8 !text-[20px] !font-normal !leading-[1.33] !tracking-[-0.012em] text-[#5D524B] normal-case">

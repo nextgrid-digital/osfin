@@ -14,7 +14,7 @@ export default function MediaTile2({ d, meta, styles }: { d: MediaTile2Data; met
     <div className={cn("h-60 min-h-60 flex p-6 flex-col justify-between bg-color-012 max-md:h-55 max-md:min-h-55 max-md:p-5", styles.className)}>
       <div className="flex justify-between items-center">
         <img className="w-6 h-6 block max-w-full overflow-clip aspect-[auto_24/24] align-middle text-clr-1 brightness-0 opacity-50" data-component="image" alt="" height="24" src={d.imgSrc} srcSet={d.srcSet} width="24" />
-        <p className="block text-color-014 [font-family:'Geist_Mono',_'Geist_Mono_Fallback'] text-xs leading-4">
+        <p className="block text-color-014 [font-family:'Geist_Mono',_'Geist_Mono_Fallback'] text-xs leading-4 uppercase">
           {d.description}
         </p>
       </div>

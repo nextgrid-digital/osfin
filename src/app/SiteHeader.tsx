@@ -2,14 +2,6 @@ import SiteContainer from "./SiteContainer";
 import SiteLogo from "./SiteLogo";
 import SiteNav from "./SiteNav";
 
-export const SITE_NAV = [
-  { label: "Product", href: "/#product" },
-  { label: "Industries", href: "/#roles" },
-  { label: "Blog", href: "/blog" },
-  { label: "Company", href: "/#company" },
-  { label: "Contact", href: "mailto:socials@osfin.ai" },
-];
-
 export default function SiteHeader() {
   return (
     <header className="site-header not-typeset fixed inset-x-0 top-0 z-50 h-14 md:h-16" data-not-typeset>
