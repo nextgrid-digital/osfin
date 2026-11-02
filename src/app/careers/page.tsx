@@ -8,7 +8,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "Careers — Osfin",
   description:
-    "Forward-deployed engineers and operators sit with finance, operations, and risk until reconciliation, disputes, controls, and close actually change.",
+    "Osfin works with some of the world’s most forward thinking institutions to embed AI in their finance operations.",
 };
 
 export default async function CareersPage() {
@@ -25,7 +25,7 @@ export default async function CareersPage() {
       >
         <ClonePage jobs={jobs} />
       </div>
-      <SiteClose reveal tone="dark" />
+      <SiteClose />
     </div>
   );
 }

@@ -20,42 +20,54 @@ function PrincipleIcon({
   kind: (typeof SECURITY.principles)[number]["icon"];
 }) {
   const common = {
-    viewBox: "0 0 64 64",
-    className: "size-14 text-[#5D524B]/70",
+    viewBox: "0 0 48 48",
+    className: "size-10 text-[#5D524B]/70",
     fill: "none" as const,
     stroke: "currentColor",
     strokeWidth: 1.25,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
     "aria-hidden": true,
   };
+
   if (kind === "lock") {
     return (
       <svg {...common}>
-        <rect x="16" y="28" width="32" height="24" rx="3" />
-        <path d="M24 28V20a8 8 0 0 1 16 0v8" />
+        <rect x="12" y="22" width="24" height="18" rx="2.5" />
+        <path d="M18 22V16a6 6 0 0 1 12 0v6" />
+        <circle cx="24" cy="31" r="1.75" fill="currentColor" stroke="none" />
+        <path d="M24 33v3" />
       </svg>
     );
   }
+
   if (kind === "audit") {
     return (
       <svg {...common}>
-        <circle cx="32" cy="32" r="28" />
-        <path d="M32 18v14h12" strokeLinecap="round" />
+        <rect x="13" y="8" width="22" height="32" rx="2" />
+        <path d="M18 8.5h12v5H18z" />
+        <path d="M19 22h10M19 27h10M19 32h6" />
+        <path d="M19 17l2 2 4-4" />
       </svg>
     );
   }
+
   if (kind === "scan") {
     return (
       <svg {...common}>
-        <path d="M16 24V16h8M48 24V16h-8M16 40v8h8M48 40v8h-8" strokeLinecap="round" />
-        <circle cx="32" cy="32" r="8" />
+        <circle cx="24" cy="24" r="7" />
+        <circle cx="24" cy="24" r="13" />
+        <path d="M24 6v5M24 37v5M6 24h5M37 24h5" />
       </svg>
     );
   }
+
   return (
     <svg {...common}>
-      <circle cx="26" cy="28" r="8" />
-      <path d="M16 48c1.5-7 6-11 10-11s8.5 4 10 11" strokeLinecap="round" />
-      <path d="M42 24h12M48 18v12" strokeLinecap="round" />
+      <circle cx="20" cy="18" r="5.5" />
+      <path d="M11 34c1.2-6 4.8-9 9-9s7.8 3 9 9" />
+      <circle cx="34" cy="16" r="3.5" />
+      <path d="M29.5 28.5c.8-3.2 2.6-5 4.5-5 1.4 0 2.6.9 3.5 2.4" />
     </svg>
   );
 }
@@ -108,7 +120,7 @@ export default function SecurityPage() {
                       <h3 className="!mb-0 !mt-0 !text-[20px] !font-medium !leading-[1.33] !tracking-[-0.012em] normal-case text-[#5D524B]">
                         {item.title}
                       </h3>
-                      <p className="!mb-0 !mt-3 text-[15px] leading-6 text-[#5D524B]/60">
+                      <p className="!mb-0 !mt-3 line-clamp-3 text-[15px] leading-6 text-[#5D524B]/60">
                         {item.body}
                       </p>
                     </div>
@@ -140,7 +152,7 @@ export default function SecurityPage() {
                       <img
                         src={item.logo}
                         alt={item.alt}
-                        className="h-9 w-auto max-w-[9rem] object-contain object-left"
+                        className="h-16 w-auto max-h-16 object-contain object-left"
                       />
                     </div>
                     <div>

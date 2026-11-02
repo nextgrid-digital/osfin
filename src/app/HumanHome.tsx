@@ -25,7 +25,12 @@ function BtnPrimary({ href, children }: { href: string; children: string }) {
 
 /** Full-bleed 1px rule between homepage sections (Linear keyline). */
 function SectionRule() {
-  return <div aria-hidden className="h-px w-full bg-black/[0.06]" />;
+  return (
+    <div
+      aria-hidden
+      className="relative z-10 h-px w-full bg-black/[0.06]"
+    />
+  );
 }
 
 export default function HumanHome() {

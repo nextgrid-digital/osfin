@@ -2,8 +2,8 @@ import RevealFooter from "./RevealFooter";
 import SiteFooter from "./SiteFooter";
 
 export default function SiteClose({
-  tone = "light",
-  reveal = false,
+  tone = "dark",
+  reveal = true,
 }: {
   tone?: "light" | "dark";
   reveal?: boolean;

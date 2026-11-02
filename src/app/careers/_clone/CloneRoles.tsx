@@ -54,9 +54,9 @@ export default function CloneRoles({ jobs }: { jobs: LinkedInJob[] }) {
                 </p>
               </div>
             </div>
-            <h2 className="block text-color-001 [font-family:stkBureauSerif,_'stkBureauSerif_Fallback'] text-[2.75rem] leading-11 tracking-[-1.1px] max-md:text-4xl max-md:leading-9 max-md:tracking-[-1.44px]" data-component="heading">
-              {CAREERS.roles.title}
-            </h2>
+            <p className="block text-color-007 leading-[1.375rem] tracking-[-0.48px]">
+              {CAREERS.roles.body}
+            </p>
           </div>
           <div className="block w-full">
             <div className="block relative mb-6">

@@ -1,8 +1,8 @@
 export const CAREERS = {
   hero: {
     kicker: "Careers",
-    title: "Every payment leaves a trail.\nWe stay until it resolves.",
-    body: "Forward-deployed engineers and operators sit with finance, operations, and risk until reconciliation, disputes, controls, and close actually change.",
+    title: "Define how the\nAI-native enterprise is built",
+    body: "Osfin works with some of the world’s most forward thinking institutions to embed AI in their finance operations. Our forward deployed engineers and technologists build systems that transform critical workflows.",
     plate: [
       { label: "Process", value: "Reconcile, resolve, audit" },
       { label: "Record", value: "OSF-2026-001 // Version 1.0" },
@@ -92,9 +92,9 @@ export const CAREERS = {
     ],
   },
   roles: {
-    label: "Open roles",
-    title: "Every role, in full, right here.",
-    body: "We post every role on LinkedIn. Apply there, or write to careers@osfin.ai if you want to talk first.",
+    label: "Open Roles",
+    title: "Open Roles",
+    body: "The systems, processes and operating models that define the rest of our working lives are being reimagined today. Join Osfin.ai in driving this change at some of the largest organizations globally.",
     cta: "Open roles on LinkedIn",
     href: "https://www.linkedin.com/company/osfin-ai/jobs/",
   },

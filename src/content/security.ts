@@ -6,7 +6,7 @@ export const SECURITY = {
   principles: [
     {
       title: "256-bit encryption",
-      body: "Osfin uses 256-bit SSL encryption in transit so sensitive financial data stays protected between your systems and ours.",
+      body: "Osfin uses 256-bit SSL in transit so sensitive financial data stays protected between your systems.",
       icon: "lock" as const,
     },
     {
@@ -16,12 +16,12 @@ export const SECURITY = {
     },
     {
       title: "VAPT testing",
-      body: "Regular vulnerability assessment and penetration testing helps us identify and mitigate security gaps before they can be exploited.",
+      body: "Regular VAPT testing helps us identify and close security gaps before they can be exploited.",
       icon: "scan" as const,
     },
     {
       title: "Access you control",
-      body: "Role-based permissions and two-factor authentication keep agents and operators inside the policies you set.",
+      body: "Role-based access and two-factor authentication keep operators inside the policies you set.",
       icon: "key" as const,
     },
   ],
@@ -31,31 +31,31 @@ export const SECURITY = {
       {
         title: "SOC 1 Type II",
         body: "Independently audited controls over financial reporting, so your close and vendor reviews have evidence attached.",
-        logo: "/about/logos/aicpa.png?v=4",
+        logo: "/security/badges/AICPA_SOC.png",
         alt: "AICPA SOC",
       },
       {
         title: "SOC 2 Type II",
         body: "Security, availability, processing integrity, confidentiality, and privacy — audited against the SOC 2 trust criteria.",
-        logo: "/about/logos/aicpa.png?v=4",
+        logo: "/security/badges/AICPA_SOC.png",
         alt: "AICPA SOC",
       },
       {
         title: "ISO 27001:2022",
         body: "Certified by BSI to ISO/IEC 27001, with an information security management system that protects client data.",
-        logo: "/about/logos/iso.png?v=4",
+        logo: "/security/badges/ISO.png",
         alt: "ISO 27001",
       },
       {
         title: "GDPR",
         body: "With operations in Ireland, we operate under GDPR, the world's strictest standard for data privacy.",
-        logo: "/about/logos/gdpr.png?v=8",
+        logo: "/security/badges/GDPR.png",
         alt: "GDPR",
       },
       {
         title: "HIPAA",
         body: "We safeguard protected health information with access controls, audit trails, and BAAs for healthcare operations.",
-        logo: "/about/logos/hhs.png?v=5",
+        logo: "/security/badges/HIPAA.png",
         alt: "HIPAA",
       },
       {
