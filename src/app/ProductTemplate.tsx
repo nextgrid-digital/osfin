@@ -142,7 +142,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
                       </span>
                     ))}
                   </h3>
-                  <div className="!mt-0 [&>:first-child]:!mt-0">
+                  <div className="!mt-0 max-w-[65ch] [&>:first-child]:!mt-0">
                     {cap.lead ? <p className="text-[#5D524B]">{cap.lead}</p> : null}
                     <p className="text-[#5D524B]/60">{cap.body}</p>
                   </div>

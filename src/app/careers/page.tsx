@@ -17,7 +17,7 @@ export default function CareersPage() {
     >
       <div
         data-clone="replay-careers"
-        className="relative z-10 min-h-full flex flex-col text-foreground [font-family:Geist,_'Geist_Fallback'] text-base font-normal not-italic leading-6 tracking-[normal] bg-background"
+        className="relative z-10 min-h-full flex flex-col bg-background text-base font-normal not-italic leading-6 tracking-[normal] text-foreground font-[family-name:var(--font-inter)]"
       >
         <ClonePage />
       </div>

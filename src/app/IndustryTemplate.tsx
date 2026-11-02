@@ -50,7 +50,7 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
                   <h3 className="!mb-0 !mt-0 !text-[28px] !font-normal !leading-[1.2] !tracking-[-0.02em] text-[#5D524B]">
                     {item.title}
                   </h3>
-                  <p className="!mt-0 text-[#5D524B]/60">{item.body}</p>
+                  <p className="!mt-0 max-w-[65ch] text-[#5D524B]/60">{item.body}</p>
                 </div>
               ))}
             </div>
