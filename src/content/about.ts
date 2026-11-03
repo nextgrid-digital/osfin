@@ -30,17 +30,6 @@ export const ABOUT = {
   },
   proof: [
     {
-      label: "Investors",
-      note: "Seed in 2022. Peak XV led Series A.",
-      items: [
-        { name: "Peak XV Partners", short: "Peak XV", logo: "/about/logos/peak-xv.png?v=8" },
-        { name: "Info Edge Ventures", short: "Info Edge", logo: "/about/logos/info-edge.png?v=4" },
-        { name: "PointOne Capital", short: "PointOne", logo: "/about/logos/pointone.png?v=8" },
-        { name: "Mitcon Credentia", short: "Mitcon Credentia", logo: "/about/logos/mitcon-credentia.png?v=1" },
-        { name: "QED Innovation Labs", short: "QED", logo: "/about/logos/qed.png?v=8" },
-      ],
-    },
-    {
       label: "Partners",
       items: [
         { name: "Fiserv", short: "Fiserv", logo: "/about/logos/fiserv.png?v=8" },
@@ -49,9 +38,18 @@ export const ABOUT = {
       ],
     },
     {
+      label: "Investors",
+      items: [
+        { name: "Peak XV Partners", short: "Peak XV", logo: "/about/logos/peak-xv.png?v=8" },
+        { name: "Info Edge Ventures", short: "Info Edge", logo: "/about/logos/info-edge.png?v=4" },
+        { name: "PointOne Capital", short: "PointOne", logo: "/about/logos/pointone.png?v=8" },
+        { name: "Mitcon Credentia", short: "Mitcon Credentia", logo: "/about/logos/mitcon-credentia.png?v=1" },
+      ],
+    },
+    {
       label: "Team",
       items: [
-        { name: "BCG", short: "BCG", logo: "/about/logos/bcg.png?v=4" },
+        { name: "BCG", short: "BCG", logo: "/about/logos/bcg.png?v=5" },
         { name: "Bain", short: "Bain", logo: "/about/logos/bain.png?v=8" },
         { name: "Deloitte", short: "Deloitte", logo: "/about/logos/deloitte.png?v=4" },
         { name: "University of California, Berkeley", short: "Berkeley", logo: "/about/logos/berkeley.png?v=4" },
@@ -65,15 +63,12 @@ export const ABOUT = {
       label: "Standards",
       items: [
         { name: "PCI DSS", short: "PCI DSS", logo: "/about/logos/pci.png?v=4" },
-        {
-          name: "SOC 1 Type II & SOC 2 Type II",
-          short: ["SOC 1 Type II", "SOC 2 Type II"],
-          logo: "/about/logos/aicpa.png?v=4",
-        },
-        { name: "ISO 27001:2022", short: "ISO 27001", logo: "/about/logos/iso.png?v=4" },
-        { name: "GDPR", short: "GDPR", logo: "/about/logos/gdpr.png?v=10" },
+        { name: "SOC 1 Type II", short: "SOC 1", logo: "/about/logos/aicpa.png?v=5" },
+        { name: "SOC 2 Type II", short: "SOC 2", logo: "/about/logos/aicpa.png?v=5" },
+        { name: "ISO 27001:2022", short: "ISO 27001", logo: "/about/logos/iso.png?v=6" },
+        { name: "GDPR", short: "GDPR", logo: "/about/logos/gdpr.png?v=11" },
         { name: "CCPA", short: "CCPA", logo: "/about/logos/california.png?v=11" },
-        { name: "HIPAA", short: "HIPAA", logo: "/about/logos/hhs.png?v=10" },
+        { name: "HIPAA", short: "HIPAA", logo: "/about/logos/hhs.png?v=11" },
       ],
     },
   ],
