@@ -40,13 +40,13 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
 
   return (
     <footer
-      className={`site-footer not-typeset px-0 pt-12 pb-20 text-[13px] md:pt-16 md:pb-24 ${
+      className={`site-footer not-typeset px-0 pt-12 pb-16 text-[12px] md:pt-16 md:pb-24 md:text-[13px] ${
         dark ? "bg-[#2A2421] text-white/55" : "bg-background text-[#5D524B]/60"
       }`}
       data-not-typeset
     >
       <SiteContainer>
-        <div className="mb-16 flex flex-wrap gap-3">
+        <div className="mb-10 flex flex-wrap gap-2 md:mb-16 md:gap-3">
             <p className={`mr-2 w-full text-[12px] sm:mr-4 sm:w-auto sm:self-center ${dark ? "text-white/45" : "text-[#5D524B]/50"}`}>
             Ask about Osfin on
           </p>
@@ -66,8 +66,8 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
           ))}
         </div>
 
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-5 lg:gap-10">
-          <div>
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-5 lg:gap-10">
+          <div className="min-w-0">
             <p className={`mb-4 font-medium ${strong}`}>Osfin for</p>
             <ul className="space-y-2.5">
               {SOLUTIONS.map(({ id, label, href }) => (
@@ -77,7 +77,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
               ))}
             </ul>
           </div>
-          <div>
+          <div className="min-w-0">
             <p className={`mb-4 font-medium ${strong}`}>Product</p>
             <ul className="space-y-2.5">
               {PRODUCTS.map((product) => (
@@ -92,7 +92,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
               ))}
             </ul>
           </div>
-          <div>
+          <div className="min-w-0">
             <p className={`mb-4 font-medium ${strong}`}>Company</p>
             <ul className="space-y-2.5">
               {COMPANY_LINKS.map(({ label, href }) => (
@@ -102,7 +102,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
               ))}
             </ul>
           </div>
-          <div>
+          <div className="min-w-0">
             <p className={`mb-4 font-medium ${strong}`}>Legal</p>
             <ul className="space-y-2.5">
               {LEGAL_LINKS.map(({ label, href }) => (
@@ -112,7 +112,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
               ))}
             </ul>
           </div>
-          <div>
+          <div className="min-w-0">
             <p className={`mb-4 font-medium ${strong}`}>Social</p>
             <ul className="space-y-2.5">
               <li>
@@ -128,7 +128,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
           </div>
         </div>
 
-        <div className={`mt-20 flex flex-col gap-4 border-t pt-10 sm:flex-row sm:items-center sm:justify-between ${rule} ${strong}`}>
+        <div className={`mt-12 flex flex-col gap-4 border-t pt-8 md:mt-20 md:flex-row md:items-center md:justify-between md:pt-10 ${rule} ${strong}`}>
           <SiteLogo />
           <div className={`max-w-xl text-[12px] leading-5 ${dark ? "text-white/45" : "text-[#5D524B]/50"}`}>
             <p>Copyright © 2026 Osfin, Inc. All rights reserved.</p>

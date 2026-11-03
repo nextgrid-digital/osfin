@@ -15,6 +15,11 @@ export default function RevealFooter({ children }: { children: ReactNode }) {
 
     const update = () => {
       frame = 0;
+      if (window.innerWidth < 768) {
+        spacer.style.height = "0px";
+        footer.style.transform = "";
+        return;
+      }
       const height = footer.offsetHeight;
       spacer.style.height = `${height}px`;
       const overflow = Math.max(0, height - window.innerHeight);
@@ -47,8 +52,8 @@ export default function RevealFooter({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <div ref={spacerRef} aria-hidden />
-      <div ref={footerRef} className="fixed inset-x-0 bottom-0 z-0">
+      <div ref={spacerRef} aria-hidden className="hidden md:block" />
+      <div ref={footerRef} className="md:fixed md:inset-x-0 md:bottom-0 md:z-0">
         {children}
       </div>
     </>
