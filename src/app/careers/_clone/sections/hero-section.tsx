@@ -8,7 +8,7 @@ const recordParts = CAREERS.hero.plate[1].value.split(" // ");
 /** Hero section — the page's lead block. */
 export default function HeroSection() {
   return (
-    <section className="h-200 flex relative flex-col overflow-hidden bg-[var(--header-bg)] max-md:h-203 md:max-lg:h-256 2xl:h-270">
+    <section className="relative flex h-[calc(100vh-3.5rem)] flex-col overflow-hidden bg-[var(--header-bg)] md:h-[calc(100vh-4rem)]">
       <img className="w-full block absolute top-0 left-0 min-w-0 max-w-full overflow-clip object-cover aspect-[auto_2880/1280] align-middle text-clr-1 pointer-events-none h-full max-lg:hidden mix-blend-multiply" data-component="image" alt="" height="1280" src="/ditto-careers/assets/cloned/images/7a0e25a61472-ink.webp" width="2880" />
       <div className="border border-dashed border-color-010 flex relative max-w-[1440px] flex-col flex-1 min-h-0 mx-auto w-full">
         <div className="flex relative pt-40 pb-24 flex-col justify-center items-center flex-1 text-center max-lg:pt-27 max-lg:pb-16 max-lg:px-6">
