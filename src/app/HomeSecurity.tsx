@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import { GlyphMatrix } from "@/components/ui/glyph-matrix";
 import SiteContainer from "./SiteContainer";
 
 const LIST = [
@@ -330,11 +331,22 @@ export default function HomeSecurity() {
         </div>
 
         <div className="mt-6 grid grid-cols-1 gap-3 md:h-[min(50svh,32rem)] md:grid-cols-[1.1fr_1fr]">
-          <div className="flex min-h-[16rem] flex-col justify-between border border-black/[0.06] bg-background p-6 md:min-h-0 md:h-full md:p-8">
+          <div className="flex min-h-[16rem] flex-col justify-between gap-5 overflow-hidden border border-black/[0.06] bg-background p-6 md:min-h-0 md:h-full md:p-8">
             <p className={`${kickerClassName} text-[#5D524B]/45`} data-not-typeset>
               <span className="size-1.5 shrink-0 bg-current" aria-hidden />
               Policy bound
             </p>
+            <div className="relative min-h-40 w-full flex-1 overflow-hidden">
+              <GlyphMatrix
+                glyphs="01.+*/<>="
+                cellSize={14}
+                mutationRate={0.04}
+                interval={90}
+                fadeBottom={0.6}
+                color="#000000"
+                className="absolute inset-0 h-full w-full"
+              />
+            </div>
             <p className="not-typeset !m-0 max-w-[18em] font-[family-name:var(--font-season)] text-[clamp(1.5rem,2.4vw,32px)] leading-none font-normal tracking-[-0.022em] text-[#5D524B]" data-not-typeset>
               Osfin is built so finance teams can run agents without giving up control.
             </p>

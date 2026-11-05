@@ -15,7 +15,6 @@ type Testimonial = {
   company: string;
   quote: string;
   logo?: string;
-  href: string;
   stats: readonly Stat[];
 };
 
@@ -27,7 +26,6 @@ const TESTIMONIALS: Testimonial[] = [
     quote:
       "Real-time visibility of cashflows at an SKU level is achieved with Osfin's intuitive dashboards. We were able to not only manage customer transactions level but also complex recon of state-wise charges and taxes for our B2B business.",
     logo: "/customers/pharmeasy.svg",
-    href: "/customers/pharmeasy",
     stats: [
       { label: "Stockouts cut", value: "99%" },
       { label: "Auto-recon", value: "99.5%" },
@@ -41,7 +39,6 @@ const TESTIMONIALS: Testimonial[] = [
     quote:
       "Managing voluminous transaction data has become seamless using Osfin. We are able to achieve complete visibility on the cashflows across our Internal database, Payment Gateways and Banks. Moreover, Osfin also became our defacto auditor for PG charges and failure rates.",
     logo: "/customers/games-24x7.svg",
-    href: "/customers/games-24x7",
     stats: [
       { label: "Faster recon", value: "90%" },
       { label: "Daily transactions", value: "5M+" },
@@ -55,7 +52,6 @@ const TESTIMONIALS: Testimonial[] = [
     quote:
       "Osfin is a life saviour. With its support, we've been able to better administer payments to our partners. Timely settlement and distribution of payouts allow us to concentrate on expanding our primary business. For handling partner compensation or commissions, I can't speak highly enough about Osfin.",
     logo: "/customers/manipal-cigna-logo.png",
-    href: "/customers/manipal-cigna",
     stats: [
       { label: "Focus", value: "Payouts" },
       { label: "Settlements", value: "On time" },
@@ -69,7 +65,6 @@ const TESTIMONIALS: Testimonial[] = [
     quote:
       "Osfin offers efficient financial reconciliation, enhancing accuracy and productivity. Recommended to decrease dependency on internal team.",
     logo: "/customers/buku-warung.png",
-    href: "/customers/buku-warung",
     stats: [
       { label: "Focus", value: "Recon" },
       { label: "Result", value: "Less manual" },
@@ -82,7 +77,6 @@ const TESTIMONIALS: Testimonial[] = [
     company: "E-commerce retailer",
     quote:
       "Osfin's payment reconciliation solution has revolutionized our financial operations. We now have complete accuracy and visibility across all our payment channels.",
-    href: "/customers/e-commerce-payment-reconciliation",
     stats: [
       { label: "Process automated", value: "99%" },
       { label: "Accuracy", value: "100%" },
@@ -95,7 +89,6 @@ const TESTIMONIALS: Testimonial[] = [
     company: "Indian fintech",
     quote:
       "Osfin has revolutionized our reconciliation process. What used to take days is now completed in hours, with unprecedented accuracy. The platform's flexibility in handling various data sources has significantly improved our operational efficiency and financial visibility.",
-    href: "/customers/loan-reconciliation",
     stats: [
       { label: "Annual savings", value: "$200K" },
       { label: "Faster processing", value: "90%" },
@@ -108,7 +101,6 @@ const TESTIMONIALS: Testimonial[] = [
     company: "Indian bank",
     quote:
       "Osfin's platform has transformed our operations, meeting the demands of India's evolving digital payment landscape while enhancing customer service.",
-    href: "/customers/card-reconciliation",
     stats: [
       { label: "Annual savings", value: "$500K" },
       { label: "Faster recon", value: "97%" },
@@ -121,7 +113,6 @@ const TESTIMONIALS: Testimonial[] = [
     company: "ATM network",
     quote:
       "With Osfin, we've achieved a level of data control and process automation that we never thought possible. It's not just about reconciliation anymore — we're using the platform to drive strategic decisions across our entire ATM network.",
-    href: "/customers/atm-reconciliation",
     stats: [
       { label: "Annual savings", value: "$1.5M" },
       { label: "Faster processing", value: "95%" },
@@ -134,7 +125,6 @@ const TESTIMONIALS: Testimonial[] = [
     company: "Crypto exchange",
     quote:
       "Osfin's crypto reconciliation solution has significantly improved our operations. We've maintained 100% accuracy while greatly increasing our efficiency across crypto and fiat transactions.",
-    href: "/customers/crypto-reconciliation",
     stats: [
       { label: "Accuracy", value: "100%" },
       { label: "Process automated", value: "95%" },
@@ -231,14 +221,6 @@ export default function HomeCaseStudies() {
             <p className="!mb-0 !mt-8 max-w-[34rem] text-[22px] leading-[1.35] text-[#5D524B] md:text-[28px]">
               {active.quote}
             </p>
-            <TransitionLink
-              href={active.href}
-              className={linkClassName.replace("!m-0 ", "")}
-              data-not-typeset
-              style={{ display: "inline-flex", width: "fit-content", marginTop: "5rem" }}
-            >
-              Read full story
-            </TransitionLink>
 
             <div className="mt-auto flex flex-col gap-4 pt-12 sm:flex-row sm:items-center sm:justify-between">
               <p
