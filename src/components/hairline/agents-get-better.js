@@ -52,7 +52,7 @@ const DESK = { x: 104, y: -76, half: 17 };
 const cablePath = (s) => [[DESK.x - DESK.half, DESK.y + 8, 0], [s.x + 24, DESK.y + 8, 0], [s.x + 24, s.y - 18, 0], [s.x, s.y - 18, 5], [s.x, s.y - 18, PZ0]];
 const CW = 7, CT = 2.2;                    // card half-size, thickness
 // timing, in ms
-const SPAWN = 1000, SLIDE = 2400, ARC = 1050, DESK_HOLD = 950, TRAVEL = 1050, LOOK = 950, HOLD = 4000, LOOSEN = 1800, RESUME = 900;
+const SPAWN = 2000, SLIDE = 4800, ARC = 2100, DESK_HOLD = 1900, TRAVEL = 2100, LOOK = 1900, HOLD = 8000, LOOSEN = 3600, RESUME = 900;
 
 function spring(x) { return { x, v: 0, t: x }; }
 function stepSpring(s, dt) {               // k 100, c 18, m 1
