@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { AgentsGetBetter } from "@/components/hairline/AgentsGetBetter";
 import { DeployAgents } from "@/components/hairline/DeployAgents";
 import { DriverSeat } from "@/components/hairline/DriverSeat";
@@ -15,7 +15,7 @@ const seeWorkWash = {
   "--hairline-edge": "#8F8378",
   "--hairline-mid": "#B7AB9F",
   "--hairline-lo": "#DDD3C6",
-} as const;
+} as CSSProperties;
 
 const FEATURES = [
   {
