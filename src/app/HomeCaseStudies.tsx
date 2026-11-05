@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import SiteContainer from "./SiteContainer";
+import TransitionLink from "./TransitionLink";
 
 type Stat = {
   label: string;
@@ -13,84 +14,131 @@ type Testimonial = {
   designation: string;
   company: string;
   quote: string;
-  image: string;
+  logo?: string;
+  href: string;
   stats: readonly Stat[];
 };
 
 const TESTIMONIALS: Testimonial[] = [
   {
-    name: "Salmon",
-    designation: "Chief Financial Officer",
-    company: "Hale",
+    name: "Accounting Team",
+    designation: "Accounting",
+    company: "PharmEasy",
     quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    image: "/case-studies/salmon.jpg",
+      "Real-time visibility of cashflows at an SKU level is achieved with Osfin's intuitive dashboards. We were able to not only manage customer transactions level but also complex recon of state-wise charges and taxes for our B2B business.",
+    logo: "/customers/pharmeasy.svg",
+    href: "/customers/pharmeasy",
     stats: [
-      { label: "Days to close", value: "4.2" },
-      { label: "Hand journals", value: "17" },
-      { label: "Sign-off gap", value: "$8.4k" },
+      { label: "Stockouts cut", value: "99%" },
+      { label: "Auto-recon", value: "99.5%" },
+      { label: "Txns reconciled", value: "4M+" },
     ],
   },
   {
-    name: "Baku",
-    designation: "Head of Payments",
-    company: "Keel",
-    quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
-    image: "/case-studies/baku.jpg",
-    stats: [
-      { label: "Matched same day", value: "94.6%" },
-      { label: "Items still open", value: "286" },
-      { label: "Breaks over 5 days", value: "14" },
-    ],
-  },
-  {
-    name: "Fiserv",
-    designation: "Controller",
-    company: "Meridian",
+    name: "Finance Team",
+    designation: "Finance",
+    company: "Games 24*7",
     quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
-    image: "/case-studies/fiserv.jpg",
+      "Managing voluminous transaction data has become seamless using Osfin. We are able to achieve complete visibility on the cashflows across our Internal database, Payment Gateways and Banks. Moreover, Osfin also became our defacto auditor for PG charges and failure rates.",
+    logo: "/customers/games-24x7.svg",
+    href: "/customers/games-24x7",
     stats: [
-      { label: "Fee gap found", value: "$1.7M" },
-      { label: "Rate cards checked", value: "11" },
-      { label: "Off-contract lines", value: "2.4%" },
+      { label: "Faster recon", value: "90%" },
+      { label: "Daily transactions", value: "5M+" },
+      { label: "Auto-recon", value: "98%" },
     ],
   },
   {
-    name: "IDFC",
-    designation: "VP, Finance Operations",
-    company: "Harbor",
-    quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.",
-    image: "/case-studies/harbor.jpg",
-    stats: [
-      { label: "Hours on close", value: "64" },
-      { label: "Files built by hand", value: "9" },
-      { label: "Open handoffs", value: "6" },
-    ],
-  },
-  {
-    name: "Ooredoo",
-    designation: "Treasury Lead",
-    company: "Sable",
-    quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
-    image: "/case-studies/ooredoo.jpg",
-    stats: [
-      { label: "Recon finished", value: "6.5h" },
-      { label: "Accounts tied", value: "37" },
-      { label: "Nostro breaks", value: "4" },
-    ],
-  },
-  {
-    name: "FirstCry",
-    designation: "Head of Reconciliation",
-    company: "Northline",
+    name: "Accounting Team",
+    designation: "Accounting",
+    company: "Manipal Cigna",
     quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
-    image: "/case-studies/firstcry.jpg",
+      "Osfin is a life saviour. With its support, we've been able to better administer payments to our partners. Timely settlement and distribution of payouts allow us to concentrate on expanding our primary business. For handling partner compensation or commissions, I can't speak highly enough about Osfin.",
+    logo: "/customers/manipal-cigna-logo.png",
+    href: "/customers/manipal-cigna",
     stats: [
-      { label: "Exceptions open", value: "73" },
-      { label: "Older than 7 days", value: "8" },
-      { label: "Cleared unattended", value: "88.7%" },
+      { label: "Focus", value: "Payouts" },
+      { label: "Settlements", value: "On time" },
+      { label: "Team", value: "Accounting" },
+    ],
+  },
+  {
+    name: "Finance Team",
+    designation: "Finance",
+    company: "Buku Warung",
+    quote:
+      "Osfin offers efficient financial reconciliation, enhancing accuracy and productivity. Recommended to decrease dependency on internal team.",
+    logo: "/customers/buku-warung.png",
+    href: "/customers/buku-warung",
+    stats: [
+      { label: "Focus", value: "Recon" },
+      { label: "Result", value: "Less manual" },
+      { label: "Team", value: "Finance" },
+    ],
+  },
+  {
+    name: "Operations Manager",
+    designation: "Operations",
+    company: "E-commerce retailer",
+    quote:
+      "Osfin's payment reconciliation solution has revolutionized our financial operations. We now have complete accuracy and visibility across all our payment channels.",
+    href: "/customers/e-commerce-payment-reconciliation",
+    stats: [
+      { label: "Process automated", value: "99%" },
+      { label: "Accuracy", value: "100%" },
+      { label: "Less manual time", value: "85%" },
+    ],
+  },
+  {
+    name: "Head of Operations",
+    designation: "Operations",
+    company: "Indian fintech",
+    quote:
+      "Osfin has revolutionized our reconciliation process. What used to take days is now completed in hours, with unprecedented accuracy. The platform's flexibility in handling various data sources has significantly improved our operational efficiency and financial visibility.",
+    href: "/customers/loan-reconciliation",
+    stats: [
+      { label: "Annual savings", value: "$200K" },
+      { label: "Faster processing", value: "90%" },
+      { label: "Loans / month", value: "2M+" },
+    ],
+  },
+  {
+    name: "Operations Manager",
+    designation: "Operations",
+    company: "Indian bank",
+    quote:
+      "Osfin's platform has transformed our operations, meeting the demands of India's evolving digital payment landscape while enhancing customer service.",
+    href: "/customers/card-reconciliation",
+    stats: [
+      { label: "Annual savings", value: "$500K" },
+      { label: "Faster recon", value: "97%" },
+      { label: "Daily transactions", value: "10M+" },
+    ],
+  },
+  {
+    name: "Head of Operations",
+    designation: "Operations",
+    company: "ATM network",
+    quote:
+      "With Osfin, we've achieved a level of data control and process automation that we never thought possible. It's not just about reconciliation anymore — we're using the platform to drive strategic decisions across our entire ATM network.",
+    href: "/customers/atm-reconciliation",
+    stats: [
+      { label: "Annual savings", value: "$1.5M" },
+      { label: "Faster processing", value: "95%" },
+      { label: "ATMs automated", value: "1,500+" },
+    ],
+  },
+  {
+    name: "Head of Operations",
+    designation: "Operations",
+    company: "Crypto exchange",
+    quote:
+      "Osfin's crypto reconciliation solution has significantly improved our operations. We've maintained 100% accuracy while greatly increasing our efficiency across crypto and fiat transactions.",
+    href: "/customers/crypto-reconciliation",
+    stats: [
+      { label: "Accuracy", value: "100%" },
+      { label: "Process automated", value: "95%" },
+      { label: "Less manual time", value: "90%" },
     ],
   },
 ];
@@ -104,26 +152,6 @@ function Arrow({ direction }: { direction: "prev" | "next" }) {
     <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden>
       <path d={d} fill="none" stroke="currentColor" strokeWidth="1.25" />
     </svg>
-  );
-}
-
-function CornerMarks() {
-  const mark = "pointer-events-none absolute size-3 text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]";
-  return (
-    <>
-      <span className={`${mark} top-2 left-2`} aria-hidden>
-        +
-      </span>
-      <span className={`${mark} top-2 right-2`} aria-hidden>
-        +
-      </span>
-      <span className={`${mark} bottom-2 left-2`} aria-hidden>
-        +
-      </span>
-      <span className={`${mark} right-2 bottom-2`} aria-hidden>
-        +
-      </span>
-    </>
   );
 }
 
@@ -142,9 +170,14 @@ export default function HomeCaseStudies() {
             <br />
             already in production.
           </h2>
-          <p className={`${linkClassName} shrink-0`} data-not-typeset style={{ display: "inline-flex", width: "fit-content" }}>
+          <TransitionLink
+            href="/customers"
+            className={`${linkClassName} shrink-0 no-underline hover:no-underline`}
+            data-not-typeset
+            style={{ display: "inline-flex", width: "fit-content" }}
+          >
             See all customer stories
-          </p>
+          </TransitionLink>
         </div>
 
         <div className="relative mt-12 border-t border-black/15 md:mt-16">
@@ -157,14 +190,25 @@ export default function HomeCaseStudies() {
         </div>
 
         <div className="mt-10 grid grid-cols-1 items-start gap-8 md:mt-12 md:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] md:gap-14">
-          <div className="not-typeset relative aspect-square overflow-hidden" data-not-typeset>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={active.image} alt="" className="size-full object-cover object-[center_20%]" />
-            <CornerMarks />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/55 to-transparent px-4 pt-24 pb-4 text-white">
+          <div className="not-typeset relative aspect-square overflow-hidden border border-black/15 bg-[#F7F1E3]" data-not-typeset>
+            <div className="absolute inset-x-0 top-0 bottom-[9.5rem] flex items-center justify-center px-10">
+              {active.logo ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={active.logo}
+                  alt={active.company}
+                  className="max-h-[48%] max-w-[72%] object-contain"
+                />
+              ) : (
+                <p className="!m-0 max-w-[12rem] text-center font-[family-name:var(--font-season)] text-[32px] leading-[1.1] tracking-[-0.03em] text-[#5D524B]">
+                  {active.company}
+                </p>
+              )}
+            </div>
+            <div className="absolute inset-x-0 bottom-0 border-t border-black/15 bg-[#FEF9ED] px-4 py-3 text-[#5D524B]">
               <ul className="flex flex-col">
                 {active.stats.map((stat) => (
-                  <li key={stat.label} className="flex items-end justify-between gap-4 border-t border-white/30 py-2.5 first:border-t-0 first:pt-0">
+                  <li key={stat.label} className="flex items-end justify-between gap-4 border-t border-black/10 py-2.5 first:border-t-0 first:pt-0">
                     <p className="!mb-0 !mt-0 font-[family-name:var(--font-mono)] text-[11px] leading-[1.3] font-medium tracking-[-0.02em] uppercase">
                       {stat.label}
                     </p>
@@ -187,13 +231,14 @@ export default function HomeCaseStudies() {
             <p className="!mb-0 !mt-8 max-w-[34rem] text-[22px] leading-[1.35] text-[#5D524B] md:text-[28px]">
               {active.quote}
             </p>
-            <p
+            <TransitionLink
+              href={active.href}
               className={linkClassName.replace("!m-0 ", "")}
               data-not-typeset
               style={{ display: "inline-flex", width: "fit-content", marginTop: "5rem" }}
             >
               Read full story
-            </p>
+            </TransitionLink>
 
             <div className="mt-auto flex flex-col gap-4 pt-12 sm:flex-row sm:items-center sm:justify-between">
               <p

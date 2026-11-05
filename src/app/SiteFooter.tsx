@@ -21,6 +21,7 @@ const COMPANY_LINKS = [
   { label: "About", href: "/about" },
   { label: "Careers", href: "/careers" },
   { label: "Security", href: "/security" },
+  { label: "Customers", href: "/customers" },
 ] as const;
 
 const LEGAL_LINKS = [
@@ -41,7 +42,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
   return (
     <footer
       className={`site-footer not-typeset px-0 pt-12 pb-16 text-[12px] md:pt-16 md:pb-24 md:text-[13px] ${
-        dark ? "bg-[#2A2421] text-white/55" : "bg-background text-[#5D524B]/60"
+        dark ? "bg-[#141412] text-white/55" : "bg-background text-[#5D524B]/60"
       }`}
       data-not-typeset
     >
@@ -129,7 +130,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
         </div>
 
         <div className={`mt-12 flex flex-col gap-4 border-t pt-8 md:mt-20 md:flex-row md:items-center md:justify-between md:pt-10 ${rule} ${strong}`}>
-          <SiteLogo />
+          <SiteLogo wordmark markFill="currentColor" />
           <div className={`max-w-xl text-[12px] leading-5 ${dark ? "text-white/45" : "text-[#5D524B]/50"}`}>
             <p>Copyright © 2026 Osfin, Inc. All rights reserved.</p>
           </div>

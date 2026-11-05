@@ -123,7 +123,7 @@ export default function AboutPage() {
               {ABOUT.places.label}
             </p>
             <h2 className="!mt-5 max-w-[16em] md:!mt-6">{ABOUT.places.title}</h2>
-            <div className="mt-12 grid grid-cols-1 border-x border-b border-black/15 md:mt-16 md:grid-cols-3">
+            <div className="mt-12 grid grid-cols-1 border border-black/15 md:mt-16 md:grid-cols-3">
               {ABOUT.places.cities.map((city, index) => (
                 <figure
                   key={city.name}

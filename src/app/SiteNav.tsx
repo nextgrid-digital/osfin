@@ -61,6 +61,11 @@ const COMPANY = [
     description: "Protect payment data with end-to-end controls.",
     href: "/security",
   },
+  {
+    label: "Customers",
+    description: "Stories and case studies from teams in production.",
+    href: "/customers",
+  },
 ] as const;
 
 function MenuLabel({ children }: { children: ReactNode }) {

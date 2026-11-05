@@ -3,7 +3,7 @@
 import { useId } from "react";
 import TransitionLink from "./TransitionLink";
 
-function OsfinMark({ className }: { className?: string }) {
+function OsfinMark({ className, fill = "#3D6DF2" }: { className?: string; fill?: string }) {
   const rawId = useId().replace(/:/g, "");
   const clipOuter = `osfin-mark-${rawId}-outer`;
   const clipInner = `osfin-mark-${rawId}-inner`;
@@ -13,7 +13,7 @@ function OsfinMark({ className }: { className?: string }) {
       viewBox="0 0 571 571"
       className={className}
       aria-hidden
-      fill="#3D6DF2"
+      fill={fill}
     >
       <g clipPath={`url(#${clipOuter})`}>
         <g clipPath={`url(#${clipInner})`}>
@@ -34,14 +34,27 @@ function OsfinMark({ className }: { className?: string }) {
   );
 }
 
-export default function SiteLogo({ className = "text-[18px]" }: { className?: string }) {
+export default function SiteLogo({
+  className = "text-[18px]",
+  wordmark = false,
+  markFill,
+}: {
+  className?: string;
+  wordmark?: boolean;
+  markFill?: string;
+}) {
   return (
     <TransitionLink
       href="/"
       aria-label="Osfin"
-      className={`inline-flex items-center text-current ${className}`}
+      className={`inline-flex items-center gap-2 text-current ${className}`}
     >
-      <OsfinMark className="size-[18px] shrink-0" />
+      <OsfinMark className="size-[18px] shrink-0" fill={markFill} />
+      {wordmark ? (
+        <span className="font-[family-name:var(--font-inter)] text-[23.28px] leading-none font-medium tracking-[-0.02em] normal-case">
+          Osfin
+        </span>
+      ) : null}
     </TransitionLink>
   );
 }

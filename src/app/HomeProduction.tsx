@@ -1,9 +1,21 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { GlyphMatrix } from "@/components/ui/glyph-matrix";
-import ProductionHairline from "./ProductionHairlines";
+import { AgentsGetBetter } from "@/components/hairline/AgentsGetBetter";
+import { DeployAgents } from "@/components/hairline/DeployAgents";
+import { DriverSeat } from "@/components/hairline/DriverSeat";
+import { RedesignHowWorkGetsDone } from "@/components/hairline/RedesignHowWorkGetsDone";
+import { SeeWorkEndToEnd } from "@/components/hairline/SeeWorkEndToEnd";
 import SiteContainer from "./SiteContainer";
+
+/** Plate matches the card; strokes stay in the site ink so hover still reads. */
+const seeWorkWash = {
+  "--hairline-plate": "#F7F1E3",
+  "--hairline-hi": "#5D524B",
+  "--hairline-edge": "#8F8378",
+  "--hairline-mid": "#B7AB9F",
+  "--hairline-lo": "#DDD3C6",
+} as const;
 
 const FEATURES = [
   {
@@ -11,6 +23,7 @@ const FEATURES = [
     nav: "Map",
     title: ["See today’s work", "end to end."],
     body: "Our forward-deployed team and agents map your data, workflows, and internal policies. Together, we uncover opportunities to automate work, improve customer and employee experience, and reduce risk, giving leaders the evidence they need to drive change and free up resources.",
+    copy: "max-w-[34.5rem]",
     figure: "branches" as const,
   },
   {
@@ -18,6 +31,7 @@ const FEATURES = [
     nav: "Reimagine",
     title: ["Redesign how", "work gets done."],
     body: "We’re in the earliest innings of a fundamental shift in how work gets done. Osfin works alongside your teams to rethink how they operate, bringing lessons from across the industry and co-creating new ways of working.",
+    copy: "max-w-[30rem]",
     figure: "loupe" as const,
   },
   {
@@ -25,6 +39,7 @@ const FEATURES = [
     nav: "Transform",
     title: ["Deploy agents", "against your goals."],
     body: "Osfin deploys goal-oriented agents, purpose-built for finance, accounting, and payments operations, that get the job done. They stand up quickly, run your operational processes end to end, and bring your team in only when judgment is needed.",
+    copy: "max-w-[32rem]",
     figure: "cabinet" as const,
   },
   {
@@ -32,6 +47,7 @@ const FEATURES = [
     nav: "Learn",
     title: ["Agents that get", "better every day."],
     body: "Osfin’s agents learn from how your team resolves exceptions, edge cases, and escalations. Every decision makes them sharper, so they become a trusted coworker that knows how your team works.",
+    copy: "max-w-[27.5rem]",
     figure: "phosphor" as const,
   },
   {
@@ -39,6 +55,7 @@ const FEATURES = [
     nav: "Control",
     title: ["You stay in", "the driver’s seat."],
     body: "Built for financial services, Osfin’s platform keeps agents within your internal policies, routes decisions to people where oversight is required, and records a full audit trail of every action they take.",
+    copy: "max-w-[27rem]",
     figure: "vault" as const,
   },
 ] as const;
@@ -72,6 +89,65 @@ export default function HomeProduction() {
 
     nodes.forEach((n) => observer.observe(n));
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    let frame = 0;
+    const started = performance.now();
+    const boxes = new Map<string, { x0: number; y0: number; x1: number; y1: number }>();
+
+    const apply = (id: string, box: { x0: number; y0: number; x1: number; y1: number }) => {
+      const article = itemRefs.current[id];
+      const svg = article?.querySelector("svg");
+      const wrap = svg?.parentElement;
+      if (!svg || !wrap) return;
+      const pad = 0.12;
+      const bw = box.x1 - box.x0;
+      const bh = box.y1 - box.y0;
+      const x = box.x0 - bw * pad;
+      const y = box.y0 - bh * pad;
+      const w = bw * (1 + pad * 2);
+      const h = bh * (1 + pad * 2);
+      svg.setAttribute("viewBox", `${x} ${y} ${w} ${h}`);
+      svg.setAttribute("preserveAspectRatio", "xMidYMax meet");
+      wrap.style.aspectRatio = "auto";
+      wrap.style.width = "100%";
+      wrap.style.height = "100%";
+      svg.style.width = "100%";
+      svg.style.height = "100%";
+    };
+
+    const step = () => {
+      for (const feature of FEATURES) {
+        if (feature.id === "control") continue;
+        const svg = itemRefs.current[feature.id]?.querySelector("svg");
+        if (!svg) continue;
+        const b = svg.getBBox();
+        if (b.width < 1 || b.height < 1) continue;
+        const next = { x0: b.x, y0: b.y, x1: b.x + b.width, y1: b.y + b.height };
+        const prev = boxes.get(feature.id);
+        const box = prev
+          ? {
+              x0: Math.min(prev.x0, next.x0),
+              y0: Math.min(prev.y0, next.y0),
+              x1: Math.max(prev.x1, next.x1),
+              y1: Math.max(prev.y1, next.y1),
+            }
+          : next;
+        const grew =
+          !prev ||
+          box.x0 < prev.x0 - 0.5 ||
+          box.y0 < prev.y0 - 0.5 ||
+          box.x1 > prev.x1 + 0.5 ||
+          box.y1 > prev.y1 + 0.5;
+        boxes.set(feature.id, box);
+        if (grew) apply(feature.id, box);
+      }
+      if (performance.now() - started < 2500) frame = requestAnimationFrame(step);
+    };
+
+    frame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   return (
@@ -128,47 +204,39 @@ export default function HomeProduction() {
                 ref={(el) => {
                   itemRefs.current[feature.id] = el;
                 }}
-                className="grid min-h-[28rem] min-w-0 grid-cols-1 overflow-hidden bg-[#F7F1E3] md:min-h-[36rem] md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:min-h-[min(38rem,72svh)]"
+                className="grid h-[46rem] min-w-0 grid-cols-1 grid-rows-[auto_minmax(0,1fr)] overflow-hidden bg-[#F7F1E3] md:h-[min(38rem,72svh)] md:grid-cols-[minmax(0,39rem)_minmax(20rem,1fr)] md:grid-rows-1"
               >
                 <div className="flex flex-col justify-between gap-10 px-7 py-8 md:px-9 md:py-10">
                   <h3 className="!mb-0 !mt-0 !text-[28px] !font-normal !leading-[1.15] !tracking-[-0.02em] text-[#5D524B] normal-case md:!text-[32px]">
                     <span className="block">{feature.title[0]}</span>
                     <span className="block">{feature.title[1]}</span>
                   </h3>
-                  <p className="!mb-0 !mt-0 max-w-[34rem] text-[15px] leading-[1.5] text-[#5D524B] md:text-[16px]">
+                  <p className={`!mb-0 !mt-0 text-[15px] leading-[1.5] text-[#5D524B] md:text-[16px] ${feature.copy}`}>
                     {feature.body}
                   </p>
                 </div>
-                <div className="relative flex min-h-[16rem] overflow-hidden bg-[#F7F1E3] p-2 md:min-h-0 md:p-3">
-                  {feature.id !== "transform" ? (
-                    <>
-                      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                        <GlyphMatrix
-                          glyphs="01.+*/<>="
-                          cellSize={14}
-                          mutationRate={0.04}
-                          interval={90}
-                          fadeBottom={0}
-                          color="rgba(0, 0, 0, 0.16)"
-                          className="h-full w-full"
-                        />
-                      </div>
-                      <div
-                        aria-hidden
-                        className="pointer-events-none absolute inset-0 z-[1]"
-                        style={{
-                          background:
-                            "radial-gradient(ellipse 70% 62% at 50% 50%, rgba(247,241,227,0.97) 0%, rgba(247,241,227,0.78) 42%, rgba(247,241,227,0.28) 68%, transparent 86%)",
-                        }}
-                      />
-                    </>
-                  ) : null}
-                  <div className="relative z-10 h-full min-h-0 w-full flex-1 overflow-hidden">
-                    <ProductionHairline
-                      figure={feature.figure}
-                      label={`${feature.title[0]} ${feature.title[1]}`}
-                    />
-                  </div>
+                <div className="relative min-h-0 overflow-hidden bg-[#F7F1E3]">
+                  {feature.id === "map" ? (
+                    <div className="absolute inset-x-3 top-3 bottom-0 flex items-end justify-center md:inset-x-5 md:top-5" style={seeWorkWash}>
+                      <SeeWorkEndToEnd intensity={0.6} className="h-[88%] w-[88%]" />
+                    </div>
+                  ) : feature.id === "reimagine" ? (
+                    <div className="absolute inset-x-3 top-3 bottom-0 md:inset-x-5 md:top-5" style={seeWorkWash}>
+                      <RedesignHowWorkGetsDone intensity={0.6} className="h-full w-full" />
+                    </div>
+                  ) : feature.id === "transform" ? (
+                    <div className="absolute inset-x-3 top-3 bottom-0 md:inset-x-5 md:top-5" style={seeWorkWash}>
+                      <DeployAgents intensity={0.6} className="h-full w-full" />
+                    </div>
+                  ) : feature.id === "learn" ? (
+                    <div className="absolute inset-x-3 top-3 bottom-0 md:inset-x-5 md:top-5" style={seeWorkWash}>
+                      <AgentsGetBetter intensity={0.6} className="h-full w-full" />
+                    </div>
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center md:items-start md:justify-start md:pl-2 md:pt-6" style={seeWorkWash}>
+                      <DriverSeat intensity={0.6} className="w-full max-w-[520px] shrink-0 md:w-[118%] md:max-w-none" />
+                    </div>
+                  )}
                 </div>
               </article>
             ))}
