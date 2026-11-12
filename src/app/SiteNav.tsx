@@ -141,7 +141,7 @@ function MobileMenu({
                       <a
                         key={link.label}
                         href={link.href}
-                        className="flex items-center gap-3 !font-[family-name:var(--font-season)] !text-[22px] !leading-[1.2] !font-normal !normal-case !tracking-normal text-[#5D524B] no-underline"
+                        className="flex items-center gap-3 !font-[family-name:var(--font-stix)] !text-[22px] !leading-[1.2] !font-normal !normal-case !tracking-normal text-[#5D524B] no-underline"
                         onClick={onNavigate(link.href)}
                       >
                         {link.label}

@@ -15,7 +15,7 @@ export default function IndustryTemplate({ industry }: { industry: Industry }) {
         <SiteContainer className="pt-8 md:pt-10">
           <h1 className="mx-auto max-w-full text-center">
             <span className="block">One operating record</span>
-            <span className="block">for every industry.</span>
+            <span className="block">for every industry</span>
           </h1>
 
           <IndustryTabs currentId={industry.id} />

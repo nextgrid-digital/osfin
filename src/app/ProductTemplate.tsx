@@ -23,8 +23,8 @@ export default function ProductTemplate({ product }: { product: Product }) {
       <main className="pt-14 md:pt-16">
         <SiteContainer className="pt-8 md:pt-10">
           <h1 className="mx-auto max-w-full text-center">
-            <span className="block">Architecting the</span>
-            <span className="block">Transaction-Intelligent Enterprise</span>
+            <span className="block">Transaction Intelligence</span>
+            <span className="block">for the enterprise</span>
           </h1>
 
           <ProductTabs currentSlug={product.slug} />

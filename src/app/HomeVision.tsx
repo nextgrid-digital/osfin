@@ -89,7 +89,7 @@ export default function HomeVision() {
             <div
               ref={wordsRef}
               data-not-typeset
-              className="not-typeset mx-auto w-full max-w-[20em] text-left font-[family-name:var(--font-season)] text-[clamp(1.5rem,3.2vw,48px)] leading-[1.2] font-normal tracking-[-0.022em] text-[#5D524B]/15"
+              className="not-typeset mx-auto w-full max-w-[20em] text-left font-[family-name:var(--font-stix)] text-[clamp(1.5rem,3.2vw,48px)] leading-[1.2] font-normal tracking-[-0.022em] text-[#5D524B]/15"
             >
               <p ref={leadRef} className="!m-0">
                 <Words text={LEAD} />

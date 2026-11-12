@@ -65,7 +65,7 @@ export default function HomeStories() {
               Customer stories
             </p>
             <h2 className="!mb-0 !mt-0 text-[#5D524B]">
-              Grow with teams already in production.
+              Grow with teams already in production
             </h2>
           </div>
           <div className="flex items-center gap-2">

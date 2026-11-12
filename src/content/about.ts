@@ -3,7 +3,7 @@ export const ABOUT = {
     "The books were never the problem. Institutions have tried, and hit the same wall: spreadsheets, point tools, and a break list.",
   who: {
     label: "Who we are",
-    title: "An applied technology company that owns the outcome.",
+    title: "An applied technology company that owns the outcome",
     columns: [
       {
         index: "01",
@@ -74,7 +74,7 @@ export const ABOUT = {
   ],
   places: {
     label: "Where the work sits",
-    title: "The team sits where the money moves, and shows up where the industry does.",
+    title: "The team sits where the money moves, and shows up where the industry does",
     cities: [
       {
         name: "San Francisco",

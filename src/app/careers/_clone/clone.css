@@ -365,7 +365,7 @@
   --clr-16: #5d524b;
   --font-body: var(--font-inter), system-ui, sans-serif;
   --font-001: var(--font-ibm-plex-mono), ui-monospace, monospace;
-  --font-002: var(--font-season), Georgia, serif;
+  --font-002: var(--font-stix), "STIX Two Text", Georgia, serif;
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-inter), system-ui, sans-serif;
@@ -444,11 +444,11 @@
   }
 }
 
-/* Map cloned Replay fonts onto Osfin's Season Mix / Inter / IBM Plex Mono. */
+/* Map cloned Replay fonts onto STIX Two Text / Inter / IBM Plex Mono. */
 [data-clone="replay-careers"] :where(h1, h2, h3, h4, h5, h6),
 [data-clone="replay-careers"] [data-component="heading"],
 [data-clone="replay-careers"] [class*="stkBureauSerif"] {
-  font-family: var(--font-season), Georgia, serif;
+  font-family: var(--font-stix), "STIX Two Text", Georgia, serif;
   font-weight: 400;
 }
 

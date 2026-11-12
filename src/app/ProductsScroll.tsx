@@ -54,7 +54,7 @@ export default function ProductsScroll() {
       <div className="flex flex-col justify-center py-28 md:py-40">
         <SiteContainer>
           <SectionHeading
-            title="A connected operating system for reconciliation, disputes, compliance, risk, and financial close."
+            title="A connected operating system for reconciliation, disputes, compliance, risk, and financial close"
             cta={{ href: "#product", label: "Explore" }}
           />
         </SiteContainer>

@@ -158,7 +158,7 @@ export default function HomeCaseStudies() {
           <h2 id="case-studies-heading" className="!mb-0 !mt-0 max-w-none text-[#5D524B]">
             Outcomes from teams
             <br />
-            already in production.
+            already in production
           </h2>
           <TransitionLink
             href="/customers"
@@ -190,7 +190,7 @@ export default function HomeCaseStudies() {
                   className="max-h-[48%] max-w-[72%] object-contain"
                 />
               ) : (
-                <p className="!m-0 max-w-[12rem] text-center font-[family-name:var(--font-season)] text-[32px] leading-[1.1] tracking-[-0.03em] text-[#5D524B]">
+                <p className="!m-0 max-w-[12rem] text-center font-[family-name:var(--font-stix)] text-[32px] leading-[1.1] tracking-[-0.03em] text-[#5D524B]">
                   {active.company}
                 </p>
               )}

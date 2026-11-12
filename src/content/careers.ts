@@ -11,7 +11,7 @@ export const CAREERS = {
   },
   setup: {
     label: "How the work is set up",
-    title: "A clearer place to build.",
+    title: "A clearer place to build",
     cards: [
       {
         index: "01",
@@ -44,7 +44,7 @@ export const CAREERS = {
   },
   test: {
     label: "The practical test",
-    title: "The day is the operation.",
+    title: "The day is the operation",
     columns: [
       {
         title: "What you actually touch",
@@ -99,7 +99,7 @@ export const CAREERS = {
     href: "https://www.linkedin.com/company/osfin-ai/jobs/",
   },
   close: {
-    title: "If you want the outcome, not the tool.",
+    title: "If you want the outcome, not the tool",
     button: "See the roles",
   },
 } as const;

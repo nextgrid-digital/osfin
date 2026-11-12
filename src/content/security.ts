@@ -26,7 +26,7 @@ export const SECURITY = {
     },
   ],
   audit: {
-    heading: "Audit-ready, always.",
+    heading: "Audit-ready, always",
     items: [
       {
         title: "SOC 1 Type II",

@@ -88,7 +88,7 @@ export default function SecurityPage() {
           <SiteContainer className="relative z-10 pt-8 pb-16 md:pt-10 md:pb-24">
             <h1 className="mx-auto max-w-full text-center">
               <span className="block">Security and</span>
-              <span className="block">compliance.</span>
+              <span className="block">compliance</span>
             </h1>
           </SiteContainer>
         </section>

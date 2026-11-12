@@ -120,19 +120,19 @@ export const recordToReport: Post = {
         { type: "p", text: "Even with years of digital transformation, most finance teams are still fighting the same battles. The close takes too long. Data lives in silos. Controls get lost in the chaos. The real issue isn’t just systems or spreadsheets. It’s the friction, operational and cultural, that keeps finance reactive instead of real-time." },
       ],
       subsections: [
-      { heading: "1. Manual work still dominates.", blocks: [
+      { heading: "1. Manual work still dominates", blocks: [
         { type: "p", text: "The processes of most teams are rife with manual busywork. Tasks like reconciliation, data entry, and seeking approvals span across multiple email threads and spreadsheets, only multiplying the chaos. Battling this fragmentation costs 30-40% of the bandwidth and introduces new errors." },
       ] },
-      { heading: "2. Data remains fragmented.", blocks: [
+      { heading: "2. Data remains fragmented", blocks: [
         { type: "p", text: "Fragmented data across multiple ERP systems hinders the right judgment and decision-making, as it hides critical insights and the complete picture." },
       ] },
-      { heading: "3. Technology gaps persist.", blocks: [
+      { heading: "3. Technology gaps persist", blocks: [
         { type: "p", text: "ERPs manage transactions but not end-to-end orchestration. Point solutions automate fragments while leaving critical steps manual." },
       ] },
-      { heading: "4. Compliance lacks consistency.", blocks: [
+      { heading: "4. Compliance lacks consistency", blocks: [
         { type: "p", text: "Control ownership and audit readiness often sit outside daily workflows, creating last-minute pressure at quarter-end." },
       ] },
-      { heading: "5. Change resistance limits progress.", blocks: [
+      { heading: "5. Change resistance limits progress", blocks: [
         { type: "p", text: "Even with strong technology, adoption lags when teams lack training, confidence, or cultural alignment with automation." },
       ] },
     ],
@@ -242,13 +242,13 @@ export const recordToReport: Post = {
       { heading: "2. AI agents replace manual orchestration", blocks: [
         { type: "p", text: "Specialized agents handle reconciliations, journal entries, and anomaly detection autonomously. Finance professionals shift from executing tasks to directing intelligent systems." },
       ] },
-      { heading: "3. Continuous compliance becomes the norm.", blocks: [
+      { heading: "3. Continuous compliance becomes the norm", blocks: [
         { type: "p", text: "Every entry, approval, and variance check is logged automatically. Instead of racing to meet audit deadlines, organizations maintain audit readiness every single day." },
       ] },
-      { heading: "4. Decision-making moves to real time.", blocks: [
+      { heading: "4. Decision-making moves to real time", blocks: [
         { type: "p", text: "Leadership doesn’t usually wait for reports, they just act on live dashboards showing performance, cash flow, and risk exposure across entities." },
       ] },
-      { heading: "5. Finance transforms into a strategic command center.", blocks: [
+      { heading: "5. Finance transforms into a strategic command center", blocks: [
         { type: "p", text: "Continuous accounting unifies R2R, FP&A, and GRC into a single flow of truth. The CFO’s role expands from financial custodian to intelligence architect, empowering them to do what they are meant to do, guiding the business with data that never sleeps." },
       ] },
     ],

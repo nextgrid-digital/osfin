@@ -149,7 +149,7 @@ export default async function CustomerStoryPage({
             <span className="px-1.5">/</span>
             <span>{story.category}</span>
           </p>
-          <h1 className="mx-auto mt-3 mb-0 max-w-[900px] text-center font-[family-name:var(--font-season)] text-[clamp(1.75rem,4.2vw,48px)] font-normal leading-none tracking-[-0.022em] text-[#5D524B]">
+          <h1 className="mx-auto mt-3 mb-0 max-w-[900px] text-center font-[family-name:var(--font-stix)] text-[clamp(1.75rem,4.2vw,48px)] font-normal leading-none tracking-[-0.022em] text-[#5D524B]">
             {story.title}
           </h1>
           <div className="mt-12">
@@ -197,7 +197,7 @@ export default async function CustomerStoryPage({
         {related.length > 0 ? (
           <SiteContainer className="pb-24 md:pb-32">
             <div className="flex items-end justify-between gap-6 border-b border-black/15 pb-5">
-              <h2 className="!mb-0 !mt-0 font-[family-name:var(--font-season)] text-[clamp(1.5rem,3vw,32px)] font-normal tracking-[-0.022em] text-[#5D524B]">
+              <h2 className="!mb-0 !mt-0 font-[family-name:var(--font-stix)] text-[clamp(1.5rem,3vw,32px)] font-normal tracking-[-0.022em] text-[#5D524B]">
                 Recommended
               </h2>
               <TransitionLink

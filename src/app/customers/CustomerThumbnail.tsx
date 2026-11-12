@@ -26,7 +26,7 @@ export default function CustomerThumbnail({
           className="relative z-10 max-h-[42%] max-w-[68%] object-contain"
         />
       ) : (
-        <p className="relative z-10 !m-0 max-w-[12rem] px-6 text-center font-[family-name:var(--font-season)] text-[28px] leading-[1.1] tracking-[-0.03em] text-[#5D524B]">
+        <p className="relative z-10 !m-0 max-w-[12rem] px-6 text-center font-[family-name:var(--font-stix)] text-[28px] leading-[1.1] tracking-[-0.03em] text-[#5D524B]">
           {company || "Osfin"}
         </p>
       )}

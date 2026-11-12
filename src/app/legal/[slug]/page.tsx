@@ -76,7 +76,7 @@ export default async function LegalPage({
           <p className="m-0 text-center font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[#5D524B]/45 uppercase">
             Legal
           </p>
-          <h1 className="mx-auto mt-3 mb-0 max-w-[900px] text-center font-[family-name:var(--font-season)] text-[clamp(1.75rem,4.2vw,48px)] font-normal leading-none tracking-[-0.022em] text-[#5D524B]">
+          <h1 className="mx-auto mt-3 mb-0 max-w-[900px] text-center font-[family-name:var(--font-stix)] text-[clamp(1.75rem,4.2vw,48px)] font-normal leading-none tracking-[-0.022em] text-[#5D524B]">
             {doc.title}
           </h1>
           {doc.effectiveDate ? (

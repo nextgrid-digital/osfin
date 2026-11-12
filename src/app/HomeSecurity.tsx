@@ -319,7 +319,7 @@ export default function HomeSecurity() {
       <SiteContainer>
         <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-end sm:justify-between sm:gap-10">
           <h2 ref={leadRef} className="!mb-0 !mt-0 max-w-[40rem] text-left text-[#5D524B]">
-            Compliance and security guardrails built in.
+            Compliance and security guardrails built in
           </h2>
           <Link
             href="/security"
@@ -347,7 +347,7 @@ export default function HomeSecurity() {
                 className="absolute inset-0 h-full w-full"
               />
             </div>
-            <p className="not-typeset !m-0 max-w-[18em] font-[family-name:var(--font-season)] text-[clamp(1.5rem,2.4vw,32px)] leading-none font-normal tracking-[-0.022em] text-[#5D524B]" data-not-typeset>
+            <p className="not-typeset !m-0 max-w-[18em] font-[family-name:var(--font-stix)] text-[clamp(1.5rem,2.4vw,32px)] leading-none font-normal tracking-[-0.022em] text-[#5D524B]" data-not-typeset>
               Osfin is built so finance teams can run agents without giving up control.
             </p>
           </div>
@@ -365,7 +365,7 @@ export default function HomeSecurity() {
                 <span className="size-1.5 shrink-0 bg-current" aria-hidden />
                 PCI DSS & PCI SSF
               </p>
-              <h3 className="relative z-10 !mb-0 !mt-4 !font-[family-name:var(--font-season)] !text-[clamp(1.25rem,1.8vw,28px)] !font-normal !leading-none !tracking-[-0.022em] text-white">
+              <h3 className="relative z-10 !mb-0 !mt-4 !font-[family-name:var(--font-stix)] !text-[clamp(1.25rem,1.8vw,28px)] !font-normal !leading-none !tracking-[-0.022em] text-white">
                 Payment-grade encryption
               </h3>
             </div>
@@ -413,7 +413,7 @@ export default function HomeSecurity() {
                   strokeLinejoin="round"
                 />
               </svg>
-              <h3 className="relative z-10 !m-0 !font-[family-name:var(--font-season)] !text-[clamp(1.25rem,1.8vw,28px)] !font-normal !leading-none !tracking-[-0.022em] text-[#5D524B]">
+              <h3 className="relative z-10 !m-0 !font-[family-name:var(--font-stix)] !text-[clamp(1.25rem,1.8vw,28px)] !font-normal !leading-none !tracking-[-0.022em] text-[#5D524B]">
                 SOC 2 Type II and ISO 27001
               </h3>
             </div>

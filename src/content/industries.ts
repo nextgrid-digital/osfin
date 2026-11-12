@@ -2,171 +2,171 @@ export const INDUSTRIES = [
   {
     id: "banks",
     label: "Banks & Credit Unions",
-    summary: "Cores and ledgers on one settlement record.",
+    summary: "Your core and your ledgers, on one settlement record.",
     useCases: [
       {
         title: "ACH Reconciliation",
-        body: "Osfin ingests ACH files, Fed reports and core data automatically, matches every entry at transaction level, and routes returns and breaks to the right queue with full context.",
+        body: "ACH files, Fed reports and core data come into Osfin automatically. Each entry is matched at transaction level, and returns and breaks go to the right queue with context.",
       },
       {
         title: "Wire, RTP & FedNow Reconciliation",
-        body: "Osfin reconciles Fedwire, SWIFT, RTP and FedNow activity against the core and Fed account continuously, so exceptions are caught the same day.",
+        body: "Fedwire, SWIFT, RTP and FedNow activity is checked against the core and the Fed account continuously, so exceptions show up the same day.",
       },
       {
         title: "Card & ATM Network Settlement",
-        body: "Osfin matches network settlement reports to cardholder and ATM activity, explains every variance, and clears settlement accounts daily.",
+        body: "Settlement reports from the networks are matched to cardholder and ATM activity, and every variance gets an explanation. Settlement accounts are cleared daily.",
       },
       {
         title: "Fed Account & Correspondent Reconciliation",
-        body: "Osfin reconciles Fed and correspondent statements against each rail's activity, isolating which rail and transaction caused a difference.",
+        body: "Fed and correspondent statements are checked against what each rail did, so you can see which rail and which transaction caused a difference.",
       },
       {
         title: "GL Balancing & Account Reconciliation",
-        body: "Osfin's Automated GL Balancing ties GL accounts to subledgers and source systems daily, flags aging items, and keeps a complete audit trail.",
+        body: "Automated GL Balancing ties GL accounts to subledgers and source systems each day, points out aging items and keeps a full audit trail.",
       },
       {
         title: "Card Disputes & Chargebacks (Reg E)",
-        body: "Osfin links each dispute to its original transaction, provisional credit and network chargeback, and tracks every case against its regulatory deadline.",
+        body: "Each dispute is tied to its original transaction, the provisional credit and the network chargeback, and Osfin keeps count of the regulatory deadline.",
       },
       {
         title: "Interchange Income & Network Fee Validation",
-        body: "Osfin recalculates interchange and fees at transaction level against network and contract rates, surfacing under-payments and over-billing.",
+        body: "Osfin recalculates interchange and fees on each transaction against network and contract rates, which shows where you've been under-paid or over-billed.",
       },
       {
         title: "BaaS & Sponsor Bank FBO Reconciliation",
-        body: "Osfin reconciles FBO accounts against partner ledgers daily, giving sponsor banks an independent, auditable view of customer funds.",
+        body: "FBO accounts are reconciled against partner ledgers daily, so a sponsor bank has an independent, auditable view of customer funds.",
       },
       {
         title: "Financial Close & Account Certification",
-        body: "Osfin's Certification module tracks every account through review and sign-off, with reconciliation evidence attached and ready for exam.",
+        body: "The Certification module follows every account through review and sign-off, with the reconciliation evidence attached and ready for an exam.",
       },
     ],
   },
   {
     id: "payments",
     label: "Payments",
-    summary: "Gateways, processors, and banks on one settlement record.",
+    summary: "Where gateways, processors and banks finally agree.",
     useCases: [
       {
         title: "Three-Way Settlement Reconciliation",
-        body: "Osfin matches gateway, processor and bank data in one pass, pinpointing exactly where a transaction or settlement went missing.",
+        body: "Gateway, processor and bank data is matched in one pass, so you can see exactly where a transaction or settlement went missing.",
       },
       {
         title: "Acquirer Settlement & Merchant Funding Reconciliation",
-        body: "Osfin reconciles network settlement to merchant funding daily, catching short-funds, duplicates and delays before merchants do.",
+        body: "Network settlement is reconciled to merchant funding every day. Short-funds, duplicates and delays get caught before the merchant calls.",
       },
       {
         title: "Issuer Processing & Network Settlement Reconciliation",
-        body: "Osfin ties every authorization, clearing record and network settlement to the cardholder ledger, program by program.",
+        body: "Authorizations, clearing records and network settlement are all tied back to the cardholder ledger, program by program.",
       },
       {
         title: "Interchange & Pricing Validation",
-        body: "Osfin reads pricing contracts and recalculates fees for every transaction, flagging mispriced merchants and downgrades.",
+        body: "Pricing contracts go in, and the right fee comes out for every transaction. Mispriced merchants and downgrades show up.",
       },
       {
         title: "Network Fee Validation",
-        body: "Osfin validates network invoices against actual volumes and fee schedules, surfacing overcharges for recovery.",
+        body: "Network invoices are checked against actual volumes and fee schedules, and overcharges are surfaced so you can recover the money.",
       },
       {
         title: "Residuals & ISO Commission Validation",
-        body: "Osfin computes residuals from contract terms at transaction level, producing payouts partners can trace and trust.",
+        body: "Residuals are worked out from contract terms at transaction level, so partners get payouts they can trace back.",
       },
       {
         title: "Reserve & Holdback Reconciliation",
-        body: "Osfin tracks each merchant's reserve balance against contract terms and settlement activity, flagging releases as they come due.",
+        body: "Osfin tracks each merchant's reserve balance against contract terms and settlement activity, and tells you when a release comes due.",
       },
       {
         title: "Disputes & Chargebacks",
-        body: "Osfin links each dispute to its original transaction and merchant debit, tracking every case from first notice to final ruling.",
+        body: "Disputes run from first notice to final ruling, and Osfin ties each one to the original transaction and the merchant debit along the way.",
       },
       {
         title: "Financial Close & Account Certification",
-        body: "Osfin's Certification module clears settlement accounts daily and gives controllers signed-off, evidence-backed balances at close.",
+        body: "Controllers get balances that are signed off and backed by evidence at close, and settlement accounts are cleared daily.",
       },
     ],
   },
   {
     id: "fintech",
     label: "Fintech",
-    summary: "High-velocity flows on one operating record.",
+    summary: "Fast-moving money, one record you can trust.",
     useCases: [
       {
         title: "Ledger-to-Bank Reconciliation",
-        body: "Osfin reconciles your product ledger to every bank account daily, explaining each difference down to the transaction.",
+        body: "Your product ledger is reconciled to every bank account each day, and every difference is explained down to the transaction.",
       },
       {
         title: "FBO & Custodial Account Reconciliation",
-        body: "Osfin ties end-user balances to FBO and custodial account statements daily, with an audit trail your sponsor bank can review.",
+        body: "End-user balances are tied to FBO and custodial account statements daily, and the audit trail is one your sponsor bank can review.",
       },
       {
         title: "Wallet & Stored Value Balance Reconciliation",
-        body: "Osfin rebuilds wallet balances from every movement and flags accounts where the ledger and actual funds disagree.",
+        body: "Osfin rebuilds wallet balances from every movement and shows you the accounts where the ledger and the actual funds disagree.",
       },
       {
         title: "Payment Processor & Gateway Reconciliation",
-        body: "Osfin normalizes processor and gateway data into one view and matches every payment to your ledger and bank.",
+        body: "Processor and gateway data is normalized into one view, and every payment is matched to your ledger and your bank.",
       },
       {
         title: "Loan Disbursement & Repayment Reconciliation",
-        body: "Osfin matches every disbursement and repayment to the loan ledger across rails and geographies, flagging failed or misapplied payments.",
+        body: "Each disbursement and repayment is matched to the loan ledger across rails and geographies. Failed or misapplied payments don't go unnoticed.",
       },
       {
         title: "Card Program Settlement Reconciliation",
-        body: "Osfin reconciles processor data to network settlement and sponsor bank activity, program by program.",
+        body: "Processor data is reconciled to network settlement and sponsor bank activity, one program at a time.",
       },
       {
         title: "Partner Fee & Revenue Share Validation",
-        body: "Osfin reads partner contracts and recalculates fees and revenue share at transaction level, surfacing overcharges and underpayments.",
+        body: "Partner contracts set the fees and the revenue share, and Osfin checks every transaction against them, so overcharges and underpayments come to light.",
       },
       {
         title: "Disputes & Chargebacks",
-        body: "Osfin links every dispute to its original transaction and ledger impact, tracking each case to resolution.",
+        body: "Osfin connects a dispute to the transaction it came from and to what it did to your ledger, then follows it to resolution.",
       },
       {
         title: "Financial Close & Account Certification",
-        body: "Osfin's Certification module gives you a repeatable, evidence-backed close from day one.",
+        body: "You get a close you can repeat, with evidence behind it, from day one.",
       },
     ],
   },
   {
     id: "insurance",
     label: "Insurance",
-    summary: "Premiums, claims, and remittance in one mesh.",
+    summary: "Premiums, claims and remittance in one place.",
     useCases: [
       {
         title: "Premium Reconciliation (Direct Bill & Agency Bill)",
-        body: "Osfin matches every premium receipt to its policy and billing record, flagging short-pays, overpayments and unapplied cash.",
+        body: "Each premium receipt is matched to its policy and billing record. Short-pays, overpayments and unapplied cash get picked out.",
       },
       {
         title: "Claims Payment Reconciliation",
-        body: "Osfin reconciles claims system payments to bank clearing daily, catching duplicates, voids and failed payments.",
+        body: "Payments from the claims system are reconciled to bank clearing daily, which catches duplicates, voids and failed payments.",
       },
       {
         title: "Agent & Broker Commission Reconciliation",
-        body: "Osfin reads commission agreements and recalculates every payout at policy level before it goes out.",
+        body: "Before a commission goes out, Osfin checks it against the agreement at policy level.",
       },
       {
         title: "Reinsurance Reconciliation",
-        body: "Osfin applies treaty terms to policy and claims data, reconciling amounts ceded and recovered with each reinsurer.",
+        body: "Treaty terms are applied to policy and claims data, so amounts ceded and recovered reconcile with each reinsurer.",
       },
       {
         title: "Financial Close & Account Certification",
-        body: "Osfin's Certification module reconciles and signs off every account with supporting evidence, ready for auditors and regulators.",
+        body: "Auditors and regulators get every account reconciled and signed off, with the supporting evidence in the same place.",
       },
     ],
   },
   {
     id: "ecommerce",
     label: "Ecommerce & Retail",
-    summary: "Stores, platforms, and every tender type.",
+    summary: "Online, in-store and every payment type in between.",
     useCases: [
       {
         title: "Order-to-Cash Reconciliation",
-        body: "Osfin matches every order to its payment and bank deposit, flagging unpaid, unsettled and unfulfilled orders.",
+        body: "Every order is matched to its payment and its bank deposit, so unpaid, unsettled and unfulfilled orders are easy to see.",
       },
       {
         title: "Payment Gateway & PSP Settlement Reconciliation",
-        body: "Osfin breaks each payout into its underlying transactions, fees and adjustments, and ties it to the bank deposit.",
+        body: "Osfin breaks a payout into its transactions, fees and adjustments, then ties the total to the bank deposit.",
       },
       {
         title: "Marketplace Payout Reconciliation",
@@ -174,85 +174,85 @@ export const INDUSTRIES = [
       },
       {
         title: "Alternative Payment Reconciliation",
-        body: "Osfin brings every payment method into one reconciliation, with method-specific matching rules.",
+        body: "Every payment method goes into one reconciliation, and each method keeps its own matching rules.",
       },
       {
         title: "Refunds & Returns Reconciliation",
-        body: "Osfin links each refund to its return and payment reversal, catching refunds without returns and returns without refunds.",
+        body: "A refund is linked to its return and its payment reversal, which catches refunds with no return and returns with no refund.",
       },
       {
         title: "Processing Fee & Marketplace Fee Validation",
-        body: "Osfin recalculates fees at transaction level against your contracts and flags overcharges for recovery.",
+        body: "Fees are recalculated at transaction level against your contracts, and you can recover what you were overcharged.",
       },
       {
         title: "Store Cash & POS Reconciliation",
-        body: "Osfin reconciles POS sales to cash deposits and card settlements for every store, every day.",
+        body: "POS sales are reconciled to cash deposits and card settlements, store by store and every day.",
       },
       {
         title: "Disputes & Chargebacks",
-        body: "Osfin links every chargeback to its order and settlement impact, tracking each case to the final outcome.",
+        body: "When a chargeback arrives, Osfin links it to the order and to the settlement it affects, and follows it to the final outcome.",
       },
       {
         title: "Financial Close & Account Certification",
-        body: "Osfin's Certification module reconciles and signs off every account with evidence attached, shortening the close.",
+        body: "The close gets shorter when accounts are reconciled and signed off with the evidence already attached.",
       },
     ],
   },
   {
     id: "travel",
     label: "Travel & Logistics",
-    summary: "Fares, freight, and payouts across every hop.",
+    summary: "Fares, freight and payouts, followed across every hop.",
     useCases: [
       {
         title: "Booking-to-Payment Reconciliation",
-        body: "Osfin matches every booking and change to its payment and settlement, flagging unpaid and over-refunded bookings.",
+        body: "Each booking, and every change to it, is matched to its payment and settlement. Unpaid and over-refunded bookings stand out.",
       },
       {
         title: "Supplier Settlement Reconciliation",
-        body: "Osfin normalizes supplier statements and reconciles them to bookings, catching overbilling and missed credits.",
+        body: "Supplier statements are normalized and reconciled to bookings, which catches overbilling and missed credits.",
       },
       {
         title: "BSP & ARC Settlement Reconciliation",
-        body: "Osfin reconciles BSP and ARC settlement reports to ticketing records, isolating disputed ADMs and missing refunds.",
+        body: "BSP and ARC settlement reports are reconciled to ticketing records, which isolates disputed ADMs and missing refunds.",
       },
       {
         title: "Virtual Card Reconciliation",
-        body: "Osfin links each virtual card transaction to its booking and supplier invoice, flagging unused and overcharged cards.",
+        body: "Each virtual card transaction is linked to its booking and its supplier invoice. Unused cards and overcharged cards become visible.",
       },
       {
         title: "Freight Audit & Invoice Reconciliation",
-        body: "Osfin reads carrier contracts and audits every invoice line against contracted rates and actual shipments.",
+        body: "Carrier contracts set the rates. Osfin checks every invoice line against them and against the shipments that actually moved.",
       },
       {
         title: "Fuel Surcharge & Accessorial Charge Validation",
-        body: "Osfin recalculates surcharges and accessorials from contract terms and published indices for every shipment.",
+        body: "Surcharges and accessorials are recalculated for each shipment from contract terms and published indices.",
       },
       {
         title: "Carrier & Driver Payout Reconciliation",
-        body: "Osfin reconciles trip and delivery records to payouts, catching missed, duplicate and incorrect payments.",
+        body: "Trip and delivery records are reconciled to payouts, so missed, duplicate and incorrect payments surface.",
       },
       {
         title: "Multi-Currency & FX Reconciliation",
-        body: "Osfin reconciles transactions across currencies and rails, separating FX variance from genuine breaks.",
+        body: "Transactions are reconciled across currencies and rails, and FX variance is kept apart from genuine breaks.",
       },
       {
         title: "Financial Close & Account Certification",
-        body: "Osfin's Certification module reconciles and signs off every account with evidence attached, ready for audit.",
+        body: "Each account goes into audit already reconciled and signed off, with evidence attached.",
       },
     ],
   },
   {
     id: "crypto",
     label: "Crypto",
-    summary: "Wallets, exchanges, and on-chain movement.",
+    summary: "Wallets, exchanges and what happens on-chain, reconciled.",
     useCases: [
       {
         title: "Fiat On-Ramp & Off-Ramp Reconciliation",
-        body: "Osfin reconciles fiat deposits and withdrawals against bank and processor statements and your customer ledger, every day.",
+        body: "Fiat deposits and withdrawals are reconciled every day against bank and processor statements and your customer ledger.",
       },
       {
         title: "Customer Asset Segregation Reconciliation",
-        body: "Osfin ties customer balances to custodial, omnibus and bank holdings daily, with an audit trail for every difference.",
+        body: "Customer balances are tied to custodial, omnibus and bank holdings daily, with an audit trail behind every difference.",
       },
       {
         title: "Exchange & Custodian Balance Reconciliation",
@@ -260,58 +260,58 @@ export const INDUSTRIES = [
       },
       {
         title: "On-Chain to Internal Ledger Reconciliation",
-        body: "Osfin matches on-chain transfers to internal ledger entries and flags missing, duplicate or unconfirmed transactions.",
+        body: "On-chain transfers are matched to internal ledger entries. Anything missing, duplicated or unconfirmed shows up.",
       },
       {
         title: "Stablecoin Reserve Reconciliation",
-        body: "Osfin reconciles mint and burn activity against reserve accounts, giving issuers a daily, evidence-backed view.",
+        body: "Mint and burn activity is reconciled against reserve accounts, and issuers get an evidence-backed view each day.",
       },
       {
         title: "Trading, Network & Staking Fee Reconciliation",
-        body: "Osfin recalculates fees and rewards from transaction-level data and reconciles them to revenue and cost accounts.",
+        body: "Fees and rewards are recalculated from transaction-level data and reconciled to your revenue and cost accounts.",
       },
       {
         title: "Financial Close & Account Certification",
-        body: "Osfin's Certification module brings fiat and digital asset accounts into one evidence-backed, signed-off close.",
+        body: "Fiat and digital asset accounts close together, signed off, with evidence.",
       },
     ],
   },
   {
     id: "gaming",
     label: "Gaming",
-    summary: "Player wallets, wagers, and payouts on one ledger.",
+    summary: "Player wallets, wagers and payouts on one ledger.",
     useCases: [
       {
         title: "Player Deposit & Withdrawal Reconciliation",
-        body: "Matches every player deposit and withdrawal across cards, ACH, wallets and PSPs to the player account and bank, flagging failed, duplicate and stuck transactions before players notice.",
+        body: "Osfin matches player deposits and withdrawals across cards, ACH, wallets and PSPs to the player account and the bank. Failed, duplicate and stuck transactions get found before the player complains.",
       },
       {
         title: "Player Wallet Balance Reconciliation",
-        body: "Rebuilds each player's wallet balance from deposits, wagers, wins, bonuses and withdrawals, and flags accounts where the platform and ledger disagree.",
+        body: "A player's wallet balance is rebuilt from deposits, wagers, wins, bonuses and withdrawals, and any account where the platform and the ledger disagree is picked out.",
       },
       {
         title: "Player Funds Segregation Reconciliation",
-        body: "Ties total player liabilities to segregated and protected bank accounts daily, giving finance and compliance teams evidence regulators can review.",
+        body: "Total player liabilities are tied to segregated and protected bank accounts daily. Finance and compliance teams get evidence regulators can review.",
       },
       {
         title: "Wager & Settlement Reconciliation",
-        body: "Reconciles bets placed, settled, voided and resettled on the gaming platform to wallet movements and the GL, catching unsettled and mis-settled wagers.",
+        body: "Bets that were placed, settled, voided or resettled are reconciled to wallet movements and the GL, so unsettled and mis-settled wagers don't slip through.",
       },
       {
         title: "Payment Processor & PSP Settlement Reconciliation",
-        body: "Breaks each PSP payout into its underlying transactions, fees, refunds and reserves, and ties it to the bank deposit.",
+        body: "PSP payouts are split back into the individual transactions, fees, refunds and reserves, and tied to the bank deposit.",
       },
       {
         title: "App Store & Platform Payout Reconciliation",
-        body: "Reconciles Apple, Google, and console platform payouts to in-game purchase data, separating fees, refunds, taxes and FX from genuine breaks.",
+        body: "Apple, Google and console platform payouts are reconciled to in-game purchase data. Fees, refunds, taxes and FX are kept apart from genuine breaks.",
       },
       {
         title: "Chargebacks & Friendly Fraud",
-        body: "Links every chargeback to the player's deposit, gameplay and withdrawal history, tracking each case to resolution and flagging repeat offenders.",
+        body: "Osfin links a chargeback to the player's deposit, gameplay and withdrawal history. Repeat offenders are easy to spot.",
       },
       {
         title: "Financial Close & Certification",
-        body: "Reconciles and signs off player liability, clearing and revenue accounts with evidence attached, ready for auditors and gaming regulators.",
+        body: "Player liability, clearing and revenue accounts are signed off with evidence attached, which is what auditors and gaming regulators ask for.",
       },
     ],
   },

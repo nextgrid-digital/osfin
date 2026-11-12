@@ -24,7 +24,7 @@ export default function AboutPage() {
         <section className="pt-16 pb-12 md:pt-28 md:pb-20">
           <SiteContainer>
             <p
-              className="not-typeset !m-0 max-w-[18em] font-[family-name:var(--font-season)] text-[clamp(2rem,5vw,64px)] leading-none font-normal tracking-[-0.022em] text-[#5D524B]"
+              className="not-typeset !m-0 max-w-[18em] font-[family-name:var(--font-stix)] text-[clamp(2rem,5vw,64px)] leading-none font-normal tracking-[-0.022em] text-[#5D524B]"
               data-not-typeset
             >
               {ABOUT.manifesto}
