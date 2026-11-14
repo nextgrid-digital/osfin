@@ -1,9 +1,8 @@
 "use client";
 
+import { industryIcons } from "@/components/icons/industries";
 import { Carousel } from "@/components/ui/carousel";
 import { INDUSTRIES } from "../content/industries";
-import IndustryIcon from "./IndustryIcon";
-import { industryArt } from "./industry-art";
 import { useIndustrySelect } from "./industry-select";
 
 export default function IndustryHeroCarousel({ currentId }: { currentId: string }) {
@@ -24,27 +23,21 @@ export default function IndustryHeroCarousel({ currentId }: { currentId: string 
           if (!next || next.id === currentId || !select) return;
           select(next.id);
         }}
-        slideSize="min(78cqw, 440px)"
+        slideSize="min(88cqw, 560px)"
         dim={1}
         slideLabel={(index) => INDUSTRIES[index]?.label ?? `${index + 1} of ${INDUSTRIES.length}`}
       >
-        {INDUSTRIES.map((item) => (
+        {INDUSTRIES.map((item) => {
+          const Icon = industryIcons[item.id];
+          return (
           <div
             key={item.id}
-            className="flex aspect-square items-center justify-center overflow-hidden border border-black/10"
+            className="osfin-icon-trigger flex aspect-square items-center justify-center overflow-hidden border border-black/10"
           >
-            {industryArt[item.id] ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={industryArt[item.id]}
-                alt=""
-                className="h-auto max-h-[86%] w-[86%] object-contain"
-              />
-            ) : (
-              <IndustryIcon id={item.id} className="h-auto w-[52%] text-[#5D524B]" />
-            )}
+            <Icon className="aspect-square w-[88%]" />
           </div>
-        ))}
+          );
+        })}
       </Carousel>
     </div>
   );

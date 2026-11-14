@@ -1,5 +1,6 @@
 "use client";
 
+import { industryIcons } from "@/components/icons/industries";
 import { motion } from "motion/react";
 import { INDUSTRIES } from "../content/industries";
 import { useIndustrySelect } from "./industry-select";
@@ -10,11 +11,12 @@ export default function IndustryTabs({ currentId }: { currentId: string }) {
   return (
     <nav
       aria-label="Industries"
-      className="not-typeset sticky top-14 z-40 -mx-5 mt-14 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 border-b border-black/10 bg-background px-5 py-4 sm:-mx-8 sm:px-8 md:top-16 md:mt-16 md:gap-x-4"
+      className="not-typeset sticky top-14 z-40 -mx-5 mt-14 flex flex-wrap items-end justify-center gap-x-3 gap-y-3 border-b border-black/10 bg-background px-5 py-4 sm:-mx-8 sm:px-8 md:top-16 md:mt-16 md:gap-x-4"
       data-not-typeset
     >
       {INDUSTRIES.map((item) => {
         const active = item.id === currentId;
+        const Icon = industryIcons[item.id];
         return (
           <a
             key={item.id}
@@ -26,7 +28,7 @@ export default function IndustryTabs({ currentId }: { currentId: string }) {
               event.preventDefault();
               select(item.id);
             }}
-            className={`relative inline-flex items-center justify-center px-2.5 py-1.5 font-[family-name:var(--font-mono)] text-[14px] font-medium leading-none tracking-[-0.02em] uppercase no-underline ${
+            className={`osfin-icon-trigger relative inline-flex flex-col items-center justify-center gap-2 px-2.5 py-1.5 font-[family-name:var(--font-mono)] text-[14px] font-medium leading-none tracking-[-0.02em] uppercase no-underline ${
               active ? "text-[#5D524B]" : "text-[#5D524B]/45 hover:text-[#5D524B]/70"
             }`}
           >
@@ -37,6 +39,7 @@ export default function IndustryTabs({ currentId }: { currentId: string }) {
                 transition={{ type: "spring", stiffness: 350, damping: 32 }}
               />
             ) : null}
+            <Icon className="relative z-10 aspect-square w-20" />
             <span className="relative z-10">{item.label}</span>
           </a>
         );

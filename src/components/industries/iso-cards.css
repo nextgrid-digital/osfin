@@ -1,0 +1,15 @@
+.osfin-iso-card .osfin-line-art-iso { position: relative; width: 100%; aspect-ratio: 1 / 1; margin: 6px 0 14px; display: grid; place-items: center; }
+.osfin-iso-card .osfin-line-art-iso > .osfin-icon { width: 82%; }
+.osfin-iso-card .osfin-icon { --ic-accent: rgb(var(--line-accent)); }
+.osfin-iso-card .osfin-icon .ik-accent,
+.osfin-iso-card .osfin-icon .ik-accent-all { --ik-top: inherit; --ik-front: inherit; --ik-side: inherit; }
+.osfin-iso-card .osfin-icon .ik-accent-tag { fill: var(--ik-top); }
+.osfin-iso-card .osfin-icon .ik-face { transition: fill 320ms ease, stroke 200ms ease; }
+.osfin-iso-card:is(:hover, :focus-visible) .osfin-icon .ik-accent { --ik-top: var(--ic-accent); --ik-side: color-mix(in oklab, var(--ic-accent) 62%, black); }
+.osfin-iso-card:is(:hover, :focus-visible) .osfin-icon .ik-accent-all { --ik-top: color-mix(in oklab, var(--ic-accent) 55%, white); --ik-front: var(--ic-accent); --ik-side: color-mix(in oklab, var(--ic-accent) 62%, black); }
+.osfin-iso-card:is(:hover, :focus-visible) .osfin-icon .ik-accent-tag { fill: var(--ic-accent); }
+.osfin-iso-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 860px) { .osfin-iso-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .osfin-iso-grid { grid-template-columns: minmax(0, 1fr); } }
+.osfin-iso-card .osfin-icon { --ic-mark: var(--ik-line); }
+.osfin-iso-card:is(:hover, :focus-visible) .osfin-icon { --ic-mark: #fff; }

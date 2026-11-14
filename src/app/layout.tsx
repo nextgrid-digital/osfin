@@ -4,6 +4,7 @@ import { IBM_Plex_Mono, Inter, STIX_Two_Text } from "next/font/google";
 import Script from "next/script";
 import PageTransitionProvider from "./PageTransitionProvider";
 import "./globals.css";
+import "react-isokit/styles.css";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({

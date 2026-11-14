@@ -1,0 +1,59 @@
+.osfin-icon .ik-plate { background: transparent; border: 0; padding: 0; gap: 0; border-radius: 0; }
+.osfin-icon .ik-cap { display: none; }
+.osfin-icon { --ic-accent: #3b82f6; }
+.osfin-icon.ic-blue { --ic-accent: #3b82f6; }
+.osfin-icon.ic-orange { --ic-accent: #f97316; }
+.osfin-icon.ic-emerald { --ic-accent: #10b981; }
+.osfin-icon.ic-violet { --ic-accent: #8b5cf6; }
+.osfin-icon.ic-pink { --ic-accent: #ec4899; }
+.osfin-icon.ic-amber { --ic-accent: #f59e0b; }
+.osfin-icon.ic-cyan { --ic-accent: #06b6d4; }
+.osfin-icon.ic-indigo { --ic-accent: #6366f1; }
+.osfin-icon .ik-accent { --ik-top: var(--ic-accent); --ik-side: color-mix(in oklab, var(--ic-accent) 62%, black); }
+.osfin-icon .ik-accent-all { --ik-top: color-mix(in oklab, var(--ic-accent) 55%, white); --ik-front: var(--ic-accent); --ik-side: color-mix(in oklab, var(--ic-accent) 62%, black); }
+.osfin-icon .ik-accent-tag { fill: var(--ic-accent); }
+.osfin-icon { cursor: default; -webkit-tap-highlight-color: transparent; }
+.osfin-icon .ix-part { transition: transform var(--ik-t-move) var(--ik-ease-out), opacity var(--ik-t-state) var(--ik-ease); transform-box: fill-box; transform-origin: center; }
+.osfin-icon .ix-show { opacity: 0; }
+.osfin-icon .ix-draw { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset var(--ik-t-move) var(--ik-ease-out); }
+.osfin-icon .ix-glow { transition: fill var(--ik-t-state) var(--ik-ease); }
+.osfin-icon .ix-shadow { fill: var(--ik-line); opacity: .06; transition: transform var(--ik-t-move) var(--ik-ease-out), opacity var(--ik-t-move) var(--ik-ease-out); transform-box: fill-box; transform-origin: center; }
+:is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-show { opacity: 1; }
+:is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-draw { stroke-dashoffset: 0; transition-delay: 120ms; }
+:is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-glow { fill: var(--ic-accent); }
+:is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-shadow { transform: scale(.86); opacity: .035; }
+
+.osfin-icon .ix-lift { --lift: -8px; }
+:is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-lift { transform: translateY(var(--lift)); }
+.osfin-icon .ix-lift-sm { --lift: -4px; }
+.osfin-icon .ix-lift-lg { --lift: -14px; }
+.osfin-icon .ix-lift-xl { --lift: -22px; }
+
+@keyframes ix-hop { 0%, 100% { transform: translateY(0); } 35% { transform: translateY(-12px); } 60% { transform: translateY(1px); } 75% { transform: translateY(-3px); } }
+@keyframes ix-spin { 0% { transform: scaleX(1); } 25% { transform: scaleX(0.06); } 50% { transform: scaleX(-1); } 75% { transform: scaleX(0.06); } 100% { transform: scaleX(1); } }
+@keyframes ix-swing { 0%, 100% { transform: rotate(0); } 20% { transform: rotate(16deg); } 45% { transform: rotate(-11deg); } 70% { transform: rotate(6deg); } 88% { transform: rotate(-2deg); } }
+@keyframes ix-roll { to { transform: rotate(360deg); } }
+@keyframes ix-press { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(2.2px); } }
+@keyframes ix-rumble { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(0, -0.8px); } 75% { transform: translate(0, 0.6px); } }
+@keyframes ix-dash { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -24; } }
+@keyframes ix-grow { from { transform: scaleY(.25); } to { transform: scaleY(1); } }
+
+:is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-hop { animation: ix-hop 760ms var(--ik-ease) both; animation-delay: var(--d, 0ms); }
+:is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-spin { animation: ix-spin 1100ms var(--ik-ease-move) both; animation-delay: 80ms; }
+:is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-swing { animation: ix-swing 1300ms var(--ik-ease-out) both; }
+:is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-roll { animation: ix-roll 700ms linear infinite; }
+:is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-press { animation: ix-press 520ms var(--ik-ease) both; animation-delay: var(--d, 0ms); }
+:is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-rumble { animation: ix-rumble 180ms linear infinite; }
+:is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-dash { animation: ix-dash 500ms linear infinite; }
+:is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-grow { animation: ix-grow 700ms var(--ik-ease-out) both; animation-delay: var(--d, 0ms); }
+.osfin-icon .ix-grow { transform-box: fill-box; transform-origin: 50% 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .osfin-icon * { animation: none !important; transition-duration: 0ms !important; }
+}
+.osfin-icon .ix-drive { --drive-x: -7px; --drive-y: 4px; }
+:is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-drive { transform: translate(var(--drive-x), var(--drive-y)); }
+.osfin-icon .ix-glow-glass { transition: fill var(--ik-t-state) var(--ik-ease); }
+:is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-glow-glass { fill: color-mix(in oklab, var(--ic-accent) 18%, var(--ik-screen)); }
+@keyframes ix-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+:is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-float { animation: ix-float 1400ms var(--ik-ease-move) infinite; animation-delay: 900ms; }

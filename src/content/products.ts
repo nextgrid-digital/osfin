@@ -40,7 +40,7 @@ export const PRODUCTS: Product[] = [
       "Teams can't keep pace with money in motion; systems can. Those systems run on Match, built from your transaction data, your matching logic, and the judgment of your finance teams.",
     sceneId: "technology",
     icon: "mesh",
-    headline: "Match IQ is the reconciliation foundation for enterprises that builds the cognitive layer for money in motion",
+    headline: "The reconciliation foundation for money in motion",
     lede: "Data arrives from every source and gets matched at transaction level as it lands. Breaks are explained, resolved agentically and routed to the right owners when needed.",
     seoDescription:
       "Match IQ is the reconciliation foundation for enterprises that builds the cognitive layer for money in motion.",

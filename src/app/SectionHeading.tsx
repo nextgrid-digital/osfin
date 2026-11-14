@@ -77,7 +77,7 @@ export default function SectionHeading({
 
         {aside ? (
           <div
-            className={`!mt-0 max-w-[36rem] text-center ${
+            className={`!mt-0 max-w-[37.5rem] text-center ${
               isDark ? "text-white/60" : "text-[#5D524B]/55"
             }`}
           >

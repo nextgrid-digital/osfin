@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
+    "@icon-park/react": "^1.4.2",
+    "@iconify-icons/ph": "^2.0.0",
+    "@iconify/react": "^6.0.4",
     "@lucasmarkes/hairline": "^0.3.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -30,6 +33,7 @@
     "next": "15.5.19",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-isokit": "^0.6.0",
     "shadcn": "^4.21.0",
     "splitting": "^1.0.6",
     "swiper": "^14.2.0",
