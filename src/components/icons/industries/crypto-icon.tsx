@@ -21,7 +21,7 @@ const BITCOIN_B =
   "M-7 -12H3.5C10 -12 10 -1.5 3.5 -1.5H-7M-7 -1.5H5C12 -1.5 12 12 5 12H-7M-5 -12V12M-3 -16.5V-12M2.5 -16.5V-12M-3 12V16.5M2.5 12V16.5"
 const ETH_TOP = "M0 -13L8.5 1L0 6L-8.5 1Z"
 const ETH_BOTTOM = "M0 8.5L8.5 3.2L0 14L-8.5 3.2Z"
-const MARK = { fill: "none", stroke: "#fff", strokeWidth: 3.4, strokeLinecap: "round", strokeLinejoin: "round" } as const
+const MARK = { fill: "none", stroke: "#5D524B", strokeWidth: 3.4, strokeLinecap: "round", strokeLinejoin: "round" } as const
 
 const ring = (r: number, steps = 48): Pt[] => Array.from({ length: steps }, (_, k) => [Math.cos((k / steps) * Math.PI * 2) * r, Math.sin((k / steps) * Math.PI * 2) * r])
 const cross = (o: Pt, a: Pt, b: Pt) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])

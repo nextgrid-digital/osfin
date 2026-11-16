@@ -109,10 +109,10 @@ export default function HumanHome() {
         <HomeProduction />
 
         <SectionRule />
-        <HomeIndustries />
+        <HomeCaseStudies />
 
         <SectionRule />
-        <HomeCaseStudies />
+        <HomeIndustries />
 
         <SectionRule />
         <HomeSecurity />

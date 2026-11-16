@@ -2,6 +2,7 @@ export const INDUSTRIES = [
   {
     id: "banks",
     label: "Banks & Credit Unions",
+    headline: "Every rail reconciled back to the core",
     summary: "Your core and your ledgers, on one settlement record.",
     useCases: [
       {
@@ -45,6 +46,7 @@ export const INDUSTRIES = [
   {
     id: "payments",
     label: "Payments",
+    headline: "Three parties, one settlement record",
     summary: "Where gateways, processors and banks finally agree.",
     useCases: [
       {
@@ -88,6 +90,7 @@ export const INDUSTRIES = [
   {
     id: "fintech",
     label: "Fintech",
+    headline: "The ledger and the bank, kept in step",
     summary: "Fast-moving money, one record you can trust.",
     useCases: [
       {
@@ -131,6 +134,7 @@ export const INDUSTRIES = [
   {
     id: "insurance",
     label: "Insurance",
+    headline: "The money movement behind every policy",
     summary: "Premiums, claims and remittance in one place.",
     useCases: [
       {
@@ -158,6 +162,7 @@ export const INDUSTRIES = [
   {
     id: "ecommerce",
     label: "Ecommerce & Retail",
+    headline: "From the order to the deposit",
     summary: "Online, in-store and every payment type in between.",
     useCases: [
       {
@@ -201,6 +206,7 @@ export const INDUSTRIES = [
   {
     id: "travel",
     label: "Travel & Logistics",
+    headline: "Every hop, one payout record",
     summary: "Fares, freight and payouts, followed across every hop.",
     useCases: [
       {
@@ -244,6 +250,7 @@ export const INDUSTRIES = [
   {
     id: "crypto",
     label: "Crypto",
+    headline: "Fiat and the chain, on one record",
     summary: "Wallets, exchanges and what happens on-chain, reconciled.",
     useCases: [
       {
@@ -279,6 +286,7 @@ export const INDUSTRIES = [
   {
     id: "gaming",
     label: "Gaming",
+    headline: "The player ledger, reconciled",
     summary: "Player wallets, wagers and payouts on one ledger.",
     useCases: [
       {

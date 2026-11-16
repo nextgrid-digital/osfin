@@ -1,6 +1,7 @@
 "use client";
 
 import { industryIcons } from "@/components/icons/industries";
+import "@/components/industries/iso-cards.css";
 import { Carousel } from "@/components/ui/carousel";
 import { INDUSTRIES } from "../content/industries";
 import { useIndustrySelect } from "./industry-select";
@@ -23,7 +24,7 @@ export default function IndustryHeroCarousel({ currentId }: { currentId: string 
           if (!next || next.id === currentId || !select) return;
           select(next.id);
         }}
-        slideSize="min(88cqw, 560px)"
+        slideSize="min(78cqw, 440px)"
         dim={1}
         slideLabel={(index) => INDUSTRIES[index]?.label ?? `${index + 1} of ${INDUSTRIES.length}`}
       >
@@ -32,9 +33,9 @@ export default function IndustryHeroCarousel({ currentId }: { currentId: string 
           return (
           <div
             key={item.id}
-            className="osfin-icon-trigger flex aspect-square items-center justify-center overflow-hidden border border-black/10"
+            className="osfin-iso-wash osfin-icon-trigger flex aspect-square items-center justify-center overflow-hidden border border-black/10"
           >
-            <Icon className="aspect-square w-[88%]" />
+            <Icon className="size-full" />
           </div>
           );
         })}
