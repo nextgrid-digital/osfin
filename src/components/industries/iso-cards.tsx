@@ -23,19 +23,26 @@ export const ISO_INDUSTRIES: { slug: string; title: string; href: string; Icon: 
   { slug: "gaming", title: "Gaming", href: "/industries/gaming", Icon: GamingIcon },
 ]
 
-export function IndustryIsoCard({ index, title, href, Icon }: { index: number; title: string; href: string; Icon: ComponentType<{ className?: string }> }) {
+export function IndustryIsoCard({ title, href, Icon }: { title: string; href: string; Icon: ComponentType<{ className?: string }> }) {
   return (
     <a href={href} className="osfin-line-card osfin-iso-card osfin-icon-trigger">
-      <span className="line-index">
-        <b>//</b>
-        {String(index).padStart(3, "0")}
-      </span>
+      <div className="line-foot">
+        <h3 className="line-title">{title}</h3>
+        <svg className="line-arrow" viewBox="0 0 8 8" aria-hidden="true">
+          <g fill="currentColor">
+            <rect x="3" y="0" width="5" height="1" />
+            <rect x="6" y="1" width="2" height="1" />
+            <rect x="5" y="2" width="2" height="1" />
+            <rect x="4" y="3" width="2" height="1" />
+            <rect x="3" y="4" width="2" height="1" />
+            <rect x="2" y="5" width="2" height="1" />
+            <rect x="1" y="6" width="2" height="1" />
+            <rect x="0" y="7" width="2" height="1" />
+          </g>
+        </svg>
+      </div>
       <div className="osfin-line-art-iso">
         <Icon />
-      </div>
-      <h3 className="line-title">{title}</h3>
-      <div className="line-foot">
-        <span className="line-arrow" aria-hidden="true">↗</span>
       </div>
     </a>
   )
@@ -44,8 +51,8 @@ export function IndustryIsoCard({ index, title, href, Icon }: { index: number; t
 export function IndustriesIsoGrid() {
   return (
     <div className="osfin-iso-grid">
-      {ISO_INDUSTRIES.map((item, k) => (
-        <IndustryIsoCard key={item.slug} index={k + 1} title={item.title} href={item.href} Icon={item.Icon} />
+      {ISO_INDUSTRIES.map((item) => (
+        <IndustryIsoCard key={item.slug} title={item.title} href={item.href} Icon={item.Icon} />
       ))}
     </div>
   )

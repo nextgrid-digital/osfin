@@ -1,5 +1,5 @@
-.osfin-iso-card .osfin-line-art-iso { position: relative; width: 100%; aspect-ratio: 1 / 1; margin: 6px 0 14px; display: grid; place-items: center; }
-.osfin-iso-card .osfin-line-art-iso > .osfin-icon { width: 82%; }
+.osfin-iso-card .osfin-line-art-iso { position: relative; width: 58%; max-width: 10.5rem; aspect-ratio: 1 / 1; margin: 4px auto 0; display: grid; place-items: center; }
+.osfin-iso-card .osfin-line-art-iso > .osfin-icon { width: 100%; }
 .osfin-iso-card .osfin-icon { --ic-accent: rgb(var(--line-accent)); }
 .osfin-iso-card .osfin-icon .ik-accent,
 .osfin-iso-card .osfin-icon .ik-accent-all { --ik-top: inherit; --ik-front: inherit; --ik-side: inherit; }
