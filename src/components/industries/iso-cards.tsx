@@ -26,11 +26,15 @@ export const ISO_INDUSTRIES: { slug: string; title: string; href: string; Icon: 
 export function IndustryIsoCard({ title, href, Icon }: { title: string; href: string; Icon: ComponentType<{ className?: string }> }) {
   return (
     <a href={href} className="osfin-line-card osfin-iso-card osfin-icon-trigger">
-      <div className="line-foot">
+      <div className="line-meta">
         <h3 className="line-title">{title}</h3>
-        <svg className="line-arrow" viewBox="0 0 12 12" aria-hidden="true">
-          <path d="M2.5 9.5 9.5 2.5M5 2.5h4.5V7" fill="none" stroke="currentColor" strokeWidth="1.25" />
-        </svg>
+        <div className="line-foot">
+          <span className="line-arrow-box">
+            <svg className="line-arrow" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M4 12 12 4M6 4h6v6" fill="none" stroke="currentColor" strokeWidth="1.25" />
+            </svg>
+          </span>
+        </div>
       </div>
       <div className="osfin-line-art-iso">
         <Icon />

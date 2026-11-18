@@ -1,8 +1,59 @@
-.osfin-iso-card .osfin-line-art-iso { position: relative; width: 58%; max-width: 10.5rem; aspect-ratio: 1 / 1; margin: 4px auto 0; display: grid; place-items: center; }
-.osfin-iso-card .osfin-line-art-iso > .osfin-icon { width: 100%; }
+a.osfin-line-card.osfin-iso-card {
+  padding: 16px 18px 14px;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid rgb(0 0 0 / 0.15);
+  border-bottom: 1px solid rgb(0 0 0 / 0.15);
+  box-shadow: none;
+}
+a.osfin-line-card.osfin-iso-card:hover,
+a.osfin-line-card.osfin-iso-card:focus-visible { border-color: rgb(0 0 0 / 0.15); box-shadow: none; }
+a.osfin-line-card.osfin-iso-card .line-meta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 0;
+}
+a.osfin-line-card.osfin-iso-card .line-title {
+  margin: 0;
+  flex: 1;
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.022em;
+  color: #5D524B;
+}
+a.osfin-line-card.osfin-iso-card:hover .line-title,
+a.osfin-line-card.osfin-iso-card:focus-visible .line-title { color: #5D524B; }
+a.osfin-line-card.osfin-iso-card .line-foot { margin: 0; padding: 0; flex: none; justify-content: flex-end; }
+a.osfin-line-card.osfin-iso-card .line-arrow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgb(0 0 0 / 0.15);
+  color: rgb(93 82 75 / 0.55);
+}
+a.osfin-line-card.osfin-iso-card .line-arrow { width: 14px; height: 14px; color: inherit; }
+a.osfin-line-card.osfin-iso-card:hover .line-arrow,
+a.osfin-line-card.osfin-iso-card:focus-visible .line-arrow { color: inherit; transform: none; }
+a.osfin-line-card.osfin-iso-card .osfin-line-art-iso {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  aspect-ratio: auto;
+  margin: 20px 0 0;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+}
+a.osfin-line-card.osfin-iso-card .osfin-line-art-iso > .osfin-icon { width: min(82%, 176px); height: auto; }
 /* Same wash as the homepage cards and the process figures. */
 .osfin-iso-wash { --line-accent: 47, 91, 234; }
-.osfin-iso-card .ik-plate,
+a.osfin-line-card.osfin-iso-card .ik-plate,
 .osfin-iso-wash .ik-plate {
   --ik-top: #F7F1E3;
   --ik-front: #F7F1E3;
@@ -14,26 +65,32 @@
   --ik-ink: #8F8378;
   --ik-screen-ink: #5D524B;
 }
-.osfin-iso-card .osfin-icon,
+a.osfin-line-card.osfin-iso-card .osfin-icon,
 .osfin-iso-wash .osfin-icon { --ic-accent: rgb(var(--line-accent)); }
-.osfin-iso-card .osfin-icon .ik-accent,
-.osfin-iso-card .osfin-icon .ik-accent-all,
+a.osfin-line-card.osfin-iso-card .osfin-icon .ik-accent,
+a.osfin-line-card.osfin-iso-card .osfin-icon .ik-accent-all,
 .osfin-iso-wash .osfin-icon .ik-accent,
 .osfin-iso-wash .osfin-icon .ik-accent-all { --ik-top: inherit; --ik-front: inherit; --ik-side: inherit; }
-.osfin-iso-card .osfin-icon .ik-accent-tag,
+a.osfin-line-card.osfin-iso-card .osfin-icon .ik-accent-tag,
 .osfin-iso-wash .osfin-icon .ik-accent-tag { fill: var(--ik-top); }
-.osfin-iso-card .osfin-icon .ik-face,
+a.osfin-line-card.osfin-iso-card .osfin-icon .ik-face,
 .osfin-iso-wash .osfin-icon .ik-face { transition: fill 320ms ease, stroke 200ms ease; }
-.osfin-iso-card:is(:hover, :focus-visible) .osfin-icon .ik-accent,
+a.osfin-line-card.osfin-iso-card:is(:hover, :focus-visible) .osfin-icon .ik-accent,
 .osfin-iso-wash:is(:hover, :focus-visible) .osfin-icon .ik-accent { --ik-top: var(--ic-accent); --ik-side: color-mix(in oklab, var(--ic-accent) 62%, black); }
-.osfin-iso-card:is(:hover, :focus-visible) .osfin-icon .ik-accent-all,
+a.osfin-line-card.osfin-iso-card:is(:hover, :focus-visible) .osfin-icon .ik-accent-all,
 .osfin-iso-wash:is(:hover, :focus-visible) .osfin-icon .ik-accent-all { --ik-top: color-mix(in oklab, var(--ic-accent) 55%, white); --ik-front: var(--ic-accent); --ik-side: color-mix(in oklab, var(--ic-accent) 62%, black); }
-.osfin-iso-card:is(:hover, :focus-visible) .osfin-icon .ik-accent-tag,
+a.osfin-line-card.osfin-iso-card:is(:hover, :focus-visible) .osfin-icon .ik-accent-tag,
 .osfin-iso-wash:is(:hover, :focus-visible) .osfin-icon .ik-accent-tag { fill: var(--ic-accent); }
-.osfin-iso-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; }
+.osfin-iso-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid rgb(0 0 0 / 0.15);
+  border-left: 1px solid rgb(0 0 0 / 0.15);
+}
 @media (max-width: 860px) { .osfin-iso-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 520px) { .osfin-iso-grid { grid-template-columns: minmax(0, 1fr); } }
-.osfin-iso-card .osfin-icon,
+a.osfin-line-card.osfin-iso-card .osfin-icon,
 .osfin-iso-wash .osfin-icon { --ic-mark: var(--ik-line); }
-.osfin-iso-card:is(:hover, :focus-visible) .osfin-icon,
+a.osfin-line-card.osfin-iso-card:is(:hover, :focus-visible) .osfin-icon,
 .osfin-iso-wash:is(:hover, :focus-visible) .osfin-icon { --ic-mark: #5D524B; }

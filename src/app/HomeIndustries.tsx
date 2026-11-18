@@ -16,8 +16,11 @@ export default function HomeIndustries() {
           Industries
         </p>
         <h2 id="industries-heading" className="!mb-0 !mt-3 mx-auto max-w-[16em] text-center text-[#5D524B] md:!mt-4">
-          Osfin works with some of the largest companies
+          Transformation in finance operations
         </h2>
+        <p className="mx-auto mt-4 max-w-[28rem] text-center !text-[16px] !leading-[1.45] text-[#5D524B] md:mt-5">
+          The same work, across every industry.
+        </p>
         <div className="mt-8 md:mt-10">
           <IndustriesIsoGrid />
         </div>
