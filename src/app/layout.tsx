@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { IBM_Plex_Mono, Inter, STIX_Two_Text } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import PageTransitionProvider from "./PageTransitionProvider";
 import "./globals.css";
 import "react-isokit/styles.css";
@@ -104,6 +105,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         <PageTransitionProvider>{children}</PageTransitionProvider>
+        <Analytics />
       </body>
     </html>
   );
