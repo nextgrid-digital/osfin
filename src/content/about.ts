@@ -78,7 +78,7 @@ export const ABOUT = {
     cities: [
       {
         name: "San Francisco",
-        image: "/about/san-francisco.jpg?v=2",
+        image: "/about/san-francisco.jpg?v=4",
         imageAlt: "Golden Gate Bridge, San Francisco",
       },
       {
