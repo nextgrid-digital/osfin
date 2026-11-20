@@ -253,7 +253,7 @@ export function SecurityCards({
                 </span>
               ))}
             </h3>
-            <p className={`@container !mb-0 !mt-3 text-[15px] leading-6 ${light ? "text-black/60" : "text-white/45"}`}>
+            <p className={`@container !mb-0 !mt-3 text-[16px] leading-[1.6] tracking-[-0.01em] ${light ? "text-black/75" : "text-white/70"}`}>
               {"lines" in item ? (
                 <>
                   <span className="@min-[15rem]:hidden">{item.body}</span>

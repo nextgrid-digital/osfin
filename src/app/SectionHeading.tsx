@@ -77,11 +77,13 @@ export default function SectionHeading({
 
         {aside ? (
           <div
-            className={`!mt-0 max-w-[37.5rem] text-center ${
-              isDark ? "text-white/60" : "text-black/55"
+            className={`!mt-0 max-w-[40rem] text-center ${
+              isDark ? "text-white/75" : "text-black/70"
             }`}
           >
-            <p className="!mt-0 line-clamp-3 !text-[14px] !leading-[1.5]">{aside}</p>
+            <p className="!mt-0 !text-[16px] !leading-[1.6] !tracking-[-0.01em] md:!text-[17px] md:!leading-[1.65]">
+              {aside}
+            </p>
           </div>
         ) : null}
 

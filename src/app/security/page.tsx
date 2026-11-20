@@ -98,10 +98,10 @@ export default function SecurityPage() {
             <p className={`${labelClassName} text-center`} data-not-typeset>
               Practices
             </p>
-            <p className="mx-auto !mt-5 max-w-[38rem] text-center md:!mt-6">
+            <p className="mx-auto !mt-5 max-w-[38rem] text-center text-[17px] leading-[1.65] tracking-[-0.01em] text-black md:!mt-6 md:text-[18px]">
               {SECURITY.intro}
             </p>
-            <p className="mx-auto !mt-4 max-w-[38rem] text-center text-black/60">
+            <p className="mx-auto !mt-4 max-w-[38rem] text-center text-[17px] leading-[1.65] tracking-[-0.01em] text-black/75 md:text-[18px]">
               {SECURITY.mission}
             </p>
 
@@ -120,7 +120,7 @@ export default function SecurityPage() {
                       <h3 className="!mb-0 !mt-0 !text-[20px] !font-light !leading-[1.33] !tracking-[-0.012em] normal-case text-black">
                         {item.title}
                       </h3>
-                      <p className="!mb-0 !mt-3 line-clamp-3 text-[15px] leading-6 text-black/60">
+                      <p className="!mb-0 !mt-3 text-[16px] leading-[1.6] tracking-[-0.01em] text-black/75">
                         {item.body}
                       </p>
                     </div>
@@ -159,7 +159,7 @@ export default function SecurityPage() {
                       <h3 className="!mb-0 !mt-0 !text-[20px] !font-light !leading-[1.33] !tracking-[-0.012em] normal-case text-black">
                         {item.title}
                       </h3>
-                      <p className="!mb-0 !mt-3 text-[15px] leading-6 text-black/60">
+                      <p className="!mb-0 !mt-3 text-[16px] leading-[1.6] tracking-[-0.01em] text-black/75">
                         {item.body}
                       </p>
                     </div>

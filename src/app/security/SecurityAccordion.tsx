@@ -17,7 +17,9 @@ export default function SecurityAccordion() {
           <h3 className="!mb-0 !mt-0 !text-[28px] !font-light !leading-[1.2] !tracking-[-0.02em] text-black">
             {item.title}
           </h3>
-          <p className="!mt-0 max-w-[65ch] text-black/60">{item.body}</p>
+          <p className="!mt-0 max-w-[65ch] text-[17px] leading-[1.65] tracking-[-0.01em] text-black/75 md:text-[18px]">
+            {item.body}
+          </p>
         </div>
       ))}
     </div>

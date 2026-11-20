@@ -40,7 +40,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
           <ProductHeroCarousel currentSlug={product.slug} />
         </SiteContainer>
 
-        <section className="relative mt-24 overflow-hidden bg-background [--muted:rgba(0,0,0,0.28)] md:mt-32">
+        <section className="relative mt-24 overflow-hidden bg-background [--muted:rgba(0,0,0,0.5)] md:mt-32">
           <div className="pointer-events-none absolute inset-0">
             <GlyphMatrix
               glyphs="01.+*/<>="
@@ -64,7 +64,7 @@ export default function ProductTemplate({ product }: { product: Product }) {
             }}
           />
           <SiteContainer className="relative z-10 pb-16 md:pb-24">
-            <div className="mx-auto flex w-full max-w-[60ch] flex-col items-center gap-4 text-center">
+            <div className="mx-auto flex w-full max-w-[42rem] flex-col items-center gap-4 text-center">
               <p className="not-typeset shrink-0 !m-0 !font-[family-name:var(--font-mono)] !text-[14px] !font-medium !leading-[1.4] !tracking-[-0.02em] !text-black/45 uppercase" data-not-typeset>
                 Problem
               </p>
@@ -92,12 +92,19 @@ export default function ProductTemplate({ product }: { product: Product }) {
                       ))}
                     </h2>
                     {product.platform.body.map((paragraph) => (
-                      <p key={paragraph} className="!mb-0 !mt-8 max-w-xl text-black/60">
+                      <p
+                        key={paragraph}
+                        className="!mb-0 !mt-8 max-w-xl text-[17px] leading-[1.65] tracking-[-0.01em] text-black/75 md:text-[18px]"
+                      >
                         {paragraph}
                       </p>
                     ))}
-                    <p className="!mb-0 !mt-8 text-black">{product.platform.kicker}</p>
-                    <p className="!mb-0 !mt-8 max-w-xl text-black/60">{product.platform.close}</p>
+                    <p className="!mb-0 !mt-8 text-[17px] leading-[1.65] tracking-[-0.01em] text-black md:text-[18px]">
+                      {product.platform.kicker}
+                    </p>
+                    <p className="!mb-0 !mt-8 max-w-xl text-[17px] leading-[1.65] tracking-[-0.01em] text-black/75 md:text-[18px]">
+                      {product.platform.close}
+                    </p>
                   </>
                 }
                 visual={
@@ -142,9 +149,9 @@ export default function ProductTemplate({ product }: { product: Product }) {
                       </span>
                     ))}
                   </h3>
-                  <div className="!mt-0 max-w-[65ch] [&>:first-child]:!mt-0">
+                  <div className="!mt-0 max-w-[65ch] text-[17px] leading-[1.65] tracking-[-0.01em] md:text-[18px] [&>:first-child]:!mt-0">
                     {cap.lead ? <p className="text-black">{cap.lead}</p> : null}
-                    <p className="text-black/60">{cap.body}</p>
+                    <p className="text-black/75">{cap.body}</p>
                   </div>
                 </div>
               ))}

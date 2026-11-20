@@ -79,8 +79,8 @@ export function TextScrollReadWrap({
   );
 }
 
-const unread = 0.28;
-const read = 0.875;
+const unread = 0.5;
+const read = 0.92;
 
 /** Reveals each wrapped line in order, keeping the source paragraph breaks. */
 export function ScrollReadParagraphs({
@@ -151,21 +151,24 @@ export function ScrollReadParagraphs({
   return (
     <div ref={ref}>
       {paragraphs.map((paragraph, index) => (
-        <h4
+        <p
           key={paragraph}
           data-paragraph
-          className={index === 0 ? "!mb-0 !mt-0" : "!mb-0 !mt-4"}
+          className={`not-typeset !mb-0 max-w-none font-[family-name:var(--font-inter)] text-[clamp(1.125rem,2.1vw,1.25rem)] !font-normal !leading-[1.65] !tracking-[-0.01em] text-pretty ${
+            index === 0 ? "!mt-0" : "!mt-5 md:!mt-6"
+          }`}
+          data-not-typeset
         >
           {paragraph.split(/(\s+)/).map((part, partIndex) =>
             part.trim() ? (
-              <span key={partIndex} data-word className="text-black/30">
+              <span key={partIndex} data-word className="text-black/50">
                 {part}
               </span>
             ) : (
               part
             ),
           )}
-        </h4>
+        </p>
       ))}
     </div>
   );
