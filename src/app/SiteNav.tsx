@@ -15,15 +15,15 @@ import { SOLUTIONS } from "../content/industries";
 import { PRODUCTS } from "../content/products";
 import { usePageTransition } from "./PageTransitionProvider";
 
-const listHighlightClassName = "rounded-none bg-background";
+const listHighlightClassName = "rounded-none bg-[#f5f5f5]";
 
 const navItemClassName =
-  "group/cascade h-auto min-h-0 gap-1.5 rounded-none bg-background px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[#5D524B] uppercase inline-flex items-center hover:bg-background hover:text-[#5D524B] focus:text-[#5D524B] data-[state=open]:bg-background data-[state=open]:text-[#5D524B]";
+  "group/cascade h-auto min-h-0 gap-1.5 rounded-none bg-[#f5f5f5] px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-black uppercase inline-flex items-center hover:bg-[#f5f5f5] hover:text-black focus:text-black data-[state=open]:bg-[#f5f5f5] data-[state=open]:text-black";
 const navLinkClassName =
-  "group/cascade h-auto min-h-0 gap-0 rounded-none bg-background px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-[#5D524B] uppercase inline-flex items-center no-underline hover:bg-background hover:text-[#5D524B] hover:no-underline";
+  "group/cascade h-auto min-h-0 gap-0 rounded-none bg-[#f5f5f5] px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-black uppercase inline-flex items-center no-underline hover:bg-[#f5f5f5] hover:text-black hover:no-underline";
 
 const largeLinkClassName =
-  "site-nav-link-lg group/cascade block w-fit p-0 text-left text-[28px] leading-[1.15] font-normal normal-case tracking-normal text-[#5D524B] no-underline hover:text-[#5D524B] hover:no-underline";
+  "site-nav-link-lg group/cascade block w-fit p-0 text-left text-[28px] leading-[1.15] font-normal normal-case tracking-[-1px] text-black no-underline hover:text-black hover:no-underline";
 
 function NavLabel({ text }: { text: string }) {
   return (
@@ -69,7 +69,7 @@ const COMPANY = [
 ] as const;
 
 function MenuLabel({ children }: { children: ReactNode }) {
-  return <p className="mb-5 text-[13px] text-[#5D524B]/45">{children}</p>;
+  return <p className="mb-5 text-[13px] text-black/45">{children}</p>;
 }
 
 function MenuColumns({ children }: { children: ReactNode }) {
@@ -118,7 +118,7 @@ function MobileMenu({
   ];
 
   return (
-    <div className="site-mobile-nav fixed inset-x-0 top-14 z-40 max-h-[calc(100svh-3.5rem)] overflow-y-auto bg-background px-5 pt-4 pb-16 md:top-16 md:max-h-[calc(100svh-4rem)] lg:hidden">
+    <div className="site-mobile-nav fixed inset-x-0 top-14 z-40 max-h-[calc(100svh-3.5rem)] overflow-y-auto bg-white px-5 pt-4 pb-16 md:top-16 md:max-h-[calc(100svh-4rem)] lg:hidden">
       <nav aria-label="Mobile" className="flex flex-col">
         {groups.map((group) => {
           const expanded = section === group.id;
@@ -126,12 +126,12 @@ function MobileMenu({
             <div key={group.id} className="border-b border-black/10">
               <button
                 type="button"
-                className="flex w-full items-center justify-between py-4 text-left font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[#5D524B] uppercase"
+                className="flex w-full items-center justify-between py-4 text-left font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-black uppercase"
                 aria-expanded={expanded}
                 onClick={() => setSection(expanded ? null : group.id)}
               >
                 {group.label}
-                <span aria-hidden className="text-[18px] leading-none text-[#5D524B]/45">
+                <span aria-hidden className="text-[18px] leading-none text-black/45">
                   {expanded ? "–" : "+"}
                 </span>
               </button>
@@ -141,7 +141,7 @@ function MobileMenu({
                       <a
                         key={link.label}
                         href={link.href}
-                        className="flex items-center gap-3 !font-[family-name:var(--font-stix)] !text-[22px] !leading-[1.2] !font-normal !normal-case !tracking-normal text-[#5D524B] no-underline"
+                        className="flex items-center gap-3 !font-[family-name:var(--font-crimson)] !text-[22px] !leading-[1.2] !font-light !normal-case !tracking-normal text-black no-underline"
                         onClick={onNavigate(link.href)}
                       >
                         {link.label}
@@ -154,14 +154,14 @@ function MobileMenu({
         })}
         <Link
           href="/blog"
-          className="border-b border-black/10 py-4 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[#5D524B] uppercase no-underline"
+          className="border-b border-black/10 py-4 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-black uppercase no-underline"
           onClick={onNavigate("/blog")}
         >
           Blog
         </Link>
         <Link
           href="mailto:socials@osfin.ai"
-          className="border-b border-black/10 py-4 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-[#5D524B] uppercase no-underline"
+          className="border-b border-black/10 py-4 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-black uppercase no-underline"
           onClick={onClose}
         >
           Contact

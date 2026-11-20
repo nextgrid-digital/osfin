@@ -1,66 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AgentsGetBetter } from "@/components/hairline/AgentsGetBetter";
 import { DeployAgents } from "@/components/hairline/DeployAgents";
 import { DriverSeat } from "@/components/hairline/DriverSeat";
 import { RedesignHowWorkGetsDone } from "@/components/hairline/RedesignHowWorkGetsDone";
 import { SeeWorkEndToEnd } from "@/components/hairline/SeeWorkEndToEnd";
+import { FEATURES, type FeatureId } from "../content/process";
+import DarkWhenInView from "./DarkWhenInView";
 import SiteContainer from "./SiteContainer";
-
-/** Plate matches the card; strokes stay in the site ink so hover still reads. */
-const seeWorkWash = {
-  "--hairline-plate": "#F7F1E3",
-  "--hairline-hi": "#5D524B",
-  "--hairline-edge": "#8F8378",
-  "--hairline-mid": "#B7AB9F",
-  "--hairline-lo": "#DDD3C6",
-} as CSSProperties;
-
-const FEATURES = [
-  {
-    id: "map",
-    nav: "Map",
-    title: ["See today’s work", "end to end"],
-    body: "Our forward-deployed team and agents map your data, workflows, and internal policies. Together, we uncover opportunities to automate work, improve customer and employee experience, and reduce risk, giving leaders the evidence they need to drive change and free up resources.",
-    copy: "max-w-[34.5rem]",
-    figure: "branches" as const,
-  },
-  {
-    id: "reimagine",
-    nav: "Reimagine",
-    title: ["Redesign how", "work gets done"],
-    body: "We’re in the earliest innings of a fundamental shift in how work gets done. Osfin works alongside your teams to rethink how they operate, bringing lessons from across the industry and co-creating new ways of working.",
-    copy: "max-w-[30rem]",
-    figure: "loupe" as const,
-  },
-  {
-    id: "transform",
-    nav: "Transform",
-    title: ["Deploy agents", "against your goals"],
-    body: "Osfin deploys goal-oriented agents, purpose-built for finance, accounting, and payments operations, that get the job done. They stand up quickly, run your operational processes end to end, and bring your team in only when judgment is needed.",
-    copy: "max-w-[32rem]",
-    figure: "cabinet" as const,
-  },
-  {
-    id: "learn",
-    nav: "Learn",
-    title: ["Agents that get", "better every day"],
-    body: "Osfin’s agents learn from how your team resolves exceptions, edge cases, and escalations. Every decision makes them sharper, so they become a trusted coworker that knows how your team works.",
-    copy: "max-w-[27.5rem]",
-    figure: "phosphor" as const,
-  },
-  {
-    id: "control",
-    nav: "Control",
-    title: ["You stay in", "the driver’s seat"],
-    body: "Built for financial services, Osfin’s platform keeps agents within your internal policies, routes decisions to people where oversight is required, and records a full audit trail of every action they take.",
-    copy: "max-w-[27rem]",
-    figure: "vault" as const,
-  },
-] as const;
-
-type FeatureId = (typeof FEATURES)[number]["id"];
 
 function isFeatureId(value: string | null): value is FeatureId {
   return FEATURES.some((feature) => feature.id === value);
@@ -151,15 +99,26 @@ export default function HomeProduction() {
   }, []);
 
   return (
-    <section id="process" className="py-28 md:py-40">
-      <SiteContainer>
-        <div className="flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between md:gap-10">
+    <section
+      id="process"
+      data-vision-seam-next
+      className="relative bg-[#111113] py-28 text-white md:py-40"
+    >
+      <DarkWhenInView targetId="process" />
+      <SiteContainer className="relative z-10">
+        <div
+          data-process-dark-trigger
+          className="flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between md:gap-10"
+        >
           <div className="flex w-full max-w-[36rem] flex-col gap-4">
-            <h2 className="!mb-0 !mt-0 max-w-[18em] text-left !font-normal tracking-[-0.022em] text-[#5D524B]">
+            <h2
+              data-vision-seam-heading
+              className="!mb-0 !mt-0 max-w-[18em] text-left !font-light tracking-[-0.022em] text-white"
+            >
               We enable radical transformation in operations
             </h2>
           </div>
-          <p className="!mb-0 !mt-0 max-w-[26rem] !text-[16px] !leading-[1.45] text-[#5D524B]">
+          <p className="!mb-0 !mt-0 max-w-[26rem] !text-[16px] !leading-[1.45] text-white">
             A granular view of transaction lifecycle across banking, payments, and settlement before close.
           </p>
         </div>
@@ -167,10 +126,10 @@ export default function HomeProduction() {
         <div className="mt-12 grid grid-cols-1 gap-8 md:mt-16 lg:grid-cols-[10rem_minmax(0,1fr)] lg:gap-10">
           <aside className="lg:sticky lg:top-24 lg:w-40 lg:self-start">
             <p
-              className="not-typeset mb-5 flex items-center gap-2 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-[#5D524B]/45 uppercase"
+              className="not-typeset mb-5 flex items-center gap-2 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-white/45 uppercase"
               data-not-typeset
             >
-              <span className="size-1.5 shrink-0 bg-[#001D20]" aria-hidden />
+              <span className="size-1.5 shrink-0 bg-white" aria-hidden />
               Process
             </p>
             <nav aria-label="Capabilities" className="flex flex-col gap-3">
@@ -182,8 +141,8 @@ export default function HomeProduction() {
                     href={`#feature-${feature.id}`}
                     className={`not-typeset block text-[15px] leading-snug no-underline transition-colors ${
                       isActive
-                        ? "text-[#5D524B]"
-                        : "text-[#5D524B]/35 hover:text-[#5D524B]/55"
+                        ? "text-white"
+                        : "text-white/40 hover:text-white/60"
                     }`}
                     data-not-typeset
                     onClick={() => setActive(feature.id)}
@@ -204,37 +163,37 @@ export default function HomeProduction() {
                 ref={(el) => {
                   itemRefs.current[feature.id] = el;
                 }}
-                className="grid h-[46rem] min-w-0 grid-cols-1 grid-rows-[auto_minmax(0,1fr)] overflow-hidden bg-[#F7F1E3] md:h-[min(38rem,72svh)] md:grid-cols-[minmax(0,39rem)_minmax(20rem,1fr)] md:grid-rows-1"
+                className="grid h-[46rem] min-w-0 grid-cols-1 grid-rows-[auto_minmax(0,1fr)] overflow-hidden border border-white/15 bg-[#111113] md:h-[min(38rem,72svh)] md:grid-cols-[minmax(0,39rem)_minmax(20rem,1fr)] md:grid-rows-1"
               >
                 <div className="flex flex-col justify-between gap-10 px-7 py-8 md:px-9 md:py-10">
-                  <h3 className="!mb-0 !mt-0 !text-[28px] !font-normal !leading-[1.15] !tracking-[-0.02em] text-[#5D524B] normal-case md:!text-[32px]">
+                  <h3 className="!mb-0 !mt-0 !text-[28px] !font-light !leading-[1.15] !tracking-[-0.02em] text-white normal-case md:!text-[32px]">
                     <span className="block">{feature.title[0]}</span>
                     <span className="block">{feature.title[1]}</span>
                   </h3>
-                  <p className={`!mb-0 !mt-0 text-[15px] leading-[1.5] text-[#5D524B] md:text-[16px] ${feature.copy}`}>
+                  <p className={`!mb-0 !mt-0 text-[15px] leading-[1.5] text-white md:text-[16px] ${feature.copy}`}>
                     {feature.body}
                   </p>
                 </div>
-                <div className="relative min-h-0 overflow-hidden bg-[#F7F1E3]">
+                <div className="relative min-h-0 overflow-hidden bg-[#111113]">
                   {feature.id === "map" ? (
-                    <div className="absolute inset-x-3 top-3 bottom-0 flex items-end justify-center md:inset-x-5 md:top-5" style={seeWorkWash}>
-                      <SeeWorkEndToEnd intensity={0.6} className="h-[88%] w-[88%]" />
+                    <div className="absolute inset-x-3 top-3 bottom-0 flex items-end justify-center md:inset-x-5 md:top-5">
+                      <SeeWorkEndToEnd theme="dark" intensity={0.6} className="h-[88%] w-[88%]" />
                     </div>
                   ) : feature.id === "reimagine" ? (
-                    <div className="absolute inset-x-3 top-3 bottom-0 md:inset-x-5 md:top-5" style={seeWorkWash}>
-                      <RedesignHowWorkGetsDone intensity={0.6} className="h-full w-full" />
+                    <div className="absolute inset-x-3 top-3 bottom-0 md:inset-x-5 md:top-5">
+                      <RedesignHowWorkGetsDone theme="dark" intensity={0.6} className="h-full w-full" />
                     </div>
                   ) : feature.id === "transform" ? (
-                    <div className="absolute inset-x-3 top-3 bottom-0 md:inset-x-5 md:top-5" style={seeWorkWash}>
-                      <DeployAgents intensity={0.6} className="h-full w-full" />
+                    <div className="absolute inset-x-3 top-3 bottom-0 md:inset-x-5 md:top-5">
+                      <DeployAgents theme="dark" intensity={0.6} className="h-full w-full" />
                     </div>
                   ) : feature.id === "learn" ? (
-                    <div className="absolute inset-x-3 top-3 bottom-0 md:inset-x-5 md:top-5" style={seeWorkWash}>
-                      <AgentsGetBetter intensity={0.6} className="h-full w-full" />
+                    <div className="absolute inset-x-3 top-3 bottom-0 md:inset-x-5 md:top-5">
+                      <AgentsGetBetter theme="dark" intensity={0.6} className="h-full w-full" />
                     </div>
                   ) : (
-                    <div className="absolute inset-0 flex items-center justify-center md:items-start md:justify-start md:pl-2 md:pt-6" style={seeWorkWash}>
-                      <DriverSeat intensity={0.6} className="w-full max-w-[520px] shrink-0 md:w-[118%] md:max-w-none" />
+                    <div className="absolute inset-0 flex items-center justify-center md:items-start md:justify-start md:pl-2 md:pt-6">
+                      <DriverSeat theme="dark" intensity={0.6} className="w-full max-w-[520px] shrink-0 md:w-[118%] md:max-w-none" />
                     </div>
                   )}
                 </div>

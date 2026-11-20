@@ -56,7 +56,7 @@ export default function HomeProductRows() {
         <div className="flex items-end justify-end gap-2 border-b border-black/15 pb-5">
           <button
             type="button"
-            className="inline-flex size-8 items-center justify-center border border-black/15 text-[#5D524B] disabled:opacity-30"
+            className="inline-flex size-8 items-center justify-center border border-black/15 text-black disabled:opacity-30"
             aria-label="Previous products"
             disabled={!canPrev}
             onClick={() => emblaApi?.goToPrev()}
@@ -65,7 +65,7 @@ export default function HomeProductRows() {
           </button>
           <button
             type="button"
-            className="inline-flex size-8 items-center justify-center border border-black/15 text-[#5D524B] disabled:opacity-30"
+            className="inline-flex size-8 items-center justify-center border border-black/15 text-black disabled:opacity-30"
             aria-label="Next products"
             disabled={!canNext}
             onClick={() => emblaApi?.goToNext()}
@@ -99,7 +99,7 @@ export default function HomeProductRows() {
                       />
                     )}
                   </div>
-                  <h3 className="!mb-0 !mt-8 !text-[20px] !font-normal !leading-[1.33] !tracking-[-0.012em] text-[#5D524B] normal-case">
+                  <h3 className="!mb-0 !mt-8 !text-[20px] !font-light !leading-[1.33] !tracking-[-0.012em] text-black normal-case">
                     {product.homeTitle.split("\n").map((line) => (
                       <span key={line} className="block">
                         {line}
@@ -107,10 +107,10 @@ export default function HomeProductRows() {
                     ))}
                   </h3>
                   <div className="mt-auto flex items-center justify-between gap-4 pt-12">
-                    <p className="!m-0 font-[family-name:var(--font-mono)] text-[14px] leading-5 tracking-[-0.02em] text-[#5D524B]/55 uppercase">
+                    <p className="!m-0 font-[family-name:var(--font-mono)] text-[14px] leading-5 tracking-[-0.02em] text-black/55 uppercase">
                       {product.homeLabel}
                     </p>
-                    <span className="inline-flex size-8 shrink-0 items-center justify-center border border-black/15 text-[#5D524B]/55">
+                    <span className="inline-flex size-8 shrink-0 items-center justify-center border border-black/15 text-black/55">
                       <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden>
                         <path
                           d="M4 12 12 4M6 4h6v6"

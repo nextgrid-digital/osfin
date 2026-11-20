@@ -43,7 +43,7 @@ export default function CloneRoles({ jobs }: { jobs: LinkedInJob[] }) {
   }, [department, jobs, query]);
 
   return (
-    <section className="block relative px-18 overflow-hidden bg-[var(--header-bg)] max-md:px-3" id="open-roles">
+    <section className="block relative px-18 overflow-hidden bg-background max-md:px-3" id="open-roles">
       <div className="border border-dashed border-color-005 block relative max-w-[1440px] mx-auto w-full">
         <div className="flex py-20 px-10 flex-col gap-10 max-md:py-16 max-md:px-3">
           <div className="w-full max-w-140 flex flex-col items-start gap-6">
@@ -65,7 +65,7 @@ export default function CloneRoles({ jobs }: { jobs: LinkedInJob[] }) {
             </div>
             <div className="border border-solid border-color-005 grid grid-cols-[220px_1fr] max-md:-mx-3 max-lg:border-[0] max-lg:border-initial max-lg:border-[initial] max-lg:grid-cols-1">
               <div className="border-r border-solid border-r-color-005 relative max-lg:border-b max-lg:border-b-color-005 max-lg:border-r-[0] max-lg:border-initial max-lg:border-r-[initial]">
-                <div className="flex relative p-6 flex-col bg-[var(--header-bg)] max-lg:p-0 lg:sticky lg:top-16">
+                <div className="flex relative p-6 flex-col bg-background max-lg:p-0 lg:sticky lg:top-16">
                 <div
                   className="block absolute left-0 min-w-0 bg-color-001 pointer-events-none h-14 w-0.5 transition-transform duration-200"
                   aria-hidden="true"

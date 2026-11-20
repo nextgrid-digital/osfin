@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { GlyphMatrix } from "@/components/ui/glyph-matrix";
 import SiteContainer from "./SiteContainer";
@@ -70,7 +69,7 @@ function CertIcon({
   ink?: "white" | "dark";
 }) {
   const label = ink === "white" ? "white" : "currentColor";
-  const mark = ink === "white" ? "text-white/80" : "text-[#5D524B]/70";
+  const mark = ink === "white" ? "text-white/80" : "text-black/70";
   if (kind === "soc") {
     return (
       <svg
@@ -240,13 +239,13 @@ export function SecurityCards({
           <div>
             {item.kicker ? (
               <p
-                className={`not-typeset !mb-2 !mt-0 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] uppercase ${light ? "text-[#5D524B]/45" : "text-white/45"}`}
+                className={`not-typeset !mb-2 !mt-0 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] uppercase ${light ? "text-black/45" : "text-white/45"}`}
               >
                 {item.kicker}
               </p>
             ) : null}
             <h3
-              className={`!mb-0 !mt-0 !text-[20px] !font-medium !leading-[1.33] !tracking-[-0.012em] normal-case ${light ? "text-[#5D524B]" : "text-white"}`}
+              className={`!mb-0 !mt-0 !text-[20px] !font-light !leading-[1.33] !tracking-[-0.012em] normal-case ${light ? "text-black" : "text-white"}`}
             >
               {item.titleLines.map((line) => (
                 <span key={line} className="block">
@@ -254,7 +253,7 @@ export function SecurityCards({
                 </span>
               ))}
             </h3>
-            <p className={`@container !mb-0 !mt-3 text-[15px] leading-6 ${light ? "text-[#5D524B]/60" : "text-white/45"}`}>
+            <p className={`@container !mb-0 !mt-3 text-[15px] leading-6 ${light ? "text-black/60" : "text-white/45"}`}>
               {"lines" in item ? (
                 <>
                   <span className="@min-[15rem]:hidden">{item.body}</span>
@@ -280,45 +279,14 @@ export function SecurityCards({
 }
 
 export default function HomeSecurity() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const leadRef = useRef<HTMLHeadingElement>(null);
-
-  useEffect(() => {
-    const sync = () => {
-      const section = sectionRef.current?.getBoundingClientRect();
-      const lead = leadRef.current?.getBoundingClientRect();
-      const root = document.documentElement;
-      if (!section || !lead) {
-        root.style.setProperty("--night-mix", "0%");
-        return;
-      }
-      const view = window.innerHeight;
-      const travel = view * 0.45;
-      const enter = Math.min(1, Math.max(0, (view - lead.top) / travel));
-      const leave = Math.min(1, Math.max(0, section.bottom / travel));
-      const mix = Math.min(enter, leave);
-      root.style.setProperty("--night-mix", `${(mix * 100).toFixed(1)}%`);
-    };
-
-    sync();
-    window.addEventListener("scroll", sync, { passive: true });
-    window.addEventListener("resize", sync);
-    return () => {
-      window.removeEventListener("scroll", sync);
-      window.removeEventListener("resize", sync);
-      document.documentElement.style.setProperty("--night-mix", "0%");
-    };
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       id="security"
       className="flex min-h-[100svh] flex-col justify-center bg-background py-28 md:py-40"
     >
       <SiteContainer>
         <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-end sm:justify-between sm:gap-10">
-          <h2 ref={leadRef} className="!mb-0 !mt-0 max-w-[40rem] text-left text-[#5D524B]">
+          <h2 data-night-wash className="!mb-0 !mt-0 max-w-[40rem] text-left text-black">
             Compliance and security guardrails built in
           </h2>
           <Link
@@ -332,7 +300,7 @@ export default function HomeSecurity() {
 
         <div className="mt-6 grid grid-cols-1 gap-3 md:h-[min(50svh,32rem)] md:grid-cols-[1.1fr_1fr]">
           <div className="flex min-h-[16rem] flex-col justify-between gap-5 overflow-hidden border border-black/[0.06] bg-background p-6 md:min-h-0 md:h-full md:p-8">
-            <p className={`${kickerClassName} text-[#5D524B]/45`} data-not-typeset>
+            <p className={`${kickerClassName} text-black/45`} data-not-typeset>
               <span className="size-1.5 shrink-0 bg-current" aria-hidden />
               Policy bound
             </p>
@@ -347,7 +315,7 @@ export default function HomeSecurity() {
                 className="absolute inset-0 h-full w-full"
               />
             </div>
-            <p className="not-typeset !m-0 max-w-[18em] font-[family-name:var(--font-stix)] text-[clamp(1.5rem,2.4vw,32px)] leading-none font-normal tracking-[-0.022em] text-[#5D524B]" data-not-typeset>
+            <p className="not-typeset !m-0 max-w-[18em] font-[family-name:var(--font-crimson)] text-[clamp(1.5rem,2.4vw,32px)] leading-none font-light tracking-[-1px] text-black" data-not-typeset>
               Osfin is built so finance teams can run agents without giving up control.
             </p>
           </div>
@@ -365,7 +333,7 @@ export default function HomeSecurity() {
                 <span className="size-1.5 shrink-0 bg-current" aria-hidden />
                 PCI DSS & PCI SSF
               </p>
-              <h3 className="relative z-10 !mb-0 !mt-4 !font-[family-name:var(--font-stix)] !text-[clamp(1.25rem,1.8vw,28px)] !font-normal !leading-none !tracking-[-0.022em] text-white">
+              <h3 className="relative z-10 !mb-0 !mt-4 !font-[family-name:var(--font-crimson)] !text-[clamp(1.25rem,1.8vw,28px)] !font-light !leading-none !tracking-[-1px] text-white">
                 Payment-grade encryption
               </h3>
             </div>
@@ -385,8 +353,8 @@ export default function HomeSecurity() {
               </div>
             </div>
 
-            <div className="flex min-h-[8rem] flex-col justify-center border border-black/[0.06] bg-[#F7F1E3] p-4 md:col-start-1 md:row-start-3 md:min-h-0 md:p-5">
-              <p className="!mb-0 !mt-0 text-[14px] leading-5 text-[#5D524B]/80">
+            <div className="flex min-h-[8rem] flex-col justify-center border border-black/[0.06] bg-[#f5f5f5] p-4 md:col-start-1 md:row-start-3 md:min-h-0 md:p-5">
+              <p className="!mb-0 !mt-0 text-[14px] leading-5 text-black/80">
                 Agents stay inside internal policies, route exceptions to people, and keep a complete audit trail of every step.
               </p>
             </div>
@@ -394,7 +362,7 @@ export default function HomeSecurity() {
             <div className="relative flex min-h-[12rem] min-h-0 flex-col items-start justify-between overflow-hidden border border-black/[0.06] bg-background p-5 md:col-start-2 md:row-span-2 md:row-start-2 md:min-h-0 md:p-6">
               <svg
                 viewBox="0 0 32 36"
-                className="relative z-10 block h-10 w-9 shrink-0 text-[#5D524B]"
+                className="relative z-10 block h-10 w-9 shrink-0 text-black"
                 fill="none"
                 aria-hidden
                 data-not-typeset=""
@@ -413,7 +381,7 @@ export default function HomeSecurity() {
                   strokeLinejoin="round"
                 />
               </svg>
-              <h3 className="relative z-10 !m-0 !font-[family-name:var(--font-stix)] !text-[clamp(1.25rem,1.8vw,28px)] !font-normal !leading-none !tracking-[-0.022em] text-[#5D524B]">
+              <h3 className="relative z-10 !m-0 !font-[family-name:var(--font-crimson)] !text-[clamp(1.25rem,1.8vw,28px)] !font-light !leading-none !tracking-[-1px] text-black">
                 SOC 2 Type II and ISO 27001
               </h3>
             </div>

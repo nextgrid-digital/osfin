@@ -316,56 +316,56 @@
 }
 
 [data-clone="replay-careers"] {
-  --foreground: #5d524b;
+  --foreground: #000;
   --primary: rgb(84, 112, 47);
   --accent: rgb(73, 157, 248);
   --border: rgb(0 0 0 / 0.1);
-  --muted-foreground: rgb(93 82 75 / 0.55);
-  --muted: rgb(93 82 75 / 0.45);
+  --muted-foreground: rgb(0 0 0 / 0.55);
+  --muted: rgb(0 0 0 / 0.45);
   --surface: var(--background);
-  --surface-2: rgb(93 82 75 / 0.08);
-  --surface-3: rgb(93 82 75 / 0.22);
+  --surface-2: rgb(0 0 0 / 0.08);
+  --surface-3: rgb(0 0 0 / 0.22);
   --surface-4: var(--background);
   --surface-5: var(--background);
-  --color-001: #5d524b;
-  --color-002: rgb(93 82 75 / 0.6);
+  --color-001: #000;
+  --color-002: rgb(0 0 0 / 0.6);
   --color-003: rgb(0 0 0 / 0.1);
   --color-004: rgb(0 0 0 / 0.08);
-  --color-005: rgb(93 82 75 / 0.28);
-  --color-006: #5d524b;
-  --color-007: rgb(93 82 75 / 0.65);
-  --color-008: rgb(93 82 75 / 0.22);
+  --color-005: rgb(0 0 0 / 0.28);
+  --color-006: #000;
+  --color-007: rgb(0 0 0 / 0.65);
+  --color-008: rgb(0 0 0 / 0.22);
   --color-009: rgb(0 0 0 / 0.1);
   --color-010: rgb(0 0 0 / 0.1);
-  --color-011: rgb(93 82 75 / 0.4);
+  --color-011: rgb(0 0 0 / 0.4);
   --color-012: var(--background);
-  --color-013: rgb(93 82 75 / 0.6);
-  --color-014: rgb(93 82 75 / 0.4);
-  --color-015: rgb(93 82 75 / 0.65);
+  --color-013: rgb(0 0 0 / 0.6);
+  --color-014: rgb(0 0 0 / 0.4);
+  --color-015: rgb(0 0 0 / 0.65);
   --color-016: rgb(0 0 0 / 0.12);
-  --color-017: rgb(93 82 75 / 0.5);
-  --color-018: rgb(93 82 75 / 0.55);
-  --color-019: rgb(93 82 75 / 0.5);
+  --color-017: rgb(0 0 0 / 0.5);
+  --color-018: rgb(0 0 0 / 0.55);
+  --color-019: rgb(0 0 0 / 0.5);
   --clr-0: rgb(0 0 0 / 0.1);
   --clr-1: rgba(0, 0, 0, 0);
   --clr-2: var(--background);
   --clr-3: var(--background);
-  --clr-4: rgb(93 82 75 / 0.3);
-  --clr-5: rgb(93 82 75 / 0.45);
+  --clr-4: rgb(0 0 0 / 0.3);
+  --clr-5: rgb(0 0 0 / 0.45);
   --clr-6: rgb(126, 126, 126);
   --clr-7: rgb(234, 224, 88);
   --clr-8: var(--background);
   --clr-9: var(--background);
-  --clr-10: rgb(93 82 75 / 0.16);
-  --clr-11: rgb(93 82 75 / 0.55);
+  --clr-10: rgb(0 0 0 / 0.16);
+  --clr-11: rgb(0 0 0 / 0.55);
   --clr-12: var(--background);
-  --clr-13: rgb(93 82 75 / 0.04);
-  --clr-14: rgb(93 82 75 / 0.65);
-  --clr-15: rgb(93 82 75 / 0.04);
-  --clr-16: #5d524b;
+  --clr-13: rgb(0 0 0 / 0.04);
+  --clr-14: rgb(0 0 0 / 0.65);
+  --clr-15: rgb(0 0 0 / 0.04);
+  --clr-16: #000;
   --font-body: var(--font-inter), system-ui, sans-serif;
   --font-001: var(--font-ibm-plex-mono), ui-monospace, monospace;
-  --font-002: var(--font-stix), "STIX Two Text", Georgia, serif;
+  --font-002: var(--font-crimson), "Crimson Pro", Georgia, serif;
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-inter), system-ui, sans-serif;
@@ -444,12 +444,12 @@
   }
 }
 
-/* Map cloned Replay fonts onto STIX Two Text / Inter / IBM Plex Mono. */
+/* Map cloned Replay fonts onto Crimson Pro / Inter / IBM Plex Mono. */
 [data-clone="replay-careers"] :where(h1, h2, h3, h4, h5, h6),
 [data-clone="replay-careers"] [data-component="heading"],
 [data-clone="replay-careers"] [class*="stkBureauSerif"] {
-  font-family: var(--font-stix), "STIX Two Text", Georgia, serif;
-  font-weight: 400;
+  font-family: var(--font-crimson), "Crimson Pro", Georgia, serif;
+  font-weight: 300;
 }
 
 [data-clone="replay-careers"] [class*="Geist_Mono"] {

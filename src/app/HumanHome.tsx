@@ -1,3 +1,6 @@
+import VisionProcessTypesetSeam, {
+  ProcessExitTypesetSeam,
+} from "@/components/seam/VisionProcessTypesetSeam";
 import GatewayFlow from "@/components/ui/gateway-flow";
 import { TextReveal } from "@/components/ui/cascade-text";
 import MetalLapJoint from "@/components/MetalLapJoint";
@@ -35,50 +38,31 @@ function SectionRule() {
 
 export default function HumanHome() {
   return (
-    <div className="site-shell typeset typeset-docs min-h-screen bg-background text-[#5D524B]">
+    <div className="site-shell typeset typeset-docs min-h-screen bg-background text-black">
       <main className="pt-14 md:pt-16">
         {/* Hero: copy left, image right — vertically centered in viewport below header */}
-        <section className="hero-section relative flex min-h-[calc(100svh-3.5rem)] items-center overflow-hidden bg-background md:min-h-[calc(100svh-4rem)]">
+        <section className="hero-section relative flex min-h-[calc(100svh-3.5rem)] items-center overflow-hidden bg-transparent md:min-h-[calc(100svh-4rem)]">
           <GatewayFlow
             mode="light"
+            paper={false}
             className="pointer-events-none absolute inset-0 z-0 h-full w-full"
-          />
-          {/* Same line field as the close, flipped so it sits at the bottom. */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 z-[1]"
-            style={{
-              background: [
-                "radial-gradient(ellipse 42% 48% at 50% 48%, color-mix(in srgb, var(--background) 72%, transparent) 0%, color-mix(in srgb, var(--background) 42%, transparent) 45%, color-mix(in srgb, var(--background) 12%, transparent) 70%, transparent 88%)",
-                "linear-gradient(to top, transparent 0%, transparent 18%, color-mix(in srgb, var(--background) 12%, transparent) 42%, color-mix(in srgb, var(--background) 45%, transparent) 72%, var(--background) 94%)",
-              ].join(", "),
-              maskImage:
-                "linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)",
-              WebkitMaskImage:
-                "linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)",
-            }}
           />
           <SiteContainer className="relative z-10 w-full">
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-16">
               <div className="relative flex w-full flex-col items-start text-left lg:w-max lg:shrink-0">
-                {/* Wash the top-left field through the button row. */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -left-[50vw] -top-[100vh] -bottom-8 z-[-1] w-[calc(100%+50vw)]"
-                  style={{
-                    background:
-                      "linear-gradient(to bottom, var(--background) 0%, var(--background) calc(100% - 5rem), transparent 100%)",
-                    maskImage:
-                      "linear-gradient(to right, #000 0%, #000 calc(100% - 8rem), transparent 100%)",
-                    WebkitMaskImage:
-                      "linear-gradient(to right, #000 0%, #000 calc(100% - 8rem), transparent 100%)",
-                  }}
-                />
-                <h1 className="text-[#5D524B]">
-                  <span className="block">Orchestrating transformation</span>
-                  <span className="block">in Finance Operations</span>
+                <div aria-hidden className="hero-copy-wash" />
+                <h1 className="text-black">
+                  <span className="block">The finance automation platform</span>
+                  <span className="block">built for enterprise complexity.</span>
                 </h1>
-                <p className="mt-8 max-w-[36rem] text-[18px] leading-[1.5] text-[#5D524B] md:mt-10">
+                <p
+                  className="not-typeset mt-5 max-w-[34rem] font-[family-name:var(--font-crimson)] text-[clamp(1.375rem,1.8vw,26px)] leading-[1.3] font-light tracking-[-0.4px] text-black md:mt-6"
+                  data-not-typeset
+                >
+                  Out of the box where it can be, configurable where it needs to be. Our forward-deployed engineers make
+                  sure it fits from day one.
+                </p>
+                <p className="mt-6 max-w-[36rem] text-[18px] leading-[1.5] text-black md:mt-8">
                   Osfin partners with the most ambitious enterprises and leaders to drive transformation in finance
                   operations. We do this by deploying our teams of forward-deployed engineers and purpose-built agents
                   who own the outcome and act as a catalyst for change across your finance, accounting and payments
@@ -103,13 +87,13 @@ export default function HumanHome() {
         </section>
 
         <SectionRule />
-        <HomeVision />
-
-        <SectionRule />
-        <HomeProduction />
-
-        <SectionRule />
-        <HomeCaseStudies />
+        <div className="relative">
+          <HomeVision />
+          <VisionProcessTypesetSeam />
+          <HomeProduction />
+          <ProcessExitTypesetSeam />
+          <HomeCaseStudies />
+        </div>
 
         <SectionRule />
         <HomeIndustries />
@@ -122,10 +106,10 @@ export default function HumanHome() {
         <section id="changelog" className="pt-28 pb-28 md:pt-40 md:pb-40">
           <SiteContainer>
             <div className="flex items-end justify-between gap-6 border-b border-black/15 pb-5">
-              <h2 className="!mb-0 !mt-0 text-[#5D524B]">From the frontier</h2>
+              <h2 className="!mb-0 !mt-0 text-black">From the frontier</h2>
               <TransitionLink
                 href="/blog"
-                className="not-typeset mb-1 inline-flex shrink-0 items-center gap-2 font-[family-name:var(--font-mono)] text-[15px] tracking-[-0.02em] text-[#5D524B] uppercase no-underline hover:no-underline"
+                className="not-typeset mb-1 inline-flex shrink-0 items-center gap-2 font-[family-name:var(--font-mono)] text-[15px] tracking-[-0.02em] text-black uppercase no-underline hover:no-underline"
                 data-not-typeset
               >
                 <span className="underline underline-offset-4">View all</span>
@@ -152,7 +136,7 @@ export default function HumanHome() {
                   data-not-typeset
                 >
                   <BlogCoverPlaceholder src={post.cover} alt={post.title} />
-                  <h3 className="!mb-0 !mt-8 !text-[20px] !font-normal !leading-[1.33] !tracking-[-0.012em] text-[#5D524B] normal-case">
+                  <h3 className="!mb-0 !mt-8 !text-[28px] !font-light !leading-[1.33] !tracking-[-0.012em] text-black normal-case">
                     {post.title.split("\n").map((line) => (
                       <span key={line} className="block">
                         {line}
@@ -160,12 +144,12 @@ export default function HumanHome() {
                     ))}
                   </h3>
                   <div className="mt-auto flex items-center justify-between gap-4 pt-12">
-                    <p className="!m-0 flex items-center gap-2 font-[family-name:var(--font-mono)] text-[14px] leading-5 tracking-[-0.02em] text-[#5D524B]/55 uppercase">
+                    <p className="!m-0 flex items-center gap-2 font-[family-name:var(--font-mono)] text-[14px] leading-5 tracking-[-0.02em] text-black/55 uppercase">
                       <span>{post.category}</span>
                       <span className="inline-block size-1 bg-current" aria-hidden />
                       <span>{post.date}</span>
                     </p>
-                    <span className="inline-flex size-8 shrink-0 items-center justify-center border border-black/15 text-[#5D524B]/55">
+                    <span className="inline-flex size-8 shrink-0 items-center justify-center border border-black/15 text-black/55">
                       <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden>
                         <path
                           d="M4 12 12 4M6 4h6v6"

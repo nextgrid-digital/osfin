@@ -6,11 +6,11 @@ import SiteClose from "../SiteClose";
 
 export const metadata: Metadata = {
   title: "About — Osfin",
-  description: ABOUT.manifesto,
+  description: ABOUT.description,
 };
 
 const essayLabelClassName =
-  "not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] leading-none font-medium tracking-[-0.02em] text-[#5D524B]/45 uppercase";
+  "not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] leading-none font-medium tracking-[-0.02em] text-black/45 uppercase";
 const labelClassName = essayLabelClassName;
 
 export default function AboutPage() {
@@ -18,17 +18,30 @@ export default function AboutPage() {
     <div
       data-transition="container"
       data-namespace="about"
-      className="site-shell typeset typeset-docs min-h-screen bg-background text-[#5D524B]"
+      className="site-shell typeset typeset-docs min-h-screen bg-background text-black"
     >
       <main className="pt-14 md:pt-16">
         <section className="pt-16 pb-12 md:pt-28 md:pb-20">
           <SiteContainer>
             <p
-              className="not-typeset !m-0 max-w-[18em] font-[family-name:var(--font-stix)] text-[clamp(2rem,5vw,64px)] leading-none font-normal tracking-[-0.022em] text-[#5D524B]"
+              className="not-typeset !m-0 max-w-[18em] font-[family-name:var(--font-crimson)] text-[clamp(2rem,5vw,64px)] leading-none font-light tracking-[-2px] text-black"
               data-not-typeset
             >
               {ABOUT.manifesto}
             </p>
+            <div
+              className="not-typeset mt-12 grid grid-cols-1 gap-10 md:mt-16 md:grid-cols-3 md:gap-12"
+              data-not-typeset
+            >
+              {ABOUT.fit.map((item) => (
+                <div key={item.title}>
+                  <h2 className="!m-0 font-[family-name:var(--font-crimson)] !text-[clamp(1.5rem,2vw,28px)] !leading-none !font-light !tracking-[-1px] text-black">
+                    {item.title}
+                  </h2>
+                  <p className="!mb-0 !mt-4 text-[18px] !leading-[1.5] text-black">{item.body}</p>
+                </div>
+              ))}
+            </div>
           </SiteContainer>
         </section>
 
@@ -91,7 +104,7 @@ export default function AboutPage() {
                       {row.items.map((item) => (
                         <article
                           key={item.name}
-                          className="flex aspect-[5/3] flex-col text-[#5D524B] shadow-[1px_1px_0_0_rgba(0,0,0,0.08)]"
+                          className="flex aspect-[5/3] flex-col text-black shadow-[1px_1px_0_0_rgba(0,0,0,0.08)]"
                         >
                           <div className="flex flex-1 items-center justify-center px-6 md:px-10">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -141,7 +154,7 @@ export default function AboutPage() {
                       className="size-full object-cover"
                     />
                   </div>
-                  <h3 className="!mb-0 !mt-8 !text-[20px] !font-normal !leading-[1.33] !tracking-[-0.012em] text-[#5D524B] normal-case">
+                  <h3 className="!mb-0 !mt-8 !text-[20px] !font-light !leading-[1.33] !tracking-[-0.012em] text-black normal-case">
                     {city.name}
                   </h3>
                 </figure>

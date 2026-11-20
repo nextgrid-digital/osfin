@@ -1,7 +1,6 @@
 "use client";
 
 import { industryIcons } from "@/components/icons/industries";
-import "@/components/industries/iso-cards.css";
 import { Carousel } from "@/components/ui/carousel";
 import { INDUSTRIES } from "../content/industries";
 import { useIndustrySelect } from "./industry-select";
@@ -33,7 +32,7 @@ export default function IndustryHeroCarousel({ currentId }: { currentId: string 
           return (
           <div
             key={item.id}
-            className="osfin-iso-wash osfin-icon-trigger flex aspect-square items-center justify-center overflow-hidden border border-black/10"
+            className="osfin-iso-wash osfin-icon-trigger flex aspect-square items-center justify-center overflow-hidden border border-black/10 bg-[#f5f5f5]"
           >
             <Icon className="size-full" />
           </div>

@@ -566,7 +566,7 @@ export const CUSTOMER_STORIES: CustomerStory[] = [
     title: "Buku Warung: less dependency on the internal team",
     category: "Customer",
     date: "Jun 1, 2024",
-    logo: "/customers/buku-warung.png",
+    logo: "/customers/buku-warung.png?v=2",
     company: "Buku Warung",
     sections: [
       {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useScroll } from "motion/react";
+import { useLenis } from "lenis/react";
 import SiteContainer from "./SiteContainer";
 import HomeVisionField from "./HomeVisionField";
 
@@ -30,10 +30,7 @@ export default function HomeVision() {
   const sectionRef = useRef<HTMLElement>(null);
   const wordsRef = useRef<HTMLDivElement>(null);
   const leadRef = useRef<HTMLParagraphElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
+  const paintRef = useRef<() => void>(() => {});
 
   useEffect(() => {
     const root = wordsRef.current;
@@ -41,57 +38,50 @@ export default function HomeVision() {
 
     const words = [...root.querySelectorAll<HTMLElement>("[data-word]")];
     const total = Math.max(1, words.length);
+    const alphas = new Array<number>(words.length).fill(-1);
 
-    const syncField = () => {
-      const box = leadRef.current?.getBoundingClientRect();
-      const root = document.documentElement;
-      if (!box) {
-        root.style.setProperty("--field-mix", "0%");
-        return;
-      }
+    paintRef.current = () => {
+      const section = sectionRef.current;
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
       const view = window.innerHeight;
-      const travel = view * 0.45;
-      const enter = Math.min(1, Math.max(0, (view - box.top) / travel));
-      const leave = Math.min(1, Math.max(0, box.bottom / travel));
-      const mix = Math.min(enter, leave);
-      root.style.setProperty("--field-mix", `${(mix * 100).toFixed(1)}%`);
-    };
-
-    const paint = (progress: number) => {
-      syncField();
+      const progress = Math.min(1, Math.max(0, (view - rect.top) / (rect.height + view)));
       words.forEach((word, index) => {
         const start = (index / total) * 0.55 + 0.12;
-        const span = 0.12;
-        const local = Math.min(1, Math.max(0, (progress - start) / span));
+        const local = Math.min(1, Math.max(0, (progress - start) / 0.12));
         const alpha = unread + (read - unread) * local;
-        word.style.color = `rgba(93, 82, 75, ${alpha})`;
+        if (Math.abs(alpha - alphas[index]!) < 0.008) return;
+        alphas[index] = alpha;
+        word.style.color = `rgba(0, 0, 0, ${alpha.toFixed(3)})`;
       });
     };
 
-    paint(scrollYProgress.get());
-    const stop = scrollYProgress.on("change", paint);
-    window.addEventListener("scroll", syncField, { passive: true });
-    window.addEventListener("resize", syncField);
-    return () => {
-      stop();
-      window.removeEventListener("scroll", syncField);
-      window.removeEventListener("resize", syncField);
-      document.documentElement.style.setProperty("--field-mix", "0%");
-    };
-  }, [scrollYProgress]);
+    paintRef.current();
+    const onResize = () => paintRef.current();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  useLenis(() => {
+    paintRef.current();
+  });
 
   return (
     <section ref={sectionRef} className="relative bg-background">
       <div className="h-[170svh]">
-        <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden bg-background">
+        <div
+          data-vision-seam-sticky
+          className="sticky top-0 flex h-[100svh] items-center overflow-hidden bg-background"
+        >
           <HomeVisionField />
           <SiteContainer className="relative z-10 w-full">
             <div
               ref={wordsRef}
+              data-vision-seam-copy
               data-not-typeset
-              className="not-typeset mx-auto w-full max-w-[20em] text-left font-[family-name:var(--font-stix)] text-[clamp(1.5rem,3.2vw,48px)] leading-[1.2] font-normal tracking-[-0.022em] text-[#5D524B]/15"
+              className="not-typeset mx-auto w-full max-w-[20em] text-left font-[family-name:var(--font-crimson)] text-[clamp(1.5rem,3.2vw,48px)] leading-[1.2] font-light tracking-[-2px] text-black/15"
             >
-              <p ref={leadRef} className="!m-0">
+              <p ref={leadRef} data-field-wash className="!m-0">
                 <Words text={LEAD} />
                 <br />
                 <Words text={CLOSE} />

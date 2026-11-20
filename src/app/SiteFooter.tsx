@@ -32,23 +32,23 @@ const LEGAL_LINKS = [
 
 export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark" }) {
   const dark = tone === "dark";
-  const muted = dark ? "text-white/55" : "text-[#5D524B]/60";
-  const strong = dark ? "text-white" : "text-[#5D524B]";
+  const muted = dark ? "text-white/55" : "text-black/60";
+  const strong = dark ? "text-white" : "text-black";
   const rule = dark ? "border-white/15" : "border-black/10";
-  const hover = dark ? "hover:text-white" : "hover:text-[#5D524B]";
+  const hover = dark ? "hover:text-white" : "hover:text-black";
   const mono =
     "font-[family-name:var(--font-mono)] font-medium tracking-[-0.02em] uppercase";
 
   return (
     <footer
       className={`site-footer not-typeset px-0 pt-12 pb-16 text-[12px] md:pt-16 md:pb-24 md:text-[13px] ${
-        dark ? "bg-[#141412] text-white/55" : "bg-background text-[#5D524B]/60"
+        dark ? "bg-[#141412] text-white/55" : "bg-background text-black/60"
       }`}
       data-not-typeset
     >
       <SiteContainer>
         <div className="mb-10 flex flex-wrap gap-2 md:mb-16 md:gap-3">
-            <p className={`mr-2 w-full text-[12px] sm:mr-4 sm:w-auto sm:self-center ${dark ? "text-white/45" : "text-[#5D524B]/50"}`}>
+            <p className={`mr-2 w-full text-[12px] sm:mr-4 sm:w-auto sm:self-center ${dark ? "text-white/45" : "text-black/50"}`}>
             Ask about Osfin on
           </p>
           {ASK_LINKS.map(({ name, href }) => (
@@ -61,7 +61,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
               className={`rounded-none border px-3 py-1.5 text-[12px] ${mono} ${
                 dark
                   ? "border-white/20 text-white/70 hover:bg-white/10 hover:text-white"
-                  : "border-black/15 text-[#5D524B]/70 hover:bg-black/5 hover:text-[#5D524B]"
+                  : "border-black/15 text-black/70 hover:bg-black/5 hover:text-black"
               }`}
             />
           ))}
@@ -131,8 +131,18 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
 
         <div className={`mt-12 flex flex-col gap-4 border-t pt-8 md:mt-20 md:flex-row md:items-center md:justify-between md:pt-10 ${rule} ${strong}`}>
           <SiteLogo wordmark markFill="currentColor" />
-          <div className={`max-w-xl text-[12px] leading-5 ${dark ? "text-white/45" : "text-[#5D524B]/50"}`}>
+          <div className={`max-w-xl text-[12px] leading-5 ${dark ? "text-white/45" : "text-black/50"}`}>
             <p>Copyright © 2026 Osfin, Inc. All rights reserved.</p>
+            <p>
+              <a
+                href="https://www.streamlinehq.com"
+                target="_blank"
+                rel="noreferrer"
+                className="underline underline-offset-2"
+              >
+                Icons by Streamline
+              </a>
+            </p>
           </div>
         </div>
       </SiteContainer>

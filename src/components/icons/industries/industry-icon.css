@@ -57,3 +57,14 @@
 :is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-glow-glass { fill: color-mix(in oklab, var(--ic-accent) 18%, var(--ik-screen)); }
 @keyframes ix-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
 :is(.osfin-icon[data-on], .osfin-icon-trigger:hover .osfin-icon, .osfin-icon-trigger:focus-visible .osfin-icon) .ix-float { animation: ix-float 1400ms var(--ik-ease-move) infinite; animation-delay: 900ms; }
+
+.osfin-iso-wash { --line-accent: 47, 91, 234; }
+.osfin-iso-wash .osfin-icon { --ic-accent: rgb(var(--line-accent)); --ic-mark: var(--ik-line); }
+.osfin-iso-wash .osfin-icon .ik-accent,
+.osfin-iso-wash .osfin-icon .ik-accent-all { --ik-top: inherit; --ik-front: inherit; --ik-side: inherit; }
+.osfin-iso-wash .osfin-icon .ik-accent-tag { fill: var(--ik-top); }
+.osfin-iso-wash .osfin-icon .ik-face { transition: fill 320ms ease, stroke 200ms ease; }
+.osfin-iso-wash:is(:hover, :focus-visible) .osfin-icon { --ic-mark: #000; }
+.osfin-iso-wash:is(:hover, :focus-visible) .osfin-icon .ik-accent { --ik-top: var(--ic-accent); --ik-side: color-mix(in oklab, var(--ic-accent) 62%, black); }
+.osfin-iso-wash:is(:hover, :focus-visible) .osfin-icon .ik-accent-all { --ik-top: color-mix(in oklab, var(--ic-accent) 55%, white); --ik-front: var(--ic-accent); --ik-side: color-mix(in oklab, var(--ic-accent) 62%, black); }
+.osfin-iso-wash:is(:hover, :focus-visible) .osfin-icon .ik-accent-tag { fill: var(--ic-accent); }

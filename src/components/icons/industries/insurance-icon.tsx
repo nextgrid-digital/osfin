@@ -57,7 +57,7 @@ export default function InsuranceIcon({ className }: { className?: string }) {
           <path className="ik-face" d={OUTLINE} />
           <path className="ik-detail" d={INNER} />
           <path className="ik-line ik-thick" d={CHECK} />
-          <path className="ix-draw" pathLength={1} style={{ fill: "none", stroke: "#5D524B", strokeWidth: 3.2, strokeLinecap: "round", strokeLinejoin: "round" }} d={CHECK} />
+          <path className="ix-draw" pathLength={1} style={{ fill: "none", stroke: "var(--ik-line)", strokeWidth: 3.2, strokeLinecap: "round", strokeLinejoin: "round" }} d={CHECK} />
           {STUDS.map(([u, v]) => (
             <circle key={`${u}-${v}`} className="ik-face ik-top" cx={u} cy={v + 1} r={1.6} />
           ))}

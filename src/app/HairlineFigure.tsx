@@ -4,11 +4,11 @@ import { useEffect, useRef } from "react";
 import { hairlineVars } from "./ProductionHairlines";
 
 const defaultWash = {
-  plate: "#FEF9ED",
-  hi: "#5D524B",
-  edge: "#5D524B",
-  mid: "#5D524B",
-  lo: "#F7F1E3",
+  plate: "#ffffff",
+  hi: "#232327",
+  edge: "#a4a4ac",
+  mid: "#c3c3c9",
+  lo: "#e0e0e4",
   card: "transparent",
 };
 

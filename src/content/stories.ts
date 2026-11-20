@@ -72,7 +72,7 @@ export const STORIES: Story[] = [
     slug: "buku-warung",
     badge: "Customer",
     company: "Buku Warung",
-    logo: "/customers/buku-warung.png",
+    logo: "/customers/buku-warung.png?v=2",
     logoClass: "h-16 w-auto max-w-[20rem] object-contain object-left md:h-20 md:max-w-[24rem]",
     fill: "#D6DFEB",
     quote:

@@ -24,6 +24,7 @@ type BakeKnobs = {
   density: number;
   strokeWidth: number;
   mode: NeuformMode;
+  edgeFade?: "left";
 };
 
 type EffectDefinition = {
@@ -51,6 +52,10 @@ export type GatewayFlowProps = {
   brightness?: number;
   className?: string;
   style?: CSSProperties;
+  /** When false, the frame stays transparent instead of matching the page color. */
+  paper?: boolean;
+  /** Fade the line field at the top-left and bottom-left corners. */
+  edgeFade?: "left";
 };
 
 const GATEWAY_FLOW_DEFAULTS = {
@@ -209,7 +214,7 @@ const gatewayFlowSource = `<!DOCTYPE html>
                 <div class="flex items-center gap-2 pt-1">
                     <div class="relative flex items-center justify-center w-4 h-4">
                         <input type="checkbox" id="session" class="peer appearance-none w-4 h-4 border border-slate-700 rounded bg-black/50 checked:bg-slate-300 checked:border-slate-300 cursor-pointer transition-colors">
-                        <iconify-icon icon="solar:check-linear" width="12" height="12" stroke-width="1.5" class="absolute text-[#5D524B] opacity-0 peer-checked:opacity-100 pointer-events-none"></iconify-icon>
+                        <iconify-icon icon="solar:check-linear" width="12" height="12" stroke-width="1.5" class="absolute text-black opacity-0 peer-checked:opacity-100 pointer-events-none"></iconify-icon>
                     </div>
                     <label for="session" class="text-xs font-extralight text-slate-400 cursor-pointer select-none uppercase tracking-wider">Maintain persistent uplink</label>
                 </div>
@@ -390,7 +395,7 @@ const GATEWAY_FLOW_DEFINITION: EffectDefinition = {
   supportsMode: true,
   background: (mode) => (mode === "light" ? "transparent" : "#0a0a0a"),
   targets: [{ selector: "#flow-canvas", role: "background" }],
-  patch(source, { size, density, mode }) {
+  patch(source, { size, density, mode, edgeFade }) {
     let next = source
       .replace(
         "const numPaths = 80;",
@@ -414,6 +419,39 @@ const GATEWAY_FLOW_DEFINITION: EffectDefinition = {
           "ctx.fillStyle = `rgba(255, 255, 255, 0.7)`;",
           "ctx.fillStyle = `rgba(0, 29, 32, 0.95)`;",
         );
+    }
+    if (edgeFade === "left") {
+      next = next.replace(
+        `ctx.save();
+                ctx.globalCompositeOperation = 'destination-in';
+                ctx.translate(width / 2, height / 2);
+                // Mild ellipse so short sections (CTA) still show lines at top/bottom.
+                ctx.scale(1.15, 1.2);
+                const mask = ctx.createRadialGradient(0, 0, width * 0.08, 0, 0, width * 0.62);
+                mask.addColorStop(0, 'rgba(0, 0, 0, 1)');
+                mask.addColorStop(0.35, 'rgba(0, 0, 0, 1)');
+                mask.addColorStop(1, 'rgba(0, 0, 0, 1)');
+                ctx.fillStyle = mask;
+                ctx.fillRect(-width * 2, -height * 3, width * 4, height * 6);
+                ctx.restore();`,
+        `ctx.save();
+                ctx.globalCompositeOperation = 'destination-in';
+                ctx.fillStyle = '#000';
+                ctx.fillRect(0, 0, width, height);
+                const reach = Math.min(width, height) * 1.05;
+                function fadeCorner(x, y) {
+                    const g = ctx.createRadialGradient(x, y, reach * 0.04, x, y, reach);
+                    g.addColorStop(0, 'rgba(0, 0, 0, 0)');
+                    g.addColorStop(0.34, 'rgba(0, 0, 0, 0.12)');
+                    g.addColorStop(0.72, 'rgba(0, 0, 0, 1)');
+                    g.addColorStop(1, 'rgba(0, 0, 0, 1)');
+                    ctx.fillStyle = g;
+                    ctx.fillRect(0, 0, width, height);
+                }
+                fadeCorner(0, 0);
+                fadeCorner(0, height);
+                ctx.restore();`,
+      );
     }
     return next;
   },
@@ -447,6 +485,7 @@ function buildFocusedDocument(
         density: knobs.density,
         strokeWidth: knobs.strokeWidth,
         mode,
+        edgeFade: knobs.edgeFade,
       })
     : definition.source;
   const focusStyle = `<style data-threeui-focus>
@@ -563,6 +602,8 @@ function GatewayFlowFrame({
   brightness = GATEWAY_FLOW_DEFAULTS.brightness,
   className,
   style,
+  paper = true,
+  edgeFade,
 }: GatewayFlowProps & { definition: EffectDefinition }) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const requestedMode =
@@ -596,9 +637,11 @@ function GatewayFlowFrame({
         density: safeDensity,
         strokeWidth: safeStrokeWidth,
         opacity: GATEWAY_FLOW_DEFAULTS.opacity,
+        edgeFade,
       }),
     [
       definition,
+      edgeFade,
       resolvedMode,
       safeDensity,
       safeGap,
@@ -609,28 +652,34 @@ function GatewayFlowFrame({
   );
 
   useEffect(() => {
-    if (resolvedMode !== "light") return;
+    if (resolvedMode !== "light" || !paper) return;
     const frame = iframeRef.current;
     if (!frame) return;
 
+    let last = "";
     const syncPaper = () => {
-      const color = getComputedStyle(document.documentElement).backgroundColor;
+      const inline = document.documentElement.style.getPropertyValue("--background").trim();
+      const color = inline || "#fff";
+      if (color === last) return;
+      last = color;
       frame.style.backgroundColor = color;
       frame.contentWindow?.postMessage({ type: "osfin-paper", color }, "*");
     };
 
     syncPaper();
     frame.addEventListener("load", syncPaper);
+    window.addEventListener("osfin-wash", syncPaper);
     const observer = new MutationObserver(syncPaper);
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["class", "style"],
+      attributeFilter: ["class"],
     });
     return () => {
       frame.removeEventListener("load", syncPaper);
+      window.removeEventListener("osfin-wash", syncPaper);
       observer.disconnect();
     };
-  }, [resolvedMode, source]);
+  }, [paper, resolvedMode, source]);
 
   useEffect(() => {
     const frame = iframeRef.current?.contentWindow;
@@ -681,7 +730,12 @@ function GatewayFlowFrame({
         width: "100%",
         height: "100%",
         border: 0,
-        background: resolvedMode === "light" ? "var(--background)" : background,
+        background:
+          resolvedMode === "light"
+            ? paper
+              ? "var(--background)"
+              : "transparent"
+            : background,
         filter,
         ...style,
       }}

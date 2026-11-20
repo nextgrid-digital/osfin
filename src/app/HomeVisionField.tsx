@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 const ink =
-  "not-typeset pointer-events-none font-[family-name:var(--font-mono)] text-[8px] leading-[1.35] font-medium tracking-[0.08em] text-[#5D524B]/25 uppercase";
+  "not-typeset pointer-events-none font-[family-name:var(--font-mono)] text-[8px] leading-[1.35] font-medium tracking-[0.08em] text-black/25 uppercase";
 
 function Barcode({ bars }: { bars: number[] }) {
   return (
@@ -38,7 +38,7 @@ function Frame({
   children: ReactNode;
 }) {
   return (
-    <div className={`border border-dashed border-[#5D524B]/15 p-2 ${className}`}>
+    <div className={`border border-dashed border-black/15 p-2 ${className}`}>
       {children}
     </div>
   );
@@ -77,7 +77,7 @@ export default function HomeVisionField() {
         <div
           className={`${ink} absolute top-[37%] left-[0.5%] w-[9.5rem]`}
         >
-          <div className="h-3 w-full bg-[#5D524B]/10" />
+          <div className="h-3 w-full bg-black/10" />
           <p className="!mt-2 !mb-0">Mundane → handled</p>
         </div>
 
@@ -131,7 +131,7 @@ export default function HomeVisionField() {
           className={`${ink} absolute top-[21%] -right-2 w-[11.5rem]`}
         >
           <p className="!m-0 text-right">PHI-2026-004 // VERSION 1.0</p>
-          <div className="mt-2 ml-auto h-px w-24 bg-[#5D524B]/20" />
+          <div className="mt-2 ml-auto h-px w-24 bg-black/20" />
           <Barcode bars={[2, 1, 3, 1, 1, 2, 1, 4, 1, 2, 3, 1, 1, 2]} />
         </div>
 

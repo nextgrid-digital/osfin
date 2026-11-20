@@ -1,6 +1,21 @@
 export const ABOUT = {
-  manifesto:
-    "The books were never the problem. Institutions have tried, and hit the same wall: spreadsheets, point tools, and a break list.",
+  manifesto: "Product speed. Enterprise fit.",
+  description:
+    "Built for volume, configured not coded, and live in weeks. Osfin handles the scale and messiness that break spreadsheets and generic tools.",
+  fit: [
+    {
+      title: "Built for volume",
+      body: "Millions of transactions, dozens of data sources, multiple entities. Osfin handles the scale and messiness that break spreadsheets and generic tools.",
+    },
+    {
+      title: "Configured, not coded",
+      body: "Changes to rules and workflows happen through configuration, so your setup stays stable as you add partners, products and markets.",
+    },
+    {
+      title: "Live in weeks",
+      body: "Prebuilt connectors and forward-deployed engineers mean you’re running in production in weeks, not after a quarter-long implementation.",
+    },
+  ],
   who: {
     label: "Who we are",
     title: "An applied technology company that owns the outcome",

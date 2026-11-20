@@ -28,13 +28,13 @@ export default function ProductTabs({ currentSlug }: { currentSlug: string }) {
               select(product.slug);
             }}
             className={`group/cascade relative inline-flex items-center justify-center px-2.5 py-1.5 font-[family-name:var(--font-mono)] text-[14px] font-medium leading-none tracking-[-0.02em] uppercase ${
-              active ? "text-[#5D524B]" : "text-[#5D524B]/45 hover:text-[#5D524B]/70"
+              active ? "text-black" : "text-black/45 hover:text-black/70"
             }`}
           >
             {active ? (
               <motion.span
                 layoutId="product-tab-highlight"
-                className="absolute inset-0 z-0 rounded-none bg-[#5D524B]/10"
+                className="absolute inset-0 z-0 rounded-none bg-black/10"
                 transition={{ type: "spring", stiffness: 350, damping: 32 }}
               />
             ) : null}

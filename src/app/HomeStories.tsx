@@ -59,19 +59,19 @@ export default function HomeStories() {
         <div className="flex flex-col gap-6 border-b border-black/15 pb-5 sm:flex-row sm:items-end sm:justify-between">
           <div className="flex max-w-xl flex-col gap-3">
             <p
-              className="not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-[#5D524B]/45 uppercase"
+              className="not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-black/45 uppercase"
               data-not-typeset
             >
               Customer stories
             </p>
-            <h2 className="!mb-0 !mt-0 text-[#5D524B]">
+            <h2 className="!mb-0 !mt-0 text-black">
               Grow with teams already in production
             </h2>
           </div>
           <div className="flex items-center gap-2">
             <button
               type="button"
-              className="inline-flex size-8 items-center justify-center border border-black/15 text-[#5D524B] disabled:opacity-30"
+              className="inline-flex size-8 items-center justify-center border border-black/15 text-black disabled:opacity-30"
               aria-label="Previous story"
               disabled={!canPrev}
               onClick={() => emblaApi?.goToPrev()}
@@ -80,7 +80,7 @@ export default function HomeStories() {
             </button>
             <button
               type="button"
-              className="inline-flex size-8 items-center justify-center border border-black/15 text-[#5D524B] disabled:opacity-30"
+              className="inline-flex size-8 items-center justify-center border border-black/15 text-black disabled:opacity-30"
               aria-label="Next story"
               disabled={!canNext}
               onClick={() => emblaApi?.goToNext()}
@@ -101,16 +101,16 @@ export default function HomeStories() {
             >
               <div className="grid h-full flex-1 grid-cols-1 grid-rows-[1fr] @min-[32rem]:grid-cols-[minmax(0,1.35fr)_minmax(0,0.85fr)]">
                 <div className="flex h-full flex-col px-5 py-6 sm:px-6 sm:py-7">
-                  <h3 className="!mb-0 !mt-0 !text-[20px] !font-normal !leading-[1.33] !tracking-[-0.012em] text-[#5D524B] normal-case">
+                  <h3 className="!mb-0 !mt-0 !text-[20px] !font-light !leading-[1.33] !tracking-[-0.012em] text-black normal-case">
                     {story.company}
                   </h3>
-                  <p className="!mb-0 !mt-4 line-clamp-6 text-[15px] leading-[1.5] text-[#5D524B]/70">
+                  <p className="!mb-0 !mt-4 line-clamp-6 text-[15px] leading-[1.5] text-black/70">
                     “{story.quote}”
                   </p>
                   <div className="mt-auto pt-6">
                     <TransitionLink
                       href={story.href}
-                      className="not-typeset font-[family-name:var(--font-mono)] text-[12px] tracking-[-0.02em] text-[#5D524B] uppercase underline underline-offset-4"
+                      className="not-typeset font-[family-name:var(--font-mono)] text-[12px] tracking-[-0.02em] text-black uppercase underline underline-offset-4"
                       data-not-typeset
                     >
                       Read more
@@ -134,12 +134,12 @@ export default function HomeStories() {
                           className="border-b border-black/10 py-2 first:pt-0 last:border-b-0 last:pb-0"
                         >
                           <p
-                            className="not-typeset !m-0 font-[family-name:var(--font-mono)] text-[10px] tracking-[-0.02em] text-[#5D524B]/45 uppercase"
+                            className="not-typeset !m-0 font-[family-name:var(--font-mono)] text-[10px] tracking-[-0.02em] text-black/45 uppercase"
                             data-not-typeset
                           >
                             {row.label}
                           </p>
-                          <p className="!mb-0 !mt-0.5 text-[13px] leading-5 text-[#5D524B]">
+                          <p className="!mb-0 !mt-0.5 text-[13px] leading-5 text-black">
                             {row.value}
                           </p>
                         </li>

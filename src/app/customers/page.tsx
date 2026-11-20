@@ -52,7 +52,7 @@ export default async function CustomersPage({
     <div
       data-transition="container"
       data-namespace="customers"
-      className="site-shell typeset typeset-docs min-h-screen bg-background text-[#5D524B]"
+      className="site-shell typeset typeset-docs min-h-screen bg-background text-black"
     >
       <main className="pt-14 md:pt-16">
         <SiteContainer className="py-16 md:py-24">
@@ -70,8 +70,8 @@ export default async function CustomersPage({
                     href={listHref(filter, order)}
                     className={`text-[15px] no-underline hover:no-underline ${
                       selected
-                        ? "text-[#5D524B]"
-                        : "text-[#5D524B]/40 hover:text-[#5D524B]"
+                        ? "text-black"
+                        : "text-black/40 hover:text-black"
                     }`}
                   >
                     {filter}
@@ -81,13 +81,13 @@ export default async function CustomersPage({
             </nav>
             <TransitionLink
               href={listHref(active, order === "newest" ? "oldest" : "newest")}
-              className="group/cascade inline-flex items-center text-[14px] text-[#5D524B]/45 no-underline hover:text-[#5D524B] hover:no-underline"
+              className="group/cascade inline-flex items-center text-[14px] text-black/45 no-underline hover:text-black hover:no-underline"
             >
               <TextReveal as="span" text="Sort" />
               <TextReveal
                 as="span"
                 text={order === "newest" ? "Newest" : "Oldest"}
-                className="ml-2 text-[#5D524B]/35"
+                className="ml-2 text-black/35"
               />
             </TransitionLink>
           </div>
@@ -115,16 +115,16 @@ export default async function CustomersPage({
                     logo={story.logo}
                     company={story.company}
                   />
-                  <h2 className="!mb-0 !mt-8 !text-[20px] !font-normal !leading-[1.33] !tracking-[-0.012em] text-[#5D524B] normal-case">
+                  <h2 className="!mb-0 !mt-8 !text-[20px] !font-light !leading-[1.33] !tracking-[-0.012em] text-black normal-case">
                     {story.title}
                   </h2>
                   <div className="mt-auto flex items-center justify-between gap-4 pt-12">
-                    <p className="!m-0 flex items-center gap-2 font-[family-name:var(--font-mono)] text-[14px] leading-5 tracking-[-0.02em] text-[#5D524B]/55 uppercase">
+                    <p className="!m-0 flex items-center gap-2 font-[family-name:var(--font-mono)] text-[14px] leading-5 tracking-[-0.02em] text-black/55 uppercase">
                       <span>{story.category}</span>
                       <span className="inline-block size-1 bg-current" aria-hidden />
                       <span>{story.date}</span>
                     </p>
-                    <span className="inline-flex size-8 shrink-0 items-center justify-center border border-black/15 text-[#5D524B]/55">
+                    <span className="inline-flex size-8 shrink-0 items-center justify-center border border-black/15 text-black/55">
                       <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden>
                         <path
                           d="M4 12 12 4M6 4h6v6"

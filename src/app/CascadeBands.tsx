@@ -96,7 +96,7 @@ export default function CascadeBands({
         trigger: root,
         start: "top bottom",
         end: "bottom top",
-        scrub: 0.35,
+        scrub: true,
         invalidateOnRefresh: true,
       },
       onUpdate: () => {

@@ -9,7 +9,7 @@ const MediaTile_data: MediaTileData[] = CAREERS.setup.cards.map((card) => ({
 /** Gallery Showcase section. */
 export default function GalleryShowcaseSection({ mediaTileData = MediaTile_data } = {}) {
   return (
-    <section className="flex relative px-18 justify-center overflow-hidden bg-[var(--header-bg)] max-md:px-3">
+    <section className="flex relative px-18 justify-center overflow-hidden bg-background max-md:px-3">
       <div className="border border-dashed border-color-010 block relative max-w-[1440px] mx-auto w-full">
         <div className="h-full flex py-20 px-10 flex-col gap-10 max-md:py-16 max-md:px-3">
           <div className="w-full max-w-140 flex flex-col items-start gap-6">

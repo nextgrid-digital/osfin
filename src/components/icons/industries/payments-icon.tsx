@@ -40,7 +40,7 @@ export default function PaymentsIcon({ className }: { className?: string }) {
           front={
             <>
               <rect className="ik-screen ix-glow" x={SCREEN.x} y={SCREEN.y} width={SCREEN.w} height={SCREEN.h} rx={3} />
-              <path className="ix-draw" pathLength={1} style={{ fill: "none", stroke: "#5D524B", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" }} d={`M${SCREEN.w / 2 + 3} ${SCREEN.y + 8}l4 4l8 -8`} />
+              <path className="ix-draw" pathLength={1} style={{ fill: "none", stroke: "var(--ik-line)", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" }} d={`M${SCREEN.w / 2 + 3} ${SCREEN.y + 8}l4 4l8 -8`} />
               <path className="ik-detail" d={`M${SCREEN.x + 5} ${SCREEN.y + 5}h18M${SCREEN.x + 5} ${SCREEN.y + 9}h12`} />
               <path className="ik-line" d={`M${SCREEN.x + SCREEN.w - 14} ${SCREEN.y + 4}a4 4 0 0 1 0 7M${SCREEN.x + SCREEN.w - 10} ${SCREEN.y + 2.5}a6 6 0 0 1 0 10`} />
             </>

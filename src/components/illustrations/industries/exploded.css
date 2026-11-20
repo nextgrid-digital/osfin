@@ -1,0 +1,7 @@
+.osfin-exploded .ik-plate { background: transparent; border: 0; padding: 0; gap: 0; border-radius: 0; }
+.osfin-exploded .ik-cap { display: none; }
+.osfin-exploded { --ex-blue: #3b82f6; --ex-orange: #f97316; --ex-green: #22c55e; }
+.osfin-exploded .ex-blue { fill: var(--ex-blue); }
+.osfin-exploded .ex-orange { fill: var(--ex-orange); }
+.osfin-exploded .ex-green { fill: var(--ex-green); }
+.osfin-exploded .ex-blue-deep { fill: color-mix(in oklab, var(--ex-blue) 72%, black); }

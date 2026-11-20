@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const labelClassName =
-  "not-typeset !m-0 font-[family-name:var(--font-mono)] text-[14px] font-medium leading-[1.4] tracking-[-0.02em] text-[#5D524B]/45 uppercase";
+  "not-typeset !m-0 font-[family-name:var(--font-mono)] text-[14px] font-medium leading-[1.4] tracking-[-0.02em] text-black/45 uppercase";
 
 function PrincipleIcon({
   kind,
@@ -21,7 +21,7 @@ function PrincipleIcon({
 }) {
   const common = {
     viewBox: "0 0 48 48",
-    className: "size-10 text-[#5D524B]/70",
+    className: "size-10 text-black/70",
     fill: "none" as const,
     stroke: "currentColor",
     strokeWidth: 1.25,
@@ -77,7 +77,7 @@ export default function SecurityPage() {
     <div
       data-transition="container"
       data-namespace="security"
-      className="site-shell typeset typeset-docs min-h-screen bg-background text-[#5D524B]"
+      className="site-shell typeset typeset-docs min-h-screen bg-background text-black"
     >
       <main className="pt-14 md:pt-16">
         <section className="relative overflow-hidden bg-background">
@@ -101,7 +101,7 @@ export default function SecurityPage() {
             <p className="mx-auto !mt-5 max-w-[38rem] text-center md:!mt-6">
               {SECURITY.intro}
             </p>
-            <p className="mx-auto !mt-4 max-w-[38rem] text-center text-[#5D524B]/60">
+            <p className="mx-auto !mt-4 max-w-[38rem] text-center text-black/60">
               {SECURITY.mission}
             </p>
 
@@ -117,10 +117,10 @@ export default function SecurityPage() {
                   >
                     <PrincipleIcon kind={item.icon} />
                     <div>
-                      <h3 className="!mb-0 !mt-0 !text-[20px] !font-medium !leading-[1.33] !tracking-[-0.012em] normal-case text-[#5D524B]">
+                      <h3 className="!mb-0 !mt-0 !text-[20px] !font-light !leading-[1.33] !tracking-[-0.012em] normal-case text-black">
                         {item.title}
                       </h3>
-                      <p className="!mb-0 !mt-3 line-clamp-3 text-[15px] leading-6 text-[#5D524B]/60">
+                      <p className="!mb-0 !mt-3 line-clamp-3 text-[15px] leading-6 text-black/60">
                         {item.body}
                       </p>
                     </div>
@@ -156,10 +156,10 @@ export default function SecurityPage() {
                       />
                     </div>
                     <div>
-                      <h3 className="!mb-0 !mt-0 !text-[20px] !font-medium !leading-[1.33] !tracking-[-0.012em] normal-case text-[#5D524B]">
+                      <h3 className="!mb-0 !mt-0 !text-[20px] !font-light !leading-[1.33] !tracking-[-0.012em] normal-case text-black">
                         {item.title}
                       </h3>
-                      <p className="!mb-0 !mt-3 text-[15px] leading-6 text-[#5D524B]/60">
+                      <p className="!mb-0 !mt-3 text-[15px] leading-6 text-black/60">
                         {item.body}
                       </p>
                     </div>

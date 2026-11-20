@@ -8,7 +8,7 @@ export default function BlogShare() {
   return (
     <button
       type="button"
-      className="not-typeset inline-flex items-center bg-transparent p-0 text-[13px] font-medium tracking-[-0.01em] text-[#5D524B]/45 transition hover:text-[#5D524B]"
+      className="not-typeset inline-flex items-center bg-transparent p-0 text-[13px] font-medium tracking-[-0.01em] text-black/45 transition hover:text-black"
       data-not-typeset
       onClick={() => {
         const url = window.location.href;
