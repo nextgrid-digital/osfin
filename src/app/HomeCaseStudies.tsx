@@ -28,17 +28,21 @@ type MoreTile = {
 
 type Tile = QuoteTile | MetricTile | MoreTile;
 
+/** Spans only apply once the 4-col bento is active at lg. */
 const SPAN_CLASS: Record<Span, string> = {
-  one: "md:col-span-1",
-  two: "md:col-span-2",
-  three: "md:col-span-3",
+  one: "lg:col-span-1",
+  two: "lg:col-span-2",
+  three: "lg:col-span-3",
 };
 
-const TILE_CLASS =
-  "flex h-full min-h-0 flex-col justify-between gap-3 border border-black/15 p-4 text-black no-underline transition hover:opacity-90 hover:no-underline md:p-5";
+const TILE_BASE =
+  "flex h-full min-h-0 flex-col justify-between gap-3 border border-black/15 p-4 text-black no-underline transition hover:opacity-90 hover:no-underline sm:p-4 md:p-5";
+
+const QUOTE_MIN = "min-h-[12rem] lg:min-h-0";
+const METRIC_MIN = "min-h-[9rem] lg:min-h-0";
 
 /**
- * Bento on a 4-col × 2-row track (desktop):
+ * Bento on a 4-col × 2-row track (lg+):
  * [ PharmEasy quote+99.5% ×2 ] [ $1.5M ] [ $500K ]
  * [ Games quote ×2           ] [ Manipal ×1 ] [ More ]
  */
@@ -114,13 +118,13 @@ function QuoteCard({ tile }: { tile: QuoteTile }) {
   return (
     <TransitionLink
       href={`/customers/${tile.slug}`}
-      className={`${TILE_CLASS} ${SPAN_CLASS[tile.span]}`}
+      className={`${TILE_BASE} ${QUOTE_MIN} ${SPAN_CLASS[tile.span]}`}
     >
-      <div className="flex min-h-0 flex-col gap-3">
+      <div className="flex min-h-0 flex-col gap-2.5 sm:gap-3">
         {tile.metric ? (
-          <p className="!m-0 font-[family-name:var(--font-mono)] text-[clamp(1.35rem,2.2vw,1.85rem)] font-medium leading-none tracking-[-0.04em] text-black">
+          <p className="!m-0 font-[family-name:var(--font-mono)] text-[clamp(1.2rem,2vw,1.85rem)] font-medium leading-none tracking-[-0.04em] text-black">
             {tile.metric.value}
-            <span className="ml-2 text-[12px] font-normal tracking-[-0.02em] text-black/55 md:text-[13px]">
+            <span className="ml-2 text-[11px] font-normal tracking-[-0.02em] text-black/55 sm:text-[12px] lg:text-[13px]">
               {tile.metric.label}
             </span>
           </p>
@@ -128,8 +132,8 @@ function QuoteCard({ tile }: { tile: QuoteTile }) {
         <p
           className={`!m-0 leading-[1.35] tracking-[-0.02em] ${
             wide
-              ? "line-clamp-5 text-[14px] md:line-clamp-6 md:text-[15px]"
-              : "line-clamp-4 text-[13px] md:text-[14px]"
+              ? "line-clamp-3 text-[13px] sm:line-clamp-4 sm:text-[14px] lg:line-clamp-6 lg:text-[15px]"
+              : "line-clamp-3 text-[13px] sm:line-clamp-4 sm:text-[14px] lg:line-clamp-4"
           }`}
         >
           &ldquo;{tile.quote}&rdquo;
@@ -146,13 +150,15 @@ function MetricCard({ tile }: { tile: MetricTile }) {
   return (
     <TransitionLink
       href={`/customers/${tile.slug}`}
-      className={`${TILE_CLASS} ${SPAN_CLASS[tile.span]}`}
+      className={`${TILE_BASE} ${METRIC_MIN} ${SPAN_CLASS[tile.span]}`}
     >
       <div>
-        <p className="!m-0 font-[family-name:var(--font-mono)] text-[clamp(1.35rem,2.2vw,1.85rem)] font-medium leading-none tracking-[-0.04em] text-black">
+        <p className="!m-0 font-[family-name:var(--font-mono)] text-[clamp(1.2rem,2vw,1.85rem)] font-medium leading-none tracking-[-0.04em] text-black">
           {tile.value}
         </p>
-        <p className="!mb-0 !mt-2 text-[12px] leading-[1.3] text-black/55 md:text-[13px]">{tile.label}</p>
+        <p className="!mb-0 !mt-2 text-[11px] leading-[1.3] text-black/55 sm:text-[12px] lg:text-[13px]">
+          {tile.label}
+        </p>
       </div>
       <CompanyMark company={company} logo={logo} />
     </TransitionLink>
@@ -163,9 +169,9 @@ function MoreCard({ tile }: { tile: MoreTile }) {
   return (
     <TransitionLink
       href="/customers"
-      className={`flex h-full min-h-0 items-end justify-between gap-3 border border-black/15 p-4 text-black no-underline transition hover:opacity-90 hover:no-underline md:p-5 ${SPAN_CLASS[tile.span]}`}
+      className={`flex h-full min-h-[9rem] items-end justify-between gap-3 border border-black/15 p-4 text-black no-underline transition hover:opacity-90 hover:no-underline sm:p-4 md:p-5 lg:min-h-0 ${SPAN_CLASS[tile.span]}`}
     >
-      <span className="text-[14px] leading-[1.3] tracking-[-0.02em] md:text-[15px]">
+      <span className="text-[13px] leading-[1.3] tracking-[-0.02em] sm:text-[14px] lg:text-[15px]">
         More case studies
       </span>
       <span className="inline-flex size-8 shrink-0 items-center justify-center border border-black/15" aria-hidden>
@@ -182,10 +188,10 @@ export default function HomeCaseStudies() {
     <section
       id="case-studies"
       data-process-exit-next
-      className="flex h-[100svh] flex-col justify-center bg-background py-8 md:py-10"
+      className="flex flex-col justify-center bg-background py-16 lg:h-[100svh] lg:py-10"
       aria-labelledby="case-studies-heading"
     >
-      <SiteContainer className="flex min-h-0 w-full flex-1 flex-col">
+      <SiteContainer className="flex w-full flex-col lg:min-h-0 lg:flex-1">
         <div className="mx-auto flex shrink-0 flex-col items-center text-center">
           <h2
             id="case-studies-heading"
@@ -207,7 +213,7 @@ export default function HomeCaseStudies() {
           </TransitionLink>
         </div>
 
-        <div className="mt-6 grid min-h-0 flex-1 auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 md:mt-8 md:grid-cols-4 md:grid-rows-2 md:gap-3.5">
+        <div className="mt-8 grid auto-rows-auto grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-3.5 lg:mt-8 lg:min-h-0 lg:flex-1 lg:auto-rows-fr lg:grid-cols-4 lg:grid-rows-2">
           {TILES.map((tile, index) => {
             if (tile.kind === "quote") {
               return <QuoteCard key={`quote-${tile.slug}-${index}`} tile={tile} />;
