@@ -51,11 +51,10 @@ export default function HumanHome() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-16">
               <div className="relative flex w-full flex-col items-start text-left lg:w-max lg:shrink-0">
                 <div aria-hidden className="hero-copy-wash" />
-                <h1 className="text-black">
-                  <span className="block">The finance automation platform</span>
-                  <span className="block">built for enterprise complexity.</span>
+                <h1 className="max-w-[12.5em] text-black">
+                  The finance automation platform built for enterprise complexity.
                 </h1>
-                <p className="mt-6 max-w-[36rem] text-[18px] leading-[1.5] text-black md:mt-8">
+                <p className="mt-6 max-w-[36rem] text-[16px] leading-[1.5] text-black md:mt-8 md:text-[18px]">
                   Osfin partners with the most ambitious enterprises and leaders to drive transformation in finance
                   operations. We do this by deploying our teams of forward-deployed engineers and purpose-built agents
                   who own the outcome and act as a catalyst for change across your finance, accounting and payments
