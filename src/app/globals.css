@@ -12,7 +12,8 @@
   --typeset-flow: 1em;
 }
 
-/* Linear marketing scale: 64 / 48 / 20. Headings track at -2px. */
+/* Linear marketing scale: 64 / 48 / 20.
+   Tracking reaches -2px only at display sizes and eases off on smaller type. */
 .typeset :where(h1, h2, h3, h4, h5, h6) {
   font-family: var(--font-crimson), "Crimson Pro", Georgia, serif;
   font-weight: 300;
@@ -34,7 +35,11 @@ h3,
 h4,
 h5,
 html :is(h1, h2, h3, h4, h5)[class] {
-  letter-spacing: -2px !important;
+  letter-spacing: clamp(-2px, -0.03em, -0.45px) !important;
+}
+
+.tracking-display {
+  letter-spacing: clamp(-2px, -0.03em, -0.45px);
 }
 
 @layer base {
@@ -43,7 +48,7 @@ html :is(h1, h2, h3, h4, h5)[class] {
   h3,
   h4,
   h5 {
-    letter-spacing: -2px !important;
+    letter-spacing: clamp(-2px, -0.03em, -0.45px) !important;
   }
 
   /* ~28–32px display lines track looser than the large headings. */
@@ -57,20 +62,27 @@ html :is(h1, h2, h3, h4, h5)[class] {
 
 .typeset :where(h1) {
   font-size: clamp(2rem, 6vw, 64px);
-  line-height: 1;
-  letter-spacing: -2px;
+  line-height: 1.12;
+  letter-spacing: clamp(-2px, -0.03em, -0.45px);
 }
 
 .typeset :where(h2) {
   font-size: clamp(1.75rem, 4.5vw, 48px);
-  line-height: 1;
-  letter-spacing: -2px;
+  line-height: 1.15;
+  letter-spacing: clamp(-2px, -0.03em, -0.45px);
 }
 
 .typeset :where(h3) {
   font-size: 20px;
   line-height: 1.33;
-  letter-spacing: -2px;
+  letter-spacing: clamp(-2px, -0.03em, -0.45px);
+}
+
+@media (min-width: 48rem) {
+  .typeset :where(h1),
+  .typeset :where(h2) {
+    line-height: 1;
+  }
 }
 
 .typeset :where(h4) {

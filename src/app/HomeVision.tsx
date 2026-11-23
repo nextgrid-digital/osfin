@@ -79,7 +79,7 @@ export default function HomeVision() {
               ref={wordsRef}
               data-vision-seam-copy
               data-not-typeset
-              className="not-typeset mx-auto w-full max-w-[20em] text-left font-[family-name:var(--font-crimson)] text-[clamp(1.5rem,3.2vw,48px)] leading-[1.2] font-light tracking-[-2px] text-black/15"
+              className="tracking-display not-typeset mx-auto w-full max-w-[20em] text-left font-[family-name:var(--font-crimson)] text-[clamp(1.5rem,3.2vw,48px)] leading-[1.2] font-light text-black/15"
             >
               <p ref={leadRef} data-field-wash className="!m-0">
                 <Words text={LEAD} />

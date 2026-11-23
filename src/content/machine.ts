@@ -54,11 +54,6 @@ export function machineBlocks(): MachineBlock[] {
     { type: "text", text: "" },
     {
       type: "text",
-      text: "Out of the box where it can be, configurable where it needs to be. Our forward-deployed engineers make sure it fits from day one.",
-    },
-    { type: "text", text: "" },
-    {
-      type: "text",
       text: "Osfin partners with the most ambitious enterprises and leaders to drive transformation in finance operations. We do this by deploying our teams of forward-deployed engineers and purpose-built agents who own the outcome and act as a catalyst for change across your finance, accounting and payments functions.",
     },
     { type: "text", text: "" },
