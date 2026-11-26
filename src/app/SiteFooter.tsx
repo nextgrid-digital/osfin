@@ -133,16 +133,6 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
           <SiteLogo wordmark markFill="currentColor" />
           <div className={`max-w-xl text-[12px] leading-5 ${dark ? "text-white/45" : "text-black/50"}`}>
             <p>Copyright © 2026 Osfin, Inc. All rights reserved.</p>
-            <p>
-              <a
-                href="https://www.streamlinehq.com"
-                target="_blank"
-                rel="noreferrer"
-                className="underline underline-offset-2"
-              >
-                Icons by Streamline
-              </a>
-            </p>
           </div>
         </div>
       </SiteContainer>

@@ -1,25 +1,21 @@
 .pixel-industry-grid {
   --pixel-gap: 1rem;
   --pixel-count: 1;
-  --pixel-max: 15rem;
   display: grid;
   grid-template-columns: repeat(var(--pixel-count), minmax(0, 1fr));
   gap: var(--pixel-gap);
-  width: min(var(--pixel-max), 100%);
-  margin-inline: auto;
+  width: 100%;
 }
 
 @media (min-width: 25rem) {
   .pixel-industry-grid {
     --pixel-count: 2;
-    --pixel-max: 30rem;
   }
 }
 
 @media (min-width: 45rem) {
   .pixel-industry-grid {
     --pixel-count: 4;
-    --pixel-max: 60rem;
   }
 }
 
@@ -30,7 +26,7 @@
   grid-template-areas: "card";
   place-items: center;
   container-type: inline-size;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 2;
   border: 1px solid rgb(0 0 0 / 0.12);
   background: #fff;
   color: #111;
@@ -72,8 +68,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 32px;
-  height: 32px;
+  width: 56px;
+  height: 56px;
   color: #52525b;
   translate: -50% -50%;
   fill: none;
@@ -93,7 +89,7 @@
   width: max-content;
   max-width: calc(100% - 2.35rem);
   padding: 0.4rem 0.5rem;
-  border-radius: 999px;
+  border-radius: 0;
   background: transparent;
   color: #111;
   font-family: var(--font-mono), ui-monospace, monospace;

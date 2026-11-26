@@ -45,7 +45,7 @@ export default function HumanHome() {
           <GatewayFlow
             mode="light"
             paper={false}
-            className="pointer-events-none absolute inset-0 z-0 h-full w-full"
+            className="hero-flow pointer-events-none absolute inset-0 z-0 h-full w-full"
           />
           <SiteContainer className="relative z-10 w-full">
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-16">

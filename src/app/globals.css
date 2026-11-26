@@ -767,6 +767,17 @@ html.mode-transition::view-transition-new(root) {
   }
 }
 
+.hero-flow {
+  -webkit-mask-image:
+    radial-gradient(ellipse 88% 110% at 0% 0%, transparent 0%, transparent 42%, #000 100%),
+    radial-gradient(ellipse 88% 110% at 100% 100%, transparent 0%, transparent 42%, #000 100%);
+  mask-image:
+    radial-gradient(ellipse 88% 110% at 0% 0%, transparent 0%, transparent 42%, #000 100%),
+    radial-gradient(ellipse 88% 110% at 100% 100%, transparent 0%, transparent 42%, #000 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
 .hero-copy-wash {
   position: absolute;
   z-index: -1;

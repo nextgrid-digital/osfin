@@ -188,7 +188,7 @@ export default function HomeCaseStudies() {
     <section
       id="case-studies"
       data-process-exit-next
-      className="flex flex-col justify-center bg-background py-16 lg:h-[100svh] lg:py-10"
+      className="flex flex-col justify-center bg-background py-28 md:py-40"
       aria-labelledby="case-studies-heading"
     >
       <SiteContainer className="flex w-full flex-col lg:min-h-0 lg:flex-1">
