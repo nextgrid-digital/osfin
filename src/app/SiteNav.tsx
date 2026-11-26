@@ -15,12 +15,12 @@ import { SOLUTIONS } from "../content/industries";
 import { PRODUCTS } from "../content/products";
 import { usePageTransition } from "./PageTransitionProvider";
 
-const listHighlightClassName = "rounded-none bg-[#f5f5f5]";
+const listHighlightClassName = "rounded-none bg-white";
 
 const navItemClassName =
-  "group/cascade h-auto min-h-0 gap-1.5 rounded-none bg-[#f5f5f5] px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-black uppercase inline-flex items-center hover:bg-[#f5f5f5] hover:text-black focus:text-black data-[state=open]:bg-[#f5f5f5] data-[state=open]:text-black";
+  "group/cascade h-auto min-h-0 gap-1.5 rounded-none bg-white px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-black uppercase inline-flex items-center hover:bg-white hover:text-black focus:text-black data-[state=open]:bg-white data-[state=open]:text-black";
 const navLinkClassName =
-  "group/cascade h-auto min-h-0 gap-0 rounded-none bg-[#f5f5f5] px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-black uppercase inline-flex items-center no-underline hover:bg-[#f5f5f5] hover:text-black hover:no-underline";
+  "group/cascade h-auto min-h-0 gap-0 rounded-none bg-white px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-black uppercase inline-flex items-center no-underline hover:bg-white hover:text-black hover:no-underline";
 
 const largeLinkClassName =
   "site-nav-link-lg group/cascade block w-fit p-0 text-left text-[28px] leading-[1.15] font-normal normal-case tracking-[-1px] text-black no-underline hover:text-black hover:no-underline";

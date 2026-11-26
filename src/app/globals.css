@@ -277,12 +277,12 @@ body {
 }
 
 .site-header {
-  background: transparent;
+  background: #fff;
   color: #000;
 }
 
 .site-header.header-over-video {
-  background: transparent;
+  background: #fff;
   color: #000;
 }
 
