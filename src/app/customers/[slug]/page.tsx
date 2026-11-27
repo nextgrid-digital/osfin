@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { PostBlock, PostSection, PostSubsection } from "../../../content/posts";
+import ArticleSection from "../../ArticleBody";
 import {
   customerSlugs,
   getCustomerStory,
@@ -11,96 +11,6 @@ import CustomerThumbnail from "../CustomerThumbnail";
 import SiteClose from "../../SiteClose";
 import SiteContainer from "../../SiteContainer";
 import TransitionLink from "../../TransitionLink";
-
-function BlockList({ blocks }: { blocks: PostBlock[] }) {
-  return (
-    <>
-      {blocks.map((block, index) => {
-        if (block.type === "p") {
-          return <p key={`p-${index}`}>{block.text}</p>;
-        }
-        if (block.type === "ul") {
-          return (
-            <ul key={`ul-${index}`}>
-              {block.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          );
-        }
-        if (block.type === "ol") {
-          return (
-            <ol key={`ol-${index}`}>
-              {block.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ol>
-          );
-        }
-        return (
-          <div key={`table-${index}`} className="my-12 overflow-x-auto">
-            <table className="w-full min-w-[36rem] border-collapse text-left text-[14px] leading-[1.45]">
-              <thead>
-                <tr>
-                  {block.headers.map((header) => (
-                    <th
-                      key={header}
-                      className="border-b border-black/15 px-0 py-2 pr-6 font-medium text-black"
-                    >
-                      {header}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {block.rows.map((row, rowIndex) => (
-                  <tr key={row.join("|") + rowIndex}>
-                    {row.map((cell, cellIndex) => (
-                      <td
-                        key={`${cellIndex}-${cell}`}
-                        className="border-b border-black/10 px-0 py-2.5 pr-6 align-top text-black/80"
-                      >
-                        {cell}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        );
-      })}
-    </>
-  );
-}
-
-function SubsectionBody({ subsection }: { subsection: PostSubsection }) {
-  return (
-    <>
-      <h3>{subsection.heading}</h3>
-      {subsection.paragraphs?.map((paragraph) => (
-        <p key={paragraph}>{paragraph}</p>
-      ))}
-      {subsection.blocks ? <BlockList blocks={subsection.blocks} /> : null}
-    </>
-  );
-}
-
-function ArticleSection({ section }: { section: PostSection }) {
-  const hideHeading = section.heading === "Overview";
-  return (
-    <section>
-      {hideHeading ? null : <h2>{section.heading}</h2>}
-      {section.paragraphs?.map((paragraph) => (
-        <p key={paragraph}>{paragraph}</p>
-      ))}
-      {section.blocks ? <BlockList blocks={section.blocks} /> : null}
-      {section.subsections?.map((subsection) => (
-        <SubsectionBody key={subsection.heading} subsection={subsection} />
-      ))}
-    </section>
-  );
-}
 
 export function generateStaticParams() {
   return customerSlugs().map((slug) => ({ slug }));
@@ -136,17 +46,7 @@ export default async function CustomerStoryPage({
     >
       <main className="pt-14 md:pt-16">
         <article className="mx-auto w-full max-w-[1024px] px-6 pb-16 pt-16 font-sans md:pb-20 md:pt-20">
-          <p className="m-0 text-center font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-black/45 uppercase">
-            <TransitionLink
-              href="/customers"
-              className="text-black/45 no-underline hover:text-black hover:no-underline"
-            >
-              Customers
-            </TransitionLink>
-            <span className="px-1.5">/</span>
-            <span>{story.category}</span>
-          </p>
-          <h1 className="mx-auto mt-3 mb-0 max-w-[900px] text-center font-[family-name:var(--font-crimson)] text-[clamp(1.75rem,4.2vw,48px)] font-light leading-none tracking-[-0.022em] text-black">
+          <h1 className="mx-auto mb-0 max-w-[900px] text-center font-[family-name:var(--font-crimson)] text-[clamp(1.75rem,4.2vw,48px)] font-light leading-none tracking-[-0.022em] text-black">
             {story.title}
           </h1>
           <div className="mt-12">

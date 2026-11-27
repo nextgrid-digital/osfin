@@ -95,10 +95,6 @@ export default function RootLayout({
             })();`}
           </Script>
         ) : null}
-        <Script
-          src="https://mcp.figma.com/mcp/html-to-design/capture.js"
-          strategy="afterInteractive"
-        />
         <SmoothScroll>
           <PageTransitionProvider>{children}</PageTransitionProvider>
         </SmoothScroll>

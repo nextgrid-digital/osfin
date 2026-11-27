@@ -10,7 +10,7 @@ import { CAREERS } from "@/content/careers";
 import type { LinkedInJob } from "@/lib/linkedin-jobs";
 import { LINKEDIN_JOBS_URL } from "@/lib/linkedin-jobs";
 
-export default function CloneRoles({ jobs }: { jobs: LinkedInJob[] }) {
+export default function CloneRoles({ jobs, saved }: { jobs: LinkedInJob[]; saved: boolean }) {
   const [query, setQuery] = useState("");
   const [department, setDepartment] = useState("All");
 
@@ -98,6 +98,11 @@ export default function CloneRoles({ jobs }: { jobs: LinkedInJob[] }) {
                 </div>
               </div>
               <div className="flex p-6 flex-col overflow-hidden">
+                {saved ? (
+                  <p className="mx-6 mb-2 text-color-007 text-sm leading-[1.25rem] max-lg:mx-0 max-lg:px-0">
+                    Showing the saved list. Open LinkedIn for current roles.
+                  </p>
+                ) : null}
                 {filtered.length === 0 ? (
                   <p className="mx-6 p-5 text-color-007 text-sm leading-[1.25rem] max-lg:mx-0 max-lg:px-0">
                     No roles match.

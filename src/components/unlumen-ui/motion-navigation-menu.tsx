@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { cva } from "class-variance-authority";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { ChevronDownIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";

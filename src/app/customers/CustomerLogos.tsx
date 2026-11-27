@@ -45,35 +45,35 @@ const TILES: Tile[] = [
     key: "fiserv",
     label: "Fiserv",
     blurb: "Fortune 500 payments and core banking provider",
-    tag: "Payments · Global",
+    tag: "Payments",
     mark: <FiservMark />,
   },
   {
     key: "sbi",
     label: "SBI",
     blurb: "One of the world's largest banks, serving 500M+ customers",
-    tag: "Banking · India",
+    tag: "Banking",
     mark: <SbiMark />,
   },
   {
     key: "patelco",
     label: "Patelco",
-    blurb: "One of California's largest credit unions",
-    tag: "Banking · US",
+    blurb: "One of the largest credit unions by membership",
+    tag: "Banking",
     mark: <PatelcoMark />,
   },
   {
     key: "payjoy",
     label: "PayJoy",
     blurb: "Smartphone credit for 20M+ people",
-    tag: "Lending · 9 countries",
+    tag: "Lending",
     mark: <PayjoyMark />,
   },
   {
     key: "manipal-cigna",
     label: "Manipal Cigna",
     blurb: "Joint venture of Manipal Group and Cigna",
-    tag: "Insurance · India",
+    tag: "Insurance",
     href: "/customers/manipal-cigna",
     mark: <ManipalCignaMark />,
   },
@@ -127,11 +127,11 @@ export default function CustomerLogos() {
           );
         })}
         <li className={`min-w-0 ${TILE}`}>
-          <div className="flex h-14 items-end font-[family-name:var(--font-crimson)] text-[clamp(2.5rem,4vw,3.5rem)] font-light leading-none tracking-[-0.03em] text-black">
+          <div className="flex h-14 items-end font-[family-name:var(--font-mono)] text-[clamp(2.5rem,4vw,3.5rem)] font-medium leading-none tracking-[-0.03em] text-black">
             20<span className="text-black/45">+</span>
           </div>
           <p className="!m-0 max-w-[32ch] flex-1 text-[14px] leading-[1.45] text-black/55 md:text-[15px]">
-            institutions run on Osfin worldwide
+            institutions run on Osfin
           </p>
           <span className="mt-auto border-t border-black/10 pt-3.5 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-black/45 uppercase">
             Banks · Fintechs · Insurers

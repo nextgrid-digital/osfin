@@ -101,24 +101,25 @@ function withDescriptions(jobs: LinkedInJob[]) {
     return {
       ...job,
       title: stripLocationFromTitle(job.title),
-      location: "",
+      location: job.location || cached?.location || "",
+      posted: job.posted || cached?.posted,
       description: job.description || cached?.description,
     };
   });
 }
 
-export async function getLinkedInJobs(): Promise<LinkedInJob[]> {
+export async function getLinkedInJobs(): Promise<{ jobs: LinkedInJob[]; live: boolean }> {
   try {
     const guest = await fetchHtml(GUEST_URL);
     const fromGuest = parseJobs(guest);
-    if (fromGuest.length > 0) return withDescriptions(fromGuest);
+    if (fromGuest.length > 0) return { jobs: withDescriptions(fromGuest), live: true };
 
     const listings = await fetchHtml(LISTINGS_URL);
     const fromListings = parseJobs(listings);
-    if (fromListings.length > 0) return withDescriptions(fromListings);
+    if (fromListings.length > 0) return { jobs: withDescriptions(fromListings), live: true };
   } catch {
     // LinkedIn often rate-limits server IPs; use the last successful snapshot.
   }
 
-  return withDescriptions(FALLBACK);
+  return { jobs: withDescriptions(FALLBACK), live: false };
 }

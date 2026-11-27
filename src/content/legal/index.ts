@@ -314,7 +314,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
         blocks: [
           {
             type: "p",
-            text: "You understand that Osfin.ai and the software hosted at *.osfin.ai may include security components that permit digital materials to be protected, and that use of these digital materials is subject to usage rules set by the Company. You shall not attempt to reverse engineer, override, disable, circumvent or otherwise interfere with any such security components and usage rules embedded into Osfin.ai.",
+            text: "You understand that Osfin.ai and the software hosted at *.osfin.ai may include security components that permit digital materials to be protected, and that use of these digital materials is subject to usage rules set by the Company. You shall not attempt to reverse engineer, override, disable, circumvent, or otherwise bypass any such security components and usage rules embedded into Osfin.ai.",
           },
         ],
       },
@@ -367,7 +367,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
             type: "ul",
             items: [
               "These Terms of Use shall remain in full force and effect for so long as you use Osfin.ai. You may delete your account at any time, for any reason, by following the instructions on Osfin.ai.",
-              "We reserve the right to terminate the services or Osfin.ai without prior notice. Your account or your access to all or any part of Osfin.ai may be terminated immediately, with or without notice to you, and without liability to you, if the Company believes that you have breached any of these Terms, the Privacy Policy, or any false or misleading information, or interfered with the use of Osfin.ai by others.",
+              "We reserve the right to terminate the services or Osfin.ai without prior notice. Your account or your access to all or any part of Osfin.ai may be terminated immediately, with or without notice to you, and without liability to you, if the Company believes that you have breached any of these Terms, the Privacy Policy, or any false or misleading information, or disrupted the use of Osfin.ai by others.",
               "The Company reserves the right to cancel, delete or deactivate your Account, if it believes the same has been compromised, or is being used fraudulently, at its own discretion.",
               "We retain the right to terminate or downgrade your use of the services on Osfin.ai if you fail to duly make payments of amounts lawfully due to Us.",
             ],
