@@ -1,0 +1,22 @@
+---
+description: Universal marketing section vertical padding
+alwaysApply: true
+---
+
+# Section padding
+
+Use the shared Tailwind utility `section` for vertical padding on marketing page sections.
+
+- **Class:** `section`
+- **Equals:** `py-28 md:py-40` (homepage rhythm)
+- **Defined in:** `src/app/globals.css` (`@utility section`)
+
+## Do
+
+- Put `section` on `<section>` (or equivalent band) for standard content blocks.
+- Prefer `className="section …"` over hand-rolled `py-28 md:py-40` or `py-20 md:py-28`.
+
+## Don't
+
+- Invent new vertical padding scales for page sections (`py-16`, `py-20 md:py-28`, etc.) unless the block is explicitly not a standard section (e.g. sticky subnav, full-bleed seam, hero under `main.pt-14` that needs a tighter first-screen top).
+- Mix homepage spacing with a different scale on other marketing pages.

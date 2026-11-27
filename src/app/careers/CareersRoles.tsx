@@ -42,7 +42,7 @@ export default function CareersRoles({ jobs, saved }: { jobs: LinkedInJob[]; sav
   }, [department, jobs, query]);
 
   return (
-    <section id="open-roles" className="border-t border-black/15 py-20 md:py-28">
+    <section id="open-roles" className="border-t border-black/15 section">
       <div className="mx-auto w-full max-w-[var(--max)] px-5 sm:px-8">
         <p className={labelClassName} data-not-typeset>
           {CAREERS.roles.label}

@@ -51,7 +51,7 @@ export default function HomeStories() {
 
   return (
     <section
-      className="overflow-x-clip py-28 md:py-40"
+      className="overflow-x-clip section"
       aria-roledescription="carousel"
       aria-label="Customer stories"
     >

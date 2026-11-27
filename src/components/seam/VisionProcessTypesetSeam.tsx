@@ -8,6 +8,8 @@ import { useLenis } from "lenis/react";
 
 const GAP = 32;
 const DARK = [17 / 255, 17 / 255, 19 / 255] as const;
+/** Pure black for the customers index map band. */
+const BLACK = [0, 0, 0] as const;
 const LIGHT = [1, 1, 1] as const;
 const CELL = [10, 12] as const;
 
@@ -386,7 +388,7 @@ function mountCustomersDarkSeam(
   const heading = root.querySelector<HTMLElement>("[data-customers-seam-heading]");
   if (!prev || !next) return () => {};
 
-  return mountStrip(host, root, renderRef, DARK, 3.0, {
+  return mountStrip(host, root, renderRef, BLACK, 3.0, {
     getEdge: () => prev.getBoundingClientRect().bottom,
     roomUp: () => {
       const prevRect = prev.getBoundingClientRect();

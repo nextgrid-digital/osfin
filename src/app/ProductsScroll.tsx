@@ -51,7 +51,7 @@ export default function ProductsScroll() {
       ref={sectionRef}
       className="flex min-h-svh flex-col justify-center bg-background text-black"
     >
-      <div className="flex flex-col justify-center py-28 md:py-40">
+      <div className="flex flex-col justify-center section">
         <SiteContainer>
           <SectionHeading
             title="A connected operating system for reconciliation, disputes, compliance, risk, and financial close"

@@ -1,62 +1,45 @@
-/* Map SVG paint only — page chrome uses site typeset / Tailwind. */
-.customers-page .customers-map-box svg {
+/* Customers page — white hero + dark map band */
+
+.customers-page.site-shell > main,
+.customers-page > main {
+  background-color: #fff;
+}
+
+.customers-page .customers-map-section {
+  background: #000;
+}
+
+.customers-page .customers-city-lights-box {
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+.customers-page .customers-city-lights,
+.customers-page .customers-city-lights canvas {
   display: block;
   width: 100%;
-  height: auto;
-  overflow: hidden;
+  height: 100%;
+  max-width: 100%;
+  touch-action: manipulation;
 }
 
-.customers-page .customers-map-box .base {
-  fill: #3a3a35;
+.customers-page .customers-city-lights-box .customers-city-lights {
+  position: absolute;
+  inset: 0;
 }
 
-.customers-page .customers-map-box .mk {
-  fill: rgba(255, 255, 255, 0.55);
-  transition: fill 0.25s, opacity 0.25s;
+.customers-page .site-footer {
+  background: #000 !important;
 }
 
-.customers-page .customers-map-box .pin circle.core {
-  fill: #f4f3ee;
+/* Avoid horizontal overflow on narrow viewports */
+.customers-page {
+  overflow-x: clip;
 }
 
-.customers-page .customers-map-box .pin circle.ring {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.45);
-  stroke-width: 1;
-}
-
-.customers-page .customers-map-box .pin text {
-  fill: #f4f3ee;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 10.5px;
-  letter-spacing: -0.02em;
-}
-
-.customers-page .customers-map-box .pin .pulse {
-  display: none;
-}
-
-.customers-page .customers-map-box.focus .mk,
-.customers-page .customers-map-box.focus .pin {
-  opacity: 0.22;
-}
-
-.customers-page .customers-map-box.focus .mk.on,
-.customers-page .customers-map-box.focus .pin.on {
-  opacity: 1;
-  fill: #fff;
-}
-
-@media (max-width: 600px) {
-  .customers-page .customers-map-box .pin text {
-    display: none;
-  }
-
-  .customers-page .customers-map-box .pin circle.ring {
-    display: none;
-  }
-
-  .customers-page .customers-map-box .pin circle.core {
-    r: 4;
+@media (max-width: 639px) {
+  .customers-page .customers-map-section h2 {
+    max-width: 16em;
   }
 }

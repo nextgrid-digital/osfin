@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CAREERS } from "@/content/careers";
 import { getLinkedInJobs } from "@/lib/linkedin-jobs";
+import CompanyHero from "../CompanyHero";
 import SiteClose from "../SiteClose";
 import SiteContainer from "../SiteContainer";
 import CareersRoles from "./CareersRoles";
@@ -32,25 +33,17 @@ export default async function CareersPage() {
       className="site-shell typeset typeset-docs min-h-screen bg-background text-black"
     >
       <main className="pt-14 md:pt-16">
-        <section className="relative flex h-[calc(100vh-3.5rem)] flex-col overflow-hidden md:h-[calc(100vh-4rem)]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/ditto-careers/assets/cloned/images/7a0e25a61472-ink.webp"
-            alt=""
-            aria-hidden
-            className="pointer-events-none absolute inset-0 hidden h-full w-full object-cover mix-blend-multiply lg:block"
-          />
-          <SiteContainer className="relative flex flex-1 flex-col items-center justify-center text-center">
-            <h1 className="!mt-0 !mb-0 max-w-[14em] text-black">
-              {CAREERS.hero.title.replace("\n", " ")}
-            </h1>
-            <p className="!mb-0 !mt-6 mx-auto max-w-[42rem] text-[17px] !leading-[1.5] text-black/75 md:!mt-8 md:text-[18px]">
+        <CompanyHero lines={CAREERS.hero.title.split("\n")} />
+
+        <section className="section !pt-12 md:!pt-16">
+          <SiteContainer>
+            <p className="!mb-0 mx-auto max-w-[42rem] text-center text-[17px] !leading-[1.5] text-black/75 md:text-[18px]">
               {CAREERS.hero.body}
             </p>
           </SiteContainer>
         </section>
 
-        <section className="py-20 md:py-28">
+        <section className="section">
           <SiteContainer className="flex flex-col items-center gap-10">
             <div className="flex flex-col items-center gap-6 text-center">
               <p

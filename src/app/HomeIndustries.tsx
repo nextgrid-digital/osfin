@@ -5,7 +5,7 @@ export default function HomeIndustries() {
   return (
     <section
       id="roles"
-      className="py-28 md:py-40"
+      className="section"
       aria-labelledby="industries-heading"
     >
       <SiteContainer>

@@ -21,13 +21,7 @@ export default function ContactPage() {
           <SiteContainer>
             <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-20">
               <div>
-                <p
-                  className="not-typeset !m-0 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-black/45 uppercase"
-                  data-not-typeset
-                >
-                  Contact
-                </p>
-                <h1 className="!mt-5 max-w-[11em] !text-[clamp(2rem,5vw,64px)] !leading-none !font-light tracking-[-0.03em] text-black md:!mt-6">
+                <h1 className="!mt-0 max-w-[11em] !text-[clamp(2rem,5vw,64px)] !leading-none !font-light tracking-[-0.03em] text-black">
                   Tell us what you’re looking to solve.
                 </h1>
                 <p

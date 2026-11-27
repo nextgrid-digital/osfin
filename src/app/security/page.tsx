@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import GatewayFlow from "@/components/ui/gateway-flow";
 import { SECURITY } from "../../content/security";
+import CompanyHero from "../CompanyHero";
 import SiteContainer from "../SiteContainer";
 import SiteClose from "../SiteClose";
 import SecurityAccordion from "./SecurityAccordion";
@@ -80,20 +80,9 @@ export default function SecurityPage() {
       className="site-shell typeset typeset-docs min-h-screen bg-background text-black"
     >
       <main className="pt-14 md:pt-16">
-        <section className="relative overflow-hidden bg-background">
-          <GatewayFlow
-            mode="light"
-            className="pointer-events-none absolute inset-0 z-0 h-full w-full"
-          />
-          <SiteContainer className="relative z-10 pt-8 pb-16 md:pt-10 md:pb-24">
-            <h1 className="mx-auto max-w-full text-center">
-              <span className="block">Security and</span>
-              <span className="block">compliance</span>
-            </h1>
-          </SiteContainer>
-        </section>
+        <CompanyHero lines={["Security and", "compliance"]} />
 
-        <section className="py-20 md:py-28">
+        <section className="section">
           <SiteContainer>
             <p className={`${labelClassName} text-center`} data-not-typeset>
               Practices
@@ -131,7 +120,7 @@ export default function SecurityPage() {
           </SiteContainer>
         </section>
 
-        <section className="pb-20 md:pb-28">
+        <section className="section">
           <SiteContainer>
             <p className={labelClassName} data-not-typeset>
               Certifications

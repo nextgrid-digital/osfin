@@ -282,7 +282,7 @@ export default function HomeSecurity() {
   return (
     <section
       id="security"
-      className="flex min-h-[100svh] flex-col justify-center bg-background py-28 md:py-40"
+      className="flex min-h-[100svh] flex-col justify-center bg-background section"
     >
       <SiteContainer>
         <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-end sm:justify-between sm:gap-10">

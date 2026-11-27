@@ -51,7 +51,7 @@ export default function HomeProductRows() {
   }, [emblaApi]);
 
   return (
-    <section className="py-28 md:py-40" aria-roledescription="carousel" aria-label="Products">
+    <section className="section" aria-roledescription="carousel" aria-label="Products">
       <SiteContainer>
         <div className="flex items-end justify-end gap-2 border-b border-black/15 pb-5">
           <button

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GlyphMatrix } from "@/components/ui/glyph-matrix";
 import { ABOUT } from "../../content/about";
+import CompanyHero from "../CompanyHero";
 import SiteContainer from "../SiteContainer";
 import SiteClose from "../SiteClose";
 
@@ -21,16 +22,35 @@ export default function AboutPage() {
       className="site-shell typeset typeset-docs min-h-screen bg-background text-black"
     >
       <main className="pt-14 md:pt-16">
-        <section className="pt-16 pb-12 md:pt-28 md:pb-20">
-          <SiteContainer>
-            <p
-              className="tracking-display not-typeset !m-0 max-w-[18em] font-[family-name:var(--font-crimson)] text-[clamp(2rem,5vw,64px)] leading-none font-light text-black"
-              data-not-typeset
-            >
-              {ABOUT.manifesto}
-            </p>
+        <CompanyHero
+          lines={["Product speed.", "Enterprise fit."]}
+          backdrop={
             <div
-              className="not-typeset mt-12 grid grid-cols-1 gap-10 md:mt-16 md:grid-cols-3 md:gap-12"
+              className="h-full w-full"
+              style={{
+                maskImage:
+                  "radial-gradient(ellipse 42% 38% at 50% 42%, transparent 0%, black 70%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 42% 38% at 50% 42%, transparent 0%, black 70%)",
+              }}
+            >
+              <GlyphMatrix
+                glyphs="01.+*/<>="
+                cellSize={14}
+                mutationRate={0.04}
+                interval={90}
+                fadeBottom={0.55}
+                color="#000000"
+                className="h-full w-full"
+              />
+            </div>
+          }
+        />
+
+        <section className="section !pt-12 md:!pt-16">
+          <SiteContainer>
+            <div
+              className="not-typeset grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12"
               data-not-typeset
             >
               {ABOUT.fit.map((item) => (
@@ -38,25 +58,16 @@ export default function AboutPage() {
                   <h2 className="!m-0 font-[family-name:var(--font-crimson)] !text-[clamp(1.5rem,2vw,28px)] !leading-none !font-light !tracking-[-1px] text-black">
                     {item.title}
                   </h2>
-                  <p className="!mb-0 !mt-4 text-[18px] !leading-[1.5] text-black">{item.body}</p>
+                  <p className="!mb-0 !mt-4 text-[18px] !leading-[1.5] text-black">
+                    {item.body}
+                  </p>
                 </div>
               ))}
             </div>
           </SiteContainer>
         </section>
 
-        <div className="relative h-[400px] w-full overflow-hidden">
-          <GlyphMatrix
-            glyphs="01.+*/<>="
-            cellSize={14}
-            mutationRate={0.04}
-            interval={90}
-            fadeBottom={0.6}
-            color="#000000"
-          />
-        </div>
-
-        <section className="py-20 md:py-28">
+        <section className="section">
           <SiteContainer className="flex flex-col items-center gap-14 md:gap-16">
             {ABOUT.proof.map((row) => (
               <div key={row.label} className="flex w-full flex-col items-center">

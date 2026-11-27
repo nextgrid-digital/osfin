@@ -1,0 +1,16 @@
+---
+description: Shared Company-nav page hero (GatewayFlow + centered display title)
+globs: src/app/{about,careers,customers,security}/**/*.{tsx,ts}
+alwaysApply: false
+---
+
+# Company page hero
+
+Company dropdown pages (`/about`, `/careers`, `/security`, `/customers`) share one hero:
+
+- Use `CompanyHero` from `src/app/CompanyHero.tsx`
+- Pattern: GatewayFlow (light) + centered stacked `h1` lines + `pt-8 pb-16 md:pt-10 md:pb-24`
+- Pass title as `lines={["Line one", "line two"]}`
+- Optional supporting copy goes in `children`
+
+Do not invent a different first-screen hero layout for these pages.

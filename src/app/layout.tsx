@@ -29,7 +29,7 @@ const crimsonPro = Crimson_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "Osfin: AI-native payment operations",
+  title: "The finance automation platform built for enterprise complexity.",
   description:
     "Osfin partners with financial institutions and payment companies to operationalize AI-native payment operations.",
 };

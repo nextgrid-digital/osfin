@@ -93,7 +93,7 @@ export default function HumanHome() {
 
         {/* Changelog */}
         <SectionRule />
-        <section id="changelog" className="pt-28 pb-28 md:pt-40 md:pb-40">
+        <section id="changelog" className="section">
           <SiteContainer>
             <div className="flex items-end justify-between gap-6 border-b border-black/15 pb-5">
               <h2 className="!mb-0 !mt-0 text-black">From the frontier</h2>

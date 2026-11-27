@@ -104,7 +104,7 @@ function SubtleQuote({ quote, handle, initials }: (typeof SUBTLE)[number]) {
 
 export default function SocialProofSection() {
   return (
-    <section className="flex min-h-svh items-center py-28 md:py-40">
+    <section className="flex min-h-svh items-center section">
       <SiteContainer>
         {/* Logo bar */}
         <div className="grid gap-12 border-b border-black/10 pb-16 md:grid-cols-2 md:gap-16 md:pb-20">

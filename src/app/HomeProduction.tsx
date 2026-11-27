@@ -117,7 +117,7 @@ export default function HomeProduction() {
     <section
       id="process"
       data-vision-seam-next
-      className="relative bg-[#111113] py-28 text-white md:py-40"
+      className="relative bg-[#111113] section text-white"
     >
       <DarkWhenInView targetId="process" />
       <SiteContainer className="relative z-10">

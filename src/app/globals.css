@@ -3,6 +3,11 @@
 @import "shadcn/tailwind.css";
 @import "./typeset.css";
 
+/* Universal marketing section rhythm (matches homepage). */
+@utility section {
+  @apply py-28 md:py-40;
+}
+
 .typeset-docs {
   --typeset-font-body: var(--font-inter);
   --typeset-font-heading: var(--font-crimson);
