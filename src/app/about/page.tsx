@@ -57,15 +57,15 @@ export default function AboutPage() {
         </div>
 
         <section className="py-20 md:py-28">
-          <SiteContainer className="flex flex-col gap-14 md:gap-16">
+          <SiteContainer className="flex flex-col items-center gap-14 md:gap-16">
             {ABOUT.proof.map((row) => (
-              <div key={row.label}>
-                <p className={labelClassName} data-not-typeset>
+              <div key={row.label} className="flex w-full flex-col items-center">
+                <p className={`${labelClassName} text-center`} data-not-typeset>
                   {row.label}
                 </p>
                 {row.label === "Standards" ? (
                   <div
-                    className="not-typeset mt-8 flex flex-wrap items-start justify-start gap-x-10 gap-y-8 md:gap-x-14"
+                    className="not-typeset mt-8 flex flex-wrap items-start justify-center gap-x-10 gap-y-8 md:gap-x-14"
                     data-not-typeset
                   >
                     {row.items.map((item) => (
@@ -80,11 +80,14 @@ export default function AboutPage() {
                     ))}
                   </div>
                 ) : (
-                  <div className="not-typeset mt-4 flex w-fit max-w-full flex-wrap" data-not-typeset>
+                  <div
+                    className="not-typeset mt-4 flex max-w-full flex-wrap justify-center"
+                    data-not-typeset
+                  >
                     {row.items.map((item) => (
                       <article
                         key={item.name}
-                        className="-mb-px -mr-px flex aspect-[5/3] w-44 shrink-0 items-center justify-center border border-black/10 px-5 sm:w-52"
+                        className="flex aspect-[5/3] w-44 shrink-0 items-center justify-center px-5 sm:w-52"
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img

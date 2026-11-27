@@ -52,7 +52,7 @@ export default function FinanceOperationsTabs({ currentSlug }: { currentSlug: st
   return (
     <nav
       ref={scrollerRef}
-      aria-label="Finance operations"
+      aria-label="Solutions"
       className="not-typeset sticky top-14 z-40 -mx-5 mt-14 overflow-x-auto overscroll-x-contain border-b border-black/10 bg-background px-5 py-4 [scrollbar-width:none] sm:-mx-8 sm:px-8 md:top-16 md:mt-16 [&::-webkit-scrollbar]:hidden"
       data-not-typeset
     >
@@ -65,7 +65,7 @@ export default function FinanceOperationsTabs({ currentSlug }: { currentSlug: st
           return (
             <a
               key={item.slug}
-              href={`/finance-operations/${item.slug}`}
+              href={`/solutions/${item.slug}`}
               aria-current={active ? "page" : undefined}
               onClick={(event) => {
                 if (!select) return;

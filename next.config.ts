@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
       { source: "/products/exception-resolution", destination: "/products/exception-desk", permanent: true },
       { source: "/products/control-views", destination: "/products/regulatory-reporting", permanent: true },
       { source: "/compliance", destination: "/security", permanent: true },
+      { source: "/finance-operations/:slug", destination: "/solutions/:slug", permanent: true },
     ];
   },
 };

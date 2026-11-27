@@ -17,7 +17,7 @@ export const FEATURES = [
   },
   {
     id: "transform",
-    nav: "Transform",
+    nav: "Configure",
     title: ["Deploy agents", "against your goals"],
     body: "Osfin deploys goal-oriented agents, purpose-built for finance, accounting, and payments operations, that get the job done. They stand up quickly, run your operational processes end to end, and bring your team in only when judgment is needed.",
     copy: "max-w-[32rem]",

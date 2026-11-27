@@ -8,13 +8,13 @@ export default function FinanceOperationsTemplate({ operation }: { operation: Fi
   return (
     <div
       data-transition="container"
-      data-namespace="finance-operations"
+      data-namespace="solutions"
       className="site-shell typeset typeset-docs min-h-screen bg-background text-black"
     >
       <main className="pt-14 md:pt-16">
         <SiteContainer className="pt-8 md:pt-10">
           <h1 className="mx-auto max-w-full text-center">
-            <span className="block">Finance operations</span>
+            <span className="block">Solutions</span>
             <span className="block">for the enterprise</span>
           </h1>
 

@@ -52,15 +52,6 @@ export const ABOUT = {
       ],
     },
     {
-      label: "Investors",
-      items: [
-        { name: "Peak XV Partners", short: "Peak XV", logo: "/about/logos/peak-xv.png?v=8" },
-        { name: "Info Edge Ventures", short: "Info Edge", logo: "/about/logos/info-edge.png?v=4" },
-        { name: "PointOne Capital", short: "PointOne", logo: "/about/logos/pointone.png?v=8" },
-        { name: "Mitcon Credentia", short: "Mitcon Credentia", logo: "/about/logos/mitcon-credentia.png?v=1" },
-      ],
-    },
-    {
       label: "Team",
       items: [
         { name: "BCG", short: "BCG", logo: "/about/logos/bcg.png?v=5" },
@@ -77,8 +68,8 @@ export const ABOUT = {
       label: "Standards",
       items: [
         { name: "PCI DSS", short: "PCI DSS", logo: "/about/logos/pci.png?v=4" },
-        { name: "SOC 1 Type II", short: "SOC 1", logo: "/about/logos/aicpa.png?v=5" },
-        { name: "SOC 2 Type II", short: "SOC 2", logo: "/about/logos/aicpa.png?v=5" },
+        { name: "SOC 1 Type II", short: "SOC 1", logo: "/about/logos/aicpa-soc1.svg" },
+        { name: "SOC 2 Type II", short: "SOC 2", logo: "/about/logos/aicpa-soc2.svg" },
         { name: "ISO 27001:2022", short: "ISO 27001", logo: "/about/logos/iso.png?v=6" },
         { name: "GDPR", short: "GDPR", logo: "/about/logos/gdpr.png?v=11" },
         { name: "CCPA", short: "CCPA", logo: "/about/logos/california.png?v=11" },

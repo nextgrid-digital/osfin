@@ -76,13 +76,13 @@ export function machineBlocks(): MachineBlock[] {
     blocks.push({ type: "text", text: product.lede });
   }
 
-  blocks.push({ type: "text", text: "" }, { type: "text", text: "Finance operations" });
+  blocks.push({ type: "text", text: "" }, { type: "text", text: "Solutions" });
   for (const operation of FINANCE_OPERATIONS) {
     blocks.push({ type: "text", text: "" });
     blocks.push({
       type: "link",
       label: operation.name,
-      href: `/finance-operations/${operation.slug}`,
+      href: `/solutions/${operation.slug}`,
     });
     blocks.push({ type: "text", text: financeTaglinePlain(operation.tagline) });
   }

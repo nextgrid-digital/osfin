@@ -330,9 +330,9 @@ button {
 .site-header [data-slot="motion-highlight"],
 .site-header [data-slot="navigation-menu-viewport"] {
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
+    background-color 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .site-header .site-nav [data-slot="navigation-menu-link"] span,
@@ -374,6 +374,24 @@ button {
 .site-header nav button[data-slot="navigation-menu-trigger"][data-state="open"] {
   opacity: 1;
   color: inherit;
+}
+
+.site-header.header-menu-open .site-nav [data-slot="navigation-menu-list"] > li > button:not([data-state="open"]),
+.site-header.header-menu-open .site-nav [data-slot="navigation-menu-list"] > li > a,
+html.over-dark .site-header.header-menu-open .site-nav [data-slot="navigation-menu-list"] > li > button:not([data-state="open"]),
+html.over-dark .site-header.header-menu-open .site-nav [data-slot="navigation-menu-list"] > li > a {
+  background-color: transparent;
+}
+
+.site-header.header-menu-open .site-nav [data-slot="navigation-menu-list"] > li > button:not([data-state="open"]):hover,
+.site-header.header-menu-open .site-nav [data-slot="navigation-menu-list"] > li > a:hover,
+html.over-dark .site-header.header-menu-open .site-nav [data-slot="navigation-menu-list"] > li > button:not([data-state="open"]):hover,
+html.over-dark .site-header.header-menu-open .site-nav [data-slot="navigation-menu-list"] > li > a:hover {
+  background-color: var(--site-nav-chip);
+}
+
+.site-header.header-menu-open .site-nav [data-slot="motion-highlight"] {
+  background-color: transparent;
 }
 
 .site-header nav [data-slot="navigation-menu-content"] a {
@@ -423,12 +441,6 @@ button {
   padding-right: 2rem;
 }
 
-.site-nav-panel--wide {
-  padding-left: 2rem;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .site-header [data-layout="mega"] [data-slot="navigation-menu-content"] a,
 .site-header [data-layout="mega"] [data-slot="navigation-menu-content"] [data-slot="navigation-menu-link"] {
   font-family: var(--font-inter), var(--font-sans), system-ui, sans-serif;
@@ -443,6 +455,12 @@ button {
   line-height: 1.15;
   letter-spacing: -1px;
   color: #000;
+  transition: background-color 0.2s linear;
+}
+
+.site-header [data-layout="mega"] [data-slot="navigation-menu-content"] a.site-nav-link-lg:hover,
+html.over-dark .site-header [data-layout="mega"] [data-slot="navigation-menu-content"] a.site-nav-link-lg:hover {
+  background-color: var(--site-nav-chip);
 }
 
 .site-nav-backdrop {

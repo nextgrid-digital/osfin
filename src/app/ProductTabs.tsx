@@ -43,7 +43,7 @@ export default function ProductTabs({ currentSlug }: { currentSlug: string }) {
               text={product.name}
               className="relative z-10 leading-none"
               staggerDelay={14}
-              duration={280}
+              duration={0.22}
               easing="cubic-bezier(0.22, 1, 0.36, 1)"
             />
           </a>

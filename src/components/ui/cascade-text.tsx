@@ -33,6 +33,8 @@ const TextReveal = React.memo(function TextReveal({
   className = "",
   style,
   fontSize = "inherit",
+  duration = 0.3,
+  easing = "easeInOut",
   color = "inherit",
   hoverColor = "inherit",
   onClick,
@@ -80,7 +82,9 @@ const TextReveal = React.memo(function TextReveal({
   return (
     <Component {...rootProps}>
       <span aria-hidden="true" className="inline-flex items-baseline leading-[1.3]">
-        <TextRoll hovered={hovered}>{text}</TextRoll>
+        <TextRoll hovered={hovered} duration={duration} easing={easing}>
+          {text}
+        </TextRoll>
       </span>
     </Component>
   );

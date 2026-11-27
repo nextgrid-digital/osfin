@@ -44,7 +44,7 @@ export default function FinanceOperationsSwitcher({ initialSlug }: { initialSlug
     window.history.pushState(
       current && current.__NA ? current : { ...current, __NA: true },
       "",
-      `/finance-operations/${nextSlug}`,
+      `/solutions/${nextSlug}`,
     );
   };
 

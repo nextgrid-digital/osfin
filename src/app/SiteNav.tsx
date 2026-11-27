@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, type MouseEvent, type ReactNode } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import {
   MotionNavigationMenu,
   MotionNavigationMenuContent,
@@ -16,24 +16,25 @@ import { SOLUTIONS } from "../content/industries";
 import { PRODUCTS } from "../content/products";
 import { usePageTransition } from "./PageTransitionProvider";
 
-const listHighlightClassName = "rounded-none bg-white";
+const navChipClassName = "bg-[var(--site-nav-chip)] hover:bg-[var(--site-nav-chip)]";
+
+const listHighlightClassName = "rounded-none bg-[var(--site-nav-chip)]";
 
 const navItemClassName =
-  "group/cascade h-auto min-h-0 gap-1.5 rounded-none bg-white px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-black uppercase inline-flex items-center hover:bg-white hover:text-black focus:text-black data-[state=open]:bg-white data-[state=open]:text-black";
+  `group/cascade h-auto min-h-0 gap-1.5 rounded-none ${navChipClassName} px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-black uppercase inline-flex items-center hover:text-black focus:text-black data-[state=open]:bg-[var(--site-nav-chip)] data-[state=open]:text-black`;
 const navLinkClassName =
-  "group/cascade h-auto min-h-0 gap-0 rounded-none bg-white px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-black uppercase inline-flex items-center no-underline hover:bg-white hover:text-black hover:no-underline";
+  `group/cascade h-auto min-h-0 gap-0 rounded-none ${navChipClassName} px-3.5 py-2 leading-none text-[13px] font-medium tracking-[-0.02em] text-black uppercase inline-flex items-center no-underline hover:text-black hover:no-underline`;
 
 const largeLinkClassName =
-  "site-nav-link-lg group/cascade block w-fit p-0 text-left text-[28px] leading-[1.15] font-normal normal-case tracking-[-1px] text-black no-underline hover:text-black hover:no-underline";
+  "site-nav-link-lg group/cascade -ml-[0.28em] block w-fit px-[0.28em] py-[0.08em] text-left text-[28px] leading-[1.15] font-normal normal-case tracking-[-1px] text-black no-underline hover:text-black hover:no-underline";
 
 function NavLabel({ text }: { text: string }) {
   return (
     <TextReveal
       as="span"
       text={text}
-      staggerDelay={14}
-      duration={280}
-      easing="cubic-bezier(0.22, 1, 0.36, 1)"
+      duration={0.22}
+      easing="linear"
     />
   );
 }
@@ -69,14 +70,6 @@ const COMPANY = [
   },
 ] as const;
 
-function MenuLabel({ children }: { children: ReactNode }) {
-  return <p className="mb-5 text-[13px] text-black/45">{children}</p>;
-}
-
-function MenuColumns({ children }: { children: ReactNode }) {
-  return <div className="flex flex-col items-start gap-12 md:flex-row md:gap-24">{children}</div>;
-}
-
 function shouldHandleClick(e: MouseEvent<HTMLAnchorElement>) {
   if (e.defaultPrevented) return false;
   if (e.button !== 0) return false;
@@ -107,11 +100,11 @@ function MobileMenu({
       }),
     },
     {
-      id: "finance",
-      label: "Finance operations",
+      id: "solutions",
+      label: "Solutions",
       links: FINANCE_OPERATIONS.map((item) => ({
         label: item.name,
-        href: `/finance-operations/${item.slug}`,
+        href: `/solutions/${item.slug}`,
       })),
     },
     {
@@ -169,9 +162,9 @@ function MobileMenu({
           Blog
         </Link>
         <Link
-          href="mailto:socials@osfin.ai"
+          href="/contact"
           className="border-b border-black/10 py-4 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-black uppercase no-underline"
-          onClick={onClose}
+          onClick={onNavigate("/contact")}
         >
           Contact
         </Link>
@@ -290,43 +283,48 @@ export default function SiteNav() {
               highlightClassName="hidden"
               className="w-screen"
             >
-              <div className="site-nav-panel site-nav-panel--wide py-10 md:py-12">
-                <MenuColumns>
-                  <div>
-                    <MenuLabel>Products</MenuLabel>
-                    <div className="flex flex-col gap-2">
-                      {PRODUCT_NAV.map((slug) => {
-                        const product = PRODUCTS.find((p) => p.slug === slug);
-                        if (!product) return null;
-                        return (
-                          <MotionNavigationMenuLink
-                            key={slug}
-                            href={`/products/${slug}`}
-                            onClick={onNavClick(`/products/${slug}`)}
-                            className={largeLinkClassName}
-                          >
-                            <TextReveal as="span" text={product.name} />
-                          </MotionNavigationMenuLink>
-                        );
-                      })}
-                    </div>
-                  </div>
-                  <div>
-                    <MenuLabel>Finance operations</MenuLabel>
-                    <div className="flex flex-col gap-2">
-                      {FINANCE_OPERATIONS.map((item) => (
-                        <MotionNavigationMenuLink
-                          key={item.slug}
-                          href={`/finance-operations/${item.slug}`}
-                          onClick={onNavClick(`/finance-operations/${item.slug}`)}
-                          className={largeLinkClassName}
-                        >
-                          <TextReveal as="span" text={item.name} />
-                        </MotionNavigationMenuLink>
-                      ))}
-                    </div>
-                  </div>
-                </MenuColumns>
+              <div className="site-nav-panel py-10 md:py-12">
+                <div className="flex flex-col gap-2">
+                  {PRODUCT_NAV.map((slug) => {
+                    const product = PRODUCTS.find((p) => p.slug === slug);
+                    if (!product) return null;
+                    return (
+                      <MotionNavigationMenuLink
+                        key={slug}
+                        href={`/products/${slug}`}
+                        onClick={onNavClick(`/products/${slug}`)}
+                        className={largeLinkClassName}
+                      >
+                        <TextReveal as="span" text={product.name} duration={0.22} easing="linear" />
+                      </MotionNavigationMenuLink>
+                    );
+                  })}
+                </div>
+              </div>
+            </MotionNavigationMenuContent>
+          </MotionNavigationMenuItem>
+
+          <MotionNavigationMenuItem value="solutions">
+            <MotionNavigationMenuTrigger className={navItemClassName} aria-label="Solutions">
+              <NavLabel text="Solutions" />
+            </MotionNavigationMenuTrigger>
+            <MotionNavigationMenuContent
+              highlightClassName="hidden"
+              className="w-screen"
+            >
+              <div className="site-nav-panel py-10 md:py-12">
+                <div className="flex flex-col gap-2">
+                  {FINANCE_OPERATIONS.map((item) => (
+                    <MotionNavigationMenuLink
+                      key={item.slug}
+                      href={`/solutions/${item.slug}`}
+                      onClick={onNavClick(`/solutions/${item.slug}`)}
+                      className={largeLinkClassName}
+                    >
+                      <TextReveal as="span" text={item.name} duration={0.22} easing="linear" />
+                    </MotionNavigationMenuLink>
+                  ))}
+                </div>
               </div>
             </MotionNavigationMenuContent>
           </MotionNavigationMenuItem>
@@ -340,7 +338,6 @@ export default function SiteNav() {
               className="w-screen"
             >
               <div className="site-nav-panel py-10 md:py-12">
-                <MenuLabel>Industries</MenuLabel>
                 <div className="flex flex-col gap-2">
                   {SOLUTIONS.map(({ label, href }) => (
                     <MotionNavigationMenuLink
@@ -349,7 +346,7 @@ export default function SiteNav() {
                       onClick={onNavClick(href)}
                       className={largeLinkClassName}
                     >
-                      <TextReveal as="span" text={label} />
+                      <TextReveal as="span" text={label} duration={0.22} easing="linear" />
                     </MotionNavigationMenuLink>
                   ))}
                 </div>
@@ -376,7 +373,6 @@ export default function SiteNav() {
               className="w-screen"
             >
               <div className="site-nav-panel py-10 md:py-12">
-                <MenuLabel>Company</MenuLabel>
                 <div className="flex flex-col gap-2">
                   {COMPANY.map(({ label, href }) => (
                     <MotionNavigationMenuLink
@@ -385,7 +381,7 @@ export default function SiteNav() {
                       onClick={href.startsWith("/#") ? closeMenu : onNavClick(href)}
                       className={largeLinkClassName}
                     >
-                      <TextReveal as="span" text={label} />
+                      <TextReveal as="span" text={label} duration={0.22} easing="linear" />
                     </MotionNavigationMenuLink>
                   ))}
                 </div>
@@ -394,7 +390,11 @@ export default function SiteNav() {
           </MotionNavigationMenuItem>
 
           <MotionNavigationMenuItem>
-            <MotionNavigationMenuLink href="mailto:socials@osfin.ai" className={navLinkClassName}>
+            <MotionNavigationMenuLink
+              href="/contact"
+              className={navLinkClassName}
+              onClick={onNavClick("/contact")}
+            >
               <NavLabel text="Contact" />
             </MotionNavigationMenuLink>
           </MotionNavigationMenuItem>

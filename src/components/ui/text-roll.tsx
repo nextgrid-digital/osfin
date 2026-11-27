@@ -6,10 +6,21 @@ import { cn } from "@/lib/utils";
 
 const DURATION = 0.3;
 
+function toMotionEase(easing: string | number[]) {
+  if (Array.isArray(easing)) return easing;
+  const match = easing.match(
+    /cubic-bezier\(\s*([-\d.]+)\s*,\s*([-\d.]+)\s*,\s*([-\d.]+)\s*,\s*([-\d.]+)\s*\)/,
+  );
+  if (!match) return easing;
+  return match.slice(1, 5).map(Number);
+}
+
 export default function TextRoll({
   children,
   className,
   hovered,
+  duration = DURATION,
+  easing = "easeInOut",
 }: {
   children: string;
   className?: string;
@@ -17,6 +28,8 @@ export default function TextRoll({
   center?: boolean;
   /** When set, drives the roll from a parent hover target. */
   hovered?: boolean;
+  duration?: number;
+  easing?: string | number[];
 }) {
   const chars = children.split("");
   const controlled = typeof hovered === "boolean";
@@ -44,8 +57,8 @@ export default function TextRoll({
                 hovered: { y: "-110%" },
               }}
               transition={{
-                ease: "easeInOut",
-                duration: DURATION,
+                ease: toMotionEase(easing),
+                duration,
               }}
               className="inline-block leading-[1.3]"
               key={`top-${i}`}
@@ -67,8 +80,8 @@ export default function TextRoll({
                 hovered: { y: "0%" },
               }}
               transition={{
-                ease: "easeInOut",
-                duration: DURATION,
+                ease: toMotionEase(easing),
+                duration,
               }}
               className="inline-block leading-[1.3]"
               key={`bottom-${i}`}

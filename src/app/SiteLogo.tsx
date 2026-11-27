@@ -49,7 +49,10 @@ export default function SiteLogo({
       aria-label="Osfin"
       className={`inline-flex items-center gap-2 text-current ${className}`}
     >
-      <OsfinMark className="size-[18px] shrink-0" fill={markFill} />
+      <OsfinMark
+        className={`${wordmark ? "size-[18px]" : "size-7 md:size-8"} shrink-0`}
+        fill={markFill}
+      />
       {wordmark ? (
         <span className="font-[family-name:var(--font-inter)] text-[23.28px] leading-none font-medium tracking-[-0.02em] normal-case">
           Osfin

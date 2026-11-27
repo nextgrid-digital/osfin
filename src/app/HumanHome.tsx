@@ -55,10 +55,8 @@ export default function HumanHome() {
                   The finance automation platform built for enterprise complexity.
                 </h1>
                 <p className="mt-6 max-w-[36rem] text-[16px] leading-[1.5] text-black md:mt-8 md:text-[18px]">
-                  Osfin partners with the most ambitious enterprises and leaders to drive transformation in finance
-                  operations. We do this by deploying our teams of forward-deployed engineers and purpose-built agents
-                  who own the outcome and act as a catalyst for change across your finance, accounting and payments
-                  functions.
+                  Out of the box where it can be, configurable where it needs to be. Our forward-deployed engineers make
+                  sure our solutions fit from day one.
                 </p>
                 <div
                   className="not-typeset mt-10 flex flex-wrap items-center justify-start gap-3 md:mt-12"

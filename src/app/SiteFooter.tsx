@@ -95,13 +95,13 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
             </ul>
           </div>
           <div className="min-w-0">
-            <p className={`mb-4 font-medium ${strong}`}>Finance operations</p>
+            <p className={`mb-4 font-medium ${strong}`}>Solutions</p>
             <ul className="space-y-2.5">
               {FINANCE_OPERATIONS.map((item) => (
                 <li key={item.slug}>
                   <TextReveal
                     as={Link}
-                    href={`/finance-operations/${item.slug}`}
+                    href={`/solutions/${item.slug}`}
                     text={item.name}
                     className={`${mono} ${muted} ${hover}`}
                   />

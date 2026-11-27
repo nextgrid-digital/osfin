@@ -548,12 +548,10 @@ function MotionNavigationMenuTrigger({
           aria-hidden="true"
           animate={{
             rotate: isOpen ? 180 : 0,
-            y: isOpen ? 1 : 0,
           }}
           transition={{
-            type: "spring",
-            stiffness: 400,
-            damping: 20,
+            duration: 0.2,
+            ease: "linear",
           }}
           className="relative top-0 ml-1.5 inline-flex"
         >
@@ -734,27 +732,22 @@ function MotionNavigationMenuViewport({
             height: activeContent ? height : 0,
             opacity: activeContent ? 1 : 0,
           }}
-          transition={context?.spring}
+          transition={{ duration: 0.32, ease: "linear" }}
           className={cn(
             "relative w-screen overflow-hidden border-0 bg-white shadow-none",
             className,
           )}
         >
-          <AnimatePresence
-            mode="popLayout"
-            initial={false}
-            custom={context?.direction ?? 1}
-          >
+          <AnimatePresence mode="sync" initial={false}>
             {activeContent && context?.activeValue && (
               <motion.div
                 data-slot="navigation-menu-content"
                 key={context.activeValue}
-                variants={contentVariants}
-                initial="initial"
-                animate="active"
-                exit="exit"
-                transition={contentTransition}
-                className={cn(activeContent.className)}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.32, ease: "linear" }}
+                className={cn("absolute inset-x-0 top-0", activeContent.className)}
               >
                 <MotionNavigationMenuContentInner
                   highlightClassName={activeContent.highlightClassName}
