@@ -1,18 +1,40 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, type Easing } from "motion/react";
 
 import { cn } from "@/lib/utils";
 
 const DURATION = 0.3;
 
-function toMotionEase(easing: string | number[]) {
-  if (Array.isArray(easing)) return easing;
-  const match = easing.match(
-    /cubic-bezier\(\s*([-\d.]+)\s*,\s*([-\d.]+)\s*,\s*([-\d.]+)\s*,\s*([-\d.]+)\s*\)/,
-  );
-  if (!match) return easing;
-  return match.slice(1, 5).map(Number);
+function toMotionEase(easing: string | number[]): Easing {
+  if (Array.isArray(easing) && easing.length === 4) {
+    return [easing[0], easing[1], easing[2], easing[3]];
+  }
+  const match =
+    typeof easing === "string"
+      ? easing.match(
+          /cubic-bezier\(\s*([-\d.]+)\s*,\s*([-\d.]+)\s*,\s*([-\d.]+)\s*,\s*([-\d.]+)\s*\)/,
+        )
+      : null;
+  if (match) {
+    return [Number(match[1]), Number(match[2]), Number(match[3]), Number(match[4])];
+  }
+  if (
+    easing === "linear" ||
+    easing === "easeIn" ||
+    easing === "easeOut" ||
+    easing === "easeInOut" ||
+    easing === "circIn" ||
+    easing === "circOut" ||
+    easing === "circInOut" ||
+    easing === "backIn" ||
+    easing === "backOut" ||
+    easing === "backInOut" ||
+    easing === "anticipate"
+  ) {
+    return easing;
+  }
+  return "easeInOut";
 }
 
 export default function TextRoll({
