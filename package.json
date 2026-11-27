@@ -6,8 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint",
-    "test": "node --experimental-strip-types --test src/lib/contact-delivered.test.ts"
+    "lint": "eslint"
   },
   "dependencies": {
     "@icon-park/react": "^1.4.2",

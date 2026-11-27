@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { contactDelivered } from "@/lib/contact-delivered";
 
 const SHORT_MAX = 500;
 const MESSAGE_MAX = 4000;
@@ -101,6 +100,7 @@ export async function POST(request: Request) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
       cache: "no-store",
+      redirect: "follow",
     });
 
     const text = await upstream.text();
@@ -111,11 +111,14 @@ export async function POST(request: Request) {
       upstreamJson = null;
     }
 
-    if (!contactDelivered(upstream.ok, upstreamJson)) {
+    if (!upstream.ok || upstreamJson?.ok !== true) {
+      const looksLikeGoogleHtml = text.includes("<!DOCTYPE html>") || text.includes("Page not found");
       return NextResponse.json(
         {
           ok: false,
-          error: upstreamJson?.error || "Could not deliver the message. Please try again.",
+          error: looksLikeGoogleHtml
+            ? "Apps Script URL is not publicly reachable. Redeploy the Web App with access set to Anyone."
+            : upstreamJson?.error || "Could not deliver the message. Please try again.",
         },
         { status: 502 },
       );

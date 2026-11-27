@@ -31,15 +31,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Contact form
 
-`/contact` posts to `/api/contact`, which forwards JSON to a Google Apps Script web app (Gmail → `socials@osfin.ai`, Sheet, Slack, HubSpot). Setup: [`scripts/contact-apps-script/README.md`](./scripts/contact-apps-script/README.md).
-
-Local (`.env.local`) and Vercel project env:
+`/contact` → `/api/contact` → **Google Apps Script** → Gmail → `#osfin-nextgrid` Slack email.  
+Setup: [`scripts/contact-apps-script/README.md`](./scripts/contact-apps-script/README.md).
 
 ```bash
 CONTACT_WEBHOOK_URL=https://script.google.com/macros/s/XXXX/exec
 ```
 
-`NEXT_PUBLIC_CONTACT_WEBHOOK_URL` is accepted as a fallback. See [`.env.example`](./.env.example). Without either var, the form returns a clear configuration error.
+See [`.env.example`](./.env.example).
 
 ## Deploy on Vercel
 
