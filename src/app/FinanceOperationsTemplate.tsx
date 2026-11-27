@@ -1,0 +1,67 @@
+import type { FinanceOperation } from "../content/finance-operations";
+import FinanceOperationsTabs from "./FinanceOperationsTabs";
+import SectionHeading from "./SectionHeading";
+import SiteClose from "./SiteClose";
+import SiteContainer from "./SiteContainer";
+
+export default function FinanceOperationsTemplate({ operation }: { operation: FinanceOperation }) {
+  return (
+    <div
+      data-transition="container"
+      data-namespace="finance-operations"
+      className="site-shell typeset typeset-docs min-h-screen bg-background text-black"
+    >
+      <main className="pt-14 md:pt-16">
+        <SiteContainer className="pt-8 md:pt-10">
+          <h1 className="mx-auto max-w-full text-center">
+            <span className="block">Finance operations</span>
+            <span className="block">for the enterprise</span>
+          </h1>
+
+          <FinanceOperationsTabs currentSlug={operation.slug} />
+
+          <SectionHeading
+            className="mt-4 pt-4 pb-0 md:mt-6 md:pt-6 md:pb-0 [&_h3]:py-1 [&_h3]:!text-[clamp(1.5rem,3vw,40px)] [&_h3]:!leading-[1.12] [&_h3]:!tracking-[-0.022em]"
+            title={operation.tagline}
+            titleAs="h3"
+            aside={operation.agents}
+            cta={null}
+          />
+        </SiteContainer>
+
+        <SiteContainer className="pb-28 md:pb-36">
+          <section className="mt-24 md:mt-32">
+            <p
+              className="not-typeset !m-0 text-left !font-[family-name:var(--font-mono)] !text-[14px] !font-medium !leading-[1.4] !tracking-[-0.02em] !text-black/45 uppercase"
+              data-not-typeset
+            >
+              Capabilities
+            </p>
+            <div className="mt-8 border-t border-black/10">
+              {operation.capabilities.map((item, index) => (
+                <div
+                  key={item.title}
+                  className="grid grid-cols-1 items-start gap-4 border-b border-black/10 py-10 md:grid-cols-[2.75rem_minmax(0,0.9fr)_minmax(0,1.2fr)] md:gap-x-10"
+                >
+                  <span
+                    className="not-typeset pt-1.5 !font-[family-name:var(--font-mono)] !text-[14px] !font-medium !leading-[1.4] !tracking-[-0.02em] !text-black/45 uppercase"
+                    data-not-typeset
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="!mb-0 !mt-0 !text-[28px] !font-light !leading-[1.2] !tracking-[-0.02em] text-black">
+                    {item.title}
+                  </h3>
+                  <p className="!mt-0 max-w-[65ch] text-[17px] leading-[1.65] tracking-[-0.01em] text-black/75 md:text-[18px]">
+                    {item.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </SiteContainer>
+      </main>
+      <SiteClose />
+    </div>
+  );
+}

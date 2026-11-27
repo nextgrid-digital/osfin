@@ -35,7 +35,7 @@ export default function TransitionLink({
   "data-not-typeset": dataNotTypeset,
   ...props
 }: Props) {
-  const { navigate, isTransitioning } = usePageTransition();
+  const { navigate } = usePageTransition();
   const router = useRouter();
 
   const handleEnter = (e: MouseEvent<HTMLAnchorElement>) => {
@@ -55,9 +55,7 @@ export default function TransitionLink({
     if (!isSameDocumentNavigation(raw)) return;
 
     e.preventDefault();
-    if (!isTransitioning) {
-      navigate(raw);
-    }
+    navigate(raw);
   };
 
   if (typeof children === "string" && typeof href === "string") {

@@ -5,7 +5,7 @@ export const ABOUT = {
   fit: [
     {
       title: "Built for volume",
-      body: "Millions of transactions, dozens of data sources, multiple entities. Osfin handles the scale and messiness that break spreadsheets and generic tools.",
+      body: "Millions of transactions, dozens of data sources, multiple entities. Osfin handles the scale and messiness breaking spreadsheets & generic tools.",
     },
     {
       title: "Configured, not coded",
@@ -48,7 +48,6 @@ export const ABOUT = {
       label: "Partners",
       items: [
         { name: "Fiserv", short: "Fiserv", logo: "/about/logos/fiserv.png?v=8" },
-        { name: "McKinsey", short: "McKinsey", logo: "/about/logos/mckinsey.png?v=8" },
         { name: "KPMG", short: "KPMG", logo: "/about/logos/kpmg.png?v=4" },
       ],
     },

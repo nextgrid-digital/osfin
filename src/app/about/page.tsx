@@ -63,28 +63,9 @@ export default function AboutPage() {
                 <p className={labelClassName} data-not-typeset>
                   {row.label}
                 </p>
-                {row.label === "Partners" ? (
+                {row.label === "Standards" ? (
                   <div
-                    className="not-typeset mx-auto mt-4 grid w-full max-w-[75%] grid-cols-3 border border-black/10"
-                    data-not-typeset
-                  >
-                    {row.items.map((item) => (
-                      <article
-                        key={item.name}
-                        className="flex aspect-[5/3] items-center justify-center border-l border-black/10 px-8 first:border-l-0"
-                      >
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={item.logo}
-                          alt={item.name}
-                          className="h-8 w-auto max-w-[11rem] object-contain object-center md:h-9"
-                        />
-                      </article>
-                    ))}
-                  </div>
-                ) : row.label === "Standards" ? (
-                  <div
-                    className="not-typeset mt-8 flex flex-wrap items-start justify-center gap-x-10 gap-y-8 md:gap-x-14"
+                    className="not-typeset mt-8 flex flex-wrap items-start justify-start gap-x-10 gap-y-8 md:gap-x-14"
                     data-not-typeset
                   >
                     {row.items.map((item) => (
@@ -99,30 +80,20 @@ export default function AboutPage() {
                     ))}
                   </div>
                 ) : (
-                  <div className="not-typeset mt-4 overflow-hidden border border-black/10" data-not-typeset>
-                    <div className={row.label === "Investors" ? "grid grid-cols-4" : "grid grid-cols-2 lg:grid-cols-4"}>
-                      {row.items.map((item) => (
-                        <article
-                          key={item.name}
-                          className="flex aspect-[5/3] flex-col text-black shadow-[1px_1px_0_0_rgba(0,0,0,0.08)]"
-                        >
-                          <div className="flex flex-1 items-center justify-center px-6 md:px-10">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={item.logo}
-                              alt={item.name}
-                              className={
-                                item.short === "IIT Kanpur"
-                                  ? "h-16 w-auto max-w-[11rem] object-contain object-center md:h-20 lg:h-24"
-                                  : item.short === "Waterloo"
-                                    ? "h-12 w-auto max-w-[11rem] object-contain object-center md:h-14"
-                                    : "h-8 w-auto max-w-[11rem] object-contain object-center md:h-9"
-                              }
-                            />
-                          </div>
-                        </article>
-                      ))}
-                    </div>
+                  <div className="not-typeset mt-4 flex w-fit max-w-full flex-wrap" data-not-typeset>
+                    {row.items.map((item) => (
+                      <article
+                        key={item.name}
+                        className="-mb-px -mr-px flex aspect-[5/3] w-44 shrink-0 items-center justify-center border border-black/10 px-5 sm:w-52"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={item.logo}
+                          alt={item.name}
+                          className="h-8 w-auto max-w-[8rem] object-contain object-center sm:h-9"
+                        />
+                      </article>
+                    ))}
                   </div>
                 )}
               </div>

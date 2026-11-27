@@ -423,6 +423,12 @@ button {
   padding-right: 2rem;
 }
 
+.site-nav-panel--wide {
+  padding-left: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .site-header [data-layout="mega"] [data-slot="navigation-menu-content"] a,
 .site-header [data-layout="mega"] [data-slot="navigation-menu-content"] [data-slot="navigation-menu-link"] {
   font-family: var(--font-inter), var(--font-sans), system-ui, sans-serif;

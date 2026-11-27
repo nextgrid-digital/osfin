@@ -11,6 +11,7 @@ import {
   MotionNavigationMenuTrigger,
 } from "@/components/unlumen-ui/motion-navigation-menu";
 import { TextReveal } from "@/components/ui/cascade-text";
+import { FINANCE_OPERATIONS } from "../content/finance-operations";
 import { SOLUTIONS } from "../content/industries";
 import { PRODUCTS } from "../content/products";
 import { usePageTransition } from "./PageTransitionProvider";
@@ -106,6 +107,14 @@ function MobileMenu({
       }),
     },
     {
+      id: "finance",
+      label: "Finance operations",
+      links: FINANCE_OPERATIONS.map((item) => ({
+        label: item.name,
+        href: `/finance-operations/${item.slug}`,
+      })),
+    },
+    {
       id: "industries",
       label: "Industries",
       links: SOLUTIONS.map(({ label, href }) => ({ label, href })),
@@ -172,20 +181,21 @@ function MobileMenu({
 }
 
 export default function SiteNav() {
-  const { navigate, isTransitioning } = usePageTransition();
+  const { navigate } = usePageTransition();
   const [menuValue, setMenuValue] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const closeMenu = () => setMenuValue("");
   const closeMobile = () => setMobileOpen(false);
 
-  const onProductClick = (href: string) => (e: MouseEvent<HTMLAnchorElement>) => {
+  // Always hand off to navigate after preventDefault. Gating on React
+  // isTransitioning state can swallow clicks while a prior transition
+  // is clearing, which leaves the menu dead until a hard refresh.
+  const onNavClick = (href: string) => (e: MouseEvent<HTMLAnchorElement>) => {
     if (!shouldHandleClick(e)) return;
     e.preventDefault();
     closeMenu();
-    if (!isTransitioning) {
-      navigate(href);
-    }
+    navigate(href);
   };
 
   const menuOpen = Boolean(menuValue);
@@ -207,7 +217,7 @@ export default function SiteNav() {
   const onMobileNavigate = (href: string) => (e: MouseEvent<HTMLAnchorElement>) => {
     closeMobile();
     if (href.startsWith("/#")) return;
-    onProductClick(href)(e);
+    onNavClick(href)(e);
   };
 
   useEffect(() => {
@@ -280,7 +290,7 @@ export default function SiteNav() {
               highlightClassName="hidden"
               className="w-screen"
             >
-              <div className="site-nav-panel py-10 md:py-12">
+              <div className="site-nav-panel site-nav-panel--wide py-10 md:py-12">
                 <MenuColumns>
                   <div>
                     <MenuLabel>Products</MenuLabel>
@@ -292,13 +302,28 @@ export default function SiteNav() {
                           <MotionNavigationMenuLink
                             key={slug}
                             href={`/products/${slug}`}
-                            onClick={onProductClick(`/products/${slug}`)}
+                            onClick={onNavClick(`/products/${slug}`)}
                             className={largeLinkClassName}
                           >
                             <TextReveal as="span" text={product.name} />
                           </MotionNavigationMenuLink>
                         );
                       })}
+                    </div>
+                  </div>
+                  <div>
+                    <MenuLabel>Finance operations</MenuLabel>
+                    <div className="flex flex-col gap-2">
+                      {FINANCE_OPERATIONS.map((item) => (
+                        <MotionNavigationMenuLink
+                          key={item.slug}
+                          href={`/finance-operations/${item.slug}`}
+                          onClick={onNavClick(`/finance-operations/${item.slug}`)}
+                          className={largeLinkClassName}
+                        >
+                          <TextReveal as="span" text={item.name} />
+                        </MotionNavigationMenuLink>
+                      ))}
                     </div>
                   </div>
                 </MenuColumns>
@@ -321,7 +346,7 @@ export default function SiteNav() {
                     <MotionNavigationMenuLink
                       key={label}
                       href={href}
-                      onClick={closeMenu}
+                      onClick={onNavClick(href)}
                       className={largeLinkClassName}
                     >
                       <TextReveal as="span" text={label} />
@@ -333,7 +358,11 @@ export default function SiteNav() {
           </MotionNavigationMenuItem>
 
           <MotionNavigationMenuItem>
-            <MotionNavigationMenuLink href="/blog" className={navLinkClassName}>
+            <MotionNavigationMenuLink
+              href="/blog"
+              className={navLinkClassName}
+              onClick={onNavClick("/blog")}
+            >
               <NavLabel text="Blog" />
             </MotionNavigationMenuLink>
           </MotionNavigationMenuItem>
@@ -353,7 +382,7 @@ export default function SiteNav() {
                     <MotionNavigationMenuLink
                       key={label}
                       href={href}
-                      onClick={href.startsWith("/#") ? closeMenu : onProductClick(href)}
+                      onClick={href.startsWith("/#") ? closeMenu : onNavClick(href)}
                       className={largeLinkClassName}
                     >
                       <TextReveal as="span" text={label} />

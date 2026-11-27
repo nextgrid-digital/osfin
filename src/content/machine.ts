@@ -2,6 +2,7 @@ import { CUSTOMER_STORIES, type CustomerStory } from "./customers";
 import { INDUSTRIES } from "./industries";
 import { POSTS } from "./posts";
 import { FEATURES } from "./process";
+import { FINANCE_OPERATIONS, financeTaglinePlain } from "./finance-operations";
 import { PRODUCTS } from "./products";
 import { SECURITY } from "./security";
 
@@ -73,6 +74,17 @@ export function machineBlocks(): MachineBlock[] {
     blocks.push({ type: "text", text: "" });
     blocks.push({ type: "link", label: product.name, href: `/products/${product.slug}` });
     blocks.push({ type: "text", text: product.lede });
+  }
+
+  blocks.push({ type: "text", text: "" }, { type: "text", text: "Finance operations" });
+  for (const operation of FINANCE_OPERATIONS) {
+    blocks.push({ type: "text", text: "" });
+    blocks.push({
+      type: "link",
+      label: operation.name,
+      href: `/finance-operations/${operation.slug}`,
+    });
+    blocks.push({ type: "text", text: financeTaglinePlain(operation.tagline) });
   }
 
   blocks.push({ type: "text", text: "" }, { type: "text", text: "Industries" });

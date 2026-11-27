@@ -45,7 +45,8 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
         autoRaf: false,
         lerp: 0.1,
         smoothWheel: true,
-        anchors: true,
+        // Offset for the fixed site header so in-page section links land cleanly.
+        anchors: { offset: -80 },
         allowNestedScroll: true,
         stopInertiaOnNavigate: true,
       }}

@@ -13,20 +13,12 @@ type QuoteTile = {
   span: Span;
 };
 
-type MetricTile = {
-  kind: "metric";
-  slug: string;
-  value: string;
-  label: string;
-  span: Span;
-};
-
 type MoreTile = {
   kind: "more";
   span: Span;
 };
 
-type Tile = QuoteTile | MetricTile | MoreTile;
+type Tile = QuoteTile | MoreTile;
 
 /** Spans only apply once the 4-col bento is active at lg. */
 const SPAN_CLASS: Record<Span, string> = {
@@ -39,12 +31,11 @@ const TILE_BASE =
   "flex h-full min-h-0 flex-col justify-between gap-3 border border-black/15 p-4 text-black no-underline transition hover:opacity-90 hover:no-underline sm:p-4 md:p-5";
 
 const QUOTE_MIN = "min-h-[12rem] lg:min-h-0";
-const METRIC_MIN = "min-h-[9rem] lg:min-h-0";
 
 /**
  * Bento on a 4-col × 2-row track (lg+):
- * [ PharmEasy quote+99.5% ×2 ] [ $1.5M ] [ $500K ]
- * [ Games quote ×2           ] [ Manipal ×1 ] [ More ]
+ * [ PharmEasy quote+99.5% ×2 ] [ Manipal ×1 ] [ Buku ×1 ]
+ * [ Games quote ×2           ] [ More ×2 ]
  */
 const TILES: Tile[] = [
   {
@@ -56,17 +47,17 @@ const TILES: Tile[] = [
     span: "two",
   },
   {
-    kind: "metric",
-    slug: "atm-reconciliation",
-    value: "$1.5M",
-    label: "annual savings · 1,500+ ATMs",
+    kind: "quote",
+    slug: "manipal-cigna",
+    quote:
+      "Osfin is a life saviour. With its support, we've been able to better administer payments to our partners. Timely settlement and distribution of payouts allow us to concentrate on expanding our primary business.",
     span: "one",
   },
   {
-    kind: "metric",
-    slug: "card-reconciliation",
-    value: "$500K",
-    label: "annual savings · 10M+ daily txns",
+    kind: "quote",
+    slug: "buku-warung",
+    quote:
+      "Osfin offers efficient financial reconciliation, enhancing accuracy and productivity. Recommended to decrease dependency on internal team.",
     span: "one",
   },
   {
@@ -76,14 +67,7 @@ const TILES: Tile[] = [
       "Managing voluminous transaction data has become seamless using Osfin. We are able to achieve complete visibility on the cashflows across our Internal database, Payment Gateways and Banks. Moreover, Osfin also became our defacto auditor for PG charges and failure rates.",
     span: "two",
   },
-  {
-    kind: "quote",
-    slug: "manipal-cigna",
-    quote:
-      "Osfin is a life saviour. With its support, we've been able to better administer payments to our partners. Timely settlement and distribution of payouts allow us to concentrate on expanding our primary business.",
-    span: "one",
-  },
-  { kind: "more", span: "one" },
+  { kind: "more", span: "two" },
 ];
 
 function storyMeta(slug: string) {
@@ -144,27 +128,6 @@ function QuoteCard({ tile }: { tile: QuoteTile }) {
   );
 }
 
-function MetricCard({ tile }: { tile: MetricTile }) {
-  const { company, logo } = storyMeta(tile.slug);
-
-  return (
-    <TransitionLink
-      href={`/customers/${tile.slug}`}
-      className={`${TILE_BASE} ${METRIC_MIN} ${SPAN_CLASS[tile.span]}`}
-    >
-      <div>
-        <p className="!m-0 font-[family-name:var(--font-mono)] text-[clamp(1.2rem,2vw,1.85rem)] font-medium leading-none tracking-[-0.04em] text-black">
-          {tile.value}
-        </p>
-        <p className="!mb-0 !mt-2 text-[11px] leading-[1.3] text-black/55 sm:text-[12px] lg:text-[13px]">
-          {tile.label}
-        </p>
-      </div>
-      <CompanyMark company={company} logo={logo} />
-    </TransitionLink>
-  );
-}
-
 function MoreCard({ tile }: { tile: MoreTile }) {
   return (
     <TransitionLink
@@ -172,7 +135,7 @@ function MoreCard({ tile }: { tile: MoreTile }) {
       className={`flex h-full min-h-[9rem] items-end justify-between gap-3 border border-black/15 p-4 text-black no-underline transition hover:opacity-90 hover:no-underline sm:p-4 md:p-5 lg:min-h-0 ${SPAN_CLASS[tile.span]}`}
     >
       <span className="text-[13px] leading-[1.3] tracking-[-0.02em] sm:text-[14px] lg:text-[15px]">
-        More case studies
+        See all customers
       </span>
       <span className="inline-flex size-8 shrink-0 items-center justify-center border border-black/15" aria-hidden>
         <svg viewBox="0 0 16 16" className="size-3">
@@ -206,7 +169,7 @@ export default function HomeCaseStudies() {
             className="not-typeset mt-4 inline-flex w-fit items-center gap-2 border border-black/15 px-3.5 py-2.5 font-[family-name:var(--font-mono)] text-[11px] font-medium tracking-[-0.02em] text-black uppercase no-underline hover:opacity-70 hover:no-underline md:mt-5"
             data-not-typeset
           >
-            See all customer stories
+            See all customers
             <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden>
               <path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.25" />
             </svg>
@@ -217,9 +180,6 @@ export default function HomeCaseStudies() {
           {TILES.map((tile, index) => {
             if (tile.kind === "quote") {
               return <QuoteCard key={`quote-${tile.slug}-${index}`} tile={tile} />;
-            }
-            if (tile.kind === "metric") {
-              return <MetricCard key={`metric-${tile.slug}-${index}`} tile={tile} />;
             }
             return <MoreCard key="more" tile={tile} />;
           })}

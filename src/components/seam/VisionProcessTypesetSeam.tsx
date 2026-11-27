@@ -374,3 +374,35 @@ export default function VisionProcessTypesetSeam() {
 export function ProcessExitTypesetSeam() {
   return <SeamHost mount={mountExitSeam} />;
 }
+
+/** Light → dark typeset seam for the customers index (logos → map band). */
+function mountCustomersDarkSeam(
+  host: HTMLDivElement,
+  root: HTMLElement,
+  renderRef: { current: () => void },
+) {
+  const prev = root.querySelector<HTMLElement>("[data-customers-seam-prev]");
+  const next = root.querySelector<HTMLElement>("[data-customers-seam-next]");
+  const heading = root.querySelector<HTMLElement>("[data-customers-seam-heading]");
+  if (!prev || !next) return () => {};
+
+  return mountStrip(host, root, renderRef, DARK, 3.0, {
+    getEdge: () => prev.getBoundingClientRect().bottom,
+    roomUp: () => {
+      const prevRect = prev.getBoundingClientRect();
+      return Math.max(0, Math.min(prevRect.height * 0.4, 160) - GAP);
+    },
+    roomDown: () => {
+      const prevRect = prev.getBoundingClientRect();
+      const headingTop = heading
+        ? heading.getBoundingClientRect().top
+        : next.getBoundingClientRect().top + CELL[1] + GAP;
+      return Math.max(0, headingTop - prevRect.bottom - GAP);
+    },
+    observe: [prev, next],
+  });
+}
+
+export function CustomersDarkSeam() {
+  return <SeamHost mount={mountCustomersDarkSeam} />;
+}

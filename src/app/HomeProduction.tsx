@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { useLenis } from "lenis/react";
 import { AgentsGetBetter } from "@/components/hairline/AgentsGetBetter";
 import { DeployAgents } from "@/components/hairline/DeployAgents";
 import { DriverSeat } from "@/components/hairline/DriverSeat";
@@ -17,6 +18,20 @@ function isFeatureId(value: string | null): value is FeatureId {
 export default function HomeProduction() {
   const [active, setActive] = useState<FeatureId>(FEATURES[0].id);
   const itemRefs = useRef<Record<string, HTMLElement | null>>({});
+  const lenis = useLenis();
+
+  const scrollToFeature = (featureId: FeatureId) => (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    setActive(featureId);
+    const hash = `#feature-${featureId}`;
+    const headerOffset = window.matchMedia("(min-width: 768px)").matches ? -96 : -80;
+    if (lenis) {
+      lenis.scrollTo(hash, { offset: headerOffset });
+    } else {
+      document.getElementById(`feature-${featureId}`)?.scrollIntoView({ block: "start" });
+    }
+    window.history.replaceState(null, "", hash);
+  };
 
   useEffect(() => {
     const nodes = FEATURES.map((f) => itemRefs.current[f.id]).filter(
@@ -145,7 +160,7 @@ export default function HomeProduction() {
                         : "text-white/40 hover:text-white/60"
                     }`}
                     data-not-typeset
-                    onClick={() => setActive(feature.id)}
+                    onClick={scrollToFeature(feature.id)}
                   >
                     {feature.nav}
                   </a>

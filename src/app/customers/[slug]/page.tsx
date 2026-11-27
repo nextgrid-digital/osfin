@@ -135,10 +135,7 @@ export default async function CustomerStoryPage({
       className="site-shell min-h-screen bg-background text-black"
     >
       <main className="pt-14 md:pt-16">
-        <article
-          className="not-typeset mx-auto w-full max-w-[1024px] px-6 pb-16 pt-16 font-sans md:pb-20 md:pt-20"
-          data-not-typeset
-        >
+        <article className="mx-auto w-full max-w-[1024px] px-6 pb-16 pt-16 font-sans md:pb-20 md:pt-20">
           <p className="m-0 text-center font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[-0.02em] text-black/45 uppercase">
             <TransitionLink
               href="/customers"
@@ -167,12 +164,12 @@ export default async function CustomerStoryPage({
           </p>
           <div
             className="
-              mx-auto mt-[4.625rem] max-w-[calc(624px+10ch)] text-[17px] leading-[1.6] text-black/80
+              typeset typeset-docs mx-auto mt-[4.625rem] max-w-[calc(624px+10ch)] text-[17px] leading-[1.6] text-black/80
               [&_p]:mt-5 [&_p]:mb-0
               [&_section:first-child_p:first-of-type]:mt-0
-              [&_h2]:mt-14 [&_h2]:mb-0 [&_h2]:font-sans [&_h2]:text-[24px] [&_h2]:font-medium [&_h2]:leading-[1.33] [&_h2]:tracking-[-0.012em] [&_h2]:text-black
+              [&_h2]:mt-14 [&_h2]:mb-0 [&_h2]:text-black
               [&_h2+p]:mt-4
-              [&_h3]:mt-7 [&_h3]:mb-0 [&_h3]:font-sans [&_h3]:text-[17px] [&_h3]:font-medium [&_h3]:leading-[1.4] [&_h3]:tracking-[-0.012em] [&_h3]:text-black
+              [&_h3]:mt-7 [&_h3]:mb-0 [&_h3]:text-black
               [&_h3+p]:mt-2.5
               [&_ul]:mt-3 [&_ul]:mb-0 [&_ul]:list-disc [&_ul]:pl-6
               [&_ol]:mt-3 [&_ol]:mb-0 [&_ol]:list-decimal [&_ol]:pl-6

@@ -1,5 +1,6 @@
 import { TextReveal } from "@/components/ui/cascade-text";
 import Link from "next/link";
+import { FINANCE_OPERATIONS } from "../content/finance-operations";
 import { SOLUTIONS } from "../content/industries";
 import { PRODUCTS } from "../content/products";
 import SiteContainer from "./SiteContainer";
@@ -67,7 +68,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
           ))}
         </div>
 
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-5 lg:gap-10">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-6 lg:gap-8">
           <div className="min-w-0">
             <p className={`mb-4 font-medium ${strong}`}>Osfin for</p>
             <ul className="space-y-2.5">
@@ -87,6 +88,21 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
                     as={Link}
                     href={`/products/${product.slug}`}
                     text={product.name}
+                    className={`${mono} ${muted} ${hover}`}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="min-w-0">
+            <p className={`mb-4 font-medium ${strong}`}>Finance operations</p>
+            <ul className="space-y-2.5">
+              {FINANCE_OPERATIONS.map((item) => (
+                <li key={item.slug}>
+                  <TextReveal
+                    as={Link}
+                    href={`/finance-operations/${item.slug}`}
+                    text={item.name}
                     className={`${mono} ${muted} ${hover}`}
                   />
                 </li>

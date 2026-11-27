@@ -117,7 +117,8 @@ export default function PageTransitionProvider({ children }: { children: ReactNo
         if (target.search === window.location.search) {
           if (target.hash) {
             const scroller = lenisRef.current;
-            if (scroller) scroller.scrollTo(target.hash);
+            const headerOffset = window.matchMedia("(min-width: 768px)").matches ? -80 : -64;
+            if (scroller) scroller.scrollTo(target.hash, { offset: headerOffset });
             else window.location.hash = target.hash;
           }
           return;
@@ -126,7 +127,12 @@ export default function PageTransitionProvider({ children }: { children: ReactNo
         return;
       }
 
-      if (transitioningRef.current) return;
+      // Never drop a click. If a transition is already running, fall through
+      // to a hard push so the destination still loads.
+      if (transitioningRef.current) {
+        router.push(target.pathname + target.search + target.hash);
+        return;
+      }
 
       if (prefersReducedMotion()) {
         router.push(target.href);
