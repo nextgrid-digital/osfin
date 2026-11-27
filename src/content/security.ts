@@ -31,14 +31,14 @@ export const SECURITY = {
       {
         title: "SOC 1 Type II",
         body: "Independently audited controls over financial reporting, so your close and vendor reviews have evidence attached.",
-        logo: "/security/badges/AICPA_SOC.png",
-        alt: "AICPA SOC",
+        logo: "/about/logos/aicpa-soc1.svg",
+        alt: "SOC 1 Type II",
       },
       {
         title: "SOC 2 Type II",
         body: "Security, availability, processing integrity, confidentiality, and privacy — audited against the SOC 2 trust criteria.",
-        logo: "/security/badges/AICPA_SOC.png",
-        alt: "AICPA SOC",
+        logo: "/about/logos/aicpa-soc2.svg",
+        alt: "SOC 2 Type II",
       },
       {
         title: "ISO 27001:2022",

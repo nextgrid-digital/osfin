@@ -38,6 +38,9 @@ function doPost(e) {
     if (errors.length) {
       return jsonResponse_({ ok: false, error: errors.join(' ') }, 400);
     }
+    if (rateLimited_()) {
+      return jsonResponse_({ ok: false, error: 'Too many messages. Please try again in a minute.' });
+    }
 
     enrichLead_(lead);
 
@@ -85,7 +88,48 @@ function validateLead_(lead) {
   if (!lead.email) errors.push('Work email is required.');
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email)) errors.push('Enter a valid work email.');
   if (!lead.message) errors.push('Message is required.');
+  if (lead.message.length > 4000) errors.push('Message must be 4000 characters or fewer.');
+  var shortFields = [
+    'name',
+    'email',
+    'company',
+    'role',
+    'pageUrl',
+    'referrer',
+    'utm_source',
+    'utm_medium',
+    'utm_campaign',
+    'utm_content',
+    'utm_term',
+    'source',
+  ];
+  for (var i = 0; i < shortFields.length; i++) {
+    if (String(lead[shortFields[i]] || '').length > 500) {
+      errors.push('One of the fields is too long.');
+      break;
+    }
+  }
   return errors;
+}
+
+// 8 posts per minute for every visitor. CacheService drops the counter after 60s.
+function rateLimited_() {
+  var lock = LockService.getScriptLock();
+  try {
+    lock.waitLock(5000);
+  } catch (err) {
+    Logger.log('contact rate lock failed: ' + err);
+    return true;
+  }
+  try {
+    var cache = CacheService.getScriptCache();
+    var count = Number(cache.get('contact-rpm') || '0');
+    if (count >= 8) return true;
+    cache.put('contact-rpm', String(count + 1), 60);
+    return false;
+  } finally {
+    lock.releaseLock();
+  }
 }
 
 function enrichLead_(lead) {
@@ -239,22 +283,33 @@ function createCrmContact_(lead) {
 }
 
 function nextOwnerId_() {
-  var props = PropertiesService.getScriptProperties();
-  var raw = props.getProperty('CRM_OWNER_IDS') || '';
-  var ids = raw
-    .split(',')
-    .map(function (id) {
-      return id.trim();
-    })
-    .filter(Boolean);
-  if (!ids.length) return '';
+  var lock = LockService.getScriptLock();
+  try {
+    lock.waitLock(5000);
+  } catch (err) {
+    Logger.log('owner lock failed: ' + err);
+    return '';
+  }
+  try {
+    var props = PropertiesService.getScriptProperties();
+    var raw = props.getProperty('CRM_OWNER_IDS') || '';
+    var ids = raw
+      .split(',')
+      .map(function (id) {
+        return id.trim();
+      })
+      .filter(Boolean);
+    if (!ids.length) return '';
 
-  var idxKey = 'CRM_OWNER_RR_INDEX';
-  var idx = Number(props.getProperty(idxKey) || '0');
-  if (!isFinite(idx) || idx < 0) idx = 0;
-  var ownerId = ids[idx % ids.length];
-  props.setProperty(idxKey, String((idx + 1) % ids.length));
-  return ownerId;
+    var idxKey = 'CRM_OWNER_RR_INDEX';
+    var idx = Number(props.getProperty(idxKey) || '0');
+    if (!isFinite(idx) || idx < 0) idx = 0;
+    var ownerId = ids[idx % ids.length];
+    props.setProperty(idxKey, String((idx + 1) % ids.length));
+    return ownerId;
+  } finally {
+    lock.releaseLock();
+  }
 }
 
 function createHubSpotContact_(lead) {

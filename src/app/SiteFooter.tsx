@@ -42,7 +42,7 @@ export default function SiteFooter({ tone = "light" }: { tone?: "light" | "dark"
 
   return (
     <footer
-      className={`site-footer not-typeset px-0 pt-12 pb-16 text-[12px] md:pt-16 md:pb-24 md:text-[13px] ${
+      className={`site-footer not-typeset px-0 pt-12 pb-8 text-[12px] md:pt-16 md:pb-10 md:text-[13px] ${
         dark ? "bg-[#141412] text-white/55" : "bg-background text-black/60"
       }`}
       data-not-typeset

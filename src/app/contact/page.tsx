@@ -30,9 +30,6 @@ export default function ContactPage() {
                 <h1 className="!mt-5 max-w-[11em] !text-[clamp(2rem,5vw,64px)] !leading-none !font-light tracking-[-0.03em] text-black md:!mt-6">
                   Tell us what you’re looking to solve.
                 </h1>
-                <p className="!mb-0 !mt-6 max-w-[28rem] text-[17px] !leading-[1.5] text-black md:!mt-8 md:text-[18px]">
-                  One form. We route it to the right people, enrich the lead, and follow up.
-                </p>
                 <p
                   className="not-typeset !mb-0 !mt-10 font-[family-name:var(--font-mono)] text-[12px] font-medium tracking-[-0.02em] text-black/45 uppercase"
                   data-not-typeset

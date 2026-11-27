@@ -22,11 +22,11 @@ export default function CustomersPage() {
     >
       <main className="pt-14 md:pt-16">
         <section className="pt-16 pb-12 md:pt-28 md:pb-20">
-          <SiteContainer>
+          <SiteContainer className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-12">
             <h1 className="!mt-0 !mb-0 max-w-[14em] text-black">
               The institutions that move money reconcile on Osfin.
             </h1>
-            <p className="!mb-0 !mt-6 max-w-[40ch] text-[16px] leading-[1.5] text-black/75 md:text-[18px]">
+            <p className="!m-0 max-w-[40ch] shrink-0 text-[16px] leading-[1.5] text-black/75 md:text-[18px]">
               Large banks, credit unions, payment companies, lenders and insurers.
             </p>
           </SiteContainer>

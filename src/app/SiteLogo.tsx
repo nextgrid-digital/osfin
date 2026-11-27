@@ -50,7 +50,7 @@ export default function SiteLogo({
       className={`inline-flex items-center gap-2 text-current ${className}`}
     >
       <OsfinMark
-        className={`${wordmark ? "size-[18px]" : "size-7 md:size-8"} shrink-0`}
+        className={`${wordmark ? "size-[18px]" : "size-5"} shrink-0`}
         fill={markFill}
       />
       {wordmark ? (
