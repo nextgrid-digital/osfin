@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Crimson_Pro, IBM_Plex_Mono, Inter } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import PageTransitionProvider from "./PageTransitionProvider";
 import SmoothScroll from "./SmoothScroll";
 import "./globals.css";
@@ -100,6 +101,7 @@ export default function RootLayout({
         <SmoothScroll>
           <PageTransitionProvider>{children}</PageTransitionProvider>
         </SmoothScroll>
+        <Analytics />
       </body>
     </html>
   );
